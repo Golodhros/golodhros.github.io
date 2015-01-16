@@ -77,8 +77,7 @@
                         <ul>
                             <li>Huge API</li>
                             <li>Some data parsing</li>
-    						<li>Front End related</li>
-                            <li>Perfect toolbox for interactive data visualizations</li>
+    						<li>Front End</li>
                         </ul>
                     </aside>
                 </section>
@@ -145,6 +144,16 @@
 					</section>
 				</section>
 
+                <section>
+                    <h2>How does it work?</h2>
+                    <ul>
+                        <li class="fragment">Loads data</li>
+                        <li class="fragment">Binds data to elements</li>
+                        <li class="fragment">Transforms those elements</li>
+                        <li class="fragment">Transitions between states on demand</li>
+                    </ul>
+                </section>
+
 				<section>
 					<h2>D3 Advantages</h2>
 					<ul>
@@ -156,6 +165,7 @@
                     <aside class="notes">
                         <ul>
                             <li>Same tools as FE development</li>
+                            <li>Perfect toolbox for interactive data visualizations</li>
                         </ul>
                     </aside>
                 </section>
@@ -163,7 +173,7 @@
                 <section>
                     <h2>Pain points</h2>
                     <ul>
-                        <li>Update, Enter and Exit Pattern</li>
+                        <li>Enter, Update and Exit Pattern</li>
                         <li>Chaining</li>
                         <li>Scales and Axes</li>
                         <li>Tooltips</li>
@@ -172,14 +182,13 @@
                         <ul>
                             <li>Margins and dimensions</li>
                             <li>All data viz needs work on the data side</li>
-                            <li>Underscore functions helps sometimes</li>
     						<li>The community and Bostock has develop patterns</li>
                         </ul>
                     </aside>
 				</section>
 
 				<section>
-					<h2>How do we work with D3</h2>
+					<h2>Usual Workflow</h2>
 					<ul>
 						<li class="fragment">Idea or Requirement</li>
 						<li class="fragment">Search for an example</li>
@@ -188,16 +197,6 @@
 						<li class="fragment">Polish Look and Feel</li>
 					</ul>
 				</section>
-
-                <section>
-                    <h2>How does it work?</h2>
-                    <ul>
-                        <li class="fragment">Loads data</li>
-                        <li class="fragment">Binds data to elements</li>
-                        <li class="fragment">Transforms those elements</li>
-                        <li class="fragment">Transitions between states on demand</li>
-                    </ul>
-                </section>
 
                 <section>
                     <section>
@@ -231,7 +230,7 @@ var svg = d3.select("body").append("svg")
 					</code></pre>
                     <aside class="notes">
                         <ul>
-                            <li>Margins and sizes</li>
+                            <li>Margins Convention</li>
                             <li>A bit messy, but only once per graph and with this pattern</li>
                         </ul>
                     </aside>
@@ -258,6 +257,7 @@ var yAxis = d3.svg.axis()
                     <aside class="notes">
                         <ul>
                             <li>Won't talk about them</li>
+                            <li>Prepares them beforehand</li>
                             <li>A bit tricky sometimes</li>
                         </ul>
                     </aside>
@@ -343,12 +343,12 @@ svg.selectAll(".bar")
 					</ul>
                     <aside class="notes">
                         <ul>
-                            <li>Configurable: We can change look and feel and behaviour without changing the code</li>
+                            <li>Configurable: change look & feel or behaviour without changing the code</li>
                             <li>Repeatable: Different charts with the same code</li>
-                            <li>Composable: It can contain inner charts</li>
+                            <li>Composable: You can build rich interactions from different blocks and controls</li>
                             <li>Decoupled: We differientate the core of the graph from the configuration</li>
-                            <li>Consistent: Following the same strategy we can reuse even pieces between charts</li>
-                            <li>Testable: TODO</li>
+                            <li>Consistent: Following the same strategy we can reuse methods between charts</li>
+                            <li>Testable: The most important, no legacy code</li>
                         </ul>
                     </aside>
                 </section>
@@ -360,27 +360,30 @@ svg.selectAll(".bar")
                 <section>
                     <h2>The TDD way</h2>
                     <pre><code data-trim contenteditable>
-                    dataset = [
-                        {   letter: 'A',
-                            frequency: .08167
-                        },{
-                            letter: 'B',
-                            frequency: .01492
-                        },...
-                    ];
-                    barChart = demo.graphs.barChart();
-                    containerFixture = d3.select('.test-container');
-                    containerFixture.datum(dataset).call(barChart);
+containerFixture = d3.select('.test-container');
+dataset = [
+    {   letter: 'A',
+        frequency: .08167
+    },{
+        letter: 'B',
+        frequency: .01492
+    },...
+];
+barChart = demo.graphs.barChart();
+containerFixture.datum(dataset).call(barChart);
                     </code></pre>
                     <aside class="notes">
                         <ul>
-                            <li>TODO</li>
+                            <li>letters and frequency on English</li>
+                            <li>instance of the chart</li>
+                            <li>a DOM container</li>
+                            <li>apply chart with data over the container</li>
                         </ul>
                     </aside>
                 </section>
 
                 <section>
-                    <h2>Chart Test</h2>
+                    <h2>Test: Basic Chart</h2>
                     <pre><code data-trim contenteditable>
 it('should render a chart with minimal requirements', function(){
     expect(containerFixture.select('.bar-chart')).toBeDefined(1);
@@ -389,7 +392,7 @@ it('should render a chart with minimal requirements', function(){
                 </section>
 
                 <section>
-                    <h2>Chart Code</h2>
+                    <h2>Code: Basic Chart</h2>
                     <pre><code data-trim contenteditable>
 demo.graphs.barChart = function module(){
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -413,7 +416,7 @@ demo.graphs.barChart = function module(){
                 </section>
 
                 <section>
-					<h2>Chart Test</h2>
+					<h2>Test: Containers</h2>
 					<pre><code data-trim contenteditable>
 it('should render container, axis and chart groups', function(){
     expect(containerFixture.select('g.container-group')[0][0]).not.toBeNull();
@@ -425,7 +428,7 @@ it('should render container, axis and chart groups', function(){
 				</section>
 
 				<section>
-					<h2>Chart Code</h2>
+					<h2>Code: Containers</h2>
 					<pre><code data-trim contenteditable>
 function buildContainerGroups(){
     var container = svg.append("g").classed("container-group", true);
@@ -440,7 +443,7 @@ function buildContainerGroups(){
 				</section>
 
                 <section>
-                    <h2>Chart Test</h2>
+                    <h2>Test: Scales and Axis</h2>
                     <pre><code data-trim contenteditable>
 it('should render an X and Y axis', function(){
     expect(containerFixture.select('.x.axis')[0][0]).not.toBeNull();
@@ -450,7 +453,7 @@ it('should render an X and Y axis', function(){
                 </section>
 
                 <section>
-                    <h2>Chart Code</h2>
+                    <h2>Code: Scales</h2>
                     <pre><code data-trim contenteditable>
 function buildScales(){
     xScale = d3.scale.ordinal()
@@ -465,7 +468,7 @@ function buildScales(){
                 </section>
 
                 <section>
-                    <h2>Chart Code</h2>
+                    <h2>Code: Axis</h2>
                     <pre><code data-trim contenteditable>
 function buildAxis(){
     xAxis = d3.svg.axis()
@@ -481,7 +484,7 @@ function buildAxis(){
                 </section>
 
                 <section>
-                    <h2>Chart Code</h2>
+                    <h2>Code: Axis Drawing</h2>
                     <pre><code data-trim contenteditable>
 function drawAxis(){
     svg.select('.x-axis-group')
@@ -502,10 +505,15 @@ function drawAxis(){
         .text("Frequency");
 }
                     </code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>remember we first need the groups and svg</li>
+                        </ul>
+                    </aside>
                 </section>
 
                 <section>
-                    <h2>Chart Test</h2>
+                    <h2>Test: Bars Drawing</h2>
                     <pre><code data-trim contenteditable>
 it('should render a bar for each data entry', function(){
     var numBars = dataset.length;
@@ -516,7 +524,7 @@ it('should render a bar for each data entry', function(){
                 </section>
 
                 <section>
-                    <h2>Chart Code</h2>
+                    <h2>Code: Bars Drawing</h2>
                     <pre><code data-trim contenteditable>
 function drawBars(){
     // Setup the enter, exit and update of the actual bars in the chart.
@@ -536,7 +544,7 @@ function drawBars(){
                 </section>
 
                 <section>
-                    <h2>Chart Test</h2>
+                    <h2>Test: Margin Accessor</h2>
                     <pre><code data-trim contenteditable>
 it('should provide margin getter and setter', function(){
     var defaultMargin = barChart.margin(),
@@ -553,7 +561,7 @@ it('should provide margin getter and setter', function(){
                 </section>
 
                 <section>
-                    <h2>Chart Code</h2>
+                    <h2>Code: Margin Accessor</h2>
                     <pre><code data-trim contenteditable>
 exports.margin = function(_x) {
     if (!arguments.length) return margin;
@@ -564,7 +572,7 @@ exports.margin = function(_x) {
                 </section>
 
                     <section>
-                        <h2>Result</h2>
+                        <h2>Looks the Same, but is not</h2>
                         <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                     </section>
                 </section>
@@ -588,8 +596,8 @@ exports.margin = function(_x) {
 						<img src="img/gettingStarted.jpg" style="width: 50%;">
 						<aside class="notes">
 							<ul>
-								<li>Super Fast introduction (<60 pg.)</li>
-								<li>Enter Selections, Scales, Axes</li>
+								<li>Super Fast introduction (<60 pg.) for web developers</li>
+								<li>Talks about: Enter Selections, Scales, Axes</li>
 								<li>Interactions and Transitions</li>
 								<li>Layouts</li>
 							</ul>
@@ -600,7 +608,7 @@ exports.margin = function(_x) {
 						<img src="img/interactivedatacover.jpg" style="width: 50%;">
 						<aside class="notes">
 							<ul>
-								<li>Intro Book</li>
+								<li>Intro Book for everyone</li>
 								<li>Starting from 0 and no experience on FE</li>
 								<li>GeoJSON and Maps</li>
 							</ul>
@@ -611,7 +619,7 @@ exports.margin = function(_x) {
 						<img src="img/developingad3edge.jpg" style="width: 50%;">
 						<aside class="notes">
 							<ul>
-								<li>It provides a way of creating reusable charts in a way we could all use</li>
+								<li>Reusable charts in a way we could all use</li>
 								<li>Charts are simple and test friendly</li>
 								<li>You can create larger ones by composition</li>
 								<li>Introduces a data loader module</li>
@@ -629,7 +637,7 @@ exports.margin = function(_x) {
 								<li>Ambitious book, almost a reference</li>
 								<li>Integrations: Backbone, Socket.IO, Mapbox.</li>
 								<li>Great number of different charts: Choropleth, Area, Advanced Maps</li>
-								<li>Side technologies: Jekyll, NPM, Grunt, Vows</li>
+								<li>Bower Package using Grunt for build and Vows for testing</li>
 								<li>Less Importance to Tests, great book</li>
 							</ul>
 						</aside>
@@ -650,9 +658,9 @@ exports.margin = function(_x) {
 				<section>
 					<h2>Tutorials</h2>
 					<ul>
-						<li><a target="_blank" href="https://www.dashingd3js.com/table-of-contents">Dashing D3.js</a></li>
+                        <li><a target="_blank" href="http://alignedleft.com/tutorials/d3/">Scott Murray Tutorials</a></li>
+                        <li><a target="_blank" href="https://www.dashingd3js.com/table-of-contents">Dashing D3.js</a></li>
 						<li><a target="_blank" href="http://wowsuchlist.com/lists/80-resources-for-learning-d3-js">Tutorials</a></li>
-						<li><a target="_blank" href="http://alignedleft.com/tutorials/d3/">Scott Murray Tutorials</a></li>
 					</ul>
 				</section>
 
@@ -711,6 +719,9 @@ exports.margin = function(_x) {
                             <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a>
                         </li>
                         <li>
+                            <a target="_blank" href="http://bl.ocks.org/zanarmstrong/05c1e95bf7aa16c4768e">Number Formats</a>
+                        </li>
+                        <li>
                             <a target="_blank" href="http://bl.ocks.org/zanarmstrong/ca0adb7e426c12c06a95">Time Formats</a>
                         </li>
                     </ul>
@@ -718,71 +729,51 @@ exports.margin = function(_x) {
 
 
                 <section>
-                    <h2>Data Loader Test</h2>
+                    <h2>Test: Data Loader</h2>
                     <pre><code data-trim contenteditable>
 describe('Initialization', function(){
     it('defines a dataManager object', function(){
         expect(demo.graphs.dataManager).toBeDefined();
     });
-
-    it('can be called like a constructor', function(){
-        expect(typeof demo.graphs.dataManager).toBe('function');
-        expect(demo.graphs.dataManager()).toBeDefined();
-    });
 });
                     </code></pre>
                 </section>
 
                 <section>
-                    <h2>Data Loader Test II</h2>
+                    <h2>Test: Data Loader II</h2>
                     <pre><code data-trim contenteditable>
 describe('Interface', function(){
-
     beforeEach(function(){
         dataManager = demo.graphs.dataManager();
         spyOn(dataManager, 'on').and.callThrough();
     });
-
     it('triggers dataReady when data loaded', function(done){
-        var dataReadyHandler = function(result){
-            done();
-        };
-
+        var dataReadyHandler = function(result){ done(); };
         dataManager.on('dataReady', dataReadyHandler);
         dataManager.loadJsonData(fixturePath + 'dummyData.json', function(d){
             d = d;
         });
-
         expect(dataManager.on).toHaveBeenCalled();
         expect(dataManager.on).toHaveBeenCalledWith('dataReady', dataReadyHandler);
     });
-
-});
                     </code></pre>
                 </section>
 
                 <section>
-                    <h2>Data Loader Test III</h2>
+                    <h2>Test: Data Loader III</h2>
                     <pre><code data-trim contenteditable>
-describe('Interface', function(){
-
     it('triggers dataError when data point fails', function(done){
-        var dataErrorHandler = function(result){
-            done();
-        };
-
+        var dataErrorHandler = function(result){ done(); };
         dataManager.on('dataError', dataErrorHandler);
         dataManager.loadJsonData(fixturePath + 'fake.json', function(d){
             d = d;
         });
-
         expect(dataManager.on).toHaveBeenCalled();
         expect(dataManager.on).toHaveBeenCalledWith('dataError', dataErrorHandler);
     });
 
     it('returns loaded data', function(done){
         var newData;
-
         dataManager.on('dataReady', function(result){
             newData = result;
             expect(newData).toHaveLength(12);
@@ -801,9 +792,8 @@ describe('Interface', function(){
                     <h2>Data Loader Code</h2>
                     <pre><code data-trim contenteditable>
 demo.graphs.dataManager = function module(){
-    var exports = {},
-        dispatch = d3.dispatch('dataReady', 'dataLoading', 'dataError'),
-        data;
+    var exports = {}, data,
+        dispatch = d3.dispatch('dataReady', 'dataLoading', 'dataError');
 
     d3.rebind(exports, dispatch, 'on');
 
