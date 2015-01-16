@@ -180,6 +180,7 @@
                     </ul>
                     <aside class="notes">
                         <ul>
+                            <li>Explain Chaining</li>
                             <li>Margins and dimensions</li>
                             <li>All data viz needs work on the data side</li>
     						<li>The community and Bostock has develop patterns</li>
@@ -237,7 +238,7 @@ var svg = d3.select("body").append("svg")
 				</section>
 
 				<section>
-					<h2>Creating Scales and Axes</h2>
+					<h2>Setting up Scales and Axes</h2>
 					<pre><code data-trim contenteditable>
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
@@ -264,7 +265,7 @@ var yAxis = d3.svg.axis()
 				</section>
 
 				<section>
-					<h2>Loads Data</h2>
+					<h2>Loading Data</h2>
 					<pre><code data-trim contenteditable>
 d3.tsv("data.tsv", type, function(error, data) {
     // Chart Code
@@ -278,7 +279,7 @@ function type(d) {
 				</section>
 
 				<section>
-					<h2>Draws Axes</h2>
+					<h2>Drawing Axes</h2>
 					<pre><code data-trim contenteditable>
 x.domain(data.map(function(d) { return d.letter; }));
 y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
@@ -301,7 +302,7 @@ svg.append("g")
 				</section>
 
 				<section>
-					<h2>Draws Chart Bars</h2>
+					<h2>Drawing Chart Bars</h2>
 					<pre><code data-trim contenteditable>
 svg.selectAll(".bar")
     .data(data)
@@ -315,7 +316,7 @@ svg.selectAll(".bar")
 				</section>
 
     				<section>
-    					<h2>Result</h2>
+    					<h2>Output</h2>
     					<img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                     </section>
 				</section>
