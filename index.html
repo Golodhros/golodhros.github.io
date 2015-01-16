@@ -41,14 +41,26 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 
+                <section>
+                    <img width="252" height="236" data-src="img/d3js.png" alt="D3 Logo">
+                    <ul>
+                        <li>Slides URL:</li>
+                        <li><a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
+                        <li>Code:</li>
+                        <li><a href="http://tinyurl.com/mv9sovl">http://tinyurl.com/mv9sovl</a></li>
+                    </ul>
+                </section>
+
 				<section>
 					<h1>Better D3 with the Reusable API</h1>
 					<img width="252" height="236" data-src="img/d3js.png" alt="D3 Logo">
                     <aside class="notes">
                         <ul>
-                            <li>Lots of Content</li>
-                            <li>Fast, questions at the end</li>
+                            <li>MI Software Engineer at Eventbrite</li>
                             <li>Introductory and focused on learning</li>
+                            <li>Write D3 in the good way</li>
+                            <li>Lots of Content</li>
+                            <li>Fast, do the q at the end</li>
                         </ul>
                     </aside>
 				</section>
@@ -59,19 +71,27 @@
 						<li>Data-Driven Documents</li>
 						<li>JavaScript Library to manipulate data based documents</li>
 						<li>Uses open web standards (SVG, HTML and CSS)</li>
-						<li>Some data parsing</li>
-						<li>Allows interaction with your graphs</li>
-					</ul>
+                        <li>Allows interaction with your graphs</li>
+                    </ul>
                     <aside class="notes">
                         <ul>
                             <li>Huge API</li>
+                            <li>Some data parsing</li>
+    						<li>Front End related</li>
+                            <li>Perfect toolbox for interactive data visualizations</li>
                         </ul>
                     </aside>
-				</section>
+                </section>
 
-				<section>
-					<section>
-						<h1>What can you do with D3?</h1>
+                <section>
+                    <section>
+                        <h1>What can you do with D3?</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>Lots of possibilities</li>
+                                <li>You can do a ton of different things</li>
+                            </ul>
+                        </aside>
 					</section>
 
 					<section>
@@ -126,16 +146,6 @@
 				</section>
 
 				<section>
-					<h2>What is D3 doing?</h2>
-					<ul>
-						<li class="fragment">Loads data</li>
-						<li class="fragment">Binds data to elements</li>
-						<li class="fragment">Transforms those elements</li>
-						<li class="fragment">Transitions between states on demand</li>
-					</ul>
-				</section>
-
-				<section>
 					<h2>D3 Advantages</h2>
 					<ul>
 						<li>Based on attaching data to the DOM</li>
@@ -155,13 +165,12 @@
                     <ul>
                         <li>Update, Enter and Exit Pattern</li>
                         <li>Chaining</li>
-                        <li>Data Manipulation</li>
-                        <li>Margins and dimensions</li>
                         <li>Scales and Axes</li>
                         <li>Tooltips</li>
                     </ul>
                     <aside class="notes">
                         <ul>
+                            <li>Margins and dimensions</li>
                             <li>All data viz needs work on the data side</li>
                             <li>Underscore functions helps sometimes</li>
     						<li>The community and Bostock has develop patterns</li>
@@ -170,7 +179,7 @@
 				</section>
 
 				<section>
-					<h2>Workflow</h2>
+					<h2>How do we work with D3</h2>
 					<ul>
 						<li class="fragment">Idea or Requirement</li>
 						<li class="fragment">Search for an example</li>
@@ -180,28 +189,31 @@
 					</ul>
 				</section>
 
-				<section>
-					<h2>Standard D3 Examples</h2>
-					<ul>
-						<li>
-							By chart type: <a target="_blank" href="http://christopheviau.com/d3list/gallery.html">Christophe's Viau Gallery</a>
-						</li>
-						<li>
-							By D3 components: <a target="_blank" href="http://bl.ocksplorer.org/">Mike Bostock's Block Explorer</a>
-						</li>
-					</ul>
-				</section>
+                <section>
+                    <h2>How does it work?</h2>
+                    <ul>
+                        <li class="fragment">Loads data</li>
+                        <li class="fragment">Binds data to elements</li>
+                        <li class="fragment">Transforms those elements</li>
+                        <li class="fragment">Transitions between states on demand</li>
+                    </ul>
+                </section>
 
-				<section>
-					<h2>Code Example</h2>
-					<p><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar Chart Example</a> by Mike Bostock</p>
-                    <aside class="notes">
-                        <ul>
-                            <li>Simplest example</li>
-                            <li>Still, almost spagetti code</li>
-                        </ul>
-                    </aside>
-				</section>
+                <section>
+                    <section>
+                        <h1>The Standard Way</h1>
+    				</section>
+
+    				<section>
+    					<h2>Code Example</h2>
+    					<p><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar Chart Example</a> by Mike Bostock</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Simplest example</li>
+                                <li>Still, almost spagetti code</li>
+                            </ul>
+                        </aside>
+    				</section>
 
 				<section>
 					<h2>Creating Container</h2>
@@ -243,6 +255,12 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .ticks(10, "%");
 					</code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>Won't talk about them</li>
+                            <li>A bit tricky sometimes</li>
+                        </ul>
+                    </aside>
 				</section>
 
 				<section>
@@ -296,9 +314,10 @@ svg.selectAll(".bar")
 					</code></pre>
 				</section>
 
-				<section>
-					<h2>Result</h2>
-					<img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+    				<section>
+    					<h2>Result</h2>
+    					<img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                    </section>
 				</section>
 
 				<section>
@@ -320,6 +339,7 @@ svg.selectAll(".bar")
                         <li class="fragment">Composable</li>
                         <li class="fragment">Decoupled</li>
                         <li class="fragment">Consistent</li>
+                        <li class="fragment">Testable</li>
 					</ul>
                     <aside class="notes">
                         <ul>
@@ -328,9 +348,36 @@ svg.selectAll(".bar")
                             <li>Composable: It can contain inner charts</li>
                             <li>Decoupled: We differientate the core of the graph from the configuration</li>
                             <li>Consistent: Following the same strategy we can reuse even pieces between charts</li>
+                            <li>Testable: TODO</li>
                         </ul>
                     </aside>
-				</section>
+                </section>
+
+                <section>
+                    <section>
+                        <h1>The TDD way</h1>
+                    </section>
+                <section>
+                    <h2>The TDD way</h2>
+                    <pre><code data-trim contenteditable>
+                    dataset = [
+                        {   letter: 'A',
+                            frequency: .08167
+                        },{
+                            letter: 'B',
+                            frequency: .01492
+                        },...
+                    ];
+                    barChart = demo.graphs.barChart();
+                    containerFixture = d3.select('.test-container');
+                    containerFixture.datum(dataset).call(barChart);
+                    </code></pre>
+                    <aside class="notes">
+                        <ul>
+                            <li>TODO</li>
+                        </ul>
+                    </aside>
+                </section>
 
                 <section>
                     <h2>Chart Test</h2>
@@ -345,12 +392,8 @@ it('should render a chart with minimal requirements', function(){
                     <h2>Chart Code</h2>
                     <pre><code data-trim contenteditable>
 demo.graphs.barChart = function module(){
-
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
-        width = 960,
-        height = 500;
-
-    var svg;
+        width = 960, height = 500, svg;
 
     function exports(_selection){
         _selection.each(function(_data){
@@ -362,10 +405,8 @@ demo.graphs.barChart = function module(){
                     .append('svg')
                     .classed('bar-chart', true);
             }
-
         });
     };
-
     return exports;
 }
                     </code></pre>
@@ -415,11 +456,17 @@ function buildScales(){
     xScale = d3.scale.ordinal()
         .domain(data.map(function(d) { return d.letter; }))
         .rangeRoundBands([0, chartW], .1);
-
     yScale = d3.scale.linear()
         .domain([0, d3.max(data, function(d) { return d.frequency; })])
         .range([chartH, 0]);
 }
+
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Chart Code</h2>
+                    <pre><code data-trim contenteditable>
 function buildAxis(){
     xAxis = d3.svg.axis()
         .scale(xScale)
@@ -430,6 +477,12 @@ function buildAxis(){
         .orient("left")
         .ticks(10, "%");
 }
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Chart Code</h2>
+                    <pre><code data-trim contenteditable>
 function drawAxis(){
     svg.select('.x-axis-group')
         .append("g")
@@ -510,11 +563,18 @@ exports.margin = function(_x) {
                     </code></pre>
                 </section>
 
+                    <section>
+                        <h2>Result</h2>
+                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                    </section>
+                </section>
+
 				<section>
 					<h2>Learning D3</h2>
 					<ul>
 						<li><a href="">Books</a></li>
-						<li><a href="">Tutorials</a></li>
+                        <li><a href="">Tutorials</a></li>
+						<li><a href="">Examples</a></li>
 						<li><a href="">Reference</a></li>
 					</ul>
 				</section>
@@ -596,6 +656,18 @@ exports.margin = function(_x) {
 					</ul>
 				</section>
 
+                <section>
+                    <h2>Examples</h2>
+                    <ul>
+                        <li>
+                            By chart type: <a target="_blank" href="http://christopheviau.com/d3list/gallery.html">Christophe's Viau Gallery</a>
+                        </li>
+                        <li>
+                            By D3 components: <a target="_blank" href="http://bl.ocksplorer.org/">Mike Bostock's Block Explorer</a>
+                        </li>
+                    </ul>
+                </section>
+
 				<section>
 					<h2>Reference</h2>
 					<ul>
@@ -618,20 +690,27 @@ exports.margin = function(_x) {
                     <h2>Thanks For listening!</h2>
                     <ul>
                         <li>
-                            <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
+                            Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
                         </li>
                         <li>
-                            <a target="_blank" href="http://www.marcosiglesias.com/posts">Blog</a>
+                            Check my Blog: <a target="_blank" href="http://www.marcosiglesias.com/posts">link</a>
                         </li>
+                        <li>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
+                        <li>Code: <a href="http://tinyurl.com/mv9sovl">http://tinyurl.com/mv9sovl</a></li>
                     </ul>
                 </section>
+
 
                 <section>
                     <h2>Extras: Tricks</h2>
                     <ul>
                         <li>
                             <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a>
+                        </li>
+                        <li>
                             <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a>
+                        </li>
+                        <li>
                             <a target="_blank" href="http://bl.ocks.org/zanarmstrong/ca0adb7e426c12c06a95">Time Formats</a>
                         </li>
                     </ul>
@@ -756,42 +835,6 @@ demo.graphs.dataManager = function module(){
 };
                     </code></pre>
                 </section>
-
-
-				<!-- List Template -->
-				<section>
-					<h2></h2>
-					<ul>
-						<li></li>
-					</ul>
-				</section>
-
-				<!-- Link Template -->
-				<section>
-					<h2></h2>
-					<p></p>
-				</section>
-
-				<!-- Code Template -->
-				<section>
-					<h2></h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-					</code></pre>
-				</section>
 
 			</div>
 
