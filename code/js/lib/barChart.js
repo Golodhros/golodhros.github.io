@@ -107,7 +107,7 @@ demo.graphs.barChart = function module(){
             return this;
         };
 
-    };
+    }
 
     return exports;
-}
+};
