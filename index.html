@@ -213,11 +213,11 @@
                                 <li>Still, almost spagetti code</li>
                             </ul>
                         </aside>
-    				</section>
+                    </section>
 
-				<section>
-					<h2>Creating Container</h2>
-					<pre><code data-trim contenteditable>
+                <section>
+                    <h2>Creating Container</h2>
+                    <pre><code data-trim contenteditable>
 var margin = {top: 20, right: 20, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -227,19 +227,20 @@ var svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-    	"translate(" + margin.left + "," + margin.top + ")");
-					</code></pre>
+        "translate(" + margin.left + "," + margin.top + ")");
+                    </code></pre>
+                    <p>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></p>
                     <aside class="notes">
                         <ul>
                             <li>Margins Convention</li>
                             <li>A bit messy, but only once per graph and with this pattern</li>
                         </ul>
                     </aside>
-				</section>
+                </section>
 
-				<section>
-					<h2>Setting up Scales and Axes</h2>
-					<pre><code data-trim contenteditable>
+                <section>
+                    <h2>Setting up Scales and Axes</h2>
+                    <pre><code data-trim contenteditable>
 var x = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
 
@@ -254,7 +255,7 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .ticks(10, "%");
-					</code></pre>
+                    </code></pre>
                     <aside class="notes">
                         <ul>
                             <li>Won't talk about them</li>
@@ -262,11 +263,11 @@ var yAxis = d3.svg.axis()
                             <li>A bit tricky sometimes</li>
                         </ul>
                     </aside>
-				</section>
+                </section>
 
-				<section>
-					<h2>Loading Data</h2>
-					<pre><code data-trim contenteditable>
+                <section>
+                    <h2>Loading Data</h2>
+                    <pre><code data-trim contenteditable>
 d3.tsv("data.tsv", type, function(error, data) {
     // Chart Code
 };
@@ -275,12 +276,12 @@ function type(d) {
   d.frequency = +d.frequency;
   return d;
 }
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<h2>Drawing Axes</h2>
-					<pre><code data-trim contenteditable>
+                <section>
+                    <h2>Drawing Axes</h2>
+                    <pre><code data-trim contenteditable>
 x.domain(data.map(function(d) { return d.letter; }));
 y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
@@ -298,12 +299,12 @@ svg.append("g")
     .attr("dy", ".71em")
     .style("text-anchor", "end")
     .text("Frequency");
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-				<section>
-					<h2>Drawing Chart Bars</h2>
-					<pre><code data-trim contenteditable>
+                <section>
+                    <h2>Drawing Chart Bars</h2>
+                    <pre><code data-trim contenteditable>
 svg.selectAll(".bar")
     .data(data)
   .enter().append("rect")
@@ -312,36 +313,36 @@ svg.selectAll(".bar")
     .attr("width", x.rangeBand())
     .attr("y", function(d) { return y(d.frequency); })
     .attr("height", function(d) { return height - y(d.frequency); });
-					</code></pre>
-				</section>
+                    </code></pre>
+                </section>
 
-    				<section>
-    					<h2>Output</h2>
-    					<img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                    <section>
+                        <h2>Output</h2>
+                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                     </section>
-				</section>
+                </section>
 
-				<section>
-					<h2>Standard D3: Drawbacks</h2>
-					<ul>
-						<li class="fragment">Monolithic functions</li>
-						<li class="fragment">Chained method calls</li>
-						<li class="fragment">Hard to change stuff</li>
-						<li class="fragment">Impossible to reuse</li>
-					</ul>
-				</section>
+                <section>
+                    <h2>Standard D3: Drawbacks</h2>
+                    <ul>
+                        <li class="fragment">Monolithic functions</li>
+                        <li class="fragment">Chained method calls</li>
+                        <li class="fragment">Hard to change stuff</li>
+                        <li class="fragment">Impossible to reuse</li>
+                    </ul>
+                </section>
 
 
-				<section>
-					<h2>Reusable API</h2>
-					<ul>
-						<li class="fragment">Configurable</li>
+                <section>
+                    <h2>Reusable API</h2>
+                    <ul>
+                        <li class="fragment">Configurable</li>
                         <li class="fragment">Repeatable</li>
                         <li class="fragment">Composable</li>
                         <li class="fragment">Decoupled</li>
                         <li class="fragment">Consistent</li>
                         <li class="fragment">Testable</li>
-					</ul>
+                    </ul>
                     <aside class="notes">
                         <ul>
                             <li>Configurable: change look & feel or behaviour without changing the code</li>
@@ -414,11 +415,12 @@ demo.graphs.barChart = function module(){
     return exports;
 }
                     </code></pre>
+                    <p>Reference: <a href="http://bost.ocks.org/mike/chart/" target="_blank">Towards Reusable Charts</a></p>
                 </section>
 
                 <section>
-					<h2>Test: Containers</h2>
-					<pre><code data-trim contenteditable>
+                    <h2>Test: Containers</h2>
+                    <pre><code data-trim contenteditable>
 it('should render container, axis and chart groups', function(){
     expect(containerFixture.select('g.container-group')[0][0]).not.toBeNull();
     expect(containerFixture.select('g.chart-group')[0][0]).not.toBeNull();
@@ -542,6 +544,8 @@ function drawBars(){
         .attr("height", function(d) { return chartH - yScale(d.frequency); });
 }
                     </code></pre>
+                    <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></p>
+                    <p>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
                 </section>
 
                 <section>
@@ -696,7 +700,7 @@ exports.margin = function(_x) {
 				</section>
 
                 <section>
-                    <h2>Thanks For listening!</h2>
+                    <h2>Thanks for listening!</h2>
                     <ul>
                         <li>
                             Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
@@ -713,12 +717,6 @@ exports.margin = function(_x) {
                 <section>
                     <h2>Extras: Tricks</h2>
                     <ul>
-                        <li>
-                            <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a>
-                        </li>
                         <li>
                             <a target="_blank" href="http://bl.ocks.org/zanarmstrong/05c1e95bf7aa16c4768e">Number Formats</a>
                         </li>
@@ -741,6 +739,22 @@ describe('Initialization', function(){
                 </section>
 
                 <section>
+                    <h2>Code: Data Loader Object</h2>
+                    <pre><code data-trim contenteditable>
+demo.graphs.dataManager = function module(){
+    var exports = {}, data,
+        dispatch = d3.dispatch('dataReady', 'dataLoading', 'dataError');
+
+    exports.getCleanedData = function(){
+        return data;
+    };
+
+    return exports;
+};
+                    </code></pre>
+                </section>
+
+                <section>
                     <h2>Test: Data Loader dataReady</h2>
                     <pre><code data-trim contenteditable>
 describe('Interface', function(){
@@ -758,6 +772,34 @@ describe('Interface', function(){
         expect(dataManager.on).toHaveBeenCalledWith('dataReady', dataReadyHandler);
     });
 });
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Code: Data Loader dataReady</h2>
+                    <pre><code data-trim contenteditable>
+demo.graphs.dataManager = function module(){
+    var exports = {}, data,
+        dispatch = d3.dispatch('dataReady');
+
+    d3.rebind(exports, dispatch, 'on');
+
+    exports.loadJsonData = function(_file, _cleaningFn){
+        var loadJson = d3.json(_file);
+
+        loadJson.get(function (_err, _response){
+            if(!_err){
+                _response.data.forEach(function(d){
+                    _cleaningFn(d);
+                });
+                data = _response.data;
+                dispatch.dataReady(_response.data);
+            }
+        });
+    };
+    [...]
+    return exports;
+};
                     </code></pre>
                 </section>
 
@@ -792,7 +834,37 @@ describe('Interface', function(){
                 </section>
 
                 <section>
-                    <h2>Data Loader Code</h2>
+                    <h2>Code: Data Loader dataError</h2>
+                    <pre><code data-trim contenteditable>
+demo.graphs.dataManager = function module(){
+    var exports = {}, data,
+        dispatch = d3.dispatch('dataReady', 'dataError');
+
+    d3.rebind(exports, dispatch, 'on');
+
+    exports.loadJsonData = function(_file, _cleaningFn){
+        var loadJson = d3.json(_file);
+
+        loadJson.get(function (_err, _response){
+            if(!_err){
+                _response.data.forEach(function(d){
+                    _cleaningFn(d);
+                });
+                data = _response.data;
+                dispatch.dataReady(_response.data);
+            }else{
+                dispatch.dataError(_err.statusText);
+            }
+        });
+    };
+    [...]
+    return exports;
+};
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h2>Code: Data Loader</h2>
                     <pre><code data-trim contenteditable>
 demo.graphs.dataManager = function module(){
     var exports = {}, data,
@@ -819,6 +891,8 @@ demo.graphs.dataManager = function module(){
             }
         });
     };
+
+    exports.loadCSVData = function(_file, _cleaningFn){ ... };
 
     exports.getCleanedData = function(){
         return data;

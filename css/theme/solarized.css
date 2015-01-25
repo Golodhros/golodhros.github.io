@@ -43,7 +43,7 @@ body {
   font-weight: normal;
   line-height: 1.2;
   letter-spacing: normal;
-  /*text-transform: uppercase;*/
+  text-transform: uppercase;
   text-shadow: none;
   word-wrap: break-word; }
 
@@ -186,7 +186,6 @@ body {
  *********************************************/
 .reveal a {
   color: #268bd2;
-  color: #7b87b0;
   text-decoration: none;
   -webkit-transition: color 0.15s ease;
   -moz-transition: color 0.15s ease;
