@@ -42,9 +42,9 @@
 			<div class="slides">
 
                 <section>
-                    <h1>Better D3 Charts with the Reusable API</h1>
+                    <h2>Better D3 Charts with the Reusable API</h2>
                     <div>
-                        <img width="" height="" data-src="img/d3js.png" alt="D3 Logo">
+                        <img width="252" height="236" data-src="img/d3js.png" alt="D3 Logo">
                     </div>
                     <ul>
                         <li>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
@@ -68,14 +68,13 @@
                     </div>
                     <ul>
                         <li>Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
-                        <li>Blog: <a target="_blank" href="http://www.marcosiglesias.com/posts">link</a></li>
+                        <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Blog</a></li>
                     </ul>
                     <aside class="notes">
                         <ul>
                             <li>A Bit about me</li>
                             <li>MI Software Engineer at Eventbrite</li>
                             <li>I don't use to talk in public, but this is worth sharing, I felt the pain</li>
-                            <li>First projects, no way of refactor that thing.</li>
                         </ul>
                     </aside>
                 </section>
@@ -91,7 +90,7 @@
                     <aside class="notes">
                         <ul>
                             <li>Huge API for a JS library</li>
-                            <li>Some data parsing</li>
+                            <li>String, arrays and some data loading utilities</li>
                             <li>Front End tool</li>
                         </ul>
                     </aside>
@@ -111,6 +110,11 @@
                     <section>
                         <h2>Bar Charts</h2>
                         <img data-src="img/barchart_Fotor.jpg" alt="Bar Chart">
+                        <aside class="notes">
+                            <ul>
+                                <li>Business charts</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
@@ -131,6 +135,11 @@
                     <section>
                         <h2>Map Projections</h2>
                         <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
+                        <aside class="notes">
+                            <ul>
+                                <li>All kind of maps</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
@@ -182,6 +191,7 @@
                         <ul>
                             <li>Same tools as FE development</li>
                             <li>Perfect toolbox for interactive data visualizations</li>
+                            <li>Against other charting libraries</li>
                         </ul>
                     </aside>
                 </section>
@@ -196,8 +206,7 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>jQuery like API</li>
-                            <li>Build several charts? -> Felt the pain</li>
+                            <li>jQuery like</li>
                             <li>Margins and dimensions</li>
                             <li>All data viz needs work on the data side</li>
                             <li>The community and Bostock has develop patterns</li>
@@ -366,6 +375,11 @@ svg.selectAll(".bar")
                         <li class="fragment">Hard to change stuff</li>
                         <li class="fragment">Impossible to reuse</li>
                     </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Reuse is copy/paste - not DRY</li>
+                        </ul>
+                    </aside>
                 </section>
 
 
@@ -394,9 +408,15 @@ svg.selectAll(".bar")
                 <section>
                     <section>
                         <h1>The TDD way</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>I will skip some steps</li>
+                            </ul>
+                        </aside>
                     </section>
+
                 <section>
-                    <h2>The TDD way</h2>
+                    <h2>The Test "before" block</h2>
                     <pre><code data-trim contenteditable>
 containerFixture = d3.select('.test-container');
 dataset = [
@@ -482,7 +502,7 @@ function buildContainerGroups(){
 				</section>
 
                 <section>
-                    <h2>Test: Scales and Axis</h2>
+                    <h2>Test: Axis</h2>
                     <pre><code data-trim contenteditable>
 it('should render an X and Y axis', function(){
     expect(containerFixture.select('.x.axis')[0][0]).not.toBeNull();
@@ -850,24 +870,6 @@ demo.graphs.barChart = function module(){
                     </ul>
                 </section>
 
-				<section>
-					<h2>Reference</h2>
-					<ul>
-						<li>
-							<a target="_blank" href="https://github.com/mbostock/d3/wiki">D3 Wiki</a>
-						</li>
-						<li>
-							<a target="_blank" href="https://github.com/mbostock/d3/wiki/API-Reference">API Reference</a>
-						</li>
-						<li>
-							<a target="_blank" href="http://stackoverflow.com/questions/tagged/d3.js">D3 on StackOverflow</a>
-						</li>
-						<li>
-							<a target="_blank" href="http://www.datameer.com/blog/howto/getting-started-with-d3-js.html">Getting started guide</a>
-						</li>
-					</ul>
-				</section>
-
                 <section>
                     <h2>Thanks for listening!</h2>
                     <ul>
@@ -884,7 +886,26 @@ demo.graphs.barChart = function module(){
 
 
                 <section>
-                    <h2>Extras: Tricks and More</h2>
+                    <h2>Extra: Reference</h2>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://github.com/mbostock/d3/wiki">D3 Wiki</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="https://github.com/mbostock/d3/wiki/API-Reference">API Reference</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://stackoverflow.com/questions/tagged/d3.js">D3 on StackOverflow</a>
+                        </li>
+                        <li>
+                            <a target="_blank" href="http://www.datameer.com/blog/howto/getting-started-with-d3-js.html">Getting started guide</a>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h2>Extras: Formats and More</h2>
                     <ul>
                         <li>
                             <a target="_blank" href="http://bl.ocks.org/zanarmstrong/05c1e95bf7aa16c4768e">Number Formats</a>
