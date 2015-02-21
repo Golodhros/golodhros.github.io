@@ -38,8 +38,8 @@ demo.core = {
                 height = Math.ceil((width * config.aspectHeight) / config.aspectWidth);
 
             this.resetGraph();
-            this.barChart = demo.graphs.barChart();
-            // .margin(config.margin);
+            this.barChart = demo.graphs.barChart()
+                .width(width).height(height).margin(config.margin);
 
             this.container = d3.select(this.$el[0])
                 .datum(this.data)
