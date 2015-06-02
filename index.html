@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Better D3 with the Reusable API</title>
+		<title>Better D3 with TDD</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Talk about D3 best practices">
+		<meta name="author" content="Marcos Iglesias">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -42,7 +42,7 @@
 			<div class="slides">
 
                 <section>
-                    <h2>Better D3 Charts with the Reusable API</h2>
+                    <h2>Better D3 Charts with TDD</h2>
                     <div>
                         <img width="252" height="236" data-src="img/d3js.png" alt="D3 Logo">
                     </div>
@@ -52,15 +52,14 @@
                     </ul>
                     <aside class="notes">
                         <ul>
+                            <li>Simple: Everybody can improve their d3 graphs code quality with Test driven development</li>
                             <li>Today talk about Data Visualizations with D3</li>
                             <li>Main Goal: Write D3 in the good way</li>
-                            <li>Lots of Content</li>
-                            <li>Fast, do the q&a at the end</li>
-                            <li>Added references on slides, but for another day.</li>
                         </ul>
                     </aside>
                 </section>
 
+                <!-- BIO -->
                 <section>
                     <h1>Marcos Iglesias</h1>
                     <div style="padding-bottom: 40px;">
@@ -73,12 +72,45 @@
                     <aside class="notes">
                         <ul>
                             <li>A Bit about me</li>
-                            <li>MI Software Engineer at Eventbrite</li>
-                            <li>I don't use to talk in public, but this is worth sharing, I felt the pain</li>
+                            <li>MI Software Engineer at Eventbrite in SF</li>
+                            <li>Check out my twitter account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.</li>
+                        </ul>
+                    </aside>
+                </section>
+                <section>
+                    <h1>El Bierzo</h1>
+                    <div style="padding-bottom: 40px;">TODO
+                        <img width="" height="" data-src="img/bierzo.png" alt="El Bierzo">
+                    </div>
+                    <aside class="notes">
+                        <ul>
+                            <li>Come from a beautiful place called el Bierzo, in Spain</li>
+                            <li>I haven't invented any of these techniques, but I think they are worth sharing, I felt the pain</li>
                         </ul>
                     </aside>
                 </section>
 
+                <!-- NEXT UP -->
+                <section>
+                    <h2>Next Up</h2>
+                    <ul>
+                        <li>Slides -> URL</li>
+                        <li>Repo -> URL</li>
+                        <li>Resources at the end of the slides</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>In this talk I will talk about how we can take our d3 graphs to the next level, crafting a chart test by test.</li>
+                            <li>I am assuming certain level of knowledge on the library but either way I will introduce it a bit.</li>
+                            <li>Will introduce the library and talk about what can be done with it.</li>
+                            <li>Added references on slides, but for another day. Also there are a lot of resources in the last slides</li>
+                            <li>Q&A at the end</li>
+                            <li>Paste urls in chat</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- D3 -->
                 <section>
                     <h2>D3</h2>
                     <ul>
@@ -92,10 +124,13 @@
                             <li>Huge API for a JS library</li>
                             <li>String, arrays and some data loading utilities</li>
                             <li>Front End tool</li>
+                            <!-- New -->
+                            <li>D3 stands for data-driven documents. It is a library with a huge API and really focused on mathematical transformations of data that allows almost infinite ways of representation of a given set of data.</li>
+                            <li>It is based on web standards (SVG HTML and CSS), and one of it’s strong points is the integration of different animation and user interaction features.</li>
+                            <li>D3 is mainly a Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a library that exposes a bunch of ready made charts, d3 by itself won’t help you, but you could choose among a variety of projects based on it.</li>
                         </ul>
                     </aside>
                 </section>
-
                 <section>
                     <section>
                         <h1>What can you do with D3?</h1>
@@ -167,7 +202,6 @@
                         <a target="_blank" href="http://www.koalastothemax.com/">Koalas to the Max</a>
                     </section>
                 </section>
-
                 <section>
                     <h2>How does it work?</h2>
                     <ul>
@@ -177,15 +211,23 @@
                         <li class="fragment">Transitions between states on demand</li>
                         <li class="fragment"><a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0">Example</a></li>
                     </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>D3 loads data and attaches it to a DOM element. Then, it binds that data to DOM elements and transforms those elements, transitioning among states if necessary. Example.</li>
+                            <li>The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener the value, the higher the rise against previous year. Smart, isn’t it?</li>
+                            <li>That’s not all, as we can click on one of the buttons and change the focus of the visualization, using the same data but showing another read of it. Check out the animations, they are kind of “automatic”. Magic!</li>
+                        </ul>
+                    </aside>
                 </section>
-
                 <section>
-                    <h2>D3 Advantages</h2>
+                    <h2>D3 Niceties</h2>
                     <ul>
                         <li>Based on attaching data to the DOM</li>
                         <li>Styling of elements with CSS</li>
                         <li>Transitions and Animations baked in</li>
                         <li>Total control over our graphs</li>
+                        <li>Amazing community</li>
+                        <li>Decent amount of publications</li>
                     </ul>
                     <aside class="notes">
                         <ul>
@@ -195,9 +237,8 @@
                         </ul>
                     </aside>
                 </section>
-
                 <section>
-                    <h2>Pain points</h2>
+                    <h2>Pain Points</h2>
                     <ul>
                         <li>Enter, Update and Exit Pattern</li>
                         <li>Chaining</li>
@@ -214,6 +255,7 @@
                     </aside>
                 </section>
 
+                <!-- WORKFLOW -->
 				<section>
 					<h2>Usual Workflow</h2>
 					<ul>
@@ -225,6 +267,7 @@
 					</ul>
 				</section>
 
+                <!-- THE STANDARD WAY -->
                 <section>
                     <section>
                         <h1>The Standard Way</h1>
@@ -237,10 +280,10 @@
                             <ul>
                                 <li>Simplest example</li>
                                 <li>Still, almost spaguetti code</li>
+                                <li>Although there is not a lot of code, there is actually a lot of stuff happening here.</li>
                             </ul>
                         </aside>
                     </section>
-
                 <section>
                     <h2>Creating Container</h2>
                     <pre><code data-trim contenteditable>
@@ -264,7 +307,6 @@ var svg = d3.select("body").append("svg")
                         </ul>
                     </aside>
                 </section>
-
                 <section>
                     <h2>Setting up Scales and Axes</h2>
                     <pre><code data-trim contenteditable>
@@ -292,7 +334,6 @@ var yAxis = d3.svg.axis()
                         </ul>
                     </aside>
                 </section>
-
                 <section>
                     <h2>Loading Data</h2>
                     <pre><code data-trim contenteditable>
@@ -311,7 +352,6 @@ function type(d) {
                         </ul>
                     </aside>
                 </section>
-
                 <section>
                     <h2>Drawing Axes</h2>
                     <pre><code data-trim contenteditable>
@@ -340,7 +380,6 @@ svg.append("g")
                         </ul>
                     </aside>
                 </section>
-
                 <section>
                     <h2>Drawing Chart Bars</h2>
                     <pre><code data-trim contenteditable>
@@ -360,13 +399,13 @@ svg.selectAll(".bar")
                         </ul>
                     </aside>
                 </section>
-
                     <section>
                         <h2>Output</h2>
                         <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                     </section>
                 </section>
 
+                <!-- DISADVANTAGES -->
                 <section>
                     <h2>Standard D3: Drawbacks</h2>
                     <ul>
@@ -378,33 +417,39 @@ svg.selectAll(".bar")
                     <aside class="notes">
                         <ul>
                             <li>Reuse is copy/paste - not DRY</li>
+                            <li>If you are serious you have a certain code coverage</li>
+                            <li>This is not serious code, you need to do exceptions on your code</li>
                         </ul>
                     </aside>
                 </section>
 
-
+                <!-- PERSONAL STORY -->
                 <section>
-                    <h2>Reusable API</h2>
-                    <ul>
-                        <li class="fragment">Configurable</li>
-                        <li class="fragment">Repeatable</li>
-                        <li class="fragment">Composable</li>
-                        <li class="fragment">Decoupled</li>
-                        <li class="fragment">Consistent</li>
-                        <li class="fragment">Testable</li>
-                    </ul>
+                    <h1>Some Results</h1>
+                    <div style="padding-bottom: 40px;">
+                        <img width="" height="" data-src="screenshot.png" alt="Code">
+                    </div>
+
                     <aside class="notes">
                         <ul>
-                            <li>Configurable: change look & feel or behaviour without changing the code</li>
-                            <li>Repeatable: Different charts with the same code</li>
-                            <li>Composable: You can build rich interactions from different blocks and controls</li>
-                            <li>Decoupled: We differientate the core of the graph from the configuration</li>
-                            <li>Consistent: Following the same strategy we can reuse methods between charts</li>
-                            <li>Testable: The most important, no legacy code</li>
+                            <li>I remember crafting my first D3 projects years ago and although they were finally working, I never been actually proud of my code.</li>
+                            <li>One of the first needed to render on IE8 too. I practically had to duplicate the graphs. Barcharts were ok, but bubble charts?</li>
                         </ul>
                     </aside>
                 </section>
 
+                <!-- What if... -->
+                <section>
+                    <h2></h2>
+                    <aside class="notes">
+                        <ul>
+                            <li>What if you could work with graphs the same way you deal with the rest of your code?</li>
+                            <li>Imagine you can build a production ready graph by changing just a 25% of the code of your previous one.</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- THE TDD WAY -->
                 <section>
                     <section>
                         <h1>The TDD way</h1>
@@ -414,7 +459,6 @@ svg.selectAll(".bar")
                             </ul>
                         </aside>
                     </section>
-
                 <section>
                     <h2>The Test "before" block</h2>
                     <pre><code data-trim contenteditable>
@@ -638,11 +682,13 @@ exports.margin = function(_x) {
                     </code></pre>
                 </section>
 
-                    <section>
-                        <h2>Looks the Same, but is not</h2>
-                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
-                    </section>
 
+
+                <!-- BEFORE AND AFTER-->
+                <section>
+                    <h2>Looks the Same, but is not</h2>
+                    <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                </section>
                 <section>
                     <h2>Final Code: Standard Way</h2>
                     <pre><code data-trim contenteditable>
@@ -707,7 +753,6 @@ function type(d) {
 }
                     </code></pre>
                 </section>
-
                 <section>
                     <h2>Final Code: Standard Way</h2>
                     <pre><code data-trim contenteditable>
@@ -768,7 +813,44 @@ demo.graphs.barChart = function module(){
                     </code></pre>
                 </section>
 
+                </section>
 
+                <!-- REUSABLE API -->
+                <section>
+                    <h2>Reusable API</h2>
+                    <ul>
+                        <li class="fragment">Configurable</li>
+                        <li class="fragment">Repeatable</li>
+                        <li class="fragment">Composable</li>
+                        <li class="fragment">Decoupled</li>
+                        <li class="fragment">Consistent</li>
+                        <li class="fragment">Testable</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Configurable: change look & feel or behaviour without changing the code</li>
+                            <li>Repeatable: Different charts with the same code</li>
+                            <li>Composable: You can build rich interactions from different blocks and controls</li>
+                            <li>Decoupled: We differientate the core of the graph from the configuration</li>
+                            <li>Consistent: Following the same strategy we can reuse methods between charts</li>
+                            <li>Testable: The most important, no legacy code</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- THANKS -->
+                <section>
+                    <h2>Thanks for listening!</h2>
+                    <ul>
+                        <li>
+                            Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
+                        </li>
+                        <li>
+                            Check my Blog: <a target="_blank" href="http://www.marcosiglesias.com/posts">link</a>
+                        </li>
+                        <li>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
+                        <li>Code: <a href="http://tinyurl.com/mv9sovl">http://tinyurl.com/mv9sovl</a></li>
+                    </ul>
                 </section>
 
 				<section>
@@ -871,21 +953,6 @@ demo.graphs.barChart = function module(){
                 </section>
 
                 <section>
-                    <h2>Thanks for listening!</h2>
-                    <ul>
-                        <li>
-                            Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
-                        </li>
-                        <li>
-                            Check my Blog: <a target="_blank" href="http://www.marcosiglesias.com/posts">link</a>
-                        </li>
-                        <li>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
-                        <li>Code: <a href="http://tinyurl.com/mv9sovl">http://tinyurl.com/mv9sovl</a></li>
-                    </ul>
-                </section>
-
-
-                <section>
                     <h2>Extra: Reference</h2>
                     <ul>
                         <li>
@@ -906,7 +973,6 @@ demo.graphs.barChart = function module(){
                     </ul>
                 </section>
 
-
                 <section>
                     <h2>Extras: Formats and More</h2>
                     <ul>
@@ -920,183 +986,6 @@ demo.graphs.barChart = function module(){
                             <a target="_blank" href="https://medium.com/@duilen/embed-d3js-charts-in-emails-b7c1cb725154">Embeding D3.js Charts on emails</a>
                         </li>
                     </ul>
-                </section>
-
-
-                <section>
-                    <h2>Test: Data Loader Object</h2>
-                    <pre><code data-trim contenteditable>
-describe('Initialization', function(){
-    it('defines a dataManager object', function(){
-        expect(demo.graphs.dataManager).toBeDefined();
-    });
-});
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Code: Data Loader Object</h2>
-                    <pre><code data-trim contenteditable>
-demo.graphs.dataManager = function module(){
-    var exports = {}, data,
-        dispatch = d3.dispatch('dataReady', 'dataLoading', 'dataError');
-
-    exports.getCleanedData = function(){
-        return data;
-    };
-
-    return exports;
-};
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Test: Data Loader dataReady</h2>
-                    <pre><code data-trim contenteditable>
-describe('Interface', function(){
-    beforeEach(function(){
-        dataManager = demo.graphs.dataManager();
-        spyOn(dataManager, 'on').and.callThrough();
-    });
-    it('triggers dataReady when data loaded', function(done){
-        var dataReadyHandler = function(result){ done(); };
-        dataManager.on('dataReady', dataReadyHandler);
-        dataManager.loadJsonData(fixturePath + 'dummyData.json', function(d){
-            d = d;
-        });
-        expect(dataManager.on).toHaveBeenCalled();
-        expect(dataManager.on).toHaveBeenCalledWith('dataReady', dataReadyHandler);
-    });
-});
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Code: Data Loader dataReady</h2>
-                    <pre><code data-trim contenteditable>
-demo.graphs.dataManager = function module(){
-    var exports = {}, data,
-        dispatch = d3.dispatch('dataReady');
-
-    d3.rebind(exports, dispatch, 'on');
-
-    exports.loadJsonData = function(_file, _cleaningFn){
-        var loadJson = d3.json(_file);
-
-        loadJson.get(function (_err, _response){
-            if(!_err){
-                _response.data.forEach(function(d){
-                    _cleaningFn(d);
-                });
-                data = _response.data;
-                dispatch.dataReady(_response.data);
-            }
-        });
-    };
-    [...]
-    return exports;
-};
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Test: Data Loader dataError</h2>
-                    <pre><code data-trim contenteditable>
-describe('Interface', function(){
-    it('triggers dataError when data point fails', function(done){
-        var dataErrorHandler = function(result){ done(); };
-        dataManager.on('dataError', dataErrorHandler);
-        dataManager.loadJsonData(fixturePath + 'fake.json', function(d){
-            d = d;
-        });
-        expect(dataManager.on).toHaveBeenCalled();
-        expect(dataManager.on).toHaveBeenCalledWith('dataError', dataErrorHandler);
-    });
-
-    it('returns loaded data', function(done){
-        var newData;
-        dataManager.on('dataReady', function(result){
-            newData = result;
-            expect(newData).toHaveLength(12);
-            done();
-        });
-        dataManager.loadJsonData(fixturePath + 'dummyData.json', function(d){
-            d = d;
-        });
-    });
-
-});
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Code: Data Loader dataError</h2>
-                    <pre><code data-trim contenteditable>
-demo.graphs.dataManager = function module(){
-    var exports = {}, data,
-        dispatch = d3.dispatch('dataReady', 'dataError');
-
-    d3.rebind(exports, dispatch, 'on');
-
-    exports.loadJsonData = function(_file, _cleaningFn){
-        var loadJson = d3.json(_file);
-
-        loadJson.get(function (_err, _response){
-            if(!_err){
-                _response.data.forEach(function(d){
-                    _cleaningFn(d);
-                });
-                data = _response.data;
-                dispatch.dataReady(_response.data);
-            }else{
-                dispatch.dataError(_err.statusText);
-            }
-        });
-    };
-    [...]
-    return exports;
-};
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h2>Code: Data Loader</h2>
-                    <pre><code data-trim contenteditable>
-demo.graphs.dataManager = function module(){
-    var exports = {}, data,
-        dispatch = d3.dispatch('dataReady', 'dataLoading', 'dataError');
-
-    d3.rebind(exports, dispatch, 'on');
-
-    exports.loadJsonData = function(_file, _cleaningFn){
-        var loadJson = d3.json(_file);
-
-        loadJson.on('progress', function(){
-            dispatch.dataLoading(d3.event.loaded);
-        });
-
-        loadJson.get(function (_err, _response){
-            if(!_err){
-                _response.data.forEach(function(d){
-                    _cleaningFn(d);
-                });
-                data = _response.data;
-                dispatch.dataReady(_response.data);
-            }else{
-                dispatch.dataError(_err.statusText);
-            }
-        });
-    };
-
-    exports.loadCSVData = function(_file, _cleaningFn){ ... };
-
-    exports.getCleanedData = function(){
-        return data;
-    };
-
-    return exports;
-};
-                    </code></pre>
                 </section>
 
 			</div>
