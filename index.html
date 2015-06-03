@@ -126,10 +126,10 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>*** Paste urls in chat</li>
                             <li>In this talk I will talk about how we can take our d3 graphs to the next level, crafting a bar chart test by test.</li>
                             <li>I am assuming certain level of knowledge on the library but either way I will introduce it a bit and talk about what can be done with it.</li>
-                            <li>Added references on slides, also there are a lot of resources in the last slides</li>
+                            <li>*** Paste urls in chat</li>
+                            <li>Added links on slides about the most common patterns in d3 development.</li>
                             <li>Q&A at the end</li>
                         </ul>
                     </aside>
@@ -148,7 +148,7 @@
                         <ul>
                             <li>D3 stands for data-driven documents. It is a JS library with a huge API and focused on mathematical transformations of data.</li>
                             <li>It is based on web standards as SVG, HTML and CSS, and one of it’s strong points is its integration of animations and user interaction capabilities.</li>
-                            <li>D3 is mainly a Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a library that exposes a bunch of ready made charts, d3 by itself won’t help you, but you could choose among a variety of projects based on it.</li>
+                            <li>D3 is a Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.</li>
                         </ul>
                     </aside>
                 </section>
@@ -157,6 +157,7 @@
                         <h1>What can you do with D3?</h1>
                         <aside class="notes">
                             <ul>
+                                <li>Let's talk about its uses</li>
                                 <li>Lots of possibilities</li>
                             </ul>
                         </aside>
@@ -208,13 +209,13 @@
                     </section>
 
                     <section>
-                        <h2>Interactive Infographics</h2>
-                        <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
+                        <h2>Artistic visualizations</h2>
+                        <a target="_blank" href="http://alanahryding.me/blog/?p=618"><img data-src="img/d3_javascript_death2.png" alt="Pie Chart"></a>
                     </section>
 
                     <section>
-                        <h2>Artistic visualizations</h2>
-                        <a target="_blank" href="http://alanahryding.me/blog/?p=618"><img data-src="img/d3_javascript_death2.png" alt="Pie Chart"></a>
+                        <h2>Interactive Infographics</h2>
+                        <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
                     </section>
 
                     <section>
@@ -228,7 +229,7 @@
                         <li class="fragment">Loads data</li>
                         <li class="fragment">Binds data to elements</li>
                         <li class="fragment">Transforms those elements</li>
-                        <li class="fragment">Transitions between states on demand</li>
+                        <li class="fragment">Transitions between states</li>
                         <li class="fragment"><a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0">Example</a></li>
                     </ul>
                     <aside class="notes">
@@ -436,7 +437,6 @@ svg.selectAll(".bar")
                     <aside class="notes">
                         <ul>
                             <li>Reuse is copy/paste - not DRY</li>
-                            <li>This is not serious code, you need to do exceptions on your code</li>
                         </ul>
                     </aside>
                 </section>
@@ -451,10 +451,10 @@ svg.selectAll(".bar")
                     <aside class="notes">
                         <ul>
                             <li>I remember crafting my first D3 projects years ago and although they were finally working, I never been actually proud of my code.</li>
-                            <li>One of the first needed to render on IE8 too. I practically had to duplicate the graphs. Barcharts were ok, but bubble charts?</li>
-
-                            <li>The last good graph example: 450 lines of code. Imagine how it is to work with this.</li>
+                            <li>The last graph example: 450 lines of code. Imagine how it is to work with this.</li>
                             <li>Stress Emotion: Product manager changing stuff at the end of the process.</li>
+                            <li>This is not serious code, you need to do exceptions on your code</li>
+                            <li>How do you know your graph works?</li>
                         </ul>
                     </aside>
                 </section>
@@ -464,7 +464,7 @@ svg.selectAll(".bar")
                     <h2>What if you could work with graphs the same way you work with the rest of your code?</h2>
                     <aside class="notes">
                         <ul>
-                            <li>Imagine you can build a production ready graph by changing just a 25% of the code of your previous one.</li>
+                            <li>Even more, imagine you can build a production ready graph by changing just a 25% of the code of your previous one.</li>
                         </ul>
                     </aside>
                 </section>
@@ -475,6 +475,7 @@ svg.selectAll(".bar")
                         <h1>The TDD way</h1>
                         <aside class="notes">
                             <ul>
+                                <li>Let's see how to do it</li>
                                 <li>I will skip some steps</li>
                             </ul>
                         </aside>
@@ -881,8 +882,6 @@ demo.graphs.barChart = function module(){
                     <aside class="notes">
                         <ul>
                             <li>Mike Bostocks create the seminal blog post. Libraries based in d3 like NVD3 uses it. I found it on Developing a D3.js edge and Mastering D3.</li>
-                            <li>How do you know your graph works?</li>
-
                             <li>It’s like jumping from namespace JS to using AMD modules or Common JS modules.</li>
                         </ul>
                     </aside>
@@ -905,6 +904,11 @@ demo.graphs.barChart = function module(){
                             Code: <a href="http://tinyurl.com/oh8t4dv">http://tinyurl.com/oh8t4dv</a>
                         </li>
                     </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>And that's what I have for you guys today</li>
+                        </ul>
+                    </aside>
                 </section>
 
 				<section>
@@ -1009,6 +1013,7 @@ demo.graphs.barChart = function module(){
                 <section>
                     <h2>Reference</h2>
                     <ul>
+                        <li><a href="https://engineering.eventbrite.com/d3-js-resources-to-level-up/">D3.js Resources to Level Up</a></li>
                         <li>
                             <a target="_blank" href="https://github.com/mbostock/d3/wiki">D3 Wiki</a>
                         </li>
