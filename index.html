@@ -110,6 +110,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>Ancient Roman gold mine that is a World Heritage Site</li>
+                                <li>You should visit it some time!</li>
                             </ul>
                         </aside>
                     </section>
@@ -429,7 +430,7 @@ svg.selectAll(".bar")
                     <ul>
                         <li class="fragment">Monolithic functions</li>
                         <li class="fragment">Chained method calls</li>
-                        <li class="fragment">Hard to change stuff</li>
+                        <li class="fragment">Hard to change code</li>
                         <li class="fragment">Impossible to reuse</li>
                     </ul>
                     <aside class="notes">
@@ -528,7 +529,7 @@ demo.graphs.barChart = function module(){
             if (!svg) {
                 svg = d3.select(this)
                     .append('svg')
-                    .classed('bar-chart', true);
+                    .attr('class','bar-chart');
             }
         });
     };
@@ -554,13 +555,13 @@ it('should render container, axis and chart groups', function(){
 					<h2>Code: Containers</h2>
 					<pre><code data-trim contenteditable>
 function buildContainerGroups(){
-    var container = svg.append("g").classed("container-group", true);
+    var container = svg.append("g").attr("class", "container-group");
 
-    container.append("g").classed("chart-group", true);
-    container.append("g").classed("x-axis-group axis", true);
-    container.append("g").classed("y-axis-group axis", true);
-    container.append("g").classed("pane-group", true);
-    container.append("g").classed("metadata-group", true);
+    container.append("g").attr("class", "chart-group");
+    container.append("g").attr("class", "x-axis-group axis");
+    container.append("g").attr("class", "y-axis-group axis");
+    container.append("g").attr("class", "pane-group");
+    container.append("g").attr("class", "metadata-group");
 }
 					</code></pre>
 				</section>
@@ -809,7 +810,7 @@ demo.graphs.barChart = function module(){
             if (!svg) {
                 svg = d3.select(this)
                     .append('svg')
-                    .classed('bar-chart', true);
+                    .attr('class', 'bar-chart');
             }
             svg.attr({
                 width: width + margin.left + margin.right,
@@ -874,7 +875,7 @@ demo.graphs.barChart = function module(){
                     <h2>Conclusions</h2>
                     <ul>
                         <li>There is a better way of writing d3.js</li>
-                        <li>Well known, stablished technique</li>
+                        <li>Well known, established technique</li>
                         <li>Professional, production ready code</li>
                     </ul>
                     <aside class="notes">
@@ -895,7 +896,7 @@ demo.graphs.barChart = function module(){
                             Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
                         </li>
                         <li>
-                            Check <a target="_blank" href="http://www.marcosiglesias.com/posts">my Blog</a>
+                            Check out <a target="_blank" href="http://www.marcosiglesias.com/posts">my Blog</a>
                         </li>
                         <li>
                             Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a>
