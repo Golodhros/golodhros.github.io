@@ -1,0 +1,486 @@
+Thursday, December 3, 2015
+
+#1
+Better D3 Charts with TDD
+Slides Link
+Code Link
+---
+
+- Thanks for coming, for your time and effort/care on improving your D3 skills and code quality
+- [Introduction]
+- Main take away: you should be able to test your D3 charts, I will give you some tools and I will share some ideas about how to get started.
+
+#2
+Bio - Marcos Iglesias
+Eventbrite Logo
+Twitter Link
+Blog Link
+---
+
+- Software Engineer at Eventbrite
+- I am Marcos Iglesias, from a place called El Bierzo, in Spain.
+- Check out my twitter account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.
+
+#3
+Next Up
+Slides Link
+Code Link
+Extra resources at the end
+---
+
+- [Poll]
+- I will talk for about 30 min;
+- then we will do some hands down coding, you will help me coding.
+- Q&A at the end
+- I am assuming certain level of knowledge on the library.
+- I will not try to explain the Enter/Update/Exit pattern. There is a lot of resources that do it better than me!
+- I want it to be more about workflow and decisions when implementing than technical about D3.
+- Added links on slides about the most common patterns in d3 development.
+- Either way I will introduce it a bit and talk about what can be done with it.
+
+#4
+Developing a D3.js Edge
+Book Cover + Book Link [http://bleedingedgepress.com/our-books/developing-a-d3-js-edge/]
+---
+
+- A small disclaimer:
+- I haven't invented any of these techniques:
+- The examples and the code that I’ll show evolved from Developing a D3.js, a lovely little book about D3.js that I recommend to everyone interested in improving their D3 skills.
+- I think they are worth sharing, because I felt the pain, and now I work in a more pleasant way.
+
+#4
+D3
+
+- Data-Driven Documents
+- JavaScript Library to manipulate data based documents
+- Open web standards (SVG, HTML and CSS)
+- Allows interactions with your graphs
+
+---
+
+- D3 stands for data-driven documents. It is a JS library with a huge API and focused on mathematical transformations of data.
+- It is based on web standards as SVG, HTML and CSS, and one of it’s strong points is its integration of animations and user interaction capabilities.
+- D3 is a Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.
+
+#5
+What can you do with D3?
+---
+
+- Let's talk about its uses
+- Lots of possibilities
+
+#5.1
+Bar Charts
+---
+All kind of business charts
+
+#5.2
+Pie Charts
+
+#5.3
+Bubble Charts
+
+#5.4
+Choropleth
+
+#5.5
+Map projections
+---
+All kind of maps
+
+#5.6
+Dashboards
+
+#5.7
+Algorithm Visualization
+
+#5.8
+Artistic Visualizations
+
+#5.9
+Interactive Infographics
+
+#5.10
+Funny Interactions
+Koalas to the max link
+
+#6
+How does it work?
+
+- Loads data
+- Binds data to elements
+- Transforms those elements
+- Transitions between states
+- Example (Link to Budget analysis)
+
+---
+
+- D3 loads data and attaches it to the DOM. Then, it binds that data to DOM elements and transforms those elements, transitioning among states if necessary. Example.
+- The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener the value, the higher the rise against previous year. Smart, isn’t it?
+- That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!
+
+#7
+D3 Niceties
+
+- Based on attaching data to the DOM
+- Styling of elements with CSS
+- Transitions and Animations baked in
+- Total control over our graphs
+- Amazing community
+- Decent amount of publications
+
+---
+
+- Same tools as FE development
+- Perfect toolbox for interactive data visualizations
+
+#8
+Pain Points
+
+- Enter, Update and Exit Pattern
+- Chaining code style
+- Margins and dimensions
+- Tooltip creation
+
+---
+
+- jQuery like
+- All data viz needs work on the data side
+- The community and Bostock has develop patterns
+
+#9
+Story
+---
+
+- I was contracting for a company that had a Sass product based on data analysis
+- the marketing guy saw this nice chart, a bump chart [bump-chart] for a marketing page
+
+#10
+Followed the Usual Workflow
+
+- Idea or Requirement
+- Search for an example
+- Adapt the code
+- Add/removed features
+- Polish Look and Feel
+
+#11
+Story: He loved it!
+
+#12
+The Standard Way
+---
+
+- Illustrate how that usual workflow generates with a different chart
+
+#12.1
+Code Example
+Bar Chart Example[http://bl.ocks.org/mbostock/3885304] by Mike Bostock
+Let’s Make a Bar Chart[http://bost.ocks.org/mike/bar/]
+---
+
+- Simplest example, some of us wrote our first D3 lines with this post series
+
+- Although there is not a lot of code, there is actually a lot of stuff happening here.
+- Still, almost spaguetti code
+
+#12.2
+Creating Container
+[Code from example]
+Reference: Margin Convention(link)
+---
+
+- Mike Bostock Convention
+- A bit messy, but only once per graph and with this pattern
+- Before discovering this pattern, moving stuff was hard
+
+#12.3
+Setting Up Scales and Axes
+[Code from example]
+---
+
+- Basic scales refereced by the axis
+- Scales are functions that glue data and pixels
+- Axis are visual representations of those scales
+- A bit tricky sometimes
+
+#12.4
+Loading Data
+[Code from example]
+---
+
+- Callback pattern
+- Our cleaning function just coerces the values to be a number with this JS hack
+
+#12.5
+Drawing Axes
+[Code from example]
+---
+
+- He ends setting up the scales
+- Draws the x and y, rotating and labeling the latter
+
+#12.6
+Drawing Chart Bars
+[Code from example]
+---
+
+- Here we see the Enter, Update, Exit
+- We are repeating all that comes after enter() for each data entry on our data array.
+
+#12.7
+Output
+[Bar chart drawing]
+---
+
+- So, now we have a bar chart that works right?
+- Well… it’s true, it works, and probably you could copy this code, modify it a bit and use it somewhere in your website.
+- But being serious, who thinks this is good quality code?
+
+#13
+Standard D3: Drawbacks
+
+- Monolithic functions
+- Chained method calls
+- Hard to change code
+- Impossible to reuse
+- Fragile
+
+---
+
+- that you need to read from top to bottom to know what is doing
+- creating a compact code that is not really flexible.
+- Basically you would need to change hardcoded values.
+- Reuse is copy/paste - not DRY
+- Won’t know if it works after modifying any line of code
+
+#14
+Story: Continued
+---
+
+- Remember we have a bump chart, and he loved it
+- But you know, it was a marketing guy
+- M-Guy: let’s change this and that
+
+#14.N
+---
+
+- refactor[refactor-cat], magic numbers[ss], try and error, wrestling with a bug[ss], done!
+- M-Guy: nice, let’s change this other thing
+- refactor[kc], wrestling[ss], done!
+- M-Guy: cool, I love it so much I want it on the product! So good you have it already there, right?
+- on the product? arrrghhh
+- (the product is a data analysis thing, serious)
+- refactor[kcra], refactor, bad bugs[ss], refactor, refactor, sigh [headdesk]
+- At this time I was hating myself!
+
+#14.N+1
+This can end good if it does not grow
+This can end in a 450 lines of ‘render’ function [SS]
+---
+
+- Stress Emotion: Product manager changing stuff at the end of the process.
+
+#15
+What if….
+---
+
+- What if you could work with graphs the same way you work with the rest of your code?
+- Imagine you can build a production ready graph by changing just a 25% of the code of your previous one.
+
+#16
+Introducing: Reusable Chart API
+[Code]
+Towards Reusable Charts[http://bost.ocks.org/mike/chart/](2012)
+---
+
+- The first example of this pattern was seen in Mike Bostock's seminal post Towards Reusable Charts, and it hasn’t changed a lot since then
+- This piece of code returns a function that will accept a d3 selection as input.
+- Then it will extract the data of that selection to build a chart, using the selection as container.
+- It will also accept some configuration (the margin, in this case) that will be set beforehand.
+
+#17
+Use: Reusable Chart API
+[Code]
+---
+
+- This code would create an instance of a bar chart in the DOM element with class ‘chart-container'.
+- We could also create different instances of the same chart, and they could live together in the same page without any problems.
+
+#18
+Benefits: Reusable Chart API
+
+- Configurable
+- Repeatable
+- Composable
+- Decoupled
+- Consistent
+- Testable
+
+---
+
+- Configurable: change look & feel or behaviour without changing the code
+- Repeatable: Different charts with the same code
+- Composable: You can build rich interactions from different blocks and controls
+- Decoupled: We differientate the core of the graph from the configuration
+- Consistent: Following the same strategy we can reuse methods between charts
+- Testable: The most important, no legacy code
+
+#19
+The TDD Way
+---
+
+- Testing allows us to do it
+- Let's see how to do it
+- I will skip some steps
+
+#19.1
+The test “before” block
+[Before code]
+---
+
+- letters and their frequency on English
+- instance of the chart
+- a DOM container
+- apply chart with data over the container
+
+#19.2
+Test: Basic Chart
+[Test for .bar-chart]
+
+#19.3
+Code: Basic Chart
+[Code for basic chart with Reusable API]
+Reference: Towards Reusable Charts(link)
+
+#19.4
+Test: Containers
+[Code checking for the containers]
+
+#19.5
+Code: Containers
+[Code creating containers]
+
+#19.6
+Test: axis
+[Test for both axis]
+
+#19.7
+Code: Scales
+[buildScales]
+
+#19.8
+Code: Axis
+[buildAxis]
+
+#19.9
+Code: Axis Drawing
+[drawAxis]
+---
+remember we first need the groups and svg
+
+#19.10
+Test: Bars Drawing
+[Test for bars quantity]
+
+#19.11
+Code: Bars Drawing
+[drawBars]
+Reference: Thinking with joins(link)
+Reference: General Update Pattern(link)
+---
+
+- Data Join: new data with old elements
+- Enter: creates elements as needed
+
+#19.12
+Test: Margin Accessor
+[Test for margin being applied]
+
+#19.13
+Code: Margin Accessor
+[Margin accessor]
+
+#19.14
+Looks the same, but it is not
+[picture of the barchart]
+
+#19.15
+Final Code: Standard Way
+[All Code]
+
+#19.16
+Final Code: TDD Way
+[All Code]
+
+#20
+How to Get Started
+
+- Write with the reusable API
+- Try to test something you have in production, just a bit
+- Check for the last easy chart you built, give it a read, and TDD it.
+- If you want to see something new, pick a block, refactor it into TDD
+
+#21
+Repository Walkthrough
+[Show code]
+---
+
+- Code repository
+- Structure, configuration files
+- Jasmine
+- Karma Runner
+- Different branches
+- Debugging
+
+#22
+Story: The good way
+---
+
+- Next one I used the Reusable Chart API
+- when they changed their mind, my tests were there to back me up
+- when they added a second and third dimension to compare, taking the chart to a new level of complexity
+- I was pretty chill [chill-cat]
+
+#23
+Conclusions
+
+- There is a better way of writing d3.js
+- Well known, established technique
+- Professional, production ready code
+
+---
+
+- Libraries based in d3 like NVD3 uses it. I found it on Developing a D3.js edge and Mastering D3.
+- It’s like jumping from namespace JS to using AMD modules or Common JS modules.
+
+#24
+Thanks for Listening!
+
+- Twitter: @golodhros
+- Check out my Blog and EB’s Engineering Blog
+- Slides: http://golodhros.github.io/
+- Code: http://tinyurl.com/oh8t4dv
+
+---
+
+- And that's what I have for you guys today
+
+#25
+Poll: Next thing?
+
+- Build a new graph from the bar chart
+- Refactor accessors
+- Refactor Enter/Update/Exit
+- Add Events
+- Q&A
+
+#26
+Learning Resources
+
+- Developing a D3.js Edge
+- Mastering D3.js
+- Blog post at EB
+
+#27
+Q&A
