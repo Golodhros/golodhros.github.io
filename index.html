@@ -36,7 +36,7 @@
             }
             .reveal pre {
                 width: 95%;
-                font-size: 0.65em;
+                font-size: 0.6em;
             }
             .reveal pre code {
                 padding: 20px;
@@ -109,9 +109,9 @@
                         </aside>
                     </section>
                     <section>
-                        <h2>Marcos Iglesias</h2>
+                        <h2>Contact</h2>
                         <ul>
-                            <li>Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
+                            <li><a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
                             <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Blog</a></li>
                         </ul>
                         <aside class="notes">
@@ -126,12 +126,10 @@
                 <section>
                     <h2>Next Up</h2>
                     <ul>
-                        <li>Talk</li>
-                        <li>Live coding</li>
-                        <li>Q&A</li>
+                        <li class="fragment">Presentation</li>
+                        <li class="fragment">Live coding</li>
+                        <li class="fragment">Q&A</li>
                     </ul>
-                    <span>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></span>
-                    <span>Code: <a href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></span>
                     <aside class="notes">
                         <ul>
                             <li>[Poll]</li>
@@ -631,10 +629,15 @@
                         <h2>Done!</h2>
                     </section>
                     <section>
-                        <h2>M-Guy: cool, I love it so much I want it on the product! So good you have it almost ready, right?</h2>
+                        <h2>M-Guy: Great! I love it so much I want it on the product!</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Product is a big data analysis dashboard</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
-                        <h2>(Product is a data analysis web application)</h2>
+                        <h2>M-Guy: So good you have it almost ready, right?</h2>
                     </section>
                     <section>
                         <img data-src="img/fun/keep-calm-and-refactor-again.png" width="400" alt="">
@@ -644,6 +647,11 @@
                     </section>
                     <section>
                         <img data-src="img/fun/i-have-no-idea-what-im-doing.jpg" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>Dealing with some Impostor syndrome there...</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/bug.jpg" width="400" alt="">
@@ -657,9 +665,9 @@
                     <section>
                         <h2>Possible outcomes</h2>
                         <ul>
-                            <li class="fragment">Taking it through</li>
-                            <li class="fragment">Dumping everything and starting again</li>
-                            <li class="fragment">Not refactoring</li>
+                            <li class="fragment">You take it through</li>
+                            <li class="fragment">You dump it and start all over again</li>
+                            <li class="fragment">You pass refactoring</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -692,6 +700,21 @@
                 <section>
                     <section>
                         <h1>Reusable Chart API</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>It is essentially a way of creating components for D3 charts.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- jQuery VS MV* libraries -->
+                    <section>
+                        <h2>jQuery VS MV*</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>It’s like jumping from namespace JS to using AMD modules or Common JS modules.</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Towards Reusable Charts -->
@@ -700,7 +723,6 @@
                         <aside class="notes">
                             <ul>
                                 <li>The first example of this pattern was seen in Mike Bostock's seminal postTowards Reusable Charts, and it hasn’t changed a lot since then.</li>
-                                <li>It’s like jumping from namespace JS to using AMD modules or Common JS modules.</li>
                                 <li>T: Well known, established technique. Libraries based in d3 like NVD3 uses it. I found it on Developing a D3.js edge and Mastering D3.</li>
                             </ul>
                         </aside>
@@ -708,15 +730,13 @@
 
                     <!-- Code -->
                     <section>
-                        <h2>Reusable API - Code</h2>
+                        <h2>Reusable Chart API - Code</h2>
                         <pre><code>
-                                /**
-                                 * This function creates the graph using the selection as container
-                                 * @param  {D3Selection} _selection A d3 selection that represents
-                                 * the container(s) where the chart(s) will be rendered
-                                 */
+                                // @param  {D3Selection} _selection A d3 selection that represents
+                                // the container(s) where the chart(s) will be rendered
                                 function exports(_selection){
-                                    /* @param {object} _data The data to attach and generate the chart */
+
+                                    // @param {object} _data The data to generate the chart
                                     _selection.each(function(_data){
                                         // Assigns private variables
                                         data = _data;
@@ -725,12 +745,8 @@
                                     });
                                 }
 
-                                /**
-                                 * Gets or Sets the margin of the chart
-                                 * @param  {object} _x Margin object to get/set
-                                 * @return { margin | module} Current margin or Bar Chart module to chain calls
-                                 * @public
-                                 */
+                                // @param  {object} _x Margin object to get/set
+                                // @return { margin | module} Current margin or Bar Chart module to chain calls
                                 exports.margin = function(_x) {
                                     if (!arguments.length) {
                                         return margin;
@@ -743,7 +759,7 @@
                         </code></pre>
                         <aside class="notes">
                             <ul>
-                                <li>It is basically a way of creating components for D3 charts.</li>
+
                                 <li>This piece of code returns a function that will accept a d3 selection as input.</li>
                                 <li>Then it will extract the data of that selection to build a chart, using the selection as container.</li>
                                 <li>T: It will also accept some configuration (the margin, in this case) that will be set beforehand.</li>
@@ -753,7 +769,7 @@
 
                     <!-- Use -->
                     <section>
-                        <h2>Reusable API - Use</h2>
+                        <h2>Reusable Chart API - Use</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 // Creates bar chart component and configures its margins
                                 barChart = chart()
@@ -774,7 +790,7 @@
 
                     <!-- Benefits -->
                     <section>
-                        <h2>Reusable API - Benefits</h2>
+                        <h2>Reusable Chart API - Benefits</h2>
                         <ul>
                             <li class="fragment">Modular</li>
                             <li class="fragment">Composable</li>
@@ -1005,8 +1021,7 @@
                                         .attr("height", function(d) { return chartH - yScale(d.frequency); });
                                 }
                         </code></pre>
-                        <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></p>
-                        <p>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
+                        <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
                         <aside class="notes">
                             <ul>
                                 <li>Data Join: new data with old elements</li>
@@ -1182,15 +1197,17 @@
                         <h2>TDD Way - Benefits</h2>
                         <ul>
                             <li class="fragment">Stress free refactors</li>
-                            <li class="fragment">Mindful programming/Learn more</li>
+                            <li class="fragment">Goal oriented</li>
+                            <li class="fragment">Deeper understanding</li>
                             <li class="fragment">Improved communication</li>
-                            <li class="fragment">Extra Quality, production ready output</li>
+                            <li class="fragment">Quality, production ready output</li>
                         </ul>
                         <aside class="notes">
                             <ul>
                                 <li>T: It’s hard to establish where the benefits of the Reusable Chart API end and where the TDD benefits start:</li>
                                 <li>Nothing will stop you from trying some crazy things. Maybe your first approach was just a hack, you can improve it now!</li>
-                                <li>TDD forces you to understand what you are actually doing and to be more goal oriented. Learn about d3 API.</li>
+                                <li>Be more goal oriented as TDD forces you to first understand what you want to do</li>
+                                <li>Learn about the D3 API.</li>
                                 <li>Create a documentation that does not get outdated. Small and specific code that can be understood easily.</li>
                                 <li>Charts will be a first-class citizen inside your repo.</li>
                             </ul>
@@ -1247,7 +1264,7 @@
                         <h2>What happened with my contracting gig?</h2>
                     </section>
                     <section>
-                        <h2>Next time I used the Reusable Chart API</h2>
+                        <h2>I used the Reusable Chart API</h2>
                         <aside class="notes">
                             <ul>
                                 <li>It was a line chart of just one value</li>
@@ -1292,10 +1309,10 @@
                 <section>
                     <h2>Conclusions</h2>
                     <ul>
-                        <li class="fragment">Examples are great for exploration and prototyping, bad for production.</li>
+                        <li class="fragment">Examples are great for exploration and prototyping, bad for production code</li>
                         <li class="fragment">There is a better way of building D3 Charts</li>
                         <li class="fragment">Reusable Chart API + TDD bring it to a Pro level</li>
-                        <li class="fragment">You can build your own library</li>
+                        <li class="fragment">You can build your own library and feel proud!</li>
                     </ul>
                     <aside class="notes">
                         <ul>
