@@ -75,7 +75,10 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>[Intro]</li>
+                            <li>Hi! Thanks for coming and for caring about your D3 code quality. Also I want to thank Robert and Ian, for bringing me here tonight and to Galvanize for hosting.</li>
+                            <li>We usually start a new D3 chart by taking an example as a jumping-off point. We can modify it, plug in the new data and we have something that works. This way of coding comes with a bunch of problems, especially those related to the reusability, extendability, simplicity and general quality of our code.</li>
+                            <li>It is a fact that software always changes, so how do we prepare for change? Using the Reusable Chart API and a test driven approach will make your D3 charts easier to create and easier to maintain.</li>
+                            <li>After this talk you should be able to test your D3 charts, and for that objective I will give you some tools and share some ideas about how you can get started.</li>
                         </ul>
                     </aside>
                 </section>
@@ -87,14 +90,10 @@
                         <div style="padding-bottom: 40px;">
                             <img width="360" height="139" data-src="img/eventbrite-logo.png" alt="Eventbrite Logo">
                         </div>
-                        <ul>
-                            <li>Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
-                            <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Blog</a></li>
-                        </ul>
                         <aside class="notes">
                             <ul>
+                                <li>My name is Marcos</li>
                                 <li>Software Engineer at Eventbrite</li>
-                                <li>Check out my twitter account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.</li>
                             </ul>
                         </aside>
                     </section>
@@ -105,19 +104,19 @@
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>Come from a beautiful place called el Bierzo, in Spain</li>
+                                <li>I am Spanish, from a beautiful region called El Bierzo, in Spain.</li>
                             </ul>
                         </aside>
                     </section>
                     <section>
-                        <h2>Las Médulas</h2>
-                        <div style="padding-bottom: 40px;">
-                            <img width="455" height="343" data-src="img/las-medulas.jpg" alt="Roman Gold Mines">
-                        </div>
+                        <h2>Marcos Iglesias</h2>
+                        <ul>
+                            <li>Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
+                            <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Blog</a></li>
+                        </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Ancient Roman gold mine that is a World Heritage Site</li>
-                                <li>You should visit it some time!</li>
+                                <li>Check out my twitter account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.</li>
                             </ul>
                         </aside>
                     </section>
@@ -127,17 +126,24 @@
                 <section>
                     <h2>Next Up</h2>
                     <ul>
-                        <li>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
-                        <li>Code: <a href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></li>
-                        <li>Q&A at the end</li>
+                        <li>Talk</li>
+                        <li>Live coding</li>
+                        <li>Q&A</li>
                     </ul>
+                    <span>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></span>
+                    <span>Code: <a href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></span>
                     <aside class="notes">
                         <ul>
-                            <li>In this talk I will talk about how we can take our d3 graphs to the next level, crafting a bar chart test by test.</li>
-                            <li>I am assuming certain level of knowledge on the library but either way I will introduce it a bit and talk about what can be done with it.</li>
-                            <li>*** Paste urls in chat</li>
-                            <li>Added links on slides about the most common patterns in d3 development.</li>
+                            <li>[Poll]</li>
+                            <li>who knows what the reusable chart API is?</li>
+                            <li>who does not know what D3 is?</li>
+                            <li>I will talk for about 30 min;</li>
+                            <li>then we will do some hands down coding, you will help me.</li>
                             <li>Q&A at the end</li>
+                            <li>I am assuming certain level of knowledge on the library.</li>
+                            <li>I will not try to explain the Enter/Update/Exit pattern. There is a lot of resources that do it much better than me!</li>
+                            <li>T: I want it to be more about workflow and decisions when implementing than technical about D3.</li>
+                            <li>T: Added links on slides about the most common patterns in d3 development.</li>
                         </ul>
                     </aside>
                 </section>
@@ -147,21 +153,23 @@
                     <img src="img/developingad3edge.jpg" style="width: 50%;">
                     <aside class="notes">
                         <ul>
-                            <li>Reusable charts in a way we could all use</li>
-                            <li>Charts are simple and test friendly</li>
-                            <li>You can create larger ones by composition</li>
-                            <li>Introduces a data loader module</li>
-                            <li>Proposes some tests with Jasmine</li>
-                            <li>All in a small size</li>
+                            <li>A small disclaimer</li>
+                            <li>I haven't invented any of the techniques I will be talking today</li>
+                            <li>The examples and the code that I’ll show evolved from this book, Developing a D3.js Edge, a lovely little book that I recommend to everyone interested in improving their D3 skills.</li>
+                            <li>T: I think they are worth sharing, because I felt the pain, and now I work in a more pleasant way.</li>
                         </ul>
                     </aside>
                 </section>
 
-                <!-- D3 intro -->
+                <!-- D3 -->
                 <section>
-                    <!-- D3 -->
                     <section>
-                        <h2>D3</h2>
+                        <img width="252" height="236" data-src="img/d3js.png" alt="D3 Logo">
+                    </section>
+
+                    <!-- D3 intro -->
+                    <section>
+                        <h2>D3 Introduction</h2>
                         <ul>
                             <li class="fragment">Data-Driven Documents</li>
                             <li class="fragment">JavaScript Library to manipulate data based documents</li>
@@ -172,6 +180,7 @@
                             <ul>
                                 <li>D3 stands for data-driven documents. It is a JS library with a huge API and focused on mathematical transformations of data.</li>
                                 <li>It is based on web standards as SVG, HTML and CSS, and one of it’s strong points is its integration of animations and user interaction capabilities.</li>
+                                <li>One of it’s more celebrated features is it’s seamless integration of animations and the way it allows us to create engaging interactions.</li>
                                 <li>D3 is a Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.</li>
                             </ul>
                         </aside>
@@ -190,7 +199,6 @@
                         <aside class="notes">
                             <ul>
                                 <li>D3 loads data and attaches it to the DOM. Then, it binds that data to DOM elements and transforms those elements, transitioning among states if necessary. Example.</li>
-
                                 <li>The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener the value, the higher the rise against previous year. Smart, isn’t it?</li>
                                 <li>That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!</li>
                             </ul>
@@ -308,9 +316,19 @@
                 <section>
                     <section>
                         <h1>Contracting Story</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>I was contracting for a company that had a Sass product based on data analysis</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/chart/bump.png" alt="Bump Chart">
+                        <aside class="notes">
+                            <ul>
+                                <li>the marketing guy saw this nice chart, a bump chart for a marketing page</li>
+                            </ul>
+                        </aside>
                     </section>
                     <!-- Story: he loved it -->
                     <section>
@@ -361,6 +379,12 @@
                             <li class="">Add/Remove features</li>
                             <li class="">Polish Up</li>
                         </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Looks like a good plan, right?</li>
+                                <li>The problem is in the code, as they are written in the standard way.</li>
+                            </ul>
+                        </aside>
                     </section>
                 </section>
 
@@ -368,6 +392,11 @@
                 <section>
                     <section>
                         <h1>The Standard Way</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>Illustrate how that usual workflow generates code-wise with a different chart</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Example -->
@@ -377,9 +406,9 @@
                         <small><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar Chart Example</a> by Mike Bostock</small>
                         <aside class="notes">
                             <ul>
-                                <li>Simplest example</li>
+                                <li>Simplest example, some of us wrote our first D3 lines with this post series</li>
                                 <li>Although there is not a lot of code, there is actually a lot of stuff happening here.</li>
-                                <li>Still, almost spaguetti code</li>
+                                <li>Still, can easily become spaguetti code</li>
                             </ul>
                         </aside>
                     </section>
@@ -409,6 +438,7 @@
                             </ul>
                         </aside>
                     </section>
+
                     <!-- Setting up Scales and Axes -->
                     <section>
                         <h2>Setting up Scales and Axes</h2>
@@ -433,10 +463,11 @@
                                 <li>Basic scales refereced by the axis</li>
                                 <li>Scales are functions that glue data and pixels</li>
                                 <li>Axis are visual representations of those scales</li>
-                                <li>A bit tricky sometimes</li>
+                                <li>T: A bit tricky sometimes</li>
                             </ul>
                         </aside>
                     </section>
+
                     <!-- Loading Data -->
                     <section>
                         <h2>Loading Data</h2>
@@ -452,10 +483,12 @@
                         </code></pre>
                         <aside class="notes">
                             <ul>
-                                <li>Callback pattern with cleaning</li>
+                                <li>Callback pattern</li>
+                                <li>Our cleaning function just coerces the values to be a number with this JS hack</li>
                             </ul>
                         </aside>
                     </section>
+
                     <!-- Drawing Axes -->
                     <section>
                         <h2>Drawing Axes</h2>
@@ -485,6 +518,7 @@
                             </ul>
                         </aside>
                     </section>
+
                     <!-- Drawing Chart Bars  -->
                     <section>
                         <h2>Drawing Chart Bars</h2>
@@ -501,15 +535,24 @@
                         <aside class="notes">
                             <ul>
                                 <li>Here we see the Enter, Update, Exit</li>
-                                <li>Will come to it later, but basically repeats what is after enter as many times as data elements</li>
+                                <li>We are repeating all that comes after enter() for each data entry on our data array</li>
                             </ul>
                         </aside>
                     </section>
+
                     <!-- Output -->
                     <section>
                         <h2>Output</h2>
                         <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>So, now we have a bar chart that works right?</li>
+                                <li>Well… it’s true, it works, and probably you could copy this code, modify it a bit and use it somewhere in your website.</li>
+                                <li>But being serious, who thinks this is good quality code?</li>
+                            </ul>
+                        </aside>
                     </section>
+
                     <!-- Drawbacks -->
                     <section>
                         <h2>Standard D3: Drawbacks</h2>
@@ -518,10 +561,15 @@
                             <li class="fragment">Chained method calls</li>
                             <li class="fragment">Hard to change code</li>
                             <li class="fragment">Impossible to reuse</li>
+                            <li class="fragment">Fragile</li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Reuse is copy/paste - not DRY</li>
+                                <li>that you need to read from top to bottom to know what is doing</li>
+                                <li>creating a compact code that is not really flexible.</li>
+                                <li>Basically you would need to change hardcoded values.</li>
+                                <li>Reuse is copy/paste, not DRY</li>
+                                <li>Won’t know if it works after modifying any line of code</li>
                             </ul>
                         </aside>
                     </section>
@@ -531,15 +579,35 @@
                 <section>
                     <section>
                         <h1>Story continues...</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>Remember we have a bump chart, and he loved it</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/chart/bump.png" alt="Bump Chart">
+                        <aside class="notes">
+                            <ul>
+                                <li>But you know, it was a marketing guy...</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h2>Marketing Guy: What if we change this thing here...</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>We will need to refactor, but this refactor is...</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/refactoring-cat.gif" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>We are changing things, not refactoring</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/magic-number.jpg" alt="">
@@ -587,7 +655,20 @@
                         <h1>I was hating myself!</h1>
                     </section>
                     <section>
-                        <h2>At the end it went through.</h2>
+                        <h2>Possible outcomes</h2>
+                        <ul>
+                            <li class="fragment">Taking it through</li>
+                            <li class="fragment">Dumping everything and starting again</li>
+                            <li class="fragment">Not refactoring</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Making it with a lot more effort than what it’s worth</li>
+                                <li>Overcoming the sunken cost fallacy</li>
+                                <li>First two are not really effective</li>
+                                <li>This can end in a 450 lines of ‘render’ function</li>
+                            </ul>
+                        </aside>
                     </section>
                     <!-- Screenshot of Render Method -->
                     <section>
@@ -616,6 +697,13 @@
                     <!-- Towards Reusable Charts -->
                     <section>
                         <a href="http://bost.ocks.org/mike/chart/"><img data-src="img/towards-reusable-charts.png" alt=""></a>
+                        <aside class="notes">
+                            <ul>
+                                <li>The first example of this pattern was seen in Mike Bostock's seminal postTowards Reusable Charts, and it hasn’t changed a lot since then.</li>
+                                <li>It’s like jumping from namespace JS to using AMD modules or Common JS modules.</li>
+                                <li>T: Well known, established technique. Libraries based in d3 like NVD3 uses it. I found it on Developing a D3.js edge and Mastering D3.</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Code -->
@@ -653,6 +741,14 @@
 
                                 return exports;
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>It is basically a way of creating components for D3 charts.</li>
+                                <li>This piece of code returns a function that will accept a d3 selection as input.</li>
+                                <li>Then it will extract the data of that selection to build a chart, using the selection as container.</li>
+                                <li>T: It will also accept some configuration (the margin, in this case) that will be set beforehand.</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Use -->
@@ -668,26 +764,32 @@
                                 // Calls bar chart with the data-fed selector
                                 container.datum(dataset).call(barChart);
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>This code would create an instance of a bar chart in the DOM element with class ‘chart-container'.</li>
+                                <li>T: We could also create different instances of the same chart, and they could live together in the same page without any problems.</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Benefits -->
                     <section>
                         <h2>Reusable API - Benefits</h2>
                         <ul>
-                            <li class="fragment">Configurable</li>
-                            <li class="fragment">Repeatable</li>
+                            <li class="fragment">Modular</li>
                             <li class="fragment">Composable</li>
-                            <li class="fragment">Decoupled</li>
+                            <li class="fragment">Configurable</li>
                             <li class="fragment">Consistent</li>
+                            <li class="fragment">Teamwork Enabling</li>
                             <li class="fragment">Testable</li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Configurable: change look & feel or behaviour without changing the code</li>
-                                <li>Repeatable: Different charts with the same code</li>
-                                <li>Composable: You can build rich interactions from different blocks and controls</li>
-                                <li>Decoupled: We differientate the core of the graph from the configuration</li>
-                                <li>Consistent: Following the same strategy we can reuse methods between charts</li>
+                                <li>Modular: Change of mindset, from building charts to components. Pages -> Styleguides and component libraries.</li>
+                                <li>Composable: You can build rich interactions from different blocks and controls.</li>
+                                <li>Configurable: change look & feel or behaviour without changing the code, as we differientate the core of the graph from the configuration</li>
+                                <li>Consistent: Following the same strategy we can reuse methods between charts. Create a library.</li>
+                                <li>Teamwork enabling: Easy to grab for newbies and easy to share workload</li>
                                 <li>Testable: The most important, no legacy code</li>
                             </ul>
                         </aside>
@@ -700,8 +802,9 @@
                         <h1>The TDD way</h1>
                         <aside class="notes">
                             <ul>
+                                <li>We have seen problems and a solution, the Reusable Chart API. As this solution allows us to test our charts, we are open to a new world of possibilities. Among them is to Test Driven our Charts.</li>
                                 <li>Let's see how to do it</li>
-                                <li>I will skip some steps</li>
+                                <li>T: I will skip some steps</li>
                             </ul>
                         </aside>
                     </section>
@@ -1073,6 +1176,26 @@
                                 };
                         </code></pre>
                     </section>
+
+                    <!-- TDD Benefits -->
+                    <section>
+                        <h2>TDD Way - Benefits</h2>
+                        <ul>
+                            <li class="fragment">Stress free refactors</li>
+                            <li class="fragment">Mindful programming/Learn more</li>
+                            <li class="fragment">Improved communication</li>
+                            <li class="fragment">Extra Quality, production ready output</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>T: It’s hard to establish where the benefits of the Reusable Chart API end and where the TDD benefits start:</li>
+                                <li>Nothing will stop you from trying some crazy things. Maybe your first approach was just a hack, you can improve it now!</li>
+                                <li>TDD forces you to understand what you are actually doing and to be more goal oriented. Learn about d3 API.</li>
+                                <li>Create a documentation that does not get outdated. Small and specific code that can be understood easily.</li>
+                                <li>Charts will be a first-class citizen inside your repo.</li>
+                            </ul>
+                        </aside>
+                    </section>
                 </section>
 
                 <!-- How to get started -->
@@ -1089,6 +1212,14 @@
                             <li class="fragment">Pick a block, refactor it</li>
                             <li class="fragment">TDD your next chart</li>
                         </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Try to test something you have in production, just a bit</li>
+                                <li>Check for the last easy chart you built, give it a read, and TDD it.</li>
+                                <li>If you want to see something new, pick a block, refactor it into TDD</li>
+                                <li>Write with the reusable API</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Hands On -->
@@ -1097,34 +1228,63 @@
                         <small><a target="_blank" href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></small>
                         <aside class="notes">
                             <ul>
-                                <li>Karma Runner</li>
-                                <li>Jasmine and Jasmine-jquery</li>
+                                <li>Code repository, the basement for a chart library</li>
+                                <li>Uses: Jasmine, Karma Runner</li>
+                                <li>Structure, configuration files</li>
                                 <li>Different branches</li>
-                                <li>Debugging</li>
+                                <li>Run tests and Debugging</li>
                             </ul>
                         </aside>
                     </section>
-                </section>
                     <!-- Check code repository -->
                     <!-- Explain structure, configuration files, etc -->
                     <!-- Run tests and check them -->
+                </section>
 
                 <!-- Story continues -> The good way -->
                 <section>
                     <section>
-                        <h2>Next time I used the Reusable Chart API</h2>
+                        <h2>What happened with my contracting gig?</h2>
                     </section>
                     <section>
-                        <h2>Changed their mind?</h2>
+                        <h2>Next time I used the Reusable Chart API</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>It was a line chart of just one value</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Adding multiple dimensions?</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>When they added a second and third dimensions to find correlations</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h2>I had tests!</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>My tests were there to back me up!</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
-                        <h2>Added multiple dimensions, toggling them, adding more axis...</h2>
+                        <h2>Toogle dimensions, adding more y-axis?</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>Taking the chart to a new level of complexity</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/chill-cat.jpg" height="447" width="600" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>I was pretty chill</li>
+                            </ul>
+                        </aside>
                     </section>
                 </section>
 
@@ -1132,14 +1292,16 @@
                 <section>
                     <h2>Conclusions</h2>
                     <ul>
-                        <li class="fragment">There is a better way of writing d3.js</li>
-                        <li class="fragment">Well known, established technique</li>
-                        <li class="fragment">Professional, production ready code</li>
+                        <li class="fragment">Examples are great for exploration and prototyping, bad for production.</li>
+                        <li class="fragment">There is a better way of building D3 Charts</li>
+                        <li class="fragment">Reusable Chart API + TDD bring it to a Pro level</li>
+                        <li class="fragment">You can build your own library</li>
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>Mike Bostocks create the seminal blog post. Libraries based in d3 like NVD3 uses it. I found it on Developing a D3.js edge and Mastering D3.</li>
-                            <li>It’s like jumping from namespace JS to using AMD modules or Common JS modules.</li>
+                            <li>We have seen how the example-based approach to building D3 charts works on the short term, but in the mid and long term it brings you pain and sorrow.</li>
+                            <li>There is a better way of building D3 charts. Using the Reusable API and a test driven approach will make your D3 charts easier to create and a lot easier maintain.</li>
+                            <li>I want to encourage you guys to go the extra mile, and whenever you build a chart, make a component from it. Use the Reusable API! Test it! Build your very own chart library, and this way, I assure you, you will be proud of your code again!</li>
                         </ul>
                     </aside>
                 </section>
@@ -1163,17 +1325,25 @@
                     </ul>
                     <aside class="notes">
                         <ul>
+                            <li>Thanks for listening and thanks for caring!</li>
                             <li>And that's what I have for you guys today</li>
                         </ul>
                     </aside>
                 </section>
 
                 <!-- Poll: Next steps? -->
-                    <!-- Building a new graph -->
-                    <!-- Refactoring Accessors -->
-                    <!-- Refactoring Enter, Update, Exit -->
-                    <!-- Add Events -->
-                    <!-- Q&A -->
+                <section>
+                    <h2>Poll: Next up</h2>
+                    <ul>
+                        <li>Building a new chart</li>
+                        <li>Refactoring accessors</li>
+                        <li>Refactoring Enter, Update, Exit</li>
+                        <li>Add Events</li>
+                        <li>Q&A</li>
+                    </ul>
+                </section>
+
+                <!-- Q&A -->
 
                 <!-- Learning and Resources -->
                 <section>
@@ -1193,15 +1363,13 @@
                     <h2>Example Search</h2>
                     <ul>
                         <li>
-                            By chart type -> <a target="_blank" href="http://christopheviau.com/d3list/gallery.html">Christophe Viau's Gallery</a>
+                            Search by chart type -> <a target="_blank" href="http://christopheviau.com/d3list/gallery.html">Christophe Viau's Gallery</a>
                         </li>
                         <li>
-                            By D3 component -> <a target="_blank" href="http://bl.ocksplorer.org/">Block Explorer</a>
+                            Search by D3 component -> <a target="_blank" href="http://bl.ocksplorer.org/">Block Explorer</a>
                         </li>
                     </ul>
                 </section>
-
-                <!-- Q&A -->
 
                 <!-- Books -->
     			<section>
