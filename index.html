@@ -75,10 +75,12 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>Hi! Thanks for coming and for caring about your D3 code quality. Also I want to thank Robert and Ian, for bringing me here tonight and to Galvanize for hosting.</li>
-                            <li>We usually start a new D3 chart by taking an example as a jumping-off point. We can modify it, plug in the new data and we have something that works. This way of coding comes with a bunch of problems, especially those related to the reusability, extendability, simplicity and general quality of our code.</li>
-                            <li>It is a fact that software always changes, so how do we prepare for change? Using the Reusable Chart API and a test driven approach will make your D3 charts easier to create and easier to maintain.</li>
-                            <li>After this talk you should be able to test your D3 charts, and for that objective I will give you some tools and share some ideas about how you can get started.</li>
+                            <li>Hi! Firstly, I want to thank Robert and Ian, for bringing me tonight and to Galvanize for hosting.</li>
+                            <li>Thank you guys for coming and thanks for caring about your D3 skills and code quality.</li>
+                            <li>I usually started a new D3 chart by taking an example as a jumping-off point. I could modify it, plug in new data and I would have something that works. But this way of coding comes with a bunch of problems, especially those related to the reusability, extendability, simplicity and general quality of that code.</li>
+                            <li>It is a fact that software always changes, so how do we prepare for change? By using the Reusable Chart API, that is a way of componetize D3 code, and a test driven approach, you will make your D3 charts easier to create and easier to maintain.</li>
+                            <li>After this talk you should be able to test your D3 code. For that goal I will give you some tools and share some ideas about how you can get started.</li>
+                            <li>But first, some words about me.</li>
                         </ul>
                     </aside>
                 </section>
@@ -88,7 +90,7 @@
                     <section>
                         <h2>Marcos Iglesias</h2>
                         <div style="padding-bottom: 40px;">
-                            <img width="360" height="139" data-src="img/eventbrite-logo.png" alt="Eventbrite Logo">
+                            <img data-src="img/eventbrite-logo.png" width="50%" alt="Eventbrite Logo">
                         </div>
                         <aside class="notes">
                             <ul>
@@ -104,19 +106,22 @@
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>I am Spanish, from a beautiful region called El Bierzo, in Spain.</li>
+                                <li>I am Spanish, from a beautiful region called El Bierzo</li>
                             </ul>
                         </aside>
                     </section>
                     <section>
-                        <h2>Contact</h2>
+                        <h2>Online</h2>
                         <ul>
+                            <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Personal Blog</a></li>
+                            <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
                             <li><a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
-                            <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Blog</a></li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Check out my twitter account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.</li>
+                                <li>I write a bit on my personal blog and EB's engineering blog</li>
+                                <li>You can find me on twitter, here's my unpronunciable handler</li>
+                                <li>T: Check out my account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.</li>
                             </ul>
                         </aside>
                     </section>
@@ -124,7 +129,7 @@
 
                 <!-- Level Poll + Next up -->
                 <section>
-                    <h2>Next Up</h2>
+                    <h2>Next up</h2>
                     <ul>
                         <li class="fragment">Presentation</li>
                         <li class="fragment">Live coding</li>
@@ -132,14 +137,14 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>[Poll]</li>
-                            <li>who knows what the reusable chart API is?</li>
-                            <li>who does not know what D3 is?</li>
                             <li>I will talk for about 30 min;</li>
                             <li>then we will do some hands down coding, you will help me.</li>
                             <li>Q&A at the end</li>
+                            <li>[Poll]</li>
+                            <li>who knows what the reusable chart API is?</li>
+                            <li>who does not know what D3 is?</li>
                             <li>I am assuming certain level of knowledge on the library.</li>
-                            <li>I will not try to explain the Enter/Update/Exit pattern. There is a lot of resources that do it much better than me!</li>
+                            <li>I will NOT try to explain the Enter/Update/Exit pattern. There is a lot of resources that do it much better than me!</li>
                             <li>T: I want it to be more about workflow and decisions when implementing than technical about D3.</li>
                             <li>T: Added links on slides about the most common patterns in d3 development.</li>
                         </ul>
@@ -152,7 +157,7 @@
                     <aside class="notes">
                         <ul>
                             <li>A small disclaimer</li>
-                            <li>I haven't invented any of the techniques I will be talking today</li>
+                            <li>I haven't invented any of the techniques I will be talking about today</li>
                             <li>The examples and the code that I’ll show evolved from this book, Developing a D3.js Edge, a lovely little book that I recommend to everyone interested in improving their D3 skills.</li>
                             <li>T: I think they are worth sharing, because I felt the pain, and now I work in a more pleasant way.</li>
                         </ul>
@@ -167,10 +172,10 @@
 
                     <!-- D3 intro -->
                     <section>
-                        <h2>D3 Introduction</h2>
+                        <h2>D3 introduction</h2>
                         <ul>
                             <li class="fragment">Data-Driven Documents</li>
-                            <li class="fragment">JavaScript Library to manipulate data based documents</li>
+                            <li class="fragment">JavaScript library to manipulate data based documents</li>
                             <li class="fragment">Open web standards (SVG, HTML and CSS)</li>
                             <li class="fragment">Allows interactions with your graphs</li>
                         </ul>
@@ -207,12 +212,12 @@
                     <section>
                         <h2>D3 Niceties</h2>
                         <ul>
-                            <li>Based on attaching data to the DOM</li>
-                            <li>Styling of elements with CSS</li>
-                            <li>Transitions and Animations baked in</li>
-                            <li>Total control over our graphs</li>
-                            <li>Amazing community</li>
-                            <li>Decent amount of publications</li>
+                            <li class="fragment">Based on attaching data to the DOM</li>
+                            <li class="fragment">Styling of elements with CSS</li>
+                            <li class="fragment">Transitions and animations baked in</li>
+                            <li class="fragment">Total control over our graphs</li>
+                            <li class="fragment">Amazing community</li>
+                            <li class="fragment">Decent amount of publications</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -224,12 +229,12 @@
 
                     <!-- Pain Points -->
                     <section>
-                        <h2>Pain Points</h2>
+                        <h2>Pain points</h2>
                         <ul>
-                            <li>Enter, Update and Exit Pattern</li>
-                            <li>Chaining code style</li>
-                            <li>Margins and dimensions</li>
-                            <li>Tooltip creation</li>
+                            <li class="fragment">Enter, update and exit pattern</li>
+                            <li class="fragment">Chaining code style</li>
+                            <li class="fragment">Margins and dimensions</li>
+                            <li class="fragment">Tooltip creation</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -255,7 +260,7 @@
 
                     <!-- Applications -->
                     <section>
-                        <h2>Bar Charts</h2>
+                        <h2>Bar charts</h2>
                         <img data-src="img/barchart_Fotor.jpg" alt="Bar Chart">
                         <aside class="notes">
                             <ul>
@@ -265,12 +270,12 @@
                     </section>
 
                     <section>
-                        <h2>Pie Charts</h2>
-                        <img data-src="img/Pie Chart_Fotor.jpg" alt="Pie Chart">
+                        <h2>Pie charts</h2>
+                        <img data-src="img/chart/piechart.png" width="50%" alt="Pie Chart">
                     </section>
 
                     <section>
-                        <h2>Bubble Charts</h2>
+                        <h2>Bubble charts</h2>
                         <a target="_blank" href="http://bl.ocks.org/mbostock/4063530"><img data-src="img/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
                     </section>
 
@@ -280,7 +285,7 @@
                     </section>
 
                     <section>
-                        <h2>Map Projections</h2>
+                        <h2>Map projections</h2>
                         <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
                         <aside class="notes">
                             <ul>
@@ -295,7 +300,7 @@
                     </section>
 
                     <section>
-                        <h2>Algorithm Visualization</h2>
+                        <h2>Algorithm visualization</h2>
                         <a target="_blank" href="http://bl.ocks.org/mbostock/1044242"><img src="img/edge-bundling.png" alt="Hierarchical Edge Bundling" style="width: 60%;"></a>
                     </section>
 
@@ -305,7 +310,7 @@
                     </section>
 
                     <section>
-                        <h2>Interactive Infographics</h2>
+                        <h2>Interactive infographics</h2>
                         <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
                     </section>
                 </section>
@@ -313,7 +318,7 @@
                 <!-- Story -->
                 <section>
                     <section>
-                        <h1>Contracting Story</h1>
+                        <h1>Contracting story</h1>
                         <aside class="notes">
                             <ul>
                                 <li>I was contracting for a company that had a Sass product based on data analysis</li>
@@ -325,6 +330,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>the marketing guy saw this nice chart, a bump chart for a marketing page</li>
+                                <li>I followed my usual workflow and had something ready pretty quickly</li>
                             </ul>
                         </aside>
                     </section>
@@ -337,7 +343,7 @@
                 <!-- Usual workflow -->
                 <section>
                     <section>
-                        <h1>Usual Workflow</h1>
+                        <h1>Usual workflow</h1>
                     </section>
 
                     <!-- Idea or Requirement -->
@@ -347,40 +353,40 @@
 
                     <!-- Search for an Example -->
                     <section>
-                        <h2>Search for an Example</h2>
+                        <h2>Search for an example</h2>
                         <img data-src="img/example-step.png" height="220" width="703" alt="Idea">
                     </section>
 
                     <!-- Adapt Code -->
                     <section>
-                        <h1>Read and Adapt Code</h1>
+                        <h1>Read and adapt code</h1>
                     </section>
 
                     <!-- Add Features -->
                     <section>
-                        <h1>Add/Remove Features</h1>
+                        <h1>Add/remove features</h1>
                     </section>
 
                     <!-- Polish -->
                     <section>
-                        <h2>Polish it Up</h2>
+                        <h2>Polish it up</h2>
                         <img data-src="img/fun/wax-on.jpg" alt="Wax on, Wax off">
                     </section>
 
                     <!-- It's a Good plan -->
                     <section>
-                        <h2>Usual Workflow</h2>
+                        <h2>Usual workflow</h2>
                         <ul>
-                            <li class="">Idea or Requirement</li>
+                            <li class="">Idea or requirement</li>
                             <li class="">Search for an example</li>
                             <li class="">Adapt the code</li>
-                            <li class="">Add/Remove features</li>
-                            <li class="">Polish Up</li>
+                            <li class="">Add/remove features</li>
+                            <li class="">Polish it up</li>
                         </ul>
                         <aside class="notes">
                             <ul>
                                 <li>Looks like a good plan, right?</li>
-                                <li>The problem is in the code, as they are written in the standard way.</li>
+                                <li>The problem is the code, as it is written in the standard way.</li>
                             </ul>
                         </aside>
                     </section>
@@ -389,7 +395,7 @@
                 <!-- The Standard Way -->
                 <section>
                     <section>
-                        <h1>The Standard Way</h1>
+                        <h1>The standard way</h1>
                         <aside class="notes">
                             <ul>
                                 <li>Illustrate how that usual workflow generates code-wise with a different chart</li>
@@ -399,9 +405,9 @@
 
                     <!-- Example -->
                     <section>
-                        <h2>Code Example</h2>
+                        <h2>Code example</h2>
                         <a href="http://bost.ocks.org/mike/bar/"><img data-src="img/lets-make-a-bar-chart.png" alt=""></a>
-                        <small><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar Chart Example</a> by Mike Bostock</small>
+                        <small><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar chart example</a> by Mike Bostock</small>
                         <aside class="notes">
                             <ul>
                                 <li>Simplest example, some of us wrote our first D3 lines with this post series</li>
@@ -414,7 +420,7 @@
                     <!-- Code Analysis of the example -->
                     <!-- Creating Container -->
                     <section>
-                        <h2>Creating Container</h2>
+                        <h2>Creating container</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                             var margin = {top: 20, right: 20, bottom: 30, left: 40},
                                 width = 960 - margin.left - margin.right,
@@ -439,7 +445,7 @@
 
                     <!-- Setting up Scales and Axes -->
                     <section>
-                        <h2>Setting up Scales and Axes</h2>
+                        <h2>Setting up scales and axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 var x = d3.scale.ordinal()
                                     .rangeRoundBands([0, width], .1);
@@ -468,7 +474,7 @@
 
                     <!-- Loading Data -->
                     <section>
-                        <h2>Loading Data</h2>
+                        <h2>Loading data</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 d3.tsv("data.tsv", type, function(error, data) {
                                     // Chart Code
@@ -489,7 +495,7 @@
 
                     <!-- Drawing Axes -->
                     <section>
-                        <h2>Drawing Axes</h2>
+                        <h2>Drawing axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 x.domain(data.map(function(d) { return d.letter; }));
                                 y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
@@ -519,7 +525,7 @@
 
                     <!-- Drawing Chart Bars  -->
                     <section>
-                        <h2>Drawing Chart Bars</h2>
+                        <h2>Drawing bars</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 svg.selectAll(".bar")
                                     .data(data)
@@ -553,7 +559,7 @@
 
                     <!-- Drawbacks -->
                     <section>
-                        <h2>Standard D3: Drawbacks</h2>
+                        <h2>Standard D3: drawbacks</h2>
                         <ul>
                             <li class="fragment">Monolithic functions</li>
                             <li class="fragment">Chained method calls</li>
@@ -592,7 +598,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h2>Marketing Guy: What if we change this thing here...</h2>
+                        <h2>Marketing guy: What if we change this thing here...</h2>
                         <aside class="notes">
                             <ul>
                                 <li>We will need to refactor, but this refactor is...</li>
@@ -617,7 +623,7 @@
                         <h2>Done!</h2>
                     </section>
                     <section>
-                        <h2>M-Guy: nice, let’s change this other thing!</h2>
+                        <h2>M-guy: nice, let’s change this other thing!</h2>
                     </section>
                     <section>
                         <img data-src="img/fun/keep-calm-and-refactor.png" alt="">
@@ -629,7 +635,7 @@
                         <h2>Done!</h2>
                     </section>
                     <section>
-                        <h2>M-Guy: Great! I love it so much I want it on the product!</h2>
+                        <h2>M-guy: Great! I love it so much I want it on the product!</h2>
                         <aside class="notes">
                             <ul>
                                 <li>Product is a big data analysis dashboard</li>
@@ -637,7 +643,7 @@
                         </aside>
                     </section>
                     <section>
-                        <h2>M-Guy: So good you have it almost ready, right?</h2>
+                        <h2>M-guy: So good you have it almost ready, right?</h2>
                     </section>
                     <section>
                         <img data-src="img/fun/keep-calm-and-refactor-again.png" width="400" alt="">
@@ -730,7 +736,7 @@
 
                     <!-- Code -->
                     <section>
-                        <h2>Reusable Chart API - Code</h2>
+                        <h2>Reusable Chart API - code</h2>
                         <pre><code>
                                 // @param  {D3Selection} _selection A d3 selection that represents
                                 // the container(s) where the chart(s) will be rendered
@@ -769,7 +775,7 @@
 
                     <!-- Use -->
                     <section>
-                        <h2>Reusable Chart API - Use</h2>
+                        <h2>Reusable Chart API - use</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 // Creates bar chart component and configures its margins
                                 barChart = chart()
@@ -790,7 +796,7 @@
 
                     <!-- Benefits -->
                     <section>
-                        <h2>Reusable Chart API - Benefits</h2>
+                        <h2>Reusable Chart API - benefits</h2>
                         <ul>
                             <li class="fragment">Modular</li>
                             <li class="fragment">Composable</li>
@@ -827,7 +833,7 @@
 
                     <!-- Step by Step -->
                     <section>
-                        <h2>The Test "before" block</h2>
+                        <h2>The "before" block</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 containerFixture = d3.select('.test-container');
                                 dataset = [
@@ -854,7 +860,7 @@
 
                     <!-- Test: Basic Chart -->
                     <section>
-                        <h2>Test: Basic Chart</h2>
+                        <h2>Test: basic chart</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 it('should render a chart with minimal requirements', function(){
                                     expect(containerFixture.select('.bar-chart')).toBeDefined(1);
@@ -864,7 +870,7 @@
 
                     <!-- Code: Basic Chart -->
                     <section>
-                        <h2>Code: Basic Chart</h2>
+                        <h2>Code: basic chart</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 demo.graphs.barChart = function module(){
                                     var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -890,7 +896,7 @@
 
                     <!-- Test: Containers -->
                     <section>
-                        <h2>Test: Containers</h2>
+                        <h2>Test: containers</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 it('should render container, axis and chart groups', function(){
                                     expect(containerFixture.select('g.container-group')[0][0]).not.toBeNull();
@@ -903,7 +909,7 @@
 
                     <!-- Code: Containers -->
                     <section>
-                        <h2>Code: Containers</h2>
+                        <h2>Code: containers</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 function buildContainerGroups(){
                                     var container = svg.append("g").attr("class", "container-group");
@@ -919,7 +925,7 @@
 
                     <!-- Test: Axis -->
                     <section>
-                        <h2>Test: Axis</h2>
+                        <h2>Test: axis</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 it('should render an X and Y axis', function(){
                                     expect(containerFixture.select('.x.axis')[0][0]).not.toBeNull();
@@ -945,7 +951,7 @@
 
                     <!-- Code: Axis -->
                     <section>
-                        <h2>Code: Axis</h2>
+                        <h2>Code: axis</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 function buildAxis(){
                                     xAxis = d3.svg.axis()
@@ -962,7 +968,7 @@
 
                     <!-- Code: Axis Drawing -->
                     <section>
-                        <h2>Code: Axis Drawing</h2>
+                        <h2>Code: axis drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 function drawAxis(){
                                     svg.select('.x-axis-group')
@@ -992,7 +998,7 @@
 
                     <!-- Test: Bars Drawing -->
                     <section>
-                        <h2>Test: Bars Drawing</h2>
+                        <h2>Test: bars drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 it('should render a bar for each data entry', function(){
                                     var numBars = dataset.length;
@@ -1004,7 +1010,7 @@
 
                     <!-- Code: Bars Drawing -->
                     <section>
-                        <h2>Code: Bars Drawing</h2>
+                        <h2>Code: bars drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 function drawBars(){
                                     // Setup the enter, exit and update of the actual bars in the chart.
@@ -1032,7 +1038,7 @@
 
                     <!-- Test: Margin Accessor -->
                     <section>
-                        <h2>Test: Margin Accessor</h2>
+                        <h2>Test: margin accessor</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 it('should provide margin getter and setter', function(){
                                     var defaultMargin = barChart.margin(),
@@ -1062,14 +1068,14 @@
 
                     <!-- Output -->
                     <section>
-                        <h2>Looks the Same, but is not</h2>
+                        <h2>Looks the same, but is not</h2>
                         <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                     </section>
 
                     <!-- Before and After -->
                     <!-- Final Code: Standard Way -->
                     <section>
-                        <h2>Final Code: Standard Way</h2>
+                        <h2>Final code: standard way</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 var margin = {top: 20, right: 20, bottom: 30, left: 40},
                                     width = 960 - margin.left - margin.right,
@@ -1135,7 +1141,7 @@
 
                     <!-- Final Code: TDD Way -->
                     <section>
-                        <h2>Final Code: TDD Way</h2>
+                        <h2>Final code: TDD way</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
                                 demo.graphs.barChart = function module(){
 
@@ -1194,7 +1200,7 @@
 
                     <!-- TDD Benefits -->
                     <section>
-                        <h2>TDD Way - Benefits</h2>
+                        <h2>TDD way - benefits</h2>
                         <ul>
                             <li class="fragment">Stress free refactors</li>
                             <li class="fragment">Goal oriented</li>
@@ -1241,7 +1247,7 @@
 
                     <!-- Hands On -->
                     <section>
-                        <h1>Repository Walkthrough</h1>
+                        <h1>Repository walkthrough</h1>
                         <small><a target="_blank" href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></small>
                         <aside class="notes">
                             <ul>
@@ -1350,7 +1356,7 @@
 
                 <!-- Poll: Next steps? -->
                 <section>
-                    <h2>Poll: Next up</h2>
+                    <h2>Poll: next up</h2>
                     <ul>
                         <li>Building a new chart</li>
                         <li>Refactoring accessors</li>
@@ -1364,7 +1370,7 @@
 
                 <!-- Learning and Resources -->
                 <section>
-                    <h2>Learning Resources</h2>
+                    <h2>Learning resources</h2>
                     <ul>
                         <li>
                             <a href="https://engineering.eventbrite.com/d3-js-resources-to-level-up/">D3.js Resources to Level Up</a>
@@ -1377,7 +1383,7 @@
 
                 <!-- Example Search -->
                 <section>
-                    <h2>Example Search</h2>
+                    <h2>Example search</h2>
                     <ul>
                         <li>
                             Search by chart type -> <a target="_blank" href="http://christopheviau.com/d3list/gallery.html">Christophe Viau's Gallery</a>
