@@ -138,16 +138,15 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>I will talk for about 30 min;</li>
-                            <li>then we will do some hands down coding, you will help me.</li>
+                            <li>I will talk for about 40 min</li>
+                            <li>We will do some hands down coding, where you will help me.</li>
                             <li>Q&A at the end</li>
                             <li>[Poll]</li>
                             <li>who knows what the reusable chart API is?</li>
                             <li>who does not know what D3 is?</li>
-                            <li>I am assuming certain level of knowledge on the library.</li>
-                            <li>I will NOT try to explain the Enter/Update/Exit pattern. There is a lot of resources that do it much better than me!</li>
-                            <li>T: I want it to be more about workflow and decisions when implementing than technical about D3.</li>
-                            <li>T: Added links on slides about the most common patterns in d3 development.</li>
+                            <li>I will assume certain level of knowledge of the library.</li>
+                            <li>I will NOT try to explain the Enter/Update/Exit pattern. T: There is a lot of resources that do it much better than me!</li>
+                            <li>T: What I will do is share some links about common patterns in d3 development</li>
                         </ul>
                     </aside>
                 </section>
@@ -158,7 +157,7 @@
                     <aside class="notes">
                         <ul>
                             <li>A small disclaimer</li>
-                            <li>I haven't invented any of the techniques I will be talking about today</li>
+                            <li>I haven't invented any of the techniques I will be talking about tonight</li>
                             <li>The examples and the code that I’ll show evolved from this book, Developing a D3.js Edge, a lovely little book that I recommend to everyone interested in improving their D3 skills.</li>
                             <li>T: I think they are worth sharing, because I felt the pain, and now I work in a more pleasant way.</li>
                         </ul>
@@ -322,7 +321,16 @@
                         <h1>Contracting story</h1>
                         <aside class="notes">
                             <ul>
-                                <li>I was contracting for a company that had a Sass product based on data analysis</li>
+                                <li>I was contracting for a B2B company with a data analysis product</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <!-- Story: he loved it -->
+                    <section>
+                        <h2>Marketing guy: Hey, I saw this nice chart, could we do something like that?</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>the marketing guy saw this nice chart for a marketing page</li>
                             </ul>
                         </aside>
                     </section>
@@ -330,7 +338,7 @@
                         <img data-src="img/chart/bump.png" alt="Bump Chart">
                         <aside class="notes">
                             <ul>
-                                <li>the marketing guy saw this nice chart, a bump chart for a marketing page</li>
+                                <li>It was a bump chart, less nice than this one</li>
                                 <li>I followed my usual workflow and had something ready pretty quickly</li>
                             </ul>
                         </aside>
@@ -345,6 +353,11 @@
                 <section>
                     <section>
                         <h1>Usual workflow</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>How did that usual workflow looked like?</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Idea or Requirement -->
@@ -387,7 +400,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>Looks like a good plan, right?</li>
-                                <li>The problem is the code, as it is written in the standard way.</li>
+                                <li>The problem lays on the code we need to adapt, as it is usually written in the standard way.</li>
                             </ul>
                         </aside>
                     </section>
@@ -399,7 +412,8 @@
                         <h1>The standard way</h1>
                         <aside class="notes">
                             <ul>
-                                <li>Illustrate how that usual workflow generates code-wise with a different chart</li>
+                                <li>The SW is just the way we usually find D3 code on the Internet</li>
+                                <li>I will use a different example to illustrate it</li>
                             </ul>
                         </aside>
                     </section>
@@ -411,9 +425,10 @@
                         <small><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar chart example</a> by Mike Bostock</small>
                         <aside class="notes">
                             <ul>
-                                <li>Simplest example, some of us wrote our first D3 lines with this post series</li>
-                                <li>Although there is not a lot of code, there is actually a lot of stuff happening here.</li>
-                                <li>Still, can easily become spaguetti code</li>
+                                <li>Simplest example</li>
+                                <li>Actually, one of my first contacts with D3 was via this article: Let’s Make a Bar Chart</li>
+                                <li>Although there is not a lot of code, there is a lot of stuff happening here.</li>
+                                <li>This can easily become spaguetti code</li>
                             </ul>
                         </aside>
                     </section>
@@ -437,9 +452,9 @@
                         <small>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></small>
                         <aside class="notes">
                             <ul>
-                                <li>Mike Bostock Convention</li>
-                                <li>A bit messy, but only once per graph and with this pattern</li>
-                                <li>Before discovering this pattern, moving stuff was hard</li>
+                                <li>First D3 pattern: Mike Bostock Margin Convention</li>
+                                <li>It can be considered a hack, but only once per chart</li>
+                                <li>T: Before discovering this pattern, moving stuff was hard</li>
                             </ul>
                         </aside>
                     </section>
@@ -463,12 +478,13 @@
                                     .orient("left")
                                     .ticks(10, "%");
                         </code></pre>
+                        <small>Reference: <a target="_blank" href="http://alignedleft.com/tutorials/d3/scales">Scales tutorial</a></small>
                         <aside class="notes">
                             <ul>
-                                <li>Basic scales refereced by the axis</li>
                                 <li>Scales are functions that glue data and pixels</li>
+                                <li>T: Input domain, output range</li>
                                 <li>Axis are visual representations of those scales</li>
-                                <li>T: A bit tricky sometimes</li>
+                                <li>Creating the scales and the axis that depend on them</li>
                             </ul>
                         </aside>
                     </section>
@@ -482,14 +498,14 @@
                                 };
 
                                 function type(d) {
-                                  d.frequency = +d.frequency;
-                                  return d;
+                                    d.frequency = +d.frequency;
+                                    return d;
                                 }
                         </code></pre>
                         <aside class="notes">
                             <ul>
                                 <li>Callback pattern</li>
-                                <li>Our cleaning function just coerces the values to be a number with this JS hack</li>
+                                <li>Cleaning function that coerces the values to be a number with this JS hack</li>
                             </ul>
                         </aside>
                     </section>
@@ -518,8 +534,8 @@
                         </code></pre>
                         <aside class="notes">
                             <ul>
-                                <li>He ends setting up the scales</li>
-                                <li>Draws the x and y, rotating and labeling the latter</li>
+                                <li>Set the domain of the scales, dependent on the data</li>
+                                <li>Draws the x and y axes, labeling the latter</li>
                             </ul>
                         </aside>
                     </section>
@@ -540,7 +556,6 @@
                         <aside class="notes">
                             <ul>
                                 <li>Here we see the Enter, Update, Exit</li>
-                                <li>We are repeating all that comes after enter() for each data entry on our data array</li>
                             </ul>
                         </aside>
                     </section>
@@ -566,7 +581,7 @@
                             <li class="fragment">Chained method calls</li>
                             <li class="fragment">Hard to change code</li>
                             <li class="fragment">Impossible to reuse</li>
-                            <li class="fragment">Fragile</li>
+                            <li class="fragment">Delicate</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -574,7 +589,7 @@
                                 <li>creating a compact code that is not really flexible.</li>
                                 <li>Basically you would need to change hardcoded values.</li>
                                 <li>Reuse is copy/paste, not DRY</li>
-                                <li>Won’t know if it works after modifying any line of code</li>
+                                <li>Won’t know if it works after modifying any line of code, it's brittle</li>
                             </ul>
                         </aside>
                     </section>
@@ -586,7 +601,7 @@
                         <h1>Story continues...</h1>
                         <aside class="notes">
                             <ul>
-                                <li>Remember we have a bump chart, and he loved it</li>
+                                <li>Remember we had a bump chart, and he loved it</li>
                             </ul>
                         </aside>
                     </section>
@@ -594,7 +609,7 @@
                         <img data-src="img/chart/bump.png" alt="Bump Chart">
                         <aside class="notes">
                             <ul>
-                                <li>But you know, it was a marketing guy...</li>
+                                <li>But you know, he was a marketing guy...</li>
                             </ul>
                         </aside>
                     </section>
@@ -602,7 +617,7 @@
                         <h2>Marketing guy: What if we change this thing here...</h2>
                         <aside class="notes">
                             <ul>
-                                <li>We will need to refactor, but this refactor is...</li>
+                                <li>I would need to refactor, but this refactor was something like this:</li>
                             </ul>
                         </aside>
                     </section>
@@ -610,15 +625,28 @@
                         <img data-src="img/fun/refactoring-cat.gif" alt="">
                         <aside class="notes">
                             <ul>
-                                <li>We are changing things, not refactoring</li>
+                                <li>Because I wasn't refactoring, I was just changing things!</li>
                             </ul>
                         </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/magic-number.jpg" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>So I had to deal with some magic numbers</li>
+                            </ul>
+                        </aside>
+                    </section>
+                    <section>
+                        <h1>Trial and error</h1>
                     </section>
                     <section>
                         <img data-src="img/fun/bug.jpg" width="400" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>Kill some bugs</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h2>Done!</h2>
@@ -628,9 +656,19 @@
                     </section>
                     <section>
                         <img data-src="img/fun/keep-calm-and-refactor.png" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>You keep it cool</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
-                        <img data-src="img/fun/bug.jpg" width="400" alt="">
+                        <img data-src="img/fun/evil-bug.gif" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>Fight some nasty bugs</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h2>Done!</h2>
@@ -639,7 +677,7 @@
                         <h2>M-guy: Great! I love it so much I want it on the product!</h2>
                         <aside class="notes">
                             <ul>
-                                <li>Product is a big data analysis dashboard</li>
+                                <li>Product was a big data analysis dashboard</li>
                             </ul>
                         </aside>
                     </section>
@@ -656,18 +694,34 @@
                         <img data-src="img/fun/i-have-no-idea-what-im-doing.jpg" alt="">
                         <aside class="notes">
                             <ul>
-                                <li>Dealing with some Impostor syndrome there...</li>
+                                <li>I had to deal with some Impostor syndrome at that point</li>
                             </ul>
                         </aside>
                     </section>
                     <section>
-                        <img data-src="img/fun/bug.jpg" width="400" alt="">
+                        <img data-src="img/fun/evil-bug.gif" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>More nasty bugs</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/headdesk.png" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>A terrible experience</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h1>I was hating myself!</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>I know you must have felt this way sometimes</li>
+                                <li>In my mind, there are 3 different</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h2>Possible outcomes</h2>
@@ -678,10 +732,10 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Making it with a lot more effort than what it’s worth</li>
-                                <li>Overcoming the sunken cost fallacy</li>
+                                <li>A lot more effort than what it’s worth</li>
+                                <li>Heroic: overcome the sunken cost fallacy</li>
+                                <li>Even more heroic</li>
                                 <li>First two are not really effective</li>
-                                <li>This can end in a 450 lines of ‘render’ function</li>
                             </ul>
                         </aside>
                     </section>
@@ -690,6 +744,12 @@
                         <div style="padding-bottom: 20px; overflow: auto; max-height: 450px;">
                             <img data-src="img/render-method.png" alt="">
                         </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>Last option could end in something like this:</li>
+                                <li>Wish you good luck</li>
+                            </ul>
+                        </aside>
                     </section>
                 </section>
 
@@ -698,7 +758,7 @@
                     <h2>What if you could work with graphs the same way you work with the rest of your code?</h2>
                     <aside class="notes">
                         <ul>
-                            <li>Even more, imagine you can build a production ready graph by changing just a 25% of the code of your previous one.</li>
+                            <li></li>
                         </ul>
                     </aside>
                 </section>
@@ -709,7 +769,7 @@
                         <h1>Reusable Chart API</h1>
                         <aside class="notes">
                             <ul>
-                                <li>It is essentially a way of creating components for D3 charts.</li>
+                                <li>Essentially a way of creating components for D3 charts.</li>
                             </ul>
                         </aside>
                     </section>
@@ -719,7 +779,8 @@
                         <h2>jQuery VS MV*</h2>
                         <aside class="notes">
                             <ul>
-                                <li>It’s like jumping from namespace JS to using AMD modules or Common JS modules.</li>
+                                <li>It’s like when we moved away from jQuery based UIs to MVC or MV* frameworks</li>
+                                <li>T: Precise analogy, not everybody would get it</li>
                             </ul>
                         </aside>
                     </section>
@@ -729,8 +790,9 @@
                         <a href="http://bost.ocks.org/mike/chart/"><img data-src="img/towards-reusable-charts.png" alt=""></a>
                         <aside class="notes">
                             <ul>
-                                <li>The first example of this pattern was seen in Mike Bostock's seminal postTowards Reusable Charts, and it hasn’t changed a lot since then.</li>
-                                <li>T: Well known, established technique. Libraries based in d3 like NVD3 uses it. I found it on Developing a D3.js edge and Mastering D3.</li>
+                                <li>First example: Mike Bostock's seminal postTowards Reusable Charts</li>
+                                <li>It hasn’t changed a lot since then</li>
+                                <li>T: Well known, established technique. Libraries based in d3 like NVD3 uses it. I found it on DD3E and Mastering D3.</li>
                             </ul>
                         </aside>
                     </section>
@@ -766,10 +828,9 @@
                         </code></pre>
                         <aside class="notes">
                             <ul>
-
-                                <li>This piece of code returns a function that will accept a d3 selection as input.</li>
-                                <li>Then it will extract the data of that selection to build a chart, using the selection as container.</li>
-                                <li>T: It will also accept some configuration (the margin, in this case) that will be set beforehand.</li>
+                                <li>Returns a function that will accept a d3 selection as input</li>
+                                <li>It will extract the data from that selection to build a chart, using the selection as container.</li>
+                                <li>T: It will also accept some configuration, set beforehand.</li>
                             </ul>
                         </aside>
                     </section>
@@ -789,8 +850,7 @@
                         </code></pre>
                         <aside class="notes">
                             <ul>
-                                <li>This code would create an instance of a bar chart in the DOM element with class ‘chart-container'.</li>
-                                <li>T: We could also create different instances of the same chart, and they could live together in the same page without any problems.</li>
+                                <li>T: We could also create different instances of the same chart</li>
                             </ul>
                         </aside>
                     </section>
@@ -808,10 +868,11 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Modular: Change of mindset, from building charts to components. Pages -> Styleguides and component libraries.</li>
-                                <li>Composable: You can build rich interactions from different blocks and controls.</li>
+                                <li>Modular: Change of mindset, from building charts to components. Create a library.</li>
+                                <li>T: Same as Pages -> Styleguides and Component libraries.</li>
+                                <li>Composable: You can build higher-order components from different blocks and controls.</li>
                                 <li>Configurable: change look & feel or behaviour without changing the code, as we differientate the core of the graph from the configuration</li>
-                                <li>Consistent: Following the same strategy we can reuse methods between charts. Create a library.</li>
+                                <li>Consistent: Following the same strategy we can reuse methods between charts.</li>
                                 <li>Teamwork enabling: Easy to grab for newbies and easy to share workload</li>
                                 <li>Testable: The most important, no legacy code</li>
                             </ul>
@@ -825,8 +886,9 @@
                         <h1>The TDD way</h1>
                         <aside class="notes">
                             <ul>
-                                <li>We have seen problems and a solution, the Reusable Chart API. As this solution allows us to test our charts, we are open to a new world of possibilities. Among them is to Test Driven our Charts.</li>
-                                <li>Let's see how to do it</li>
+                                <li>We have seen the problems of example code and a solution, the Reusable Chart API.</li>
+                                <li>Solution allows us to test, opening a new world of possibilities. Among them is to Test Driven our Charts.</li>
+                                <li>Craft the same bar chart test-by-test</li>
                                 <li>T: I will skip some steps</li>
                             </ul>
                         </aside>
@@ -851,10 +913,9 @@
                         </code></pre>
                         <aside class="notes">
                             <ul>
-                                <li>letters and their frequency on English</li>
-                                <li>instance of the chart</li>
-                                <li>a DOM container</li>
-                                <li>apply chart with data over the container</li>
+                                <li>3 things: container, data and chart instance</li>
+                                <li>call chart with the container which has the data attached</li>
+                                <li>T: datum adds the data, but doesn't do a join</li>
                             </ul>
                         </aside>
                     </section>
@@ -906,6 +967,11 @@
                                     expect(containerFixture.select('g.y-axis-group')[0][0]).not.toBeNull();
                                 });
                        </code></pre>
+                       <aside class="notes">
+                           <ul>
+                               <li>Nice an tidy structure</li>
+                           </ul>
+                       </aside>
                     </section>
 
                     <!-- Code: Containers -->
@@ -933,6 +999,11 @@
                                     expect(containerFixture.select('.y.axis')[0][0]).not.toBeNull();
                                 });
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Public effects are the axis elements on the DOM</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!--  Code: Scales -->
@@ -948,6 +1019,11 @@
                                         .range([chartH, 0]);
                                 }
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Creating after getting data</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Code: Axis -->
@@ -1007,6 +1083,11 @@
                                     expect(containerFixture.selectAll('.bar')[0].length).toEqual(numBars);
                                 });
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Counting bars and data length</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Code: Bars Drawing -->
@@ -1031,7 +1112,6 @@
                         <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
                         <aside class="notes">
                             <ul>
-                                <li>Data Join: new data with old elements</li>
                                 <li>Enter: creates elements as needed</li>
                             </ul>
                         </aside>
@@ -1065,6 +1145,11 @@
                                     return this;
                                 };
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>All-in-one getter and setter</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Output -->
@@ -1212,11 +1297,11 @@
                         <aside class="notes">
                             <ul>
                                 <li>T: It’s hard to establish where the benefits of the Reusable Chart API end and where the TDD benefits start:</li>
-                                <li>Nothing will stop you from trying some crazy things. Maybe your first approach was just a hack, you can improve it now!</li>
-                                <li>Be more goal oriented as TDD forces you to first understand what you want to do</li>
-                                <li>Learn about the D3 API.</li>
-                                <li>Create a documentation that does not get outdated. Small and specific code that can be understood easily.</li>
-                                <li>Charts will be a first-class citizen inside your repo.</li>
+                                <li>SFR: Nothing will stop you from trying some crazy things. Maybe your first approach was just a hack, you can improve it now!</li>
+                                <li>GO: As TDD forces you to first understand what you want to do</li>
+                                <li>DU: Learn more about the D3 API.</li>
+                                <li>IC: Create a documentation that does not get outdated. Small and specific code that can be understood easily.</li>
+                                <li>Q: Charts will be a first-class citizen inside your repo.</li>
                             </ul>
                         </aside>
                     </section>
@@ -1241,7 +1326,7 @@
                                 <li>Try to test something you have in production, just a bit</li>
                                 <li>Check for the last easy chart you built, give it a read, and TDD it.</li>
                                 <li>If you want to see something new, pick a block, refactor it into TDD</li>
-                                <li>Write with the reusable API</li>
+                                <li>Write your next one with the reusable API</li>
                             </ul>
                         </aside>
                     </section>
@@ -1274,7 +1359,7 @@
                         <h2>I used the Reusable Chart API</h2>
                         <aside class="notes">
                             <ul>
-                                <li>It was a line chart of just one value</li>
+                                <li>Line chart of just one value</li>
                             </ul>
                         </aside>
                     </section>
@@ -1282,7 +1367,7 @@
                         <h2>Adding multiple dimensions?</h2>
                         <aside class="notes">
                             <ul>
-                                <li>When they added a second and third dimensions to find correlations</li>
+                                <li>Added a second and third dimensions to find correlations</li>
                             </ul>
                         </aside>
                     </section>
@@ -1298,7 +1383,7 @@
                         <h2>Toogle dimensions, adding more y-axis?</h2>
                         <aside class="notes">
                             <ul>
-                                <li>Taking the chart to a new level of complexity</li>
+                                <li>New level of complexity</li>
                             </ul>
                         </aside>
                     </section>
@@ -1352,7 +1437,6 @@
                     <aside class="notes">
                         <ul>
                             <li>Thanks for listening and thanks for caring!</li>
-                            <li>And that's what I have for you guys today</li>
                         </ul>
                     </aside>
                 </section>
