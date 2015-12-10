@@ -120,9 +120,8 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>I write a bit on my personal blog and EB's engineering blog</li>
-                                <li>You can find me on twitter, here's my unpronunciable handler</li>
-                                <li>T: Check out my account, where I share interesting articles and resources about data visualization, d3 and front end technologies in general.</li>
+                                <li>Find me on my personal blog and EB's engineering blog</li>
+                                <li>I am also on twitter, here's my unpronunciable handler, where I share interesting articles and resources about dataviz, d3 and front end technologies in general.</li>
                             </ul>
                         </aside>
                     </section>
@@ -138,15 +137,13 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>I will talk for about 40 min</li>
+                            <li>Talk of 40 min</li>
                             <li>We will do some hands down coding, where you will help me.</li>
                             <li>Q&A at the end</li>
-                            <li>[Poll]</li>
-                            <li>who knows what the reusable chart API is?</li>
-                            <li>who does not know what D3 is?</li>
-                            <li>I will assume certain level of knowledge of the library.</li>
-                            <li>I will NOT try to explain the Enter/Update/Exit pattern. T: There is a lot of resources that do it much better than me!</li>
-                            <li>T: What I will do is share some links about common patterns in d3 development</li>
+                            <li>I will assume certain level of knowledge of the library</li>
+                            <li>I will NOT try to explain the Enter/Update/Exit pattern.</li>
+                            <li>T: There is a lot of resources that do it much better than me!</li>
+                            <li>T: I will share some links about common patterns in d3 development</li>
                         </ul>
                     </aside>
                 </section>
@@ -159,7 +156,7 @@
                             <li>A small disclaimer</li>
                             <li>I haven't invented any of the techniques I will be talking about tonight</li>
                             <li>The examples and the code that I’ll show evolved from this book, Developing a D3.js Edge, a lovely little book that I recommend to everyone interested in improving their D3 skills.</li>
-                            <li>T: I think they are worth sharing, because I felt the pain, and now I work in a more pleasant way.</li>
+                            <li>T: I don't see this ideas enough in the code I see in articles, and I think they are worth sharing, because I felt the pain, and now I work in a more pleasant way.</li>
                         </ul>
                     </aside>
                 </section>
@@ -168,6 +165,12 @@
                 <section>
                     <section>
                         <img width="252" height="236" data-src="img/d3js.png" alt="D3 Logo">
+                        <aside class="notes">
+                            <ul>
+                                <li>[Poll]</li>
+                                <li>Who does not know what D3 is?</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- D3 intro -->
@@ -321,7 +324,7 @@
                         <h1>Contracting story</h1>
                         <aside class="notes">
                             <ul>
-                                <li>I was contracting for a B2B company with a data analysis product</li>
+                                <li>I was contracting for a B2B company with a data analysis dashboard product</li>
                             </ul>
                         </aside>
                     </section>
@@ -330,7 +333,7 @@
                         <h2>Marketing guy: Hey, I saw this nice chart, could we do something like that?</h2>
                         <aside class="notes">
                             <ul>
-                                <li>the marketing guy saw this nice chart for a marketing page</li>
+                                <li>Nice chart for a marketing page</li>
                             </ul>
                         </aside>
                     </section>
@@ -338,7 +341,7 @@
                         <img data-src="img/chart/bump.png" alt="Bump Chart">
                         <aside class="notes">
                             <ul>
-                                <li>It was a bump chart, less nice than this one</li>
+                                <li>It was a bump chart, but uglier than this one</li>
                                 <li>I followed my usual workflow and had something ready pretty quickly</li>
                             </ul>
                         </aside>
@@ -355,7 +358,7 @@
                         <h1>Usual workflow</h1>
                         <aside class="notes">
                             <ul>
-                                <li>How did that usual workflow looked like?</li>
+                                <li>That workflow starts...</li>
                             </ul>
                         </aside>
                     </section>
@@ -369,6 +372,11 @@
                     <section>
                         <h2>Search for an example</h2>
                         <img data-src="img/example-step.png" height="220" width="703" alt="Idea">
+                        <aside class="notes">
+                            <ul>
+                                <li>Several options</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Adapt Code -->
@@ -413,7 +421,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>The SW is just the way we usually find D3 code on the Internet</li>
-                                <li>I will use a different example to illustrate it</li>
+                                <li>I will use a different example to show it</li>
                             </ul>
                         </aside>
                     </section>
@@ -426,9 +434,9 @@
                         <aside class="notes">
                             <ul>
                                 <li>Simplest example</li>
-                                <li>Actually, one of my first contacts with D3 was via this article: Let’s Make a Bar Chart</li>
+                                <li>One of my first contacts with D3 was via this article</li>
                                 <li>Although there is not a lot of code, there is a lot of stuff happening here.</li>
-                                <li>This can easily become spaguetti code</li>
+                                <li>Let's dive into it</li>
                             </ul>
                         </aside>
                     </section>
@@ -438,16 +446,15 @@
                     <section>
                         <h2>Creating container</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                            var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                                width = 960 - margin.left - margin.right,
-                                height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-                            var svg = d3.select("body").append("svg")
-                                .attr("width", width + margin.left + margin.right)
-                                .attr("height", height + margin.top + margin.bottom)
-                              .append("g")
-                                .attr("transform",
-                                    "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                         </code></pre>
                         <small>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></small>
                         <aside class="notes">
@@ -463,20 +470,20 @@
                     <section>
                         <h2>Setting up scales and axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                var x = d3.scale.ordinal()
-                                    .rangeRoundBands([0, width], .1);
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
-                                var y = d3.scale.linear()
-                                    .range([height, 0]);
+var y = d3.scale.linear()
+    .range([height, 0]);
 
-                                var xAxis = d3.svg.axis()
-                                    .scale(x)
-                                    .orient("bottom");
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
 
-                                var yAxis = d3.svg.axis()
-                                    .scale(y)
-                                    .orient("left")
-                                    .ticks(10, "%");
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10, "%");
                         </code></pre>
                         <small>Reference: <a target="_blank" href="http://alignedleft.com/tutorials/d3/scales">Scales tutorial</a></small>
                         <aside class="notes">
@@ -493,14 +500,17 @@
                     <section>
                         <h2>Loading data</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                d3.tsv("data.tsv", type, function(error, data) {
-                                    // Chart Code
-                                };
+// Loads Data
+d3.tsv("data.tsv", type, function(error, data) {
+  if (error) throw error;
+  // Chart Code here
+});
 
-                                function type(d) {
-                                    d.frequency = +d.frequency;
-                                    return d;
-                                }
+// Cleans Data
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -514,23 +524,26 @@
                     <section>
                         <h2>Drawing axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                x.domain(data.map(function(d) { return d.letter; }));
-                                y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+// Rest of the scales
+x.domain(data.map(function(d) { return d.letter; }));
+y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
-                                svg.append("g")
-                                    .attr("class", "x axis")
-                                    .attr("transform", "translate(0," + height + ")")
-                                    .call(xAxis);
+// Draws X axis
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
 
-                                svg.append("g")
-                                    .attr("class", "y axis")
-                                    .call(yAxis)
-                                  .append("text")
-                                    .attr("transform", "rotate(-90)")
-                                    .attr("y", 6)
-                                    .attr("dy", ".71em")
-                                    .style("text-anchor", "end")
-                                    .text("Frequency");
+// Draws Y axis
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+  .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Frequency");
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -544,14 +557,14 @@
                     <section>
                         <h2>Drawing bars</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                svg.selectAll(".bar")
-                                    .data(data)
-                                  .enter().append("rect")
-                                    .attr("class", "bar")
-                                    .attr("x", function(d) { return x(d.letter); })
-                                    .attr("width", x.rangeBand())
-                                    .attr("y", function(d) { return y(d.frequency); })
-                                    .attr("height", function(d) { return height - y(d.frequency); });
+svg.selectAll(".bar")
+  .data(data)
+.enter().append("rect")
+  .attr("class", "bar")
+  .attr("x", function(d) { return x(d.letter); })
+  .attr("width", x.rangeBand())
+  .attr("y", function(d) { return y(d.frequency); })
+  .attr("height", function(d) { return height - y(d.frequency); });
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -585,9 +598,9 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>that you need to read from top to bottom to know what is doing</li>
-                                <li>creating a compact code that is not really flexible.</li>
-                                <li>Basically you would need to change hardcoded values.</li>
+                                <li>Read from top to bottom to know what is doing</li>
+                                <li>Compact code that is not really flexible</li>
+                                <li>Hardcoded values and strings</li>
                                 <li>Reuse is copy/paste, not DRY</li>
                                 <li>Won’t know if it works after modifying any line of code, it's brittle</li>
                             </ul>
@@ -675,14 +688,14 @@
                     </section>
                     <section>
                         <h2>M-guy: Great! I love it so much I want it on the product!</h2>
-                        <aside class="notes">
-                            <ul>
-                                <li>Product was a big data analysis dashboard</li>
-                            </ul>
-                        </aside>
                     </section>
                     <section>
                         <h2>M-guy: So good you have it almost ready, right?</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>More quality was necessary</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <img data-src="img/fun/keep-calm-and-refactor-again.png" width="400" alt="">
@@ -718,6 +731,7 @@
                         <h1>I was hating myself!</h1>
                         <aside class="notes">
                             <ul>
+                                <li>That day my usual workflow failed me!</li>
                                 <li>I know you must have felt this way sometimes</li>
                                 <li>In my mind, there are 3 different</li>
                             </ul>
@@ -728,14 +742,15 @@
                         <ul>
                             <li class="fragment">You take it through</li>
                             <li class="fragment">You dump it and start all over again</li>
-                            <li class="fragment">You pass refactoring</li>
+                            <li class="fragment">You avoid refactoring</li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>A lot more effort than what it’s worth</li>
-                                <li>Heroic: overcome the sunken cost fallacy</li>
-                                <li>Even more heroic</li>
-                                <li>First two are not really effective</li>
+                                <li>More effort than what it’s worth</li>
+                                <li>Dump is Hard, because of the investment</li>
+                                <li>Heroic, could be the fastest at first</li>
+                                <li>First two are not really time effective</li>
+                                <li>Last option could end in something like this:</li>
                             </ul>
                         </aside>
                     </section>
@@ -746,8 +761,8 @@
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>Last option could end in something like this:</li>
-                                <li>Wish you good luck</li>
+                                <li>Hard time working with this</li>
+                                <li>Next developer will hate you</li>
                             </ul>
                         </aside>
                     </section>
@@ -755,7 +770,7 @@
 
                 <!-- Sentence -->
                 <section>
-                    <h2>What if you could work with graphs the same way you work with the rest of your code?</h2>
+                    <h2>What if you could work with charts the same way you work with the other code?</h2>
                     <aside class="notes">
                         <ul>
                             <li></li>
@@ -769,6 +784,7 @@
                         <h1>Reusable Chart API</h1>
                         <aside class="notes">
                             <ul>
+                                <li>Who knows what the reusable chart API is?</li>
                                 <li>Essentially a way of creating components for D3 charts.</li>
                             </ul>
                         </aside>
@@ -790,7 +806,7 @@
                         <a href="http://bost.ocks.org/mike/chart/"><img data-src="img/towards-reusable-charts.png" alt=""></a>
                         <aside class="notes">
                             <ul>
-                                <li>First example: Mike Bostock's seminal postTowards Reusable Charts</li>
+                                <li>First mention in Mike Bostock's seminal post Towards Reusable Charts</li>
                                 <li>It hasn’t changed a lot since then</li>
                                 <li>T: Well known, established technique. Libraries based in d3 like NVD3 uses it. I found it on DD3E and Mastering D3.</li>
                             </ul>
@@ -801,30 +817,26 @@
                     <section>
                         <h2>Reusable Chart API - code</h2>
                         <pre><code>
-                                // @param  {D3Selection} _selection A d3 selection that represents
-                                // the container(s) where the chart(s) will be rendered
-                                function exports(_selection){
+// @param  {D3Selection} _selection A d3 selection that represents
+// the container(s) where the chart(s) will be rendered
+function exports(_selection){
 
-                                    // @param {object} _data The data to generate the chart
-                                    _selection.each(function(_data){
-                                        // Assigns private variables
-                                        data = _data;
+    // @param {object} _data The data to generate the chart
+    _selection.each(function(_data){
+        // Assigns private variables
+        // Builds chart
+    });
+}
 
-                                        // Builds chart
-                                    });
-                                }
+// @param  {object} _x Margin object to get/set
+// @return { margin | module} Current margin or Bar Chart module to chain calls
+exports.margin = function(_x) {
+    if (!arguments.length) return margin;
+    margin = _x;
+    return this;
+};
 
-                                // @param  {object} _x Margin object to get/set
-                                // @return { margin | module} Current margin or Bar Chart module to chain calls
-                                exports.margin = function(_x) {
-                                    if (!arguments.length) {
-                                        return margin;
-                                    }
-                                    margin = _x;
-                                    return this;
-                                };
-
-                                return exports;
+return exports;
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -839,14 +851,14 @@
                     <section>
                         <h2>Reusable Chart API - use</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                // Creates bar chart component and configures its margins
-                                barChart = chart()
-                                    .margin({top: 5, left: 10});
+// Creates bar chart component and configures its margins
+barChart = chart()
+    .margin({top: 5, left: 10});
 
-                                container = d3.select('.chart-container');
+container = d3.select('.chart-container');
 
-                                // Calls bar chart with the data-fed selector
-                                container.datum(dataset).call(barChart);
+// Calls bar chart with the data-fed selector
+container.datum(dataset).call(barChart);
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -898,18 +910,18 @@
                     <section>
                         <h2>The "before" block</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                containerFixture = d3.select('.test-container');
-                                dataset = [
-                                    {   letter: 'A',
-                                        frequency: .08167
-                                    },{
-                                        letter: 'B',
-                                        frequency: .01492
-                                    },...
-                                ];
-                                barChart = demo.graphs.barChart();
+container = d3.select('.test-container');
+dataset = [
+    {   letter: 'A',
+        frequency: .08167
+    },{
+        letter: 'B',
+        frequency: .01492
+    },...
+];
+barChart = barChart();
 
-                                containerFixture.datum(dataset).call(barChart);
+container.datum(dataset).call(barChart);
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -924,34 +936,40 @@
                     <section>
                         <h2>Test: basic chart</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                it('should render a chart with minimal requirements', function(){
-                                    expect(containerFixture.select('.bar-chart')).toBeDefined(1);
-                                });
+it('should render a chart with minimal requirements', function(){
+    expect(containerFixture.select('.bar-chart').empty()).toBeFalsy();
+});
                         </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Several ways of checking for an element</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <!-- Code: Basic Chart -->
                     <section>
                         <h2>Code: basic chart</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                demo.graphs.barChart = function module(){
-                                    var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                                        width = 960, height = 500, svg;
+return function module(){
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960, height = 500,
+        svg;
 
-                                    function exports(_selection){
-                                        _selection.each(function(_data){
-                                            var chartW = width - margin.left - margin.right,
-                                                chartH = height - margin.top - margin.bottom;
+    function exports(_selection){
+        _selection.each(function(_data){
+            var chartWidth = width - margin.left - margin.right,
+                chartHeight = height - margin.top - margin.bottom;
 
-                                            if (!svg) {
-                                                svg = d3.select(this)
-                                                    .append('svg')
-                                                    .attr('class','bar-chart');
-                                            }
-                                        });
-                                    };
-                                    return exports;
-                                }
+            if (!svg) {
+                svg = d3.select(this)
+                    .append('svg')
+                    .classed('bar-chart', true);
+            }
+        });
+    };
+    return exports;
+}
                         </code></pre>
                         <p>Reference: <a href="http://bost.ocks.org/mike/chart/" target="_blank">Towards Reusable Charts</a></p>
                     </section>
@@ -960,12 +978,12 @@
                     <section>
                         <h2>Test: containers</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                it('should render container, axis and chart groups', function(){
-                                    expect(containerFixture.select('g.container-group')[0][0]).not.toBeNull();
-                                    expect(containerFixture.select('g.chart-group')[0][0]).not.toBeNull();
-                                    expect(containerFixture.select('g.x-axis-group')[0][0]).not.toBeNull();
-                                    expect(containerFixture.select('g.y-axis-group')[0][0]).not.toBeNull();
-                                });
+it('should render container, axis and chart groups', function(){
+    expect(containerFixture.select('g.container-group').empty()).toBeFalsy();
+    expect(containerFixture.select('g.chart-group').empty()).toBeFalsy();
+    expect(containerFixture.select('g.x-axis-group').empty()).toBeFalsy();
+    expect(containerFixture.select('g.y-axis-group').empty()).toBeFalsy();
+});
                        </code></pre>
                        <aside class="notes">
                            <ul>
@@ -978,15 +996,13 @@
                     <section>
                         <h2>Code: containers</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                function buildContainerGroups(){
-                                    var container = svg.append("g").attr("class", "container-group");
+function buildContainerGroups(){
+    var container = svg.append("g").attr("class", "container-group");
 
-                                    container.append("g").attr("class", "chart-group");
-                                    container.append("g").attr("class", "x-axis-group axis");
-                                    container.append("g").attr("class", "y-axis-group axis");
-                                    container.append("g").attr("class", "pane-group");
-                                    container.append("g").attr("class", "metadata-group");
-                                }
+    container.append("g").attr("class", "chart-group");
+    container.append("g").attr("class", "x-axis-group axis");
+    container.append("g").attr("class", "y-axis-group axis");
+}
                        </code></pre>
                     </section>
 
@@ -994,10 +1010,10 @@
                     <section>
                         <h2>Test: axis</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                it('should render an X and Y axis', function(){
-                                    expect(containerFixture.select('.x.axis')[0][0]).not.toBeNull();
-                                    expect(containerFixture.select('.y.axis')[0][0]).not.toBeNull();
-                                });
+it('should render an X and Y axis', function(){
+    expect(containerFixture.select('.x-axis-group.axis').empty()).toBeFalsy();
+    expect(containerFixture.select('.y-axis-group.axis').empty()).toBeFalsy();
+});
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -1010,14 +1026,15 @@
                     <section>
                         <h2>Code: Scales</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                function buildScales(){
-                                    xScale = d3.scale.ordinal()
-                                        .domain(data.map(function(d) { return d.letter; }))
-                                        .rangeRoundBands([0, chartW], .1);
-                                    yScale = d3.scale.linear()
-                                        .domain([0, d3.max(data, function(d) { return d.frequency; })])
-                                        .range([chartH, 0]);
-                                }
+function buildScales(){
+    xScale = d3.scale.ordinal()
+        .domain(data.map(function(d) { return d.letter; }))
+        .rangeRoundBands([0, chartWidth], .1);
+
+    yScale = d3.scale.linear()
+        .domain([0, d3.max(data, function(d) { return d.frequency; })])
+        .range([chartHeight, 0]);
+}
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -1030,16 +1047,16 @@
                     <section>
                         <h2>Code: axis</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                function buildAxis(){
-                                    xAxis = d3.svg.axis()
-                                        .scale(xScale)
-                                        .orient("bottom");
+function buildAxis(){
+    xAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient("bottom");
 
-                                    yAxis = d3.svg.axis()
-                                        .scale(yScale)
-                                        .orient("left")
-                                        .ticks(10, "%");
-                                }
+    yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient("left")
+        .ticks(10, "%");
+}
                         </code></pre>
                     </section>
 
@@ -1047,24 +1064,24 @@
                     <section>
                         <h2>Code: axis drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                function drawAxis(){
-                                    svg.select('.x-axis-group')
-                                        .append("g")
-                                        .attr("class", "x axis")
-                                        .attr("transform", "translate(0," + chartH + ")")
-                                        .call(xAxis);
+function drawAxis(){
+    svg.select('.x-axis-group')
+        .append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + chartHeight + ")")
+        .call(xAxis);
 
-                                    svg.select(".y-axis-group")
-                                        .append("g")
-                                        .attr("class", "y axis")
-                                        .call(yAxis)
-                                      .append("text")
-                                        .attr("transform", "rotate(-90)")
-                                        .attr("y", 6)
-                                        .attr("dy", ".71em")
-                                        .style("text-anchor", "end")
-                                        .text("Frequency");
-                                }
+    svg.select(".y-axis-group")
+        .append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Frequency");
+}
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -1077,11 +1094,11 @@
                     <section>
                         <h2>Test: bars drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                it('should render a bar for each data entry', function(){
-                                    var numBars = dataset.length;
+it('should render a bar for each data entry', function(){
+    var numBars = dataset.length;
 
-                                    expect(containerFixture.selectAll('.bar')[0].length).toEqual(numBars);
-                                });
+    expect(containerFixture.selectAll('.bar').size()).toEqual(numBars);
+});
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -1094,20 +1111,20 @@
                     <section>
                         <h2>Code: bars drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                function drawBars(){
-                                    // Setup the enter, exit and update of the actual bars in the chart.
-                                    // Select the bars, and bind the data to the .bar elements.
-                                    var bars = svg.select('.chart-group').selectAll(".bar")
-                                        .data(data);
+function drawBars(){
+    // Setup the enter, exit and update of the actual bars in the chart.
+    // Select the bars, and bind the data to the .bar elements.
+    var bars = svg.select('.chart-group').selectAll(".bar")
+        .data(data);
 
-                                    // If there aren't any bars create them
-                                    bars.enter().append('rect')
-                                        .attr("class", "bar")
-                                        .attr("x", function(d) { return xScale(d.letter); })
-                                        .attr("width", xScale.rangeBand())
-                                        .attr("y", function(d) { return yScale(d.frequency); })
-                                        .attr("height", function(d) { return chartH - yScale(d.frequency); });
-                                }
+    // If there aren't any bars create them
+    bars.enter().append('rect')
+        .attr("class", "bar")
+        .attr("x", function(d) { return xScale(d.letter); })
+        .attr("width", xScale.rangeBand())
+        .attr("y", function(d) { return yScale(d.frequency); })
+        .attr("height", function(d) { return chartHeight - yScale(d.frequency); });
+}
                         </code></pre>
                         <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
                         <aside class="notes">
@@ -1121,17 +1138,17 @@
                     <section>
                         <h2>Test: margin accessor</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                it('should provide margin getter and setter', function(){
-                                    var defaultMargin = barChart.margin(),
-                                        testMargin = {top: 4, right: 4, bottom: 4, left: 4},
-                                        newMargin;
+it('should provide margin getter and setter', function(){
+    var defaultMargin = barChart.margin(),
+        testMargin = {top: 4, right: 4, bottom: 4, left: 4},
+        newMargin;
 
-                                    barChart.margin(testMargin);
-                                    newMargin = barChart.margin();
+    barChart.margin(testMargin);
+    newMargin = barChart.margin();
 
-                                    expect(defaultMargin).not.toBe(testMargin);
-                                    expect(newMargin).toBe(testMargin);
-                                });
+    expect(defaultMargin).not.toBe(testMargin);
+    expect(newMargin).toBe(testMargin);
+});
                         </code></pre>
                     </section>
 
@@ -1139,11 +1156,11 @@
                     <section>
                         <h2>Code: Margin Accessor</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                exports.margin = function(_x) {
-                                    if (!arguments.length) return margin;
-                                    margin = _x;
-                                    return this;
-                                };
+exports.margin = function(_x) {
+    if (!arguments.length) return margin;
+    margin = _x;
+    return this;
+};
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -1163,65 +1180,65 @@
                     <section>
                         <h2>Final code: standard way</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                                    width = 960 - margin.left - margin.right,
-                                    height = 500 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-                                var x = d3.scale.ordinal()
-                                    .rangeRoundBands([0, width], .1);
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
-                                var y = d3.scale.linear()
-                                    .range([height, 0]);
+var y = d3.scale.linear()
+    .range([height, 0]);
 
-                                var xAxis = d3.svg.axis()
-                                    .scale(x)
-                                    .orient("bottom");
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
 
-                                var yAxis = d3.svg.axis()
-                                    .scale(y)
-                                    .orient("left")
-                                    .ticks(10, "%");
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10, "%");
 
-                                var svg = d3.select("body").append("svg")
-                                    .attr("width", width + margin.left + margin.right)
-                                    .attr("height", height + margin.top + margin.bottom)
-                                  .append("g")
-                                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-                                d3.tsv("data.tsv", type, function(error, data) {
-                                  x.domain(data.map(function(d) { return d.letter; }));
-                                  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+d3.tsv("data.tsv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
-                                  svg.append("g")
-                                      .attr("class", "x axis")
-                                      .attr("transform", "translate(0," + height + ")")
-                                      .call(xAxis);
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
-                                  svg.append("g")
-                                      .attr("class", "y axis")
-                                      .call(yAxis)
-                                    .append("text")
-                                      .attr("transform", "rotate(-90)")
-                                      .attr("y", 6)
-                                      .attr("dy", ".71em")
-                                      .style("text-anchor", "end")
-                                      .text("Frequency");
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Frequency");
 
-                                  svg.selectAll(".bar")
-                                      .data(data)
-                                    .enter().append("rect")
-                                      .attr("class", "bar")
-                                      .attr("x", function(d) { return x(d.letter); })
-                                      .attr("width", x.rangeBand())
-                                      .attr("y", function(d) { return y(d.frequency); })
-                                      .attr("height", function(d) { return height - y(d.frequency); });
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); });
 
-                                });
+});
 
-                                function type(d) {
-                                  d.frequency = +d.frequency;
-                                  return d;
-                                }
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
                         </code></pre>
                     </section>
 
@@ -1229,58 +1246,46 @@
                     <section>
                         <h2>Final code: TDD way</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-                                demo.graphs.barChart = function module(){
+return function module(){
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960, height = 500,
+        data,
+        chartWidth, chartHeight,
+        xScale, yScale,
+        xAxis, yAxis;
 
-                                    var margin = {top: 20, right: 20, bottom: 30, left: 40},
-                                        width = 960, height = 500,
-                                        data,
-                                        chartW, chartH,
-                                        xScale, yScale,
-                                        xAxis, yAxis;
+    var svg;
 
-                                    var svg;
+    function buildContainerGroups(){ ... }
 
-                                    function buildContainerGroups(){ ... }
+    function buildScales(){ ... }
 
-                                    function buildScales(){ ... }
+    function buildAxis(){ ... }
 
-                                    function buildAxis(){ ... }
+    function drawAxis(){ ... }
 
-                                    function drawAxis(){ ... }
+    function drawBars(){ ... }
 
-                                    function drawBars(){ ... }
+    function exports(_selection){
+        _selection.each(function(_data){
+            chartWidth = width - margin.left - margin.right;
+            chartHeight = height - margin.top - margin.bottom;
+            data = _data;
 
-                                    function exports(_selection){
-                                        _selection.each(function(_data){
-                                            chartW = width - margin.left - margin.right;
-                                            chartH = height - margin.top - margin.bottom;
-                                            data = _data;
+            buildScales();
+            buildAxis();
+            buildSVG(this);
+            drawBars();
+            drawAxis();
+        });
+    }
 
-                                            buildScales();
-                                            buildAxis();
+    exports.margin = function(_x) { ... };
 
-                                            if (!svg) {
-                                                svg = d3.select(this)
-                                                    .append('svg')
-                                                    .attr('class', 'bar-chart');
-                                            }
-                                            svg.attr({
-                                                width: width + margin.left + margin.right,
-                                                height: height + margin.top + margin.bottom
-                                            });
+    // More accessors to all configurable attributes
 
-                                            buildContainerGroups();
-                                            drawBars();
-                                            drawAxis();
-                                        });
-                                    }
-
-                                    exports.margin = function(_x) { ... };
-
-                                    // More accessors to all configurable elements on graph
-
-                                    return exports;
-                                };
+    return exports;
+};
                         </code></pre>
                     </section>
 
