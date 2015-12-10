@@ -231,23 +231,6 @@
                         </aside>
                     </section>
 
-                    <!-- Pain Points -->
-                    <section>
-                        <h2>Pain points</h2>
-                        <ul>
-                            <li class="fragment">Enter, update and exit pattern</li>
-                            <li class="fragment">Chaining code style</li>
-                            <li class="fragment">Margins and dimensions</li>
-                            <li class="fragment">Tooltip creation</li>
-                        </ul>
-                        <aside class="notes">
-                            <ul>
-                                <li>jQuery like</li>
-                                <li>All data viz needs work on the data side</li>
-                                <li>The community and Bostock has develop patterns</li>
-                            </ul>
-                        </aside>
-                    </section>
                 </section>
 
                 <!-- What can you do with D3? -->
@@ -314,7 +297,7 @@
                     </section>
 
                     <section>
-                        <h2>Interactive infographics</h2>
+                        <h2>Interactive data explorations</h2>
                         <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
                     </section>
                 </section>
@@ -582,7 +565,7 @@ svg.selectAll(".bar")
                             <ul>
                                 <li>So, now we have a bar chart that works right?</li>
                                 <li>Well… it’s true, it works, and probably you could copy this code, modify it a bit and use it somewhere in your website.</li>
-                                <li>But being serious, who thinks this is good quality code?</li>
+                                <li>But let's be serious, who thinks this is good-quality code?</li>
                             </ul>
                         </aside>
                     </section>
@@ -1303,12 +1286,11 @@ return function module(){
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>T: It’s hard to establish where the benefits of the Reusable Chart API end and where the TDD benefits start:</li>
-                                <li>SFR: Nothing will stop you from trying some crazy things. Maybe your first approach was just a hack, you can improve it now!</li>
-                                <li>GO: As TDD forces you to first understand what you want to do</li>
-                                <li>DU: Learn more about the D3 API.</li>
-                                <li>IC: Create a documentation that does not get outdated. Small and specific code that can be understood easily.</li>
-                                <li>Q: Charts will be a first-class citizen inside your repo.</li>
+                                <li>Won’t be afraid of touching your charts anymore. First hacky approach, you can improve it now!</li>
+                                <li>As TDD forces you to first understand what you want to do</li>
+                                <li>Learn more about the D3 API.</li>
+                                <li>Create a documentation that does not get outdated. Small and specific code that can be understood easily.</li>
+                                <li>Charts will be a first-class citizen inside your repo. No rewrites.</li>
                             </ul>
                         </aside>
                     </section>
@@ -1455,9 +1437,7 @@ return function module(){
                     <ul>
                         <li>Building a new chart</li>
                         <li>Refactoring accessors</li>
-                        <li>Refactoring Enter, Update, Exit</li>
                         <li>Add Events</li>
-                        <li>Q&A</li>
                     </ul>
                 </section>
 
@@ -1571,18 +1551,25 @@ return function module(){
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+            // Configuration to make the right arrow always do next
+            // keyboard: {
+            //     39: 'next',
+            //     37: 'prev'
+            // },
 		</script>
 
 	</body>
