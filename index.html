@@ -122,12 +122,13 @@
                             <ul>
                                 <li>Find me on my personal blog and EB's engineering blog</li>
                                 <li>I am also on twitter, here's my unpronunciable handler, where I share interesting articles and resources about dataviz, d3 and front end technologies in general.</li>
+                                <li>Let's see what bring you here tonight</li>
                             </ul>
                         </aside>
                     </section>
                 </section>
 
-                <!-- Level Poll + Next up -->
+                <!-- Next up -->
                 <section>
                     <h2>Next up</h2>
                     <ul>
@@ -137,7 +138,6 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>bring you here today</li>
                             <li>Talk for about 40 min</li>
                             <li>We will do some hands down coding, where you will help me.</li>
                             <li>Q&A at the end</li>
@@ -802,26 +802,28 @@ svg.selectAll(".bar")
                     <section>
                         <h2>Reusable Chart API - code</h2>
                         <pre><code>
-// @param  {D3Selection} _selection A d3 selection that represents
-// the container(s) where the chart(s) will be rendered
-function exports(_selection){
+return function module(){
+    // @param  {D3Selection} _selection A d3 selection that represents
+    // the container(s) where the chart(s) will be rendered
+    function exports(_selection){
 
-    // @param {object} _data The data to generate the chart
-    _selection.each(function(_data){
-        // Assigns private variables
-        // Builds chart
-    });
+        // @param {object} _data The data to generate the chart
+        _selection.each(function(_data){
+            // Assigns private variables
+            // Builds chart
+        });
+    }
+
+    // @param  {object} _x Margin object to get/set
+    // @return { margin | module} Current margin or Bar Chart module to chain calls
+    exports.margin = function(_x) {
+        if (!arguments.length) return margin;
+        margin = _x;
+        return this;
+    };
+
+    return exports;
 }
-
-// @param  {object} _x Margin object to get/set
-// @return { margin | module} Current margin or Bar Chart module to chain calls
-exports.margin = function(_x) {
-    if (!arguments.length) return margin;
-    margin = _x;
-    return this;
-};
-
-return exports;
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -865,12 +867,12 @@ container.datum(dataset).call(barChart);
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Modular: Change of mindset, from building charts to components. Create a library.</li>
-                                <li>Composable: You can build higher-order components from different elements.</li>
-                                <li>Configurable: change without changing the code, as we separate the core from the configuration</li>
-                                <li>Consistent: Following the same strategy we can reuse methods between charts</li>
-                                <li>Teamwork enabling: Easy to grab for newbies and easy to share workload</li>
-                                <li>Testable: The most important, no legacy code</li>
+                                <li>Change of mindset, from building charts to components. Create a library.</li>
+                                <li>You can build higher-order components from different elements.</li>
+                                <li>Output can change without changing the code, as we separate the core from the configuration</li>
+                                <li>Following the same strategy we can reuse methods between charts</li>
+                                <li>Easy to grab for newcomers and easy to share workload</li>
+                                <li>The most important, no legacy code</li>
                             </ul>
                         </aside>
                     </section>
@@ -991,11 +993,11 @@ function buildContainerGroups(){
                        </code></pre>
                     </section>
 
-                    <!-- Test: Axis -->
+                    <!-- Test: Axes -->
                     <section>
-                        <h2>Test: axis</h2>
+                        <h2>Test: axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-it('should render an X and Y axis', function(){
+it('should render an X and Y axes', function(){
     expect(containerFixture.select('.x-axis-group.axis').empty()).toBeFalsy();
     expect(containerFixture.select('.y-axis-group.axis').empty()).toBeFalsy();
 });
@@ -1009,7 +1011,7 @@ it('should render an X and Y axis', function(){
 
                     <!--  Code: Scales -->
                     <section>
-                        <h2>Code: Scales</h2>
+                        <h2>Code: scales</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function buildScales(){
     xScale = d3.scale.ordinal()
@@ -1028,9 +1030,9 @@ function buildScales(){
                         </aside>
                     </section>
 
-                    <!-- Code: Axis -->
+                    <!-- Code: Axes -->
                     <section>
-                        <h2>Code: axis</h2>
+                        <h2>Code: axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function buildAxis(){
     xAxis = d3.svg.axis()
@@ -1045,9 +1047,9 @@ function buildAxis(){
                         </code></pre>
                     </section>
 
-                    <!-- Code: Axis Drawing -->
+                    <!-- Code: Axes Drawing -->
                     <section>
-                        <h2>Code: axis drawing</h2>
+                        <h2>Code: axes drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function drawAxis(){
     svg.select('.x-axis-group')
@@ -1139,7 +1141,7 @@ it('should provide margin getter and setter', function(){
 
                     <!-- Code: Margin Accessor -->
                     <section>
-                        <h2>Code: Margin Accessor</h2>
+                        <h2>Code: margin accessor</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 exports.margin = function(_x) {
     if (!arguments.length) return margin;
@@ -1234,22 +1236,10 @@ function type(d) {
 return function module(){
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960, height = 500,
-        data,
         chartWidth, chartHeight,
         xScale, yScale,
-        xAxis, yAxis;
-
-    var svg;
-
-    function buildContainerGroups(){ ... }
-
-    function buildScales(){ ... }
-
-    function buildAxis(){ ... }
-
-    function drawAxis(){ ... }
-
-    function drawBars(){ ... }
+        xAxis, yAxis,
+        data, svg;
 
     function exports(_selection){
         _selection.each(function(_data){
@@ -1265,9 +1255,18 @@ return function module(){
         });
     }
 
-    exports.margin = function(_x) { ... };
+    function buildContainerGroups(){ ... }
 
-    // More accessors to all configurable attributes
+    function buildScales(){ ... }
+
+    function buildAxis(){ ... }
+
+    function drawAxis(){ ... }
+
+    function drawBars(){ ... }
+
+    // Accessors to all configurable attributes
+    exports.margin = function(_x) { ... };
 
     return exports;
 };
@@ -1427,17 +1426,18 @@ return function module(){
                     <aside class="notes">
                         <ul>
                             <li>Thanks for listening and thanks for caring!</li>
+                            <li>At EB, we are hiring but this time, actually my team seems to gonna need an extra frontender, and we have a very interesting project in mind, ask me later about details!</li>
                         </ul>
                     </aside>
                 </section>
 
-                <!-- Poll: Next steps? -->
+                <!-- Live Coding -->
                 <section>
-                    <h2>Poll: next up</h2>
+                    <h2>Live Coding</h2>
                     <ul>
-                        <li>Building a new chart</li>
                         <li>Refactoring accessors</li>
                         <li>Add Events</li>
+                        <li>Start building a new chart</li>
                     </ul>
                 </section>
 
