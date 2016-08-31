@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introduction to D3</title>
+
+		<meta name="description" content="Introductory talk about D3">
+		<meta name="author" content="Marcos Iglesias">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/custom.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+
+	<body>
+
+        <div class="reveal">
+            <div class="slides">
+
+                <!-- Opening -->
+                <section>
+                    <h2>Introduction to D3</h2>
+                    <div>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
+                          <defs>
+                            <path id="deethree" d="M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z"/>
+                          </defs>
+                          <use stroke="black" stroke-width="20" fill="none" xlink:href="#deethree"/>
+                          <use fill="white" xlink:href="#deethree"/>
+                        </svg>
+                    </div>
+                    <ul>
+                        <li>Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a></li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Hi, thanks for coming!</li>
+                            <li>Introductory talk about D3 for software engineers</li>
+                            <li>Show you the library, its possibilities and get you excited about working with it</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- Bio -->
+                <section>
+                    <section>
+                        <h2>Marcos Iglesias</h2>
+                        <div style="padding-bottom: 40px;">
+                            <img data-src="img/eventbrite-logo.png" width="50%" alt="Eventbrite Logo">
+                        </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>My name is Marcos</li>
+                                <li>Sr. Software Engineer at Eventbrite</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Online</h2>
+                        <ul>
+                            <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Personal Blog</a></li>
+                            <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
+                            <li><a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Find me on my personal blog and EB's engineering blog</li>
+                                <li>I am also on twitter, here's my unpronunciable handler, where I share interesting articles and resources about dataviz, d3 and front end technologies in general.</li>
+                                <li>Let's see what brought you here today</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <!-- Next up -->
+                <section>
+                    <h2>Next up</h2>
+                    <ul>
+                        <li class="fragment">Introduction</li>
+                        <li class="fragment">Applications</li>
+                        <li class="fragment">Bar Chart Example</li>
+                        <li class="fragment">D3 Selection</li>
+                        <li class="fragment">Live coding</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Introduce D3</li>
+                            <li>Talk about possibilities</li>
+                            <li>See a chart example</li>
+                            <li>Introduce you to D3 selections</li>
+                            <li>We are gonna do some live coding if there's time</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- D3 -->
+                <section>
+                    <section>
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
+                            <defs>
+                                <path id="deethree" d="M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z"/>
+                            </defs>
+                            <use stroke="black" stroke-width="20" fill="none" xlink:href="#deethree"/>
+                            <use fill="white" xlink:href="#deethree"/>
+                        </svg>
+                        <aside class="notes">
+                            <ul>
+                                <li>Who has worked with D3 before?</li>
+                                <li>Maybe you have heard about D3, or played with it a bit</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- D3 intro -->
+                    <section>
+                        <h2>What is D3.js?</h2>
+                        <ul>
+                            <li class="fragment">Data-Driven Documents</li>
+                            <li class="fragment">General Purpose Visualization Library</li>
+                            <li class="fragment">Manipulates data based documents</li>
+                            <li class="fragment">Open web standards (SVG, HTML, CSS and now Canvas)</li>
+                            <li class="fragment">Allows interactions with your graphs</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>D3 stands for data-driven documents</li>
+                                <li>Huge API and focused on mathematical transformations of data</li>
+                                <li>Based on web standards as SVG, HTML, CSS and canvas</li>
+                                <li>One of it’s more celebrated features is it’s seamless integration of animations and the way it allows us to create engaging interactions.</li>
+                                <li>Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- How does it work? -->
+                    <section>
+                        <h2>How does it work?</h2>
+                        <ul>
+                            <li class="fragment">Loads data</li>
+                            <li class="fragment">Binds data to elements</li>
+                            <li class="fragment">Transforms those elements</li>
+                            <li class="fragment">Transitions between states</li>
+                            <li class="fragment"><a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0">Example</a></li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>D3 loads data and attaches it to the DOM.</li>
+                                <li>Binds that data to DOM elements and transforms those elements, transitioning among states if necessary.</li>
+                                <li>The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener the value, the higher the rise against previous year. Smart, isn’t it?</li>
+                                <li>That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Niceties -->
+                    <section>
+                        <h2>D3 Niceties</h2>
+                        <ul>
+                            <li class="fragment">Based on attaching data to the DOM</li>
+                            <li class="fragment">Styling of elements with CSS</li>
+                            <li class="fragment">Transitions and animations baked in</li>
+                            <li class="fragment">Total control over our graphs</li>
+                            <li class="fragment">Amazing community</li>
+                            <li class="fragment">Decent amount of publications</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Data stays on the DOM</li>
+                                <li>Same tools as FE development</li>
+                                <li>Stunning UIs</li>
+                                <li>Everything is configurable</li>
+                                <li>Active community, slack channel included</li>
+                                <li>A lot of books about d3</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- D3 v4 update -->
+                    <section>
+                        <h2>D3 v4 Update</h2>
+                        <ul>
+                            <li class="fragment">More modular</li>
+                            <li class="fragment">Breaking changes</li>
+                            <li class="fragment">New standard</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>A bit of a crazy moment</li>
+                                <li>You as beginners would need to take care about the version of the content you check</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <!-- What can you do with D3? -->
+                <section>
+                    <section>
+                        <h1>What can you do with D3?</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>Let's talk about its uses</li>
+                                <li>Lots of possibilities</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Applications -->
+                    <section>
+                        <h2>Bar charts</h2>
+                        <img data-src="img/barchart_Fotor.jpg" alt="Bar Chart">
+                        <aside class="notes">
+                            <ul>
+                                <li>All kind of business charts</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Pie charts</h2>
+                        <img data-src="img/chart/piechart.png" width="50%" alt="Pie Chart">
+                    </section>
+
+                    <section>
+                        <h2>Bubble charts</h2>
+                        <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
+                    </section>
+
+                    <section>
+                        <h2>Choropleth</h2>
+                        <a target="_blank" href="http://bl.ocks.org/mbostock/4060606"><img src="img/choropleth.png" alt="" style="width: 80%;"></a>
+                    </section>
+
+                    <section>
+                        <h2>Map projections</h2>
+                        <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
+                        <aside class="notes">
+                            <ul>
+                                <li>All kind of maps</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Dashboards</h2>
+                        <a target="_blank" href="http://coenraets.org/apps/olympic-d3/#dashboard/3"><img src="img/dashboard.png"  style="width: 60%;"></a>
+                    </section>
+
+                    <section>
+                        <h2>Algorithm visualization</h2>
+                        <a target="_blank" href="https://bost.ocks.org/mike/algorithms/"><img src="img/edge-bundling.png" alt="Hierarchical Edge Bundling" style="width: 60%;"></a>
+                    </section>
+
+                    <section>
+                        <h2>Artistic visualizations</h2>
+                        <a target="_blank" href="http://alanahryding.me/blog/?p=618"><img data-src="img/d3_javascript_death2.png" alt="Pie Chart"></a>
+                    </section>
+
+                    <section>
+                        <h2>Interactive data explorations</h2>
+                        <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
+                    </section>
+                </section>
+
+                <!-- Bar Chart Example -->
+                <section>
+                    <section>
+                        <h2>Code example</h2>
+                        <a href="http://bost.ocks.org/mike/bar/"><img data-src="img/lets-make-a-bar-chart.png" alt=""></a>
+                        <p><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar chart example</a> by Mike Bostock</p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Simple chart example</li>
+                                <li>One of my first contacts with D3 was via this article</li>
+                                <li>Although there is not a lot of code, there is a lot of stuff happening here.</li>
+                                <li>Let's dive into it</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Code Analysis of the example -->
+                    <!-- Creating Container -->
+                    <section>
+                        <h2>Creating container</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                        </code></pre>
+                        <p>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></p>
+                        <aside class="notes">
+                            <ul>
+                                <li>First D3 pattern: Mike Bostock Margin Convention</li>
+                                <li>It can be considered a hack, but only once per chart</li>
+                                <li>T: Before discovering this pattern, moving stuff was hard</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Setting up Scales and Axes -->
+                    <section>
+                        <h2>Setting up scales and axes</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10, "%");
+                        </code></pre>
+                        <p>Reference: <a target="_blank" href="http://alignedleft.com/tutorials/d3/scales">Scales tutorial</a></p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Scales are functions that glue data and pixels</li>
+                                <li>T: Input domain, output range</li>
+                                <li>Axis are visual representations of those scales</li>
+                                <li>Creating the scales and the axis that depend on them</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Loading Data -->
+                    <section>
+                        <h2>Loading data</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// Loads Data
+d3.tsv("data.tsv", type, function(error, data) {
+  if (error) throw error;
+  // Chart Code here
+});
+
+// Cleans Data
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+                        </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Callback pattern</li>
+                                <li>Cleaning function that coerces the values to be a number with this JS hack</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Drawing Axes -->
+                    <section>
+                        <h2>Drawing axes</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// Rest of the scales
+x.domain(data.map(function(d) { return d.letter; }));
+y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+// Draws X axis
+svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(xAxis);
+
+// Draws Y axis
+svg.append("g")
+    .attr("class", "y axis")
+    .call(yAxis)
+  .append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 6)
+    .attr("dy", ".71em")
+    .style("text-anchor", "end")
+    .text("Frequency");
+                        </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Set the domain of the scales, dependent on the data</li>
+                                <li>Draws the x and y axes, labeling the latter</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Drawing Chart Bars  -->
+                    <section>
+                        <h2>Drawing bars</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+svg.selectAll(".bar")
+    .data(data)
+  .enter().append("rect")
+    .attr("class", "bar")
+    .attr("x", function(d) { return x(d.letter); })
+    .attr("width", x.rangeBand())
+    .attr("y", function(d) { return y(d.frequency); })
+    .attr("height", function(d) { return height - y(d.frequency); });
+                        </code></pre>
+                        <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
+                        <aside class="notes">
+                            <ul>
+                                <li>Here we see the Enter, Update, Exit</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Output -->
+                    <section>
+                        <h2>Output</h2>
+                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                        <aside class="notes">
+                            <ul>
+                                <li>And there we go, we have a d3 chart.</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Final Code -->
+                    <section>
+                        <h2>Final code</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
+
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10, "%");
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.tsv("data.tsv", type, function(error, data) {
+  if (error) throw error;
+
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Frequency");
+
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("height", function(d) { return height - y(d.frequency); });
+});
+
+function type(d) {
+  d.frequency = +d.frequency;
+  return d;
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <!-- D3 Selections -->
+                <section>
+                    <section>
+                        <h1>D3 Selections</h1>
+                    </section>
+
+                    <section>
+                        <h2>Transform the DOM by selecting elements and joining to data</h2>
+                        <aside class="notes">
+                            <li>It's another approach</li>
+                            <li>With jquery we accessed elments</li>
+                            <li>with backbone we render views</li>
+                            <li>with react with use the virtual DOM</li>
+                            <li>with D3 we have data joins</li>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Selections</h2>
+                        <ul>
+                            <li class="fragment">Subclass of array</li>
+                            <li class="fragment">Provides methods to create and manipulate selected elements</li>
+                            <li class="fragment">Array of arrays of elements</li>
+                        </ul>
+                        <aside class="notes">
+                            <li>a selection is an array of groups, and each group is an array of elements.</li>
+                            <li>such as setting attributes and styles</li>
+                            <li>data is fixed on the DOM, selections can change</li>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Setup</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// We have some random info
+let data = 'randomStringToCreateAnArray'.split('');
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Simplest Selection</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// We create the root list element
+let list = d3.select('.js-container')
+                .append('ul');
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Data Join</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+let dataJoin = list.selectAll('.item')
+// an empty selection, since the list container was empty
+// looking for instantiations of data
+                      .data(data);
+                    // data, which would be bound to a
+                    // selection
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h1>Update, Enter and Exit Pattern</h1>
+                        <aside class="notes">
+                            <li>when we joined the selection with an array of data,</li>
+                            <li>it results in three new selections</li>
+                            <li>that represent the three possible states: enter, update, and exit.</li>
+                            <li>Since the selection was empty, the update and exit selections are empty,</li>
+                            <li>while the enter selection contains a placeholder for each new datum.</li>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Functions that set properties</h2>
+                        <ul>
+                            <li>.text()</li>
+                            <li>.property()</li>
+                            <li>.style()</li>
+                            <li>.attr()</li>
+                        </ul>
+                        <aside class="notes">
+                            <li>each one takes a function</li>
+                            <li>and that function gets data</li>
+                            <li>from your .data()</li>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Update</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+dataJoin.attr('class', 'update');
+
+dataJoin
+    .attr('foo', function(d) {
+      return d.foo;
+    });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Enter</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// for every time that we see data
+// but we do not see an element
+dataJoin.enter()
+  .append('li').classed('enter', true)
+  // we create an element
+.merge(dataJoin)
+    // we merge the update and enter groups and apply an operation
+    .text(function(d) { return d; });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exit</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// Remove all elements as needed
+dataJoin.exit().remove();
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Resources</h2>
+                        <ul>
+                            <li><a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">How Selections Work</a></li>
+                            <li><a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></li>
+                            <li><a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></li>
+                            <li><a href="https://github.com/d3/d3-selection">Selection API Reference</a></li>
+                        </ul>
+                        <aside class="notes">
+                            <li>This is by far the trickiest part of D3</li>
+                            <li>I guess this part left you with a lot to digest, check here</li>
+                        </aside>
+                    </section>
+
+                </section>
+
+                <!-- Live Coding -->
+                <section>
+                    <section>
+                        <h1>Live Coding</h1>
+                    </section>
+
+                    <section>
+                        <h2>List Example</h2>
+                        <ul>
+                            <li><a target="_blank" href="https://codepen.io/Golodhros/pen/rLXAZw">https://codepen.io/Golodhros/pen/rLXAZw</a></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Table Example</h2>
+                        <ul>
+                            <li><a target="_blank" href="http://codepen.io/Golodhros/pen/jAgZAj">http://codepen.io/Golodhros/pen/jAgZAj</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- Learning and Resources -->
+                <section>
+                    <h2>Learning resources</h2>
+                    <a href="https://engineering.eventbrite.com/d3-js-resources-to-level-up/" title="D3.js Resources to Level Up">
+                        <img src="img/post-resources.png" style="width: 80%;">
+                    </a>
+                </section>
+
+                <section>
+                    <h2>Block Explorer</h2>
+                    <a href="http://blockbuilder.org/search" target="_blank">
+                        <img data-src="img/block-search.png" alt="Block Search">
+                    </a>
+                </section>
+
+                <!-- Books -->
+                <section>
+                    <section>
+                        <h2>Books</h2>
+                    </section>
+
+                    <section>
+                        <img src="img/gettingStarted.jpg" style="width: 50%;">
+                        <aside class="notes">
+                            <ul>
+                                <li>Super Fast introduction (<60 pg.) for web developers</li>
+                                <li>Talks about: Enter Selections, Scales, Axes</li>
+                                <li>Interactions and Transitions</li>
+                                <li>Layouts</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/interactivedatacover.jpg" style="width: 50%;">
+                        <aside class="notes">
+                            <ul>
+                                <li>Intro Book for everyone</li>
+                                <li>Starting from 0 and no experience on FE</li>
+                                <li>GeoJSON and Maps</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/developingad3edge.jpg" style="width: 50%;">
+                        <aside class="notes">
+                            <ul>
+                                <li>Reusable charts in a way we could all use</li>
+                                <li>Charts are simple and test friendly</li>
+                                <li>You can create larger ones by composition</li>
+                                <li>Introduces a data loader module</li>
+                                <li>Proposes some tests with Jasmine</li>
+                                <li>All in a small size</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <img src="img/MasteringD3.jpg" style="width: 50%;">
+                        <aside class="notes">
+                            <ul>
+                                <li>Same Reusable charts</li>
+                                <li>Ambitious book, almost a reference</li>
+                                <li>Integrations: Backbone, Socket.IO, Mapbox.</li>
+                                <li>Great number of different charts: Choropleth, Area, Advanced Maps</li>
+                                <li>Bower Package using Grunt for build and Vows for testing</li>
+                                <li>Less Importance to Tests, great book</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>More</h2>
+                    <ul>
+                        <li><a href="https://bost.ocks.org/mike/">Mike Bostock</a></li>
+                        <li><a href="https://github.com/d3/d3/blob/master/API.md">D3 Reference</a></li>
+                        <li><a href="https://d3js.slack.com">d3 slack team</a></li>
+                    </ul>
+                </section>
+
+                <!-- Conclusion -->
+                <section>
+                    <h2>Conclusions</h2>
+                    <ul>
+                        <li class="fragment">D3 is a visualization library</li>
+                        <li class="fragment">You can do amazing things with it</li>
+                        <li class="fragment">Data Joins are complex</li>
+                        <li class="fragment">but not too much...</li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- Thanks -->
+                <section>
+                    <h2>Thanks for listening!</h2>
+                    <ul>
+                        <li>
+                            Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
+                        </li>
+                        <li>
+                            Check out <a target="_blank" href="http://www.marcosiglesias.com/posts">my Blog</a>
+                        </li>
+                        <li>
+                            Slides: <a href="http://golodhros.github.io/">http://golodhros.github.io/</a>
+                        </li>
+                    </ul>
+                    <aside class="notes">
+                        <ul>
+                            <li>Thanks for listening!</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- Q&A -->
+
+                <!-- Usual workflow -->
+                <section>
+                    <section>
+                        <h1>Usual workflow</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>That workflow starts...</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Idea or Requirement -->
+                    <section>
+                        <img data-src="img/fun/idea.png" alt="Idea">
+                    </section>
+
+                    <!-- Search for an Example -->
+                    <section>
+                        <h2>Search for an example</h2>
+                        <a href="http://blockbuilder.org/search" target="_blank">
+                            <img data-src="img/block-search.png" alt="Block Search">
+                        </a>
+                        <aside class="notes">
+                            <ul>
+                                <li>Several options, but this is probably the best one</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Adapt Code -->
+                    <section>
+                        <h1>Read and adapt code</h1>
+                    </section>
+
+                    <!-- Add Features -->
+                    <section>
+                        <h1>Add/remove features</h1>
+                    </section>
+
+                    <!-- Polish -->
+                    <section>
+                        <h2>Polish it up</h2>
+                        <img data-src="img/fun/wax-on.jpg" alt="Wax on, Wax off">
+                    </section>
+
+                    <!-- It's a Good plan -->
+                    <section>
+                        <h2>Usual workflow</h2>
+                        <ul>
+                            <li class="">Idea or requirement</li>
+                            <li class="">Search for an example</li>
+                            <li class="">Adapt the code</li>
+                            <li class="">Add/remove features</li>
+                            <li class="">Polish it up</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Looks like a good plan, right?</li>
+                                <li>The problem lays on the code we need to adapt, as it is usually written in the standard way.</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <!-- D3 Stuff -->
+        <script src="node_modules/d3-selection/build/d3-selection.js"></script>
+
+        <!-- Google Analytics -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-TOCHANGE', 'auto');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- RevealJS Stuff -->
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+
+                transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/notes/notes.js', async: true }
+                ]
+            });
+
+            // Configuration to make the right arrow always do next
+            // keyboard: {
+            //     39: 'next',
+            //     37: 'prev'
+            // },
+		</script>
+	</body>
+</html>
