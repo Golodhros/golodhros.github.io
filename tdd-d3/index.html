@@ -15,34 +15,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+		<link rel="stylesheet" href="css/theme/custom.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
-        <style type="text/css">
-            .reveal {
-                font-family: 'Roboto Slab', serif;
-            }
-            .reveal h2 {
-                text-transform: none;
-            }
-            .reveal ul li {
-                line-height: 1.5;
-                margin-bottom: 5px;
-            }
-            .reveal img {
-                border: none !important;
-                box-shadow: none !important;
-            }
-            .reveal pre {
-                width: 95%;
-                font-size: 0.6em;
-            }
-            .reveal pre code {
-                padding: 20px;
-            }
-        </style>
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -90,7 +66,6 @@
                     </div>
                     <ul>
                         <li>Slides: <a href="http://golodhros.github.io/tdd-d3/">http://golodhros.github.io/tdd-d3/</a></li>
-                        <li>Code: <a href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></li>
                     </ul>
                     <aside class="notes">
                         <ul>
@@ -255,7 +230,6 @@
                             </ul>
                         </aside>
                     </section>
-
                 </section>
 
                 <!-- What can you do with D3? -->
@@ -558,6 +532,7 @@ svg.append("g")
                             <ul>
                                 <li>Set the domain of the scales, dependent on the data</li>
                                 <li>Draws the x and y axes, labeling the latter</li>
+                                <li>T: Note the weird indentation. When a selection is being changed, we use 2 spaces.</li>
                             </ul>
                         </aside>
                     </section>
@@ -1333,6 +1308,7 @@ return function module(){
                             <li class="fragment">TDD the last chart you built</li>
                             <li class="fragment">Pick a block, refactor it</li>
                             <li class="fragment">TDD your next chart</li>
+                            <li class="fragment">Create a new chart for Britecharts</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -1346,14 +1322,12 @@ return function module(){
 
                     <!-- Hands On -->
                     <section>
-                        <h1>Repository walkthrough</h1>
-                        <small><a target="_blank" href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a></small>
+                        <h1>Britecharts walkthrough</h1>
+                        <small><a target="_blank" href="https://github.com/eventbrite/britecharts">https://github.com/eventbrite/britecharts</a></small>
                         <aside class="notes">
                             <ul>
-                                <li>Code repository, the basement for a chart library</li>
                                 <li>Uses: Jasmine, Karma Runner</li>
                                 <li>Structure, configuration files</li>
-                                <li>Different branches</li>
                                 <li>Run tests and Debugging</li>
                             </ul>
                         </aside>
@@ -1443,27 +1417,13 @@ return function module(){
                         </li>
                         <li>
                             Slides: <a href="http://golodhros.github.io/tdd-d3">http://golodhros.github.io/tdd-d3</a>
-                            </li>
-                        <li>
-                            Code: <a target="_blank" href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/d3-meetup</a>
                         </li>
                     </ul>
                     <aside class="notes">
                         <ul>
                             <li>Thanks for listening and thanks for caring!</li>
-                            <li>At EB, we are hiring but this time, actually my team seems to gonna need an extra frontender, and we have a very interesting project in mind, ask me later about details!</li>
                         </ul>
                     </aside>
-                </section>
-
-                <!-- Live Coding -->
-                <section>
-                    <h2>Live Coding</h2>
-                    <ul>
-                        <li>Refactoring accessors</li>
-                        <li>Add Events</li>
-                        <li>Start building a new chart</li>
-                    </ul>
                 </section>
 
                 <!-- Q&A -->
