@@ -60,6 +60,7 @@ $brandGreen: #1befa2;
 html, body{
     font-family: "Lato", "Lato Light", "Helvetica", sans-serif;
     background: black url("/img/bkg-1.jpg") repeat 0 0;
+    color: #DEDEDE;
 }
 
 /* Links */
@@ -78,13 +79,6 @@ button::-moz-focus-inner {
     border: 0;
 }
 
-/* Logo */
-.logo{
-    background: url("/img/logo.png") no-repeat 0 0;
-    width: 140px;
-    height: 84px;
-    float: left;
-}
 
 /* Layouts */
 /* ---------------------------------------------------------
@@ -208,4 +202,124 @@ Clear the floats
 .media-list {
   margin-left: 0;
   list-style: none;
+}
+
+/* UTILS */
+/* For image replacement */
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
+
+/* Hide from both screenreaders and browsers: h5bp.com/u */
+.hidden, .is-hidden { display: none !important; visibility: hidden; }
+
+/* Hide only visually, but have it available for screenreaders: h5bp.com/v */
+.visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+
+/* Extends the .visuallyhidden class to allow the element to be focusable when navigated to via the keyboard: h5bp.com/p */
+.visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
+
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
+
+/* Contain floats: h5bp.com/q */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/*  Standard Media Object   */
+.media, .body{ overflow: hidden;}
+.img{float: left; margin-right: 20px;}
+.img img {display: block;}
+
+
+
+/* Header */
+.header {
+    text-align:left;
+}
+
+.logo{
+    background: url("../img/logo.png") no-repeat 0 0;
+    width: 140px;
+    height: 84px;
+    float: left;
+}
+.link{
+    text-decoration: none;
+
+}
+.link.logo-link{
+    display: inline-block;
+}
+
+.header-inner{
+    padding: 40px 0 20px;
+}
+.header-bd .nav-wrapper{
+    float: left;
+}
+.header-bd .logo-wrapper{
+    width: 50%;
+}
+.header-bd .nav-wrapper{
+    width: 50%;
+}
+.header-bd .header-title{
+    font-size: 1.4em;
+    color: $white;
+    text-transform: uppercase;
+    float: left;
+    margin: 0 0 0 0.5em;
+    padding-top: 30px;
+}
+.header-bd .header-subtitle{
+    font-size: 0.83em;
+    color: $brandGreen;
+    display: block;
+    text-transform: none;
+}
+
+@media (max-width: 1200px) {}
+@media (max-width: 980px) {
+    .header .header-inner{
+        padding: 30px 0 20px;
+    }
+}
+
+@media (max-width: 767px) {
+    .header .header-inner{
+        padding: 20px 0;
+    }
+    .header .header-bd .logo-wrapper{
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 565px){
+    .header .header-bd .logo-wrapper{
+       width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .logo{
+        width: 100px;
+        background-size: contain;
+    }
+    .header .header-bd .header-title{
+        padding-top: 21px;
+        font-size: 1em;
+    }
+}
+@media (max-width: 335px) {
+    .header .header-inner {
+        padding: 20px 0 0;
+    }
+    .header .logo{
+        width: 80px;
+        height: 60px;
+        background-size: contain;
+    }
+    .header .header-bd .header-title{
+        padding-top: 13px;
+    }
 }
