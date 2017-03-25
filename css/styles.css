@@ -1,0 +1,211 @@
+/* Fonts */
+@font-face {
+    font-family: 'aleoregular';
+    src: font-url('/fonts/aleo-regular-webfont.eot');
+    src: font-url('/fonts/aleo-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/fonts/aleo-regular-webfont.woff') format('woff'),
+         font-url('/fonts/aleo-regular-webfont.ttf') format('truetype'),
+         font-url('/fonts/aleo-regular-webfont.svg#aleoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'aleobold';
+    src: font-url('/fonts/aleo-bold-webfont.eot');
+    src: font-url('/fonts/aleo-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('/fonts/aleo-bold-webfont.woff') format('woff'),
+         font-url('/fonts/aleo-bold-webfont.ttf') format('truetype'),
+         font-url('/fonts/aleo-bold-webfont.svg#aleobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Headings */
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+    font-style: normal;
+    font-weight: normal;
+    margin: 0;
+    font-family: "Lato", "Lato Light", "Helvetica", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.h1{ font-size: 2em; margin: 0.3em 0 0.5em;}
+.h2{ font-size: 2em; margin: 0.2em 0 0.4em;}
+.h3{ font-size: 1.5em; margin: 0.2em 0 0.4em;}
+.h4{ font-size: 1em; margin: 0.1em 0 0.3em;}
+.h5{ font-size: 0.9em;  margin: 0em 0 0.15em;}
+.h6{ font-size: 0.8em;  margin: 0em 0 0.1em;}
+
+
+/* Colors
+$black: #1f2021;
+$white: #fdf9f9;
+$green: #48B856;
+$red: #F01440;
+$orange: #FB5F0A;
+$blue: #00C9FF;
+$yellow: #fef200;
+$purple: #8B0AFB;
+$brandGreen: #1befa2;
+*/
+
+
+/* Background texture */
+html, body{
+    font-family: "Lato", "Lato Light", "Helvetica", sans-serif;
+    background: black url("/img/bkg-1.jpg") repeat 0 0;
+}
+
+/* Links */
+.link{
+    color: #1befa2;
+    text-decoration: none;
+
+    &:hover{
+        color: #fef200;
+    }
+}
+a:focus {
+    outline: none;
+}
+button::-moz-focus-inner {
+    border: 0;
+}
+
+/* Logo */
+.logo{
+    background: url("/img/logo.png") no-repeat 0 0;
+    width: 140px;
+    height: 84px;
+    float: left;
+}
+
+/* Layouts */
+/* ---------------------------------------------------------
+ *  1- Positioning Classes
+ */
+
+.l-block    {display: block !important;}
+.l-iblock   {display: inline-block !important;}
+.l-inline   {display: inline !important;}
+
+.l-right    {float:right;}
+.l-left     {float:left;}
+.l-center   {margin: 0 auto !important;}
+
+
+/* ---------------------------------------------------------
+ *  2- Font related
+ */
+
+.left-aligned   {text-align: left;}
+.right-aligned  {text-align: right;}
+.center-aligned {text-align: center;}
+
+.f-upper{text-transform: uppercase; }
+.f-light{font-weight: 400;}
+.f-bold{font-weight: 800;}
+
+.is-hidden {display: none !important;}
+
+
+/* ---------------------------------------------------------
+ *  3- Lists
+ */
+
+.plain-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.inline-list{
+    list-style: none;
+    margin: 0;
+
+    .item{
+        float: left;
+        margin-right: 0.5em;
+    }
+}
+
+
+/* ---------------------------------------------------------
+ *  4- Page Layout
+ */
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+@media (max-width: 330px) {
+    .container {
+        padding: 0 1em;
+    }
+}
+
+/*
+Media objects
+Source: http://stubbornella.org/content/?p=497
+--------------------------------------------------
+*/
+.Media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.Media-figure {
+  margin-right: 1em;
+}
+
+.Media-body {
+  flex: 1;
+}
+
+/*
+Common styles
+-------------------------
+Clear the floats
+*/
+.media,
+.media-body {
+  overflow: hidden;
+  *overflow: visible;
+  zoom: 1;
+}
+
+/*Proper spacing between instances of .media */
+.media,
+.media .media {
+  margin-top: 15px;
+}
+.media:first-child {
+  margin-top: 0;
+}
+
+.media-object {
+  display: block;
+}
+
+.media-heading {
+  margin: 0 0 5px;
+}
+
+.media > .l-left {
+  margin-right: 10px;
+}
+.media > .l-right {
+  margin-left: 10px;
+}
+
+.media-list {
+  margin-left: 0;
+  list-style: none;
+}
