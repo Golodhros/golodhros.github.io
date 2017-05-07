@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>React & D3 - Marcos Iglesias</title>
+		<title>React, D3 and the dataviz ecosystem - Marcos Iglesias</title>
 
-		<meta name="description" content="Introductory talk about D3">
+		<meta name="description" content="React, D3 and the dataviz ecosystem">
 		<meta name="author" content="Marcos Iglesias">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -37,8 +37,9 @@
 
                 <!-- Opening -->
                 <section>
-                    <h2>React D3</h2>
+                    <h2>React, D3 and the dataviz ecosystem</h2>
                     <div>
+                        <!-- TODO: D3 + React Logos -->
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
                           <defs>
                             <path id="deethree" d="M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z"/>
@@ -68,6 +69,7 @@
                             <ul>
                                 <li>My name is Marcos</li>
                                 <li>Sr. Software Engineer at Eventbrite</li>
+                                <li>Build User Interfaces and Dashboards for our event organizers</li>
                             </ul>
                         </aside>
                     </section>
@@ -91,6 +93,7 @@
                 <!-- Next up -->
                 <section>
                     <h2>Next up</h2>
+                    <!-- TODO: Fill Agenda -->
                     <ul>
                         <li class="fragment">Introduction</li>
                         <li class="fragment"></li>
@@ -162,6 +165,7 @@
                     </section>
 
                     <!-- Niceties -->
+                    <!-- Deprecate? -->
                     <section>
                         <h2>D3 Niceties</h2>
                         <ul>
@@ -185,6 +189,7 @@
                     </section>
 
                     <!-- D3 v4 update -->
+                    <!-- Deprecate? -->
                     <section>
                         <h2>D3 v4 Update</h2>
                         <ul>
@@ -199,302 +204,11 @@
                             </ul>
                         </aside>
                     </section>
-                </section>
 
-                <!-- What can you do with D3? -->
-                <section>
+                    <!-- D3 Demo - Budget -->
                     <section>
-                        <h1>What can you do with D3?</h1>
-                        <aside class="notes">
-                            <ul>
-                                <li>Let's talk about its uses</li>
-                                <li>Lots of possibilities</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Applications -->
-                    <section>
-                        <h2>Bar charts</h2>
-                        <img data-src="img/barchart_Fotor.jpg" alt="Bar Chart">
-                        <aside class="notes">
-                            <ul>
-                                <li>All kind of business charts</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>Pie charts</h2>
-                        <img data-src="img/chart/piechart.png" width="50%" alt="Pie Chart">
-                    </section>
-
-                    <section>
-                        <h2>Bubble charts</h2>
-                        <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
-                    </section>
-
-                    <section>
-                        <h2>Choropleth</h2>
-                        <a target="_blank" href="http://bl.ocks.org/mbostock/4060606"><img src="img/choropleth.png" alt="" style="width: 80%;"></a>
-                    </section>
-
-                    <section>
-                        <h2>Map projections</h2>
-                        <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
-                        <aside class="notes">
-                            <ul>
-                                <li>All kind of maps</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>Dashboards</h2>
-                        <a target="_blank" href="http://coenraets.org/apps/olympic-d3/#dashboard/3"><img src="img/dashboard.png"  style="width: 60%;"></a>
-                    </section>
-
-                    <section>
-                        <h2>Algorithm visualization</h2>
-                        <a target="_blank" href="https://bost.ocks.org/mike/algorithms/"><img src="img/edge-bundling.png" alt="Hierarchical Edge Bundling" style="width: 60%;"></a>
-                    </section>
-
-                    <section>
-                        <h2>Artistic visualizations</h2>
-                        <a target="_blank" href="http://alanahryding.me/blog/?p=618"><img data-src="img/d3_javascript_death2.png" alt="Pie Chart"></a>
-                    </section>
-
-                    <section>
-                        <h2>Interactive data explorations</h2>
+                        <h2>D3 Demo</h2>
                         <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
-                    </section>
-                </section>
-
-                <!-- Bar Chart Example -->
-                <section>
-                    <section>
-                        <h2>Code example</h2>
-                        <a href="http://bost.ocks.org/mike/bar/"><img data-src="img/lets-make-a-bar-chart.png" alt=""></a>
-                        <p><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar chart example</a> by Mike Bostock</p>
-                        <aside class="notes">
-                            <ul>
-                                <li>Simple chart example</li>
-                                <li>One of my first contacts with D3 was via this article</li>
-                                <li>Although there is not a lot of code, there is a lot of stuff happening here.</li>
-                                <li>Let's dive into it</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Code Analysis of the example -->
-                    <!-- Creating Container -->
-                    <section>
-                        <h2>Creating container</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-                        </code></pre>
-                        <p>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></p>
-                        <aside class="notes">
-                            <ul>
-                                <li>First D3 pattern: Mike Bostock Margin Convention</li>
-                                <li>It can be considered a hack, but only once per chart</li>
-                                <li>T: Before discovering this pattern, moving stuff was hard</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Setting up Scales and Axes -->
-                    <section>
-                        <h2>Setting up scales and axes</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10, "%");
-                        </code></pre>
-                        <p>Reference: <a target="_blank" href="http://alignedleft.com/tutorials/d3/scales">Scales tutorial</a></p>
-                        <aside class="notes">
-                            <ul>
-                                <li>Scales are functions that glue data and pixels</li>
-                                <li>T: Input domain, output range</li>
-                                <li>Axis are visual representations of those scales</li>
-                                <li>Creating the scales and the axis that depend on them</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Loading Data -->
-                    <section>
-                        <h2>Loading data</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// Loads Data
-d3.tsv("data.tsv", type, function(error, data) {
-  if (error) throw error;
-  // Chart Code here
-});
-
-// Cleans Data
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
-}
-                        </code></pre>
-                        <aside class="notes">
-                            <ul>
-                                <li>Callback pattern</li>
-                                <li>Cleaning function that coerces the values to be a number with this JS hack</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Drawing Axes -->
-                    <section>
-                        <h2>Drawing axes</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// Rest of the scales
-x.domain(data.map(function(d) { return d.letter; }));
-y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
-// Draws X axis
-svg.append("g")
-    .attr("class", "x axis")
-    .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
-
-// Draws Y axis
-svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-  .append("text")
-    .attr("transform", "rotate(-90)")
-    .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Frequency");
-                        </code></pre>
-                        <aside class="notes">
-                            <ul>
-                                <li>Set the domain of the scales, dependent on the data</li>
-                                <li>Draws the x and y axes, labeling the latter</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Drawing Chart Bars  -->
-                    <section>
-                        <h2>Drawing bars</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-svg.selectAll(".bar")
-    .data(data)
-  .enter().append("rect")
-    .attr("class", "bar")
-    .attr("x", function(d) { return x(d.letter); })
-    .attr("width", x.rangeBand())
-    .attr("y", function(d) { return y(d.frequency); })
-    .attr("height", function(d) { return height - y(d.frequency); });
-                        </code></pre>
-                        <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
-                        <aside class="notes">
-                            <ul>
-                                <li>Here we see the Enter, Update, Exit</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Output -->
-                    <section>
-                        <h2>Output</h2>
-                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
-                        <aside class="notes">
-                            <ul>
-                                <li>And there we go, we have a d3 chart.</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Final Code -->
-                    <section>
-                        <h2>Final code</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10, "%");
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-d3.tsv("data.tsv", type, function(error, data) {
-  if (error) throw error;
-
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Frequency");
-
-  svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
-      .attr("width", x.bandWidth())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); });
-});
-
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
-}
-                        </code></pre>
                     </section>
                 </section>
 
@@ -634,107 +348,115 @@ dataJoin.exit().remove();
 
                 </section>
 
-                <!-- Live Coding -->
+                <!-- D3 Patterns and Libraries -->
                 <section>
                     <section>
-                        <h1>Live Coding</h1>
+                        <h1>Patterns</h1>
                     </section>
 
                     <section>
-                        <h2>List Example</h2>
+                        <h2>D3 Component Patters</h2>
                         <ul>
-                            <li><a target="_blank" href="https://codepen.io/Golodhros/pen/rLXAZw">https://codepen.io/Golodhros/pen/rLXAZw</a></li>
+                            <li></li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2>Table Example</h2>
+                        <h2>D3 Libraries</h2>
                         <ul>
-                            <li><a target="_blank" href="http://codepen.io/Golodhros/pen/jAgZAj">http://codepen.io/Golodhros/pen/jAgZAj</a></li>
+                            <li></li>
+                        </ul>
+                    </section>
+
+                    <!-- D3 Testing -->
+                    <section>
+                        <h2>D3 Testing</h2>
+                    </section>
+                </section>
+
+                <!-- React -->
+                <section>
+                    <section>
+                        <h1>React Intro</h1>
+                    </section>
+
+                    <section>
+                        <h2>React Dynamic Children</h2>
+                        <ul>
+                            <li></li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>React Fiber</h2>
+                        <ul>
+                            <li></li>
                         </ul>
                     </section>
                 </section>
 
-                <!-- Learning and Resources -->
+                <!-- React + D3-->
                 <section>
-                    <h2>Learning resources</h2>
-                    <a href="https://engineering.eventbrite.com/d3-js-resources-to-level-up/" title="D3.js Resources to Level Up">
-                        <img src="img/post-resources.png" style="width: 80%;">
-                    </a>
-                </section>
-
-                <section>
-                    <h2>Block Explorer</h2>
-                    <a href="http://blockbuilder.org/search" target="_blank">
-                        <img data-src="img/block-search.png" alt="Block Search">
-                    </a>
-                </section>
-
-                <!-- Books -->
-                <section>
+                    <!-- React D3 Intro -->
                     <section>
-                        <h2>Books</h2>
+                        <h1>React + D3</h1>
                     </section>
 
+                    <!-- React D3 Problems -->
                     <section>
-                        <img src="img/gettingStarted.jpg" style="width: 50%;">
-                        <aside class="notes">
-                            <ul>
-                                <li>Super Fast introduction (<60 pg.) for web developers</li>
-                                <li>Talks about: Enter Selections, Scales, Axes</li>
-                                <li>Interactions and Transitions</li>
-                                <li>Layouts</li>
-                            </ul>
-                        </aside>
+                        <h2>Challenges</h2>
+                        <ul>
+                            <li></li>
+                        </ul>
                     </section>
 
+                    <!-- React D3 Approaches -->
                     <section>
-                        <img src="img/interactivedatacover.jpg" style="width: 50%;">
-                        <aside class="notes">
-                            <ul>
-                                <li>Intro Book for everyone</li>
-                                <li>Starting from 0 and no experience on FE</li>
-                                <li>GeoJSON and Maps</li>
-                            </ul>
-                        </aside>
+                        <h2>React + D3 Approaches</h2>
+                        <ul>
+                            <li></li>
+                        </ul>
                     </section>
 
+                    <!-- React D3 Libraries -->
                     <section>
-                        <img src="img/developingad3edge.jpg" style="width: 50%;">
-                        <aside class="notes">
-                            <ul>
-                                <li>Reusable charts in a way we could all use</li>
-                                <li>Charts are simple and test friendly</li>
-                                <li>You can create larger ones by composition</li>
-                                <li>Introduces a data loader module</li>
-                                <li>Proposes some tests with Jasmine</li>
-                                <li>All in a small size</li>
-                            </ul>
-                        </aside>
+                        <h2>React + D3 Libraries</h2>
+                        <ul>
+                            <li></li>
+                        </ul>
                     </section>
 
+                    <!-- React D3 Library Demo -->
                     <section>
-                        <img src="img/MasteringD3.jpg" style="width: 50%;">
-                        <aside class="notes">
-                            <ul>
-                                <li>Same Reusable charts</li>
-                                <li>Ambitious book, almost a reference</li>
-                                <li>Integrations: Backbone, Socket.IO, Mapbox.</li>
-                                <li>Great number of different charts: Choropleth, Area, Advanced Maps</li>
-                                <li>Bower Package using Grunt for build and Vows for testing</li>
-                                <li>Less Importance to Tests, great book</li>
-                            </ul>
-                        </aside>
+                        <h2>Demo</h2>
+                    </section>
+
+                    <!-- React D3 Choosing a Project -->
+                    <section>
+                        <h2>Choosing a project</h2>
                     </section>
                 </section>
 
+                <!-- Resources -->
                 <section>
-                    <h2>More</h2>
-                    <ul>
-                        <li><a href="https://bost.ocks.org/mike/">Mike Bostock</a></li>
-                        <li><a href="https://github.com/d3/d3/blob/master/API.md">D3 Reference</a></li>
-                        <li><a href="https://d3js.slack.com">d3 slack team</a></li>
-                    </ul>
+
+                    <!-- D3 Resources -->
+                    <section>
+                        <h2>D3 Resources</h2>
+                        <ul>
+                            <li><a href="https://bost.ocks.org/mike/">Mike Bostock</a></li>
+                            <li><a href="https://github.com/d3/d3/blob/master/API.md">D3 Reference</a></li>
+                            <li><a href="https://d3js.slack.com">d3 slack team</a></li>
+                        </ul>
+                    </section>
+
+                    <!-- React Resources -->
+                    <section>
+                        <h2>React Resources</h2>
+                        <ul>
+                            <li><a href=""></a></li>
+                        </ul>
+                    </section>
                 </section>
 
                 <!-- Conclusion -->
@@ -761,10 +483,7 @@ dataJoin.exit().remove();
                             Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
                         </li>
                         <li>
-                            Check out <a target="_blank" href="http://www.marcosiglesias.com/posts">my Blog</a>
-                        </li>
-                        <li>
-                            Slides: <a href="http://golodhros.github.io/d3-intro">http://golodhros.github.io/d3-intro</a>
+                            Slides: <a href="http://golodhros.github.io/react-d3">http://golodhros.github.io/react-d3</a>
                         </li>
                     </ul>
                     <aside class="notes">
@@ -776,6 +495,76 @@ dataJoin.exit().remove();
 
                 <!-- Q&A -->
 			</div>
+
+            <!-- What can you do with D3? -->
+            <!-- Deprecate? -->
+            <section>
+                <section>
+                    <h1>What can you do with D3?</h1>
+                    <aside class="notes">
+                        <ul>
+                            <li>Let's talk about its uses</li>
+                            <li>Lots of possibilities</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <!-- Applications -->
+                <section>
+                    <h2>Bar charts</h2>
+                    <img data-src="img/barchart_Fotor.jpg" alt="Bar Chart">
+                    <aside class="notes">
+                        <ul>
+                            <li>All kind of business charts</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Pie charts</h2>
+                    <img data-src="img/chart/piechart.png" width="50%" alt="Pie Chart">
+                </section>
+
+                <section>
+                    <h2>Bubble charts</h2>
+                    <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
+                </section>
+
+                <section>
+                    <h2>Choropleth</h2>
+                    <a target="_blank" href="http://bl.ocks.org/mbostock/4060606"><img src="img/choropleth.png" alt="" style="width: 80%;"></a>
+                </section>
+
+                <section>
+                    <h2>Map projections</h2>
+                    <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
+                    <aside class="notes">
+                        <ul>
+                            <li>All kind of maps</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Dashboards</h2>
+                    <a target="_blank" href="http://coenraets.org/apps/olympic-d3/#dashboard/3"><img src="img/dashboard.png"  style="width: 60%;"></a>
+                </section>
+
+                <section>
+                    <h2>Algorithm visualization</h2>
+                    <a target="_blank" href="https://bost.ocks.org/mike/algorithms/"><img src="img/edge-bundling.png" alt="Hierarchical Edge Bundling" style="width: 60%;"></a>
+                </section>
+
+                <section>
+                    <h2>Artistic visualizations</h2>
+                    <a target="_blank" href="http://alanahryding.me/blog/?p=618"><img data-src="img/d3_javascript_death2.png" alt="Pie Chart"></a>
+                </section>
+
+                <section>
+                    <h2>Interactive data explorations</h2>
+                    <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
+                </section>
+            </section>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
