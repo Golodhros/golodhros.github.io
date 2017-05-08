@@ -282,3 +282,15 @@ body {
     line-height: 1.5;
     margin-bottom: 5px;
 }
+
+
+.scrollable-slide {
+    height: 700px;
+    overflow-y: auto !important;
+    padding-bottom: 80px;
+}
+
+/* References */
+small.reference {
+  margin-top: 80px;
+}
