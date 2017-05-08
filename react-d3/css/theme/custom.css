@@ -294,3 +294,10 @@ body {
 small.reference {
   margin-top: 80px;
 }
+
+.green {
+  color: #6aedc7;
+}
+.red {
+  color: #ff584c;
+}
