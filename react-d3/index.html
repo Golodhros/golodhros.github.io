@@ -57,7 +57,6 @@
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>My name is Marcos</li>
                                 <li>Sr. Software Engineer at Eventbrite</li>
                                 <li>Build User Interfaces and Dashboards for our event organizers</li>
                             </ul>
@@ -88,7 +87,8 @@
                         <aside class="notes">
                             <ul>
                                 <li>React and D3 are two great UI tools designed for goals that sometimes collide. Conceptually, both take control of the UI elements, and they do it on different ways.</li>
-                                <li>How can we make them work together optimizing different attributes/advantages depending on your current project?</li>
+                                <li>How can we make them work together optimizing their different advantages depending on your current project?</li>
+                                <li>In this talk, we will see how we can approach building React projects that need the powerful charting goodness of D3, knowing the different techniques and choosing the best library for your needs on your work and side projects.</li>
                             </ul>
                         </aside>
                     </section>
@@ -101,11 +101,9 @@
                             <li class="fragment">React</li>
                             <li class="fragment">React + D3</li>
                             <li class="fragment">Choosing a Project</li>
-                            <li class="fragment">Summary</li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>In this talk, we will see how we can approach building React projects that need the powerful charting goodness of D3, knowing the different techniques and choosing the best library for your needs on your work and side projects.</li>
                                 <li>First will introduce D3</li>
                                 <li>Talk about React</li>
                                 <li>Talk about How D3 and React can work together</li>
@@ -218,7 +216,7 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li></li>
+                                <li>Recently got an update</li>
                             </ul>
                         </aside>
                     </section>
@@ -366,7 +364,7 @@ dataJoin.exit().remove();
                         <h1>D3 Patterns and Libraries</h1>
                         <aside class="notes">
                             <ul>
-                                <li></li>
+                                <li>Now that we saw how it works, let's see hot wo organize your d3 code and some projects</li>
                             </ul>
                         </aside>
                     </section>
@@ -391,6 +389,7 @@ dataJoin.exit().remove();
                     <!-- Plottable -->
                     <section>
                         <a target="_blank" href="http://plottablejs.org/"><img src="img/screenshots/plottablejs-ss.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://plottablejs.org/">http://plottablejs.org/</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>it got a lot nicer, at the time didn’t have that many charts, so I didn’t dive deeper into it. I would reject it though, as it has an API that is quite far from D3’s.</li>
@@ -401,6 +400,7 @@ dataJoin.exit().remove();
                     <!-- C3 -->
                     <section>
                         <a target="_blank" href="http://c3js.org/"><img src="img/screenshots/c3-ss.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://c3js.org/">http://c3js.org/</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>they did a great job. The interface was again far from D3, being much more declarative, similar to Highcharts.</li>
@@ -411,6 +411,7 @@ dataJoin.exit().remove();
                     <!-- NVD3 -->
                     <section>
                         <a target="_blank" href="http://nvd3.org/"><img src="img/screenshots/nvd3-ss.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://nvd3.org/">http://nvd3.org/</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>NVD3: Their API is more like D3, and we think a lot less accessible for non-d3 developers or designers</li>
@@ -421,6 +422,7 @@ dataJoin.exit().remove();
                     <!-- Britecharts -->
                     <section>
                         <a target="_blank" href="http://eventbrite.github.io/britecharts/index.html"><img src="img/screenshots/britecharts-ss.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://eventbrite.github.io/britecharts">http://eventbrite.github.io/britecharts</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>Britecharts, our library is more opinionated on the ‘looks.'</li>
@@ -430,8 +432,7 @@ dataJoin.exit().remove();
 
                     <!-- APIs -->
                     <section>
-                        <h2>D3 Libraries: API</h2>
-                        <img src="img/screenshots/d3-libraries.png" alt="" style="width: 80%;"></a>
+                        <img src="img/screenshots/d3-libraries.png" alt="" style="width: 100%;"></a>
                         <aside class="notes">
                             <ul>
                                 <li></li>
@@ -456,7 +457,7 @@ dataJoin.exit().remove();
                 <section>
                     <!-- React Intro -->
                     <section>
-                        <a target="_blank" href=""><img src="img/logos/react-logo.png" alt="" style="width: 60%;"></a>
+                        <a target="_blank" href=""><img src="img/logos/react-logo.png" alt="" style="width: 50%;"></a>
                         <aside class="notes">
                             <ul>
                                 <li>IMO the best that react brought us is a way of creating components that makes sense and is performant on rendering.</li>
@@ -491,7 +492,7 @@ dataJoin.exit().remove();
                             <li class="fragment">From batching DOM operations, now React can...
                                 <ul>
                                     <li>Prioritize tasks</li>
-                                    <li>Split in chunks and schedule</li>
+                                    <li>Split into chunks and schedule</li>
                                     <li>Parallelize operations</li>
                                 </ul>
                             </li>
@@ -541,7 +542,7 @@ dataJoin.exit().remove();
                         <h2>Challenges</h2>
                         <ul>
                             <li>D3 creates and transforms the DOM</li>
-                            <li>React as well, and keeps track of it</li>
+                            <li>React also transforms the DOM, and keeps track of it</li>
                             <li>Not meant to work together</li>
                         </ul>
                         <aside class="notes">
@@ -570,7 +571,7 @@ dataJoin.exit().remove();
 
                     <!-- Approaches Diagram -->
                     <section>
-                        <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 80%;">
+                        <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 100%;">
                         <aside class="notes">
                             <ul>
                                 <li></li>
@@ -735,7 +736,7 @@ dataJoin.exit().remove();
                         <h4>Pros/Cons</h4>
                         <ul>
                             <li class="fragment"><strong class="green">✓</strong> Consistent with React ways</li>
-                            <li class="fragment"><strong class="green">✓</strong> Less abstraction levels</li>
+                            <li class="fragment"><strong class="green">✓</strong> Fewer abstraction levels</li>
                             <li class="fragment"><strong class="red">✗</strong> A lot of work upfront</li>
                             <li class="fragment"><strong class="red">✗</strong> D3 Reimplementation of certain parts</li>
                             <li class="fragment"><strong class="red">✗</strong> Limited to SVG rendering</li>
@@ -1069,7 +1070,7 @@ dataJoin.exit().remove();
 
                     <section>
                         <h2>Bubble charts</h2>
-                        <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
+                        <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/chart/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
                     </section>
 
                     <section>
