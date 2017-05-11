@@ -292,7 +292,10 @@ body {
 
 /* References */
 small.reference {
-  margin-top: 80px;
+  margin-top: 60px;
+}
+small.close-reference {
+  margin-top: 30px;
 }
 
 .green {
