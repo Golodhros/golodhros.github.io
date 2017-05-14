@@ -535,8 +535,8 @@ dataJoin.exit().remove();
                     <section>
                         <h2>Commonalities</h2>
                         <ul>
-                            <li>Help us with the DOM</li>
-                            <li>Pure functions</li>
+                            <li class="fragment">Help us with the DOM</li>
+                            <li class="fragment">Pure functions</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -550,9 +550,9 @@ dataJoin.exit().remove();
                     <section>
                         <h2>Challenges</h2>
                         <ul>
-                            <li>D3 creates and transforms the DOM</li>
-                            <li>React also transforms the DOM, and keeps track of it</li>
-                            <li>Not meant to work together</li>
+                            <li class="fragment">D3 creates and transforms the DOM</li>
+                            <li class="fragment">React as well, and keeps track of it</li>
+                            <li class="fragment">Not meant to work together</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -574,16 +574,6 @@ dataJoin.exit().remove();
                             <ul>
                                 <li>For the React and D3 integration, we can do it on different levels, leaning more one side or another</li>
                                 <li>Sometimes we will be choosing in base on the context and history of the platform we are building.</li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- Approaches Diagram -->
-                    <section>
-                        <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 100%;">
-                        <aside class="notes">
-                            <ul>
-                                <li></li>
                             </ul>
                         </aside>
                     </section>
@@ -700,22 +690,9 @@ dataJoin.exit().remove();
                         </aside>
                     </section>
 
-                    <!-- D3 libraries with DOM relation -->
-                    <section data-markdown>
-                        ## DOM Related
-                        * [Selections (d3-selection)](https://github.com/d3/d3-selection)
-                        * [Transitions (d3-transition)](https://github.com/d3/d3-transition)
-                        * [Axes (d3-axis)](https://github.com/d3/d3-axis)
-                        * [Zooming (d3-zoom)](https://github.com/d3/d3-zoom)
-                        * [Dragging (d3-drag)](https://github.com/d3/d3-drag)
-                        * [Brushes (d3-brush)](https://github.com/d3/d3-brush)
-                        * [Geographies (d3-geo)](https://github.com/d3/d3-geo)
-                        * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
-                    </section>
-
                     <!-- D3 libraries with no DOM relation -->
                     <section data-markdown class="scrollable-slide">
-                        ## Non-DOM Related
+                        ## D3 modules: Non-DOM Related
                         * [Arrays (d3-array)](https://github.com/d3/d3-array)
                         * [Chords (d3-chord)](https://github.com/d3/d3-chord)
                         * [Collections (d3-collection)](https://github.com/d3/d3-collection)
@@ -738,6 +715,20 @@ dataJoin.exit().remove();
                         * [Timers (d3-timer)](https://github.com/d3/d3-timer)
                         * [Voronoi Diagrams (d3-voronoi)](https://github.com/d3/d3-voronoi)
                     </section>
+
+                    <!-- D3 libraries with DOM relation -->
+                    <section data-markdown>
+                        ## D3 modules: DOM Related
+                        * [Selections (d3-selection)](https://github.com/d3/d3-selection)
+                        * [Transitions (d3-transition)](https://github.com/d3/d3-transition)
+                        * [Axes (d3-axis)](https://github.com/d3/d3-axis)
+                        * [Zooming (d3-zoom)](https://github.com/d3/d3-zoom)
+                        * [Dragging (d3-drag)](https://github.com/d3/d3-drag)
+                        * [Brushes (d3-brush)](https://github.com/d3/d3-brush)
+                        * [Geographies (d3-geo)](https://github.com/d3/d3-geo)
+                        * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
+                    </section>
+
 
                     <!-- React for DOM, D3 for Math - Pros/Cons-->
                     <section>
@@ -762,7 +753,7 @@ dataJoin.exit().remove();
 
                     <!-- Approaches Diagram -->
                     <section>
-                        <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 80%;">
+                        <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 100%;">
                         <aside class="notes">
                             <ul>
                                 <li></li>
@@ -790,14 +781,12 @@ dataJoin.exit().remove();
                             <li class="fragment">Non-maintained libraries</li>
                             <li class="fragment">Not easy to keep up with D3 and React</li>
                             <li class="fragment">D3 v4 cleaned up the field</li>
-                            <li class="fragment"><a href="https://docs.google.com/spreadsheets/d/1tq2uyeBLJDOCYT3TftOg3LE2N-QspoFbMyBqBGxwnG4/edit#gid=0">Comparative</a></li>
                         </ul>
                         <aside class="notes">
                             <ul>
                                 <li>A good amount of not maintained libraries</li>
                                 <li>D3 and React push hard, so it’s not that easy to keep up to it.</li>
                                 <li>D3 v4 brought a ‘clean up’ on the field.</li>
-                                <li>Check them up on React D3 Libraries Info - Draft</li>
                             </ul>
                         </aside>
                     </section>
@@ -887,6 +876,17 @@ dataJoin.exit().remove();
                             </ul>
                         </aside>
                     </section>
+
+                    <!-- Comparative -->
+                    <section>
+                        <a target="_blank" href="https://docs.google.com/spreadsheets/d/1tq2uyeBLJDOCYT3TftOg3LE2N-QspoFbMyBqBGxwnG4/edit#gid=0"><img src="img/screenshots/react-d3-lib-comparative.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://tinyurl.com/d3-react-lib-comparative">http://tinyurl.com/d3-react-lib-comparative</a></small>
+                        <aside class="notes">
+                            <ul>
+                                <li>Check them up on React D3 Libraries Info - Draft</li>
+                            </ul>
+                        </aside>
+                    </section>
                 </section>
 
 
@@ -916,7 +916,9 @@ dataJoin.exit().remove();
 
                     <!-- Quality -->
                     <section>
-                        <h2>Quality</h2>
+                        <div>
+                            <img src="img/screenshots/quality-active-state.png" alt="" style="width: 80%;">
+                        </div>
                         <ul>
                             <li>Well tested</li>
                             <li>D3 V4</li>
@@ -931,7 +933,9 @@ dataJoin.exit().remove();
 
                     <!-- Time -->
                     <section>
-                        <h2>Time</h2>
+                        <div>
+                            <img src="img/screenshots/time-active-state.png" alt="" style="width: 80%;">
+                        </div>
                         <ul>
                             <li>Long term investment?</li>
                             <li>Needs to be done ASAP?</li>
@@ -946,7 +950,9 @@ dataJoin.exit().remove();
 
                     <!-- Scope -->
                     <section>
-                        <h2>Scope</h2>
+                        <div>
+                            <img src="img/screenshots/scope-active-state.png" alt="" style="width: 80%;">
+                        </div>
                         <ul>
                             <li>Highly customized vs basic charts</li>
                             <li>One-off work vs dataviz heavy product</li>
@@ -961,7 +967,9 @@ dataJoin.exit().remove();
 
                     <!-- Cost, Resources -->
                     <section>
-                        <h2>Cost, Resources</h2>
+                        <div>
+                            <img src="img/screenshots/cost-active-state.png" alt="" style="width: 80%;">
+                        </div>
                         <ul>
                             <li>Budget</li>
                             <li>Training</li>
