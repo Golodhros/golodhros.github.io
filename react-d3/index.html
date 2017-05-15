@@ -217,6 +217,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>Recently got an update</li>
+                                <li>The selections became immutable</li>
                                 <li>Everybody is on d3 v4, not like angular 1.x and 2</li>
                             </ul>
                         </aside>
@@ -227,18 +228,55 @@
                 <section>
                     <section>
                         <h1>D3 Data Joins</h1>
+                        <aside class="notes">
+                            <li>I am going to touch the Data Joins definition a bit</li>
+                            <li>As we will need it to establish similitudes with the way React works</li>
+                            <li>For more about them check the resources at the end of the talk</li>
+                        </aside>
                     </section>
 
+                    <!-- Data Join Definition -->
                     <section>
                         <h2>Transform the DOM by selecting elements and joining to data</h2>
                         <aside class="notes">
                             <li>It's another approach</li>
                             <li>With jquery we accessed elments</li>
                             <li>with backbone we render views</li>
-                            <li>with react with use the virtual DOM</li>
+                            <li>with react we are smart about renders, using the virtual DOM</li>
                             <li>with D3 we have data joins</li>
                         </aside>
                     </section>
+
+                    <!-- Data Joins -->
+                    <section>
+                        <h2>Data Join</h2>
+                        <a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">
+                            <img src="img/diagram/how-selections-work-overview.png" alt="" style="width: 100%;">
+                        </a>
+                        <aside class="notes">
+                            <li>when we joined the selection with an array of data,</li>
+                            <li>it results in three new selections</li>
+                            <li>that represent the three possible states: enter, update, and exit.</li>
+                            <li>Since the selection was empty, the update and exit selections are empty,</li>
+                            <li>while the enter selection contains a placeholder for each new datum.</li>
+                        </aside>
+                    </section>
+
+                    <!-- Update, Enter and Exit Pattern -->
+                    <section>
+                        <h2>Update, Enter and Exit Pattern</h2>
+                        <a target="_blank" href="http://bost.ocks.org/mike/join/">
+                            <img src="img/diagram/thinking-with-joins.png" alt="" style="width: 70%;">
+                        </a>
+                        <aside class="notes">
+                            <li>Thinking with joins means declaring a relationship between a selection and data, and then implementing this relationship through the three enter, update and exit states.</li>
+                            <li>Data points joined to existing elements produce the update (inner) selection. </li>
+                            <li>Leftover unbound data produce the enter selection (left), which represents missing elements. </li>
+                            <li>Likewise, any remaining unbound elements produce the exit selection (right), which represents elements to be removed.</li>
+                            <li>The data is in the DOM, we'll compare this with the use of keys in React components</li>
+                        </aside>
+                    </section>
+
 
                     <!-- Selections -->
                     <section>
@@ -246,52 +284,12 @@
                         <ul>
                             <li class="fragment">Subclass of array</li>
                             <li class="fragment">Provides methods to create and manipulate selected elements</li>
-                            <li class="fragment">Array of arrays of elements</li>
+                            <li class="fragment">Array of three arrays of grouped elements</li>
                         </ul>
                         <aside class="notes">
                             <li>a selection is an array of groups, and each group is an array of elements.</li>
                             <li>such as setting attributes and styles</li>
                             <li>data is fixed on the DOM, selections can change</li>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>Setup</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// We have some random info
-let data = 'randomStringToCreateAnArray'.split('');
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Simplest Selection</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// We create the root list element
-let list = d3.select('.js-container')
-                .append('ul');
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Data Join</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-let dataJoin = list.selectAll('.item')
-// an empty selection, since the list container was empty
-// looking for instantiations of data
-                      .data(data);
-                    // data, which would be bound to a
-                    // selection
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h1>Update, Enter and Exit Pattern</h1>
-                        <aside class="notes">
-                            <li>when we joined the selection with an array of data,</li>
-                            <li>it results in three new selections</li>
-                            <li>that represent the three possible states: enter, update, and exit.</li>
-                            <li>Since the selection was empty, the update and exit selections are empty,</li>
-                            <li>while the enter selection contains a placeholder for each new datum.</li>
                         </aside>
                     </section>
 
@@ -308,6 +306,19 @@ let dataJoin = list.selectAll('.item')
                             <li>and that function gets data</li>
                             <li>from your .data()</li>
                         </aside>
+                    </section>
+
+                    <!-- Data Join Code -->
+                    <section>
+                        <h2>Data Join</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+let dataJoin = list.selectAll('.item')
+// an empty selection, since the list container was empty
+// looking for instantiations of data
+                      .data(data);
+                    // data, which would be bound to a
+                    // selection
+                        </code></pre>
                     </section>
 
                     <section>
@@ -344,45 +355,67 @@ dataJoin.exit().remove();
                         </code></pre>
                     </section>
 
-                    <section>
-                        <h2>Resources</h2>
-                        <ul>
-                            <li><a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">How Selections Work</a></li>
-                            <li><a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></li>
-                            <li><a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></li>
-                            <li><a href="https://github.com/d3/d3-selection">Selection API Reference</a></li>
-                        </ul>
-                        <aside class="notes">
-                            <li>This is by far the trickiest part of D3</li>
-                        </aside>
-                    </section>
-
                 </section>
 
-                <!-- D3 Patterns and Libraries -->
+                <!-- D3 Patterns-->
                 <section>
+                    <!-- D3 Patterns Intro-->
                     <section>
-                        <h1>D3 Patterns and Libraries</h1>
+                        <h1>D3 Patterns and <br/>Best Practices</h1>
                         <aside class="notes">
                             <ul>
-                                <li>Now that we saw how it works, let's see hot wo organize your d3 code and some projects</li>
+                                <li>Now that we saw how it works, let's see hot wo organize your d3 code</li>
                             </ul>
                         </aside>
                     </section>
 
                     <!-- D3 Component Patterns -->
                     <section>
-                        <h2>D3 Component Patterns</h2>
+                        <h2>Component Patterns</h2>
                         <ul>
-                            <li><a href="https://www.eventbrite.com/engineering/leveling-up-d3-the-reusable-chart-api/">The Reusable API</a></li>
-                            <li><a href="https://ejb.github.io/2016/05/23/a-better-way-to-structure-d3-code.html">Object Oriented approach</a></li>
-                            <li><a href="https://github.com/curran/d3-component">d3-component</a></li>
+                            <li class="fragment">
+                                <a href="https://www.eventbrite.com/engineering/leveling-up-d3-the-reusable-chart-api/">The Reusable API</a>
+                            </li>
+                            <li class="fragment">
+                                <a href="https://ejb.github.io/2016/05/23/a-better-way-to-structure-d3-code.html">Object Oriented approach</a>
+                            </li>
+                            <li class="fragment">
+                                <a href="https://github.com/curran/d3-component">d3-component</a>
+                            </li>
                         </ul>
                         <aside class="notes">
                             <ul>
                                 <li>D3 hasn’t found a standard way of creating components</li>
-                                <li>NVD3 and Britecharts</li>
+                                <li>RAPI: Based on an article by Mike Bostock</li>
+                                <li>Others took an OOP </li>
                                 <li>Other, but IMO an interesting one is d3-component, as it offers some familiarity</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- D3 Testing -->
+                    <section>
+                        <h2>D3 Testing</h2>
+                        <blockquote class="fragment">D3 is hard</blockquote>
+                        <aside class="notes">
+                            <ul>
+                                <li>I have worked with D3 for a while, and I almost always work with tests.</li>
+                                <li>D3 is hard, and there is a good chance that your first implementation of a problem won’t be the best.</li>
+                                <li>Being backed by tests allows you to refactor your code without breaking it and so on.</li>
+                            </ul>
+                        </aside>
+                    </section>
+                </section>
+
+                <!-- D3 Libraries -->
+                <section>
+                    <!-- D3 Libraries Intro-->
+                    <section>
+                        <h1>D3 Libraries</h1>
+                        <aside class="notes">
+                            <ul>
+                                <li>I have done a small research on some of the best D3 libraries out there</li>
+                                <li>They are tested and for the most part in D3 v4</li>
                             </ul>
                         </aside>
                     </section>
@@ -413,15 +446,31 @@ dataJoin.exit().remove();
                         </aside>
                     </section>
 
-                    <!-- NVD3 -->
+                    <!-- Vega -->
                     <section>
-                        <a target="_blank" href="http://nvd3.org/"><img src="img/screenshots/nvd3-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                        <a target="_blank" href="https://vega.github.io/vega/"><img src="img/screenshots/vega-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
                         <div>
-                            <small class="close-reference"><a target="_blank" href="http://nvd3.org/">http://nvd3.org/</a></small>
+                            <small class="close-reference"><a target="_blank" href="https://vega.github.io/vega/">https://vega.github.io/vega/</a></small>
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>NVD3: Their API is more like D3, and we think a lot less accessible for non-d3 developers or designers</li>
+                                <li>Visualization Grammar</li>
+                                <li>A declarative language for creating, saving, and sharing interactive visualization designs</li>
+                                <li>JSON format</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- D3FC -->
+                    <section>
+                        <a target="_blank" href="https://d3fc.io/"><img src="img/screenshots/d3fc-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                        <div>
+                            <small class="close-reference"><a target="_blank" href="https://d3fc.io/">https://d3fc.io/</a></small>
+                        </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>Functional Components for D3</li>
+                                <li>Wraps d3 components and allows to modify the main selection</li>
                             </ul>
                         </aside>
                     </section>
@@ -434,7 +483,10 @@ dataJoin.exit().remove();
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>Britecharts, our library is more opinionated on the ‘looks.'</li>
+                                <li>started two years ago from a refactor of some messy code we had in production</li>
+                                <li>we needed a D3 like library that could serve both d3 devs and non d3 savvy developers</li>
+                                <li>in the line of D3FC API-wise</li>
+                                <li>is more opinionated on the ‘looks.'</li>
                             </ul>
                         </aside>
                     </section>
@@ -445,18 +497,6 @@ dataJoin.exit().remove();
                         <aside class="notes">
                             <ul>
                                 <li></li>
-                            </ul>
-                        </aside>
-                    </section>
-
-                    <!-- D3 Testing -->
-                    <section>
-                        <h2>D3 Testing</h2>
-                        <aside class="notes">
-                            <ul>
-                                <li>I have worked with D3 for a while, and I only work with tests.</li>
-                                <li>D3 is hard, and there is a good chance that your first implementation of a problem won’t be the best. </li>
-                                <li>Being backed by tests allows you to refactor your code without breaking it and so on.</li>
                             </ul>
                         </aside>
                     </section>
@@ -480,10 +520,10 @@ dataJoin.exit().remove();
                         <h2>Dynamic Child Components</h2>
                         <ul>
                             <li class="fragment">Unique 'key' to each child component rendered</li>
-                            <li class="fragment">More efficient</li>
-                            <li class="fragment">Similar to D3's data binding</li>
+                            <li class="fragment">More efficient rendering</li>
+                            <li class="fragment">Similar to D3's data joins</li>
                         </ul>
-                        <small class="reference"><a target="_blank" href="http://revelry.co/dynamic-child-components-with-react/">Dynamic Child Components with React</a></small>
+                        <small class="reference"><a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>Here we use refs, on D3, that ref is the data attached to the DOM element.</li>
@@ -637,7 +677,7 @@ dataJoin.exit().remove();
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li></li>
+                                <li>react-transition-group, react-motion motion groups, resonance</li>
                             </ul>
                         </aside>
                     </section>
@@ -692,7 +732,7 @@ dataJoin.exit().remove();
 
                     <!-- D3 libraries with no DOM relation -->
                     <section data-markdown class="scrollable-slide">
-                        ## D3 modules: Non-DOM Related
+                        ## D3 sub-modules: Non-DOM Related
                         * [Arrays (d3-array)](https://github.com/d3/d3-array)
                         * [Chords (d3-chord)](https://github.com/d3/d3-chord)
                         * [Collections (d3-collection)](https://github.com/d3/d3-collection)
@@ -718,7 +758,7 @@ dataJoin.exit().remove();
 
                     <!-- D3 libraries with DOM relation -->
                     <section data-markdown>
-                        ## D3 modules: DOM Related
+                        ## D3 sub-modules: DOM Related
                         * [Selections (d3-selection)](https://github.com/d3/d3-selection)
                         * [Transitions (d3-transition)](https://github.com/d3/d3-transition)
                         * [Axes (d3-axis)](https://github.com/d3/d3-axis)
@@ -728,7 +768,6 @@ dataJoin.exit().remove();
                         * [Geographies (d3-geo)](https://github.com/d3/d3-geo)
                         * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
                     </section>
-
 
                     <!-- React for DOM, D3 for Math - Pros/Cons-->
                     <section>
@@ -793,7 +832,9 @@ dataJoin.exit().remove();
 
                     <!-- VictoryJS -->
                     <section>
-                        <a target="_blank" href="http://formidable.com/open-source/victory/"><img src="img/screenshots/victoryjs-ss.png" alt="" style="width: 80%;"></a>
+                        <a target="_blank" href="http://formidable.com/open-source/victory/">
+                            <img src="img/screenshots/victoryjs-ss.png" alt="" style="width: 80%;" />
+                        </a>
                         <aside class="notes">
                             <ul>
                                 <li>Almost a rewrite of D3</li>
@@ -803,27 +844,57 @@ dataJoin.exit().remove();
                         </aside>
                     </section>
 
+                    <!-- Code -->
+                    <section>
+                        <h2>Linechart Code</h2>
+                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/victory/line.js#L14">
+                            <img src="img/code/victoryjs-code.png" alt="" style="width: 80%;">
+                        </a>
+                        <aside class="notes">
+                            <ul>
+                                <li></li>
+                            </ul>
+                        </aside>
+                    </section>
+
                     <section>
                         <h2>VictoryJS</h2>
                         <ul>
                             <li class="fragment">Easy to get started</li>
+                            <li class="fragment">Zoom and Voronoi</li>
                             <li class="fragment">React Native option</li>
                         </ul>
                         <aside class="notes">
                             <ul>
                                 <li>Easy to start, with a nice playground</li>
                                 <li>Includes Zoom and Voronoi</li>
+                                <li>The only one that can be used in React Native</li>
                             </ul>
                         </aside>
                     </section>
 
                     <!-- Recharts -->
                     <section>
-                        <a target="_blank" href="http://recharts.org/#/en-US/"><img src="img/screenshots/recharts-ss.png" alt="" style="width: 80%;"></a>
+                        <a target="_blank" href="http://recharts.org/#/en-US/">
+                            <img src="img/screenshots/recharts-ss.png" alt="" style="width: 80%;" />
+                        </a>
                         <aside class="notes">
                             <ul>
                                 <li>A lot of work</li>
-                                <li>Great docs</li>
+                                <li>Stetically more polished, great tooltip</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Code -->
+                    <section>
+                        <h2>Linechart Code</h2>
+                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/recharts/line.js#L14">
+                            <img src="img/code/recharts-code.png" alt="" style="width: 80%;" />
+                        </a>
+                        <aside class="notes">
+                            <ul>
+                                <li>A bit less low level</li>
                             </ul>
                         </aside>
                     </section>
@@ -832,6 +903,7 @@ dataJoin.exit().remove();
                         <h2>Recharts</h2>
                         <ul>
                             <li class="fragment">Really well tested</li>
+                            <li class="fragment">9 Charts plus legend, tooltip and brush</li>
                             <li class="fragment">Great docs</li>
                         </ul>
                         <aside class="notes">
@@ -843,11 +915,25 @@ dataJoin.exit().remove();
 
                     <!-- react-vis -->
                     <section>
-                        <a target="_blank" href="http://uber.github.io/react-vis/#/en-US/"><img src="img/screenshots/react-vis-ss.png" alt="" style="width: 80%;"></a>
+                        <a target="_blank" href="http://uber.github.io/react-vis/#/en-US/">
+                            <img src="img/screenshots/react-vis-ss.png" alt="" style="width: 80%;" />
+                        </a>
                         <aside class="notes">
                             <ul>
                                 <li>Uber's project</li>
-                                <li>re-implemented scales</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- Code -->
+                    <section>
+                        <h2>Linechart Code</h2>
+                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/react-vis/line.js">
+                            <img src="img/code/react-vis-code.png" alt="" style="width: 80%;">
+                        </a>
+                        <aside class="notes">
+                            <ul>
+                                <li></li>
                             </ul>
                         </aside>
                     </section>
@@ -856,8 +942,8 @@ dataJoin.exit().remove();
                         <h2>react-vis</h2>
                         <ul>
                             <li class="fragment">react-motion animations</li>
-                            <li class="fragment">Lack of tooltips</li>
                             <li class="fragment">Sunburst and Sankey</li>
+                            <li class="fragment">Lack of tooltips</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -868,8 +954,9 @@ dataJoin.exit().remove();
 
                     <!-- React D3 Library Demo -->
                     <section>
-                        <h2>Demo</h2>
-                        <small class="reference"><a target="_blank" href="https://tinyurl.com/talk-react-d3">https://tinyurl.com/talk-react-d3</a></small>
+                        <a target="_blank" href="https://golodhros.github.io/talk-react-d3/"><img src="img/screenshots/talk-react-d3-demo.png" alt="" style="width: 80%;"></a>
+                        <small class="reference">Demo: <a target="_blank" href="https://golodhros.github.io/talk-react-d3/">https://golodhros.github.io/talk-react-d3/</a></small>
+                        <small>Code: <a target="_blank" href="https://github.com/Golodhros/talk-react-d3">https://github.com/Golodhros/talk-react-d3</a></small>
                         <aside class="notes">
                             <ul>
                                 <li></li>
@@ -888,7 +975,6 @@ dataJoin.exit().remove();
                         </aside>
                     </section>
                 </section>
-
 
                 <!-- React D3 Choosing a Project -->
                 <section>
@@ -1021,10 +1107,13 @@ dataJoin.exit().remove();
 
                 <!-- Resources -->
                 <section>
+                    <section>
+                        <h1>D3 Resources</h1>
+                    </section>
 
                     <!-- D3 Resources -->
                     <section>
-                        <h3>D3 Resources</h3>
+                        <h2>D3 Resources</h2>
                         <ul>
                             <li><a href="https://bost.ocks.org/mike/">Mike Bostock</a></li>
                             <li><a href="https://github.com/d3/d3/blob/master/API.md">D3 Reference</a></li>
@@ -1034,6 +1123,20 @@ dataJoin.exit().remove();
                             <ul>
                                 <li></li>
                             </ul>
+                        </aside>
+                    </section>
+
+                    <!-- D3 Data joins Resources -->
+                    <section>
+                        <h2>Data-Joins Resources</h2>
+                        <ul>
+                            <li><a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">How Selections Work</a></li>
+                            <li><a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></li>
+                            <li><a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></li>
+                            <li><a href="https://github.com/d3/d3-selection">Selection API Reference</a></li>
+                        </ul>
+                        <aside class="notes">
+                            <li>This is by far the trickiest part of D3</li>
                         </aside>
                     </section>
 

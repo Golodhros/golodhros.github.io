@@ -304,3 +304,7 @@ small.close-reference {
 .red {
   color: #ff584c;
 }
+
+blockquote {
+  background: none !important;
+}
