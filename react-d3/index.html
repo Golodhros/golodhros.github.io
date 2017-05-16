@@ -74,7 +74,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>I am also on twitter, here's my unpronunciable handler, where I share interesting articles and resources about dataviz, d3 and front end technologies in general.</li>
-                                <li>Find me on EB's engineering blog</li>
+                                <li>Also find me on EB's engineering blog</li>
                                 <li>Let's see what brought you here today</li>
                             </ul>
                         </aside>
@@ -88,9 +88,10 @@
                         <a target="_blank" href=""><img src="img/logos/reactD3.png" alt="" style="width: 80%;"></a>
                         <aside class="notes">
                             <ul>
-                                <li>React and D3 are two great UI tools designed for goals that sometimes collide. Conceptually, both take control of the UI elements, and they do it on different ways.</li>
-                                <li>How can we make them work together optimizing their different advantages depending on your current project?</li>
-                                <li>In this talk, we will see how we can approach building React projects that need the powerful charting goodness of D3, knowing the different techniques and choosing the best library for your needs on your work and side projects.</li>
+                                <li>React and D3 are two great UI tools designed for goals that sometimes collide. Conceptually, both take control of the UI elements, and they do it in different ways.</li>
+                                <li>How can we make them work together optimizing their features depending on your current project?</li>
+                                <li>In this talk, we will see how we can approach building React apps that need the powerful charting goodness of D3.</li>
+                                <li>We will review the different techniques and talk about choosing the best library for your needs for your work and side projects.</li>
                             </ul>
                         </aside>
                     </section>
@@ -107,8 +108,8 @@
                         <aside class="notes">
                             <ul>
                                 <li>First will introduce D3</li>
-                                <li>Talk about React</li>
-                                <li>Talk about How D3 and React can work together</li>
+                                <li>Talk a bit about React</li>
+                                <li>See how D3 and React can work together</li>
                                 <li>Some libraries and how to choose between them</li>
                             </ul>
                         </aside>
@@ -128,7 +129,6 @@
                         <aside class="notes">
                             <ul>
                                 <li>Who has worked with D3 before?</li>
-                                <li>Maybe you have heard about D3, or played with it a bit</li>
                             </ul>
                         </aside>
                     </section>
@@ -146,10 +146,12 @@
                         <aside class="notes">
                             <ul>
                                 <li>D3 stands for data-driven documents</li>
-                                <li>Huge API and focused on mathematical transformations of data</li>
+                                <li>with a huge API </li>
+                                <li>and focused on mathematical transformations of data</li>
                                 <li>Based on web standards as SVG, HTML, CSS and canvas</li>
                                 <li>One of it’s more celebrated features is it’s seamless integration of animations and the way it allows us to create engaging interactions.</li>
-                                <li>Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.</li>
+                                <li>Front End toolbox for creating interactive visualization, but it is not a charting library.</li>
+                                <li>So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.</li>
                             </ul>
                         </aside>
                     </section>
@@ -166,7 +168,10 @@
                         <aside class="notes">
                             <ul>
                                 <li>D3 loads data and attaches it to the DOM.</li>
-                                <li>Binds that data to DOM elements and transforms those elements, transitioning among states if necessary.</li>
+                                <li>Data stays on the DOM, that's the most stable API</li>
+                                <li>Binds that data to DOM elements</li>
+                                <li>and transforms those elements, transitioning among states if necessary.</li>
+                                <li>Let's see my favorite demo</li>
                             </ul>
                         </aside>
                     </section>
@@ -184,11 +189,9 @@
                     </section>
 
                     <!-- Niceties -->
-                    <!-- Deprecate? -->
                     <section>
                         <h2>D3 Niceties</h2>
                         <ul>
-                            <li class="fragment">Based on attaching data to the DOM</li>
                             <li class="fragment">Styling of elements with CSS</li>
                             <li class="fragment">Transitions and animations baked in</li>
                             <li class="fragment">Total control over our graphs</li>
@@ -197,11 +200,10 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Data stays on the DOM</li>
                                 <li>Same tools as FE development</li>
                                 <li>Stunning UIs</li>
                                 <li>Everything is configurable</li>
-                                <li>Active community, slack channel included</li>
+                                <li>with an active slack channel</li>
                                 <li>A lot of books about d3</li>
                             </ul>
                         </aside>
@@ -219,6 +221,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>Recently got an update</li>
+                                <li>Everything is in sub-modules in different repos</li>
                                 <li>The selections became immutable</li>
                                 <li>Everybody is on d3 v4, not like angular 1.x and 2</li>
                             </ul>
@@ -228,12 +231,12 @@
 
                 <!-- D3 Data Joins -->
                 <section>
+                    <!-- D3 Data Joins Intro-->
                     <section>
                         <h1>D3 Data Joins</h1>
                         <aside class="notes">
                             <li>I am going to touch the Data Joins definition a bit</li>
                             <li>As we will need it to establish similitudes with the way React works</li>
-                            <li>For more about them check the resources at the end of the talk</li>
                         </aside>
                     </section>
 
@@ -276,87 +279,9 @@
                             <li>Leftover unbound data produce the enter selection (left), which represents missing elements. </li>
                             <li>Likewise, any remaining unbound elements produce the exit selection (right), which represents elements to be removed.</li>
                             <li>The data is in the DOM, we'll compare this with the use of keys in React components</li>
+                            <li>If you don't get it is OK, nobody does at first. For more about them check the resources at the end of the talk</li>
                         </aside>
                     </section>
-
-
-                    <!-- Selections -->
-                    <section>
-                        <h2>Selections</h2>
-                        <ul>
-                            <li class="fragment">Subclass of array</li>
-                            <li class="fragment">Provides methods to create and manipulate selected elements</li>
-                            <li class="fragment">Array of three arrays of grouped elements</li>
-                        </ul>
-                        <aside class="notes">
-                            <li>a selection is an array of groups, and each group is an array of elements.</li>
-                            <li>such as setting attributes and styles</li>
-                            <li>data is fixed on the DOM, selections can change</li>
-                        </aside>
-                    </section>
-
-                    <section>
-                        <h2>Functions that set properties</h2>
-                        <ul>
-                            <li>.text()</li>
-                            <li>.property()</li>
-                            <li>.style()</li>
-                            <li>.attr()</li>
-                        </ul>
-                        <aside class="notes">
-                            <li>each one takes a function</li>
-                            <li>and that function gets data</li>
-                            <li>from your .data()</li>
-                        </aside>
-                    </section>
-
-                    <!-- Data Join Code -->
-                    <section>
-                        <h2>Data Join</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-let dataJoin = list.selectAll('.item')
-// an empty selection, since the list container was empty
-// looking for instantiations of data
-                      .data(data);
-                    // data, which would be bound to a
-                    // selection
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Update</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-dataJoin.attr('class', 'update');
-
-dataJoin
-    .attr('foo', function(d) {
-      return d.foo;
-    });
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Enter</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// for every time that we see data
-// but we do not see an element
-dataJoin.enter()
-  .append('li').classed('enter', true)
-  // we create an element
-.merge(dataJoin)
-    // we merge the update and enter groups and apply an operation
-    .text(function(d) { return d; });
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Exit</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// Remove all elements as needed
-dataJoin.exit().remove();
-                        </code></pre>
-                    </section>
-
                 </section>
 
                 <!-- D3 Patterns-->
@@ -1162,15 +1087,93 @@ dataJoin.exit().remove();
                     </section>
                 </section>
 
+                <!-- Selections and EUE pattern -->
+                <section>
+                    <!-- Selections -->
+                    <section>
+                        <h2>Selections</h2>
+                        <ul>
+                            <li class="fragment">Subclass of array</li>
+                            <li class="fragment">Provides methods to create and manipulate selected elements</li>
+                            <li class="fragment">Array of three arrays of grouped elements</li>
+                        </ul>
+                        <aside class="notes">
+                            <li>a selection is an array of groups, and each group is an array of elements.</li>
+                            <li>such as setting attributes and styles</li>
+                            <li>data is fixed on the DOM, selections can change</li>
+                        </aside>
+                    </section>
+
+                    <!-- Selection functions -->
+                    <section>
+                        <h2>Functions that set properties</h2>
+                        <ul>
+                            <li>.text()</li>
+                            <li>.property()</li>
+                            <li>.style()</li>
+                            <li>.attr()</li>
+                        </ul>
+                        <aside class="notes">
+                            <li>each one takes a function</li>
+                            <li>and that function gets data</li>
+                            <li>from your .data()</li>
+                        </aside>
+                    </section>
+
+                    <!-- Data Join Code -->
+                    <section>
+                        <h2>Data Join</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+let dataJoin = list.selectAll('.item')
+// an empty selection, since the list container was empty
+// looking for instantiations of data
+                      .data(data);
+                    // data, which would be bound to a
+                    // selection
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Update</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+dataJoin.attr('class', 'update');
+
+dataJoin
+    .attr('foo', function(d) {
+      return d.foo;
+    });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Enter</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// for every time that we see data
+// but we do not see an element
+dataJoin.enter()
+  .append('li').classed('enter', true)
+  // we create an element
+.merge(dataJoin)
+    // we merge the update and enter groups and apply an operation
+    .text(function(d) { return d; });
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Exit</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+// Remove all elements as needed
+dataJoin.exit().remove();
+                        </code></pre>
+                    </section>
+                </section>
+
                 <!-- Q&A -->
 			</div>
 		</div>
 
 		<script src="lib/js/head.min.js"></script>
         <script src="js/reveal.js"></script>
-
-        <!-- D3 Stuff -->
-        <script src="node_modules/d3-selection/build/d3-selection.js"></script>
 
         <!-- Google Analytics -->
         <script>
