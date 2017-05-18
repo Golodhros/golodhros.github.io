@@ -88,10 +88,9 @@
                         <a target="_blank" href=""><img src="img/logos/reactD3.png" alt="" style="width: 80%;"></a>
                         <aside class="notes">
                             <ul>
-                                <li>React and D3 are two great UI tools designed for goals that sometimes collide. Conceptually, both take control of the DOM elements, and they do it in different ways.</li>
+                                <li>React and D3 are two great UI tools designed for goals that sometimes collide. The problem is that both take control of the DOM elements, and they do it in different ways.</li>
                                 <li>How can you make them work together optimizing their features depending on your current project?</li>
                                 <li>In this talk, you will see how you can approach building React apps that need the powerful charting goodness of D3.</li>
-                                <li>We will review the different techniques and talk about choosing the best library for your requirements at work and on your side projects.</li>
                             </ul>
                         </aside>
                     </section>
@@ -109,8 +108,8 @@
                             <ul>
                                 <li>First will introduce D3</li>
                                 <li>Talk a bit about React</li>
-                                <li>See how D3 and React can work together</li>
-                                <li>Some libraries and how to choose the right approach</li>
+                                <li>We will review the different techniques</li>
+                                <li>And talk about choosing the best option for your requirements at work and on your side projects.</li>
                             </ul>
                         </aside>
                     </section>
@@ -250,17 +249,18 @@
 
                     <!-- Update, Enter and Exit Pattern -->
                     <section>
-                        <h2>Update, Enter and Exit Pattern</h2>
-                        <a target="_blank" href="http://bost.ocks.org/mike/join/">
-                            <img src="img/diagram/thinking-with-joins.png" alt="" style="width: 70%;">
-                        </a>
-                        <small class="reference fragment"><a target="_blank" href="#/14/2">Resources</a></small>
+                        <h2>Update, Enter <br>and Exit Pattern</h2>
+                        <div>
+                            <a target="_blank" href="http://bost.ocks.org/mike/join/">
+                                <img src="img/diagram/thinking-with-joins.png" alt="" style="width: 60%;">
+                            </a>
+                        </div>
+                        <small class="reference"><a target="_blank" href="#/14/2">Resources</a></small>
                         <aside class="notes">
                             <li>we are looking at the relationship between a selection and data, and then working with them through the three enter, update and exit groups.</li>
                             <li>Data points joined to existing elements produce the update (inner) selection.</li>
                             <li>Leftover unbound data produce the enter selection (left), which represents missing elements.</li>
                             <li>the remaining unbound elements produce the exit selection (right), which represents elements to be removed.</li>
-                            <li>If you don't get it is OK, nobody does at first. For more about it you can check the resources at the end of the talk</li>
                         </aside>
                     </section>
                 </section>
@@ -308,7 +308,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>I have worked with D3 for a while, and I almost always work with tests.</li>
-                                <li>D3 is hard, and there is a good chance that your first implementation of a problem won’t be the best.</li>
+                                <li>D3 is hard, and there is a good chance that your first implementation won’t be the best.</li>
                                 <li>Being backed by tests allows you to refactor your code without breaking it</li>
                             </ul>
                         </aside>
@@ -337,8 +337,8 @@
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>Plottable from X is pretty popular</li>
-                                <li>It has an API with OOP flavor that is quite far from D3’s</li>
+                                <li>Plottable is pretty popular</li>
+                                <li>It has an API with OOP flavor</li>
                             </ul>
                         </aside>
                     </section>
@@ -367,8 +367,6 @@
                         <aside class="notes">
                             <ul>
                                 <li>and now we have one that takes that declarative flavor a bit further</li>
-                                <li>Visualization Grammar</li>
-                                <li>A declarative language for creating, saving, and sharing interactive visualization designs</li>
                                 <li>JSON format</li>
                             </ul>
                         </aside>
@@ -399,7 +397,7 @@
                                 <li>A library we just released at Eventbrite</li>
                                 <li>started two years ago from a refactor of some messy code we had in production</li>
                                 <li>we needed a D3 library that could serve both d3 devs and non d3 savvy developers</li>
-                                <li>in the line of D3FC API-wise and less granular</li>
+                                <li>API-wise is in the line of D3FC and less granular</li>
                                 <li>is more opinionated on the ‘looks.'</li>
                             </ul>
                         </aside>
@@ -451,6 +449,7 @@
                     <section>
                         <h2>React Fiber</h2>
                         <ul>
+                            <li class="fragment">Renderer and Reconciler are separated</li>
                             <li class="fragment">New reconciliating algorithm</li>
                             <li class="fragment">From batching DOM operations, now React can...
                                 <ul>
@@ -459,17 +458,16 @@
                                     <li>Parallelize operations</li>
                                 </ul>
                             </li>
-                            <li class="fragment">Renderer and Reconciler are separate</li>
                         </ul>
                         <small class="reference fragment"><a target="_blank" href="https://www.youtube.com/watch?v=ZCuYPiUIONs">A Cartoon Intro to Fiber</a> by Lin Clark</small>
                         <aside class="notes">
                             <ul>
                                 <li>And got also an update with Fiber</li>
-                                <li>Fiber is the new reconciliation algorithm of React</li>
-                                <li>React before was batching DOM changes</li>
-                                <li>This new reconciler is better because it takes into account priorities, parallel computations and schedules to keep the 60FPS</li>
-                                <li>Reconciler and Renderer are separated so that the renderer could be different (native, VR, etc)</li>
+                                <li>so that the renderer could be different (native, VR, etc)</li>
                                 <li>In D3 too, we can select different rendering contexts, like SVG, Canvas or eventually WebGL</li>
+                                <li>Fiber is the new reconciliation algorithm of React</li>
+                                <li>React before was batching DOM changes, but</li>
+                                <li>This new reconciler is better because it takes into account priorities, parallel computations and schedules to keep the 60FPS</li>
                             </ul>
                         </aside>
                     </section>
@@ -515,9 +513,6 @@
                             <ul>
                                 <li>React keeps track of it entirely</li>
                                 <li>They are opinionated libraries.</li>
-                                <li>T: In React, there is state, and this information specifies what is going to be shown in the UI.</li>
-                                <li>T: However, on D3, the state is kept on the DOM itself, like we did on the jQuery times.</li>
-                                <li>T: It could be a class on your tooltip that makes it show. The data itself is on the DOM as well.</li>
                             </ul>
                         </aside>
                     </section>
@@ -714,10 +709,9 @@
                     <!-- Approaches Diagram -->
                     <section>
                         <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 100%;">
-                        <aside class="notes">
-                            <ul>
-                                <li></li>
-                            </ul>
+                        <small class="reference"><a target="_blank" href="#/14/3">Reference</a></small>
+                        <aside class="notes" data-markdown>
+                            * Here we see these approaches according to the level of integration with both React and D3
                         </aside>
                     </section>
                 </section>
@@ -895,7 +889,7 @@
                 <section>
                     <!-- React D3 Choosing a Project -->
                     <section>
-                        <h1>Choosing a project</h1>
+                        <h1>Choosing an approach</h1>
                         <aside class="notes" data-markdown>
                             * Sometimes we will be choosing in base on the context and history of the platform we are building.
                         </aside>
@@ -936,12 +930,10 @@
                         <ul>
                             <li>Long term investment?</li>
                             <li>Needs to be done ASAP?</li>
-                            <li>Team skills</li>
                         </ul>
                         <aside class="notes">
                             <li>Roll your own D3, wrap with React. Libraries don't assure you 5 years of life.</li>
                             <li>Grab the closest library to your specs, fork it and contribute</li>
-                            <li>Lot's of D3 devs, keep it splitted</li>
                         </aside>
                     </section>
 
@@ -951,13 +943,15 @@
                             <img src="img/screenshots/scope-active-state.png" alt="" style="width: 80%;">
                         </div>
                         <ul>
-                            <li>Highly customized vs basic charts</li>
-                            <li>One-off work vs dataviz heavy product</li>
+                            <li>Highly customized?</li>
+                            <li>Basic charts?</li>
+                            <li>One-off work?</li>
+                            <li>Dataviz heavy product?</li>
                         </ul>
                         <aside class="notes">
-                            <li>you have a UX and Designer with you? Roll your own D3, or customize the closest Library</li>
-                            <li>Is basic, go for any library</li>
-                            <li>is it a single scientific or periodistic piece? Unless is in a library out of the box, go with regular D3.</li>
+                            <li>you have a UX and Designer with you? Roll your own D3, or customize a Library</li>
+                            <li>Is basic, go for the closest library for your specs</li>
+                            <li>is it a single piece? Unless is in a library out of the box, go with regular D3.</li>
                             <li>Roll your own D3 library or contribute to another.</li>
                         </aside>
                     </section>
@@ -972,9 +966,9 @@
                             <li>Training</li>
                         </ul>
                         <aside class="notes">
-                            <li>the current stacks of your developers</li>
+                            <li>the skills of your team</li>
                             <li>D3 dev: Clear separation between D3 and React - Lifecycle methods, faux DOM</li>
-                            <li>Only React: React-D3 Libraries, Lifecycle methods with examples; don't roll your own.</li>
+                            <li>More React: React-D3 Libraries, Lifecycle methods with examples; don't roll your own.</li>
                         </aside>
                     </section>
                 </section>
@@ -1062,133 +1056,11 @@
                             <li><a href="https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf">Adil Baaj - A starting point on using D3 with React</a></li>
                             <li><a href="https://mikewilliamson.wordpress.com/2016/06/03/d3-and-react-3-ways/">Mike Williamson - D3 and React 3 ways</a></li>
                             <li><a href="http://www.adeveloperdiary.com/react-js/create-reusable-charts-react-d3-part1/">Abhisek Jana - How to create reusable charts with React</a></li>
+                            <li><a href="https://github.com/chroth7/reactD3resources">Collection of links/tools on how to integrate React &amp; D3</a></li>
                         </ul>
-                        <aside class="notes">
-                            <ul>
-                                <li></li>
-                            </ul>
-                        </aside>
                     </section>
                 </section>
 
-                <!-- Selections and EUE pattern -->
-                <section>
-                    <!-- Selections -->
-                    <section>
-                        <h1>D3 Selections</h1>
-                    </section>
-
-                    <section>
-                        <h2>D3 Selections</h2>
-                        <ul>
-                            <li class="fragment">Subclass of array</li>
-                            <li class="fragment">Provides methods to create and manipulate selected elements</li>
-                            <li class="fragment">Array of three arrays of grouped elements</li>
-                        </ul>
-                        <aside class="notes">
-                            <li>a selection is an array of groups, and each group is an array of elements.</li>
-                            <li>such as setting attributes and styles</li>
-                            <li>data is fixed on the DOM, selections can change</li>
-                            <!-- to check -->
-                            <li>when we joined the selection with an array of data,</li>
-                            <li>it results in three new selections</li>
-                            <li>that represent the three possible states: enter, update, and exit.</li>
-                            <li>Since the selection was empty, the update and exit selections are empty,</li>
-                            <li>while the enter selection contains a placeholder for each new datum.</li>
-                        </aside>
-                    </section>
-
-                    <!-- Selection functions -->
-                    <section>
-                        <h2>Functions that set properties</h2>
-                        <ul>
-                            <li>.text()</li>
-                            <li>.property()</li>
-                            <li>.style()</li>
-                            <li>.attr()</li>
-                        </ul>
-                        <aside class="notes">
-                            <li>each one takes a function</li>
-                            <li>and that function gets data</li>
-                            <li>from your .data()</li>
-                        </aside>
-                    </section>
-
-                    <!-- Data Join Code -->
-                    <section>
-                        <h2>Data Join</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-let dataJoin = list.selectAll('.item')
-// an empty selection, since the list container was empty
-// looking for instantiations of data
-                      .data(data);
-                    // data, which would be bound to a
-                    // selection
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Update</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-dataJoin.attr('class', 'update');
-
-dataJoin
-    .attr('foo', function(d) {
-      return d.foo;
-    });
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Enter</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// for every time that we see data
-// but we do not see an element
-dataJoin.enter()
-  .append('li').classed('enter', true)
-  // we create an element
-.merge(dataJoin)
-    // we merge the update and enter groups and apply an operation
-    .text(function(d) { return d; });
-                        </code></pre>
-                    </section>
-
-                    <section>
-                        <h2>Exit</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
-// Remove all elements as needed
-dataJoin.exit().remove();
-                        </code></pre>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                    </section>
-
-                    <!-- Niceties -->
-                    <section>
-                        <h2>D3 Niceties</h2>
-                        <ul>
-                            <li class="fragment">Styling of elements with CSS</li>
-                            <li class="fragment">Transitions and animations baked in</li>
-                            <li class="fragment">Total control over our graphs</li>
-                            <li class="fragment">Amazing community</li>
-                            <li class="fragment">Decent amount of publications</li>
-                        </ul>
-                        <aside class="notes">
-                            <ul>
-                                <li>Same tools as FE development, styles, devtools</li>
-                                <li>Stunning UIs</li>
-                                <li>Everything is configurable</li>
-                                <li>with an active slack channel</li>
-                                <li>A lot of books about d3</li>
-                            </ul>
-                        </aside>
-                    </section>
-                </section>
-
-                <!-- Q&A -->
 			</div>
 		</div>
 
