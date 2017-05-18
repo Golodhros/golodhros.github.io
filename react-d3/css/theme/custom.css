@@ -128,8 +128,7 @@ body {
   margin: 20px auto;
   padding: 5px;
   font-style: italic;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); }
+}
 
 .reveal blockquote p:first-child, .reveal blockquote p:last-child {
   display: inline-block; }
@@ -303,8 +302,4 @@ small.close-reference {
 }
 .red {
   color: #ff584c;
-}
-
-blockquote {
-  background: none !important;
 }
