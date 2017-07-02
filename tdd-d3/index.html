@@ -66,9 +66,6 @@
                             <use fill="white" xlink:href="#deethree"/>
                         </svg>
                     </div>
-                    <ul>
-                        <li>Slides: <a href="http://golodhros.github.io/tdd-d3/">http://golodhros.github.io/tdd-d3/</a></li>
-                    </ul>
                     <aside class="notes">
                         <ul>
                             <li>Thank you guys for coming and thanks for caring about improving your D3 skills and code (quality).</li>
@@ -84,7 +81,6 @@
                 <!-- Bio -->
                 <section>
                     <section>
-                        <h2>Marcos Iglesias</h2>
                         <div style="padding-bottom: 40px;">
                             <img data-src="img/logos/eventbrite-logo.png" width="80%" alt="Eventbrite Logo">
                         </div>
@@ -459,18 +455,16 @@
                     </section>
 
                     <!-- Code Analysis of the example -->
-                    <!-- Creating Container -->
+                    <!-- Setting Up Container -->
                     <section>
-                        <h2>Creating container</h2>
+                        <h2>Prepare container</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                         </code></pre>
                         <small class="reference">Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></small>
@@ -483,32 +477,18 @@ var svg = d3.select("body").append("svg")
                         </aside>
                     </section>
 
-                    <!-- Setting up Scales and Axes -->
+                    <!-- Setting up Scales -->
                     <section>
-                        <h2>Setting up scales and axes</h2>
+                        <h2>Setting up scales</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10, "%");
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
                         </code></pre>
                         <small>Reference: <a target="_blank" href="http://alignedleft.com/tutorials/d3/scales">Scales tutorial</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>Scales are functions that glue data and pixels</li>
                                 <li>T: Input domain, output range</li>
-                                <li>Axis are visual representations of those scales</li>
-                                <li>Creating the scales and the axis that depend on them</li>
                             </ul>
                         </aside>
                     </section>
@@ -517,17 +497,13 @@ var yAxis = d3.svg.axis()
                     <section>
                         <h2>Loading data</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-// Loads Data
-d3.tsv("data.tsv", type, function(error, data) {
-  if (error) throw error;
-  // Chart Code here
+d3.tsv("data.tsv", function(d) {
+    d.frequency = +d.frequency;
+    return d;
+}, function(error, data) {
+    if (error) throw error;
+    // Chart Code here
 });
-
-// Cleans Data
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
-}
                         </code></pre>
                         <aside class="notes">
                             <ul>
@@ -546,25 +522,26 @@ x.domain(data.map(function(d) { return d.letter; }));
 y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
 // Draws X axis
-svg.append("g")
-    .attr("class", "x axis")
+g.append("g")
+    .attr("class", "axis axis--x")
     .attr("transform", "translate(0," + height + ")")
-    .call(xAxis);
+    .call(d3.axisBottom(x));
 
 // Draws Y axis
-svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
+g.append("g")
+    .attr("class", "axis axis--y")
+    .call(d3.axisLeft(y).ticks(10, "%"))
   .append("text")
     .attr("transform", "rotate(-90)")
     .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
+    .attr("dy", "0.71em")
+    .attr("text-anchor", "end")
     .text("Frequency");
                         </code></pre>
                         <aside class="notes">
                             <ul>
                                 <li>Set the domain of the scales, dependent on the data</li>
+                                <li>Creates the Axis, that are visual representations of those scales</li>
                                 <li>Draws the x and y axes, labeling the latter</li>
                                 <li>T: Note the weird indentation. When a selection is being changed, we use 2 spaces.</li>
                             </ul>
@@ -575,18 +552,19 @@ svg.append("g")
                     <section>
                         <h2>Drawing bars</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-svg.selectAll(".bar")
-  .data(data)
-.enter().append("rect")
-  .attr("class", "bar")
-  .attr("x", function(d) { return x(d.letter); })
-  .attr("width", x.rangeBand())
-  .attr("y", function(d) { return y(d.frequency); })
-  .attr("height", function(d) { return height - y(d.frequency); });
+g.selectAll(".bar")
+    .data(data)
+    .enter()
+      .append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("y", function(d) { return y(d.frequency); })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) { return height - y(d.frequency); });
                         </code></pre>
                         <aside class="notes">
                             <ul>
-                                <li>Here we see the Enter, Update, Exit</li>
+                                <li>Here we see the Enter pattern, where for each data entry, we add a new SVG rectangle</li>
                             </ul>
                         </aside>
                     </section>
