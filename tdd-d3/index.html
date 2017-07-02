@@ -13,6 +13,8 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+        <link rel="logo" type="image/svg" href="/logo.svg" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
 		<link rel="stylesheet" href="css/reveal.css">
 		<link rel="stylesheet" href="css/theme/custom.css" id="theme">
@@ -84,12 +86,12 @@
                     <section>
                         <h2>Marcos Iglesias</h2>
                         <div style="padding-bottom: 40px;">
-                            <img data-src="img/eventbrite-logo.png" width="50%" alt="Eventbrite Logo">
+                            <img data-src="img/logos/eventbrite-logo.png" width="80%" alt="Eventbrite Logo">
                         </div>
                         <aside class="notes">
                             <ul>
-                                <li>My name is Marcos</li>
-                                <li>Software Engineer at Eventbrite</li>
+                                <li>Sr. Software Engineer at Eventbrite</li>
+                                <li>Build User Interfaces and Dashboards for our event organizers</li>
                             </ul>
                         </aside>
                     </section>
@@ -107,15 +109,14 @@
                     <section>
                         <h2>Online</h2>
                         <ul>
-                            <li><a target="_blank" href="http://www.marcosiglesias.com/posts">Personal Blog</a></li>
-                            <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
                             <li><a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
+                            <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>Find me on my personal blog and EB's engineering blog</li>
-                                <li>I am also on twitter, here's my unpronunciable handler, where I share interesting articles and resources about dataviz, d3 and front end technologies in general.</li>
-                                <li>Let's see what bring you here tonight</li>
+                                <li>That's my handler on twitter where I share articles and resources about dataviz, d3 and front end technologies in general.</li>
+                                <li>Also find me on EB's engineering blog</li>
+                                <li>Let's see what brought you here today</li>
                             </ul>
                         </aside>
                     </section>
@@ -175,19 +176,22 @@
 
                     <!-- D3 intro -->
                     <section>
-                        <h2>D3 introduction</h2>
+                        <h2>What is D3.js?</h2>
                         <ul>
                             <li class="fragment">Data-Driven Documents</li>
-                            <li class="fragment">JavaScript library to manipulate data based documents</li>
-                            <li class="fragment">Open web standards (SVG, HTML and CSS)</li>
+                            <li class="fragment">Low level, General Purpose Visualization Library</li>
+                            <li class="fragment">Manipulates data based documents</li>
+                            <li class="fragment">Open web standards (SVG, HTML, CSS and now Canvas)</li>
                             <li class="fragment">Allows interactions with your graphs</li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>D3 stands for data-driven documents. It is a JS library with a huge API and focused on mathematical transformations of data.</li>
-                                <li>It is based on web standards as SVG, HTML and CSS, and one of it’s strong points is its integration of animations and user interaction capabilities.</li>
+                                <li>D3 stands for data-driven documents</li>
+                                <li>with a huge API </li>
+                                <li>and focused on mathematical transformations of data</li>
+                                <li>Based on web standards as SVG, HTML, CSS and canvas</li>
                                 <li>One of it’s more celebrated features is it’s seamless integration of animations and the way it allows us to create engaging interactions.</li>
-                                <li>D3 is a Front End toolbox for creating interactive visualization, but it is not a charting library. So if you are looking for a package that gives you a bunch of ready made charts, d3 by itself won’t help you, but you could choose among several projects based on d3.</li>
+                                <li>Front End toolbox for creating interactive visualizations, and it is not a charting library.</li>
                             </ul>
                         </aside>
                     </section>
@@ -200,12 +204,25 @@
                             <li class="fragment">Binds data to elements</li>
                             <li class="fragment">Transforms those elements</li>
                             <li class="fragment">Transitions between states</li>
-                            <li class="fragment"><a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0">Example</a></li>
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>D3 loads data and attaches it to the DOM. Then, it binds that data to DOM elements and transforms those elements, transitioning among states if necessary. Example.</li>
-                                <li>The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener the value, the higher the rise against previous year. Smart, isn’t it?</li>
+                                <li>D3 loads data and attaches it to the DOM.</li>
+                                <li>Binds that data to DOM elements</li>
+                                <li>and transforms those elements, transitioning among states if necessary.</li>
+                                <li>Let's see my favorite demo</li>
+                                <li>T: Data stays on the DOM, that's the most stable API for Bostock</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <!-- D3 Demo - Budget -->
+                    <section>
+                        <h2>D3 Demo</h2>
+                        <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/chart/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
+                        <aside class="notes">
+                            <ul>
+                                <li>The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener it is, the higher the rise against previous year.</li>
                                 <li>That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!</li>
                             </ul>
                         </aside>
@@ -229,6 +246,24 @@
                             </ul>
                         </aside>
                     </section>
+
+                    <!-- D3 v4 update -->
+                    <section>
+                        <h2>D3 v4 Update</h2>
+                        <ul>
+                            <li class="fragment">More modular</li>
+                            <li class="fragment">API improvements</li>
+                            <li class="fragment">Breaking changes</li>
+                            <li class="fragment">Highly adopted</li>
+                        </ul>
+                        <aside class="notes">
+                            <ul>
+                                <li>Recently got an update</li>
+                                <li>All d3 is in sub-modules in different repos</li>
+                                <li>Everybody is on d3 v4, not like angular 1.x and 2</li>
+                            </ul>
+                        </aside>
+                    </section>
                 </section>
 
                 <!-- What can you do with D3? -->
@@ -246,7 +281,7 @@
                     <!-- Applications -->
                     <section>
                         <h2>Bar charts</h2>
-                        <img data-src="img/barchart_Fotor.jpg" alt="Bar Chart">
+                        <img data-src="img/chart/barchart_Fotor.jpg" alt="Bar Chart">
                         <aside class="notes">
                             <ul>
                                 <li>All kind of business charts</li>
@@ -261,17 +296,17 @@
 
                     <section>
                         <h2>Bubble charts</h2>
-                        <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
+                        <a target="_blank" href="http://bl.ocks.org/mbostock/4063269"><img data-src="img/chart/bostock-bubble.png" alt="Bubble Chart" style="width: 60%;"></a>
                     </section>
 
                     <section>
                         <h2>Choropleth</h2>
-                        <a target="_blank" href="http://bl.ocks.org/mbostock/4060606"><img src="img/choropleth.png" alt="" style="width: 80%;"></a>
+                        <a target="_blank" href="http://bl.ocks.org/mbostock/4060606"><img src="img/chart/d3-choropleth.png" alt="" style="width: 80%;"></a>
                     </section>
 
                     <section>
                         <h2>Map projections</h2>
-                        <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
+                        <a target="_blank" href="http://mbostock.github.io/d3/talk/20111018/azimuthal.html"><img src="img/chart/azimuthal_Fotor.jpg" alt="" style="width: 80%;"></a>
                         <aside class="notes">
                             <ul>
                                 <li>All kind of maps</li>
@@ -281,12 +316,12 @@
 
                     <section>
                         <h2>Dashboards</h2>
-                        <a target="_blank" href="http://coenraets.org/apps/olympic-d3/#dashboard/3"><img src="img/dashboard.png"  style="width: 60%;"></a>
+                        <a target="_blank" href="http://coenraets.org/apps/olympic-d3/#dashboard/3"><img src="img/screenshots/dashboard.png"  style="width: 60%;"></a>
                     </section>
 
                     <section>
                         <h2>Algorithm visualization</h2>
-                        <a target="_blank" href="http://bl.ocks.org/mbostock/1044242"><img src="img/edge-bundling.png" alt="Hierarchical Edge Bundling" style="width: 60%;"></a>
+                        <a target="_blank" href="http://bl.ocks.org/mbostock/1044242"><img src="img/chart/edge-bundling.png" alt="Hierarchical Edge Bundling" style="width: 60%;"></a>
                     </section>
 
                     <section>
@@ -353,7 +388,7 @@
                     <!-- Search for an Example -->
                     <section>
                         <h2>Search for an example</h2>
-                        <img data-src="img/example-step.png" height="220" width="703" alt="Idea">
+                        <img data-src="img/diagram/example-step.png" height="220" width="703" alt="Idea">
                         <aside class="notes">
                             <ul>
                                 <li>Several options</li>
@@ -411,8 +446,8 @@
                     <!-- Example -->
                     <section>
                         <h2>Code example</h2>
-                        <a href="http://bost.ocks.org/mike/bar/"><img data-src="img/lets-make-a-bar-chart.png" alt=""></a>
-                        <small><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar chart example</a> by Mike Bostock</small>
+                        <a href="http://bost.ocks.org/mike/bar/"><img data-src="img/screenshots/lets-make-a-bar-chart.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://bl.ocks.org/mbostock/3885304">Bar chart example</a> by Mike Bostock</small>
                         <aside class="notes">
                             <ul>
                                 <li>Simplest example</li>
@@ -438,7 +473,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                         </code></pre>
-                        <small>Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></small>
+                        <small class="reference">Reference: <a target="_blank" href="http://bl.ocks.org/mbostock/3019563">Margin Convention</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>First D3 pattern: Mike Bostock Margin Convention</li>
@@ -559,7 +594,7 @@ svg.selectAll(".bar")
                     <!-- Output -->
                     <section>
                         <h2>Output</h2>
-                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                        <img src="img/chart/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                         <aside class="notes">
                             <ul>
                                 <li>So, now we have a bar chart that works right?</li>
@@ -619,7 +654,7 @@ svg.selectAll(".bar")
                         </aside>
                     </section>
                     <section>
-                        <img data-src="img/fun/refactoring-cat.gif" alt="">
+                        <img data-src="img/fun/refactoring-cat.gif" alt="" style="width: 60%;" >
                         <aside class="notes">
                             <ul>
                                 <li>Because I wasn't refactoring, I was just changing things!</li>
@@ -660,7 +695,7 @@ svg.selectAll(".bar")
                         </aside>
                     </section>
                     <section>
-                        <img data-src="img/fun/evil-bug.gif" alt="">
+                        <img data-src="img/fun/evil-bug.gif" alt="" style="width: 60%;">
                         <aside class="notes">
                             <ul>
                                 <li>Fight some nasty bugs</li>
@@ -688,7 +723,7 @@ svg.selectAll(".bar")
                         <img data-src="img/fun/bug.jpg" width="400" alt="">
                     </section>
                     <section>
-                        <img data-src="img/fun/i-have-no-idea-what-im-doing.jpg" alt="">
+                        <img data-src="img/fun/i-have-no-idea-what-im-doing.jpg" alt="" style="width: 80%;">
                         <aside class="notes">
                             <ul>
                                 <li>I had to deal with some Impostor syndrome at that point</li>
@@ -696,7 +731,7 @@ svg.selectAll(".bar")
                         </aside>
                     </section>
                     <section>
-                        <img data-src="img/fun/evil-bug.gif" alt="">
+                        <img data-src="img/fun/evil-bug.gif" alt="" style="width: 60%;">
                         <aside class="notes">
                             <ul>
                                 <li>More nasty bugs</li>
@@ -704,7 +739,7 @@ svg.selectAll(".bar")
                         </aside>
                     </section>
                     <section>
-                        <img data-src="img/fun/headdesk.png" alt="">
+                        <img data-src="img/fun/headdesk.png" alt="" style="width: 80%;">
                         <aside class="notes">
                             <ul>
                                 <li>A terrible experience</li>
@@ -741,7 +776,7 @@ svg.selectAll(".bar")
                     <!-- Screenshot of Render Method -->
                     <section>
                         <div style="padding-bottom: 20px; overflow: auto; max-height: 450px;">
-                            <img data-src="img/render-method.png" alt="">
+                            <img data-src="img/screenshots/render-method.png" alt="">
                         </div>
                         <aside class="notes">
                             <ul>
@@ -787,7 +822,9 @@ svg.selectAll(".bar")
 
                     <!-- Towards Reusable Charts -->
                     <section>
-                        <a href="http://bost.ocks.org/mike/chart/"><img data-src="img/towards-reusable-charts.png" alt=""></a>
+                        <h2>Where did it start?</h2>
+                        <a href="http://bost.ocks.org/mike/chart/"><img data-src="img/screenshots/towards-reusable-charts.png" alt="" style="width: 80%;"></a>
+                        <small class="reference"><a target="_blank" href="http://bost.ocks.org/mike/chart/">Towards Reusable Charts</a> by Mike Bostock</small>
                         <aside class="notes">
                             <ul>
                                 <li>First mention in Mike Bostock's seminal post Towards Reusable Charts</li>
@@ -957,7 +994,7 @@ return function module(){
     return exports;
 }
                         </code></pre>
-                        <p>Reference: <a href="http://bost.ocks.org/mike/chart/" target="_blank">Towards Reusable Charts</a></p>
+                        <small class="reference">Reference: <a href="http://bost.ocks.org/mike/chart/" target="_blank">Towards Reusable Charts</a></small>
                     </section>
 
                     <!-- Test: Containers -->
@@ -1112,7 +1149,7 @@ function drawBars(){
         .attr("height", function(d) { return chartHeight - yScale(d.frequency); });
 }
                         </code></pre>
-                        <p>Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></p>
+                        <small class="reference">Reference: <a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a>, <a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>Enter: creates elements as needed</li>
@@ -1158,7 +1195,7 @@ exports.margin = function(_x) {
                     <!-- Output -->
                     <section>
                         <h2>Looks the same, but is not</h2>
-                        <img src="img/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
+                        <img src="img/chart/mbBarChart_Fotor.jpg" height="493" width="945" alt="">
                     </section>
 
                     <!-- Before and After -->
@@ -1321,8 +1358,8 @@ return function module(){
 
                     <!-- Hands On -->
                     <section>
-                        <h1>Britecharts walkthrough</h1>
-                        <small><a target="_blank" href="https://github.com/eventbrite/britecharts">https://github.com/eventbrite/britecharts</a></small>
+                        <h1>Repository walkthrough</h1>
+                        <small><a target="_blank" href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/tdd-d3-fullstack</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>Uses: Jasmine, Karma Runner</li>
@@ -1334,6 +1371,34 @@ return function module(){
                     <!-- Check code repository -->
                     <!-- Explain structure, configuration files, etc -->
                     <!-- Run tests and check them -->
+
+                    <!-- Britecharts -->
+                    <section>
+                        <a target="_blank" href="http://eventbrite.github.io/britecharts/index.html"><img src="img/screenshots/britecharts-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                        <div>
+                            <small class="reference"><a target="_blank" href="http://eventbrite.github.io/britecharts">http://eventbrite.github.io/britecharts</a></small>
+                        </div>
+                        <aside class="notes">
+                            <ul>
+                                <li>A library we just released at Eventbrite</li>
+                                <li>started two years ago from a refactor of some messy code we had in production</li>
+                                <li>we needed a D3 library that could serve both d3 devs and non d3 savvy developers</li>
+                                <li>opinionated on the ‘looks.'</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Britecharts walkthrough</h2>
+                        <small><a target="_blank" href="https://github.com/eventbrite/britecharts">https://github.com/eventbrite/britecharts</a></small>
+                        <aside class="notes">
+                            <ul>
+                                <li>Uses: Jasmine, Karma Runner</li>
+                                <li>Structure, configuration files</li>
+                                <li>Run tests and Debugging</li>
+                            </ul>
+                        </aside>
+                    </section>
                 </section>
 
                 <!-- Story continues -> The good way -->
@@ -1457,18 +1522,6 @@ return function module(){
     			<section>
     				<section>
     					<h2>Books</h2>
-    				</section>
-
-    				<section>
-    					<img src="img/gettingStarted.jpg" style="width: 50%;">
-    					<aside class="notes">
-    						<ul>
-    							<li>Super Fast introduction (<60 pg.) for web developers</li>
-    							<li>Talks about: Enter Selections, Scales, Axes</li>
-    							<li>Interactions and Transitions</li>
-    							<li>Layouts</li>
-    						</ul>
-    					</aside>
     				</section>
 
     				<section>
