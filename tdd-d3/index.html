@@ -481,6 +481,7 @@ var g = svg.append("g")
                     <section>
                         <h2>Setting up scales</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
+// Creates scales and gives them ranges
 var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
     y = d3.scaleLinear().rangeRound([height, 0]);
                         </code></pre>
@@ -517,7 +518,7 @@ d3.tsv("data.tsv", function(d) {
                     <section>
                         <h2>Drawing axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-// Rest of the scales
+// Updates domain of scales
 x.domain(data.map(function(d) { return d.letter; }));
 y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
@@ -817,19 +818,16 @@ g.selectAll(".bar")
                         <h2>Reusable Chart API - code</h2>
                         <pre><code>
 return function module(){
-    // @param  {D3Selection} _selection A d3 selection that represents
-    // the container(s) where the chart(s) will be rendered
+    // @param  {D3Selection} _selection  Container(s) to render chart in
     function exports(_selection){
-
-        // @param {object} _data The data to generate the chart
+        // @param {object} _data    Data to generate the chart
         _selection.each(function(_data){
-            // Assigns private variables
-            // Builds chart
+            // Build chart
         });
     }
 
-    // @param  {object} _x Margin object to get/set
-    // @return { margin | module} Current margin or Bar Chart module to chain calls
+    // @param  {object} _x          Margin object to get/set
+    // @return { margin | module}   Current margin or Bar Chart module to chain calls
     exports.margin = function(_x) {
         if (!arguments.length) return margin;
         margin = _x;
@@ -998,7 +996,10 @@ it('should render container, axis and chart groups', function(){
                         <h2>Code: containers</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function buildContainerGroups(){
-    var container = svg.append("g").attr("class", "container-group");
+    var container = svg
+      .append('g')
+        .classed('container-group', true)
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
     container.append("g").attr("class", "chart-group");
     container.append("g").attr("class", "x-axis-group axis");
@@ -1028,13 +1029,13 @@ it('should render an X and Y axes', function(){
                         <h2>Code: scales</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function buildScales(){
-    xScale = d3.scale.ordinal()
-        .domain(data.map(function(d) { return d.letter; }))
-        .rangeRoundBands([0, chartWidth], .1);
+    xScale = d3.scaleBand()
+        .rangeRound([0, chartWidth]).padding(0.1)
+        .domain(data.map(getLetter));
 
-    yScale = d3.scale.linear()
-        .domain([0, d3.max(data, function(d) { return d.frequency; })])
-        .range([chartHeight, 0]);
+    yScale = d3.scaleLinear()
+        .rangeRound([chartHeight, 0])
+        .domain([0, d3.max(data, getFrequency)]);
 }
                         </code></pre>
                         <aside class="notes">
@@ -1049,14 +1050,10 @@ function buildScales(){
                         <h2>Code: axes</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function buildAxis(){
-    xAxis = d3.svg.axis()
-        .scale(xScale)
-        .orient("bottom");
+    xAxis = d3.axisBottom(xScale);
 
-    yAxis = d3.svg.axis()
-        .scale(yScale)
-        .orient("left")
-        .ticks(10, "%");
+    yAxis = d3.axisLeft(yScale)
+        .ticks(10, '%');
 }
                         </code></pre>
                     </section>
@@ -1066,15 +1063,15 @@ function buildAxis(){
                         <h2>Code: axes drawing</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 function drawAxis(){
-    svg.select('.x-axis-group')
+    svg.select('.x-axis-group.axis')
         .append("g")
-        .attr("class", "x axis")
+        .attr("class", "axis axis--x")
         .attr("transform", "translate(0," + chartHeight + ")")
         .call(xAxis);
 
     svg.select(".y-axis-group")
         .append("g")
-        .attr("class", "y axis")
+        .attr("class", "axis axis--y")
         .call(yAxis)
       .append("text")
         .attr("transform", "rotate(-90)")
@@ -1118,12 +1115,13 @@ function drawBars(){
     var bars = svg.select('.chart-group').selectAll(".bar")
         .data(data);
 
-    // If there aren't any bars create them
-    bars.enter().append('rect')
+    // Create bars for the new elements
+    bars.enter()
+      .append('rect')
         .attr("class", "bar")
         .attr("x", function(d) { return xScale(d.letter); })
-        .attr("width", xScale.rangeBand())
         .attr("y", function(d) { return yScale(d.frequency); })
+        .attr("width", xScale.rangeBand())
         .attr("height", function(d) { return chartHeight - yScale(d.frequency); });
 }
                         </code></pre>
@@ -1140,15 +1138,15 @@ function drawBars(){
                         <h2>Test: margin accessor</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 it('should provide margin getter and setter', function(){
-    var defaultMargin = barChart.margin(),
-        testMargin = {top: 4, right: 4, bottom: 4, left: 4},
-        newMargin;
+    var previous = barChart.margin(),
+        expected = {top: 4, right: 4, bottom: 4, left: 4},
+        actual;
 
-    barChart.margin(testMargin);
-    newMargin = barChart.margin();
+    barChart.margin(expected);
+    actual = barChart.margin();
 
-    expect(defaultMargin).not.toBe(testMargin);
-    expect(newMargin).toBe(testMargin);
+    expect(previous).not.toBe(expected);
+    expect(actual).toBe(expected);
 });
                         </code></pre>
                     </section>
@@ -1160,6 +1158,7 @@ it('should provide margin getter and setter', function(){
 exports.margin = function(_x) {
     if (!arguments.length) return margin;
     margin = _x;
+
     return this;
 };
                         </code></pre>
@@ -1181,65 +1180,51 @@ exports.margin = function(_x) {
                     <section>
                         <h2>Final code: standard way</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
 
-var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
 
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
-    .ticks(10, "%");
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
+var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.tsv("data.tsv", type, function(error, data) {
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+d3.tsv("data.tsv", function(d) {
+    d.frequency = +d.frequency;
+    return d;
+}, function(error, data) {
+    if (error) throw error;
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+    x.domain(data.map(function(d) { return d.letter; }));
+    y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
 
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Frequency");
+    g.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
 
-  svg.selectAll(".bar")
-      .data(data)
-    .enter().append("rect")
-      .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
-      .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); });
+    g.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y).ticks(10, "%"))
+      .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", "0.71em")
+        .attr("text-anchor", "end")
+        .text("Frequency");
 
+    g.selectAll(".bar")
+        .data(data)
+        .enter()
+          .append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d.letter); })
+            .attr("y", function(d) { return y(d.frequency); })
+            .attr("width", x.bandwidth())
+            .attr("height", function(d) { return height - y(d.frequency); });
 });
-
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
-}
                         </code></pre>
                     </section>
 
