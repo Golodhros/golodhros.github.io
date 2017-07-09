@@ -97,9 +97,9 @@
                         </ul>
                         <aside class="notes">
                             <ul>
-                                <li>That's my handler on twitter where I share articles and resources about dataviz, d3 and front end technologies in general.</li>
-                                <li>Also find me on EB's engineering blog</li>
-                                <li>Let's now see what brought you here today</li>
+                                <li>You can find me on twitter, where I share articles and resources about dataviz, d3 and front end technologies in general.</li>
+                                <li>EB's engineering blog</li>
+                                <li>Let's now see what brought you here</li>
                             </ul>
                         </aside>
                     </section>
@@ -115,13 +115,13 @@
                     </ul>
                     <aside class="notes">
                         <ul>
-                            <li>Talk for about 40 min</li>
+                            <li>In the next 45 minutes, I will talk for about 35 min</li>
                             <li>We will do some hands down coding, where you will help me.</li>
                             <li>Q&A at the end</li>
                             <li>I will assume certain level of knowledge of the library</li>
                             <li>I will NOT try to explain the Enter/Update/Exit pattern.</li>
-                            <li>T: There is a lot of resources that do it much better than me!</li>
-                            <li>T: I will share some links about common patterns in d3 development</li>
+                            <li>T: There are resources that do it much better than me!</li>
+                            <li>T: I will share some links about patterns in d3 development</li>
                         </ul>
                     </aside>
                 </section>
@@ -139,7 +139,7 @@
                     </aside>
                 </section>
 
-                <!-- D3 -->
+                <!-- D3 Intro -->
                 <section>
                     <section>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
@@ -157,7 +157,7 @@
                         </aside>
                     </section>
 
-                    <!-- D3 intro -->
+                    <!-- What is D3 -->
                     <section>
                         <h2>What is D3.js?</h2>
                         <ul>
@@ -174,7 +174,7 @@
                                 <li>and focused on mathematical transformations of data</li>
                                 <li>Based on web standards as SVG, HTML, CSS and canvas</li>
                                 <li>One of it’s more celebrated features is it’s seamless integration of animations and the way it allows us to create engaging interactions.</li>
-                                <li>Front End toolbox for creating interactive visualizations, and it is not a charting library.</li>
+                                <li>In general, it is a Front End toolbox for creating interactive visualizations.</li>
                             </ul>
                         </aside>
                     </section>
@@ -192,9 +192,9 @@
                             <ul>
                                 <li>D3 loads data and attaches it to the DOM.</li>
                                 <li>Binds that data to DOM elements</li>
-                                <li>and transforms those elements, transitioning among states if necessary.</li>
+                                <li>and transforms those elements,</li>
+                                <li>transitioning among states if necessary.</li>
                                 <li>Let's see my favorite demo</li>
-                                <li>T: Data stays on the DOM, that's the most stable API for Bostock</li>
                             </ul>
                         </aside>
                     </section>
@@ -205,8 +205,10 @@
                         <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/chart/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
                         <aside class="notes">
                             <ul>
-                                <li>The bubbles represent a data entry. The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener it is, the higher the rise against previous year.</li>
-                                <li>That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!</li>
+                                <li>This is a dataviz of Obama's administration budget for 2013</li>
+                                <li>Each bubble represent a data entry. The transformation I was referring is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener it is, the higher the rise against previous year.</li>
+                                <li>That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view code on the position.</li>
+                                <li>Check out the animations, they are kind of “automatic”. Magic!</li>
                             </ul>
                         </aside>
                     </section>
@@ -757,7 +759,7 @@ g.selectAll(".bar")
 
                 <!-- Sentence -->
                 <section>
-                    <h2>What if you could work with charts the same way you work with the other code?</h2>
+                    <h2>What if you could work with charts the same way you work with the rest of the code?</h2>
                     <aside class="notes">
                         <ul>
                             <li></li>
@@ -1331,11 +1333,11 @@ return function module(){
                         </div>
                         <aside class="notes">
                             <ul>
+                                <li>Another way of getting started: check out Britecharts</li>
                                 <li>A library we just released at Eventbrite</li>
                                 <li>started two years ago from a refactor of some messy code we had in production</li>
                                 <li>we needed a D3 library that could serve both d3 devs and non d3 savvy developers</li>
                                 <li>opinionated on the ‘looks.'</li>
-                                <li>Another way of getting started: Create a new chart for Britecharts</li>
                             </ul>
                         </aside>
                     </section>
@@ -1355,12 +1357,18 @@ return function module(){
                 <section>
                     <section>
                         <h2>What happened with my contracting gig?</h2>
+                        <aside class="notes">
+                            <ul>
+                                <li>The bump chart was half-refactored</li>
+                                <li>I couldn't add tests due to the lack of structure</li>
+                            </ul>
+                        </aside>
                     </section>
                     <section>
                         <h2>I used the Reusable Chart API</h2>
                         <aside class="notes">
                             <ul>
-                                <li>Line chart of just one value</li>
+                                <li>Line chart of just one line</li>
                             </ul>
                         </aside>
                     </section>
@@ -1411,10 +1419,10 @@ return function module(){
                     <aside class="notes">
                         <ul>
                             <li>In this (talk), we have seen how the example-(based) approach to building D3 charts works on the short term, but in the mid and long term, it brings you pain and sorrow.</li>
-                            <li>There is a better (way of building D3 charts). Using the Reusable API and a test driven approach will make your D3 charts easier to create and a LOT (easier to maintain).</li>
+                            <li>There is a better (way of building D3 charts).</li>
+                            <li>Using the Reusable API and a test driven approach will make your D3 charts easier to create and a LOT (easier to maintain).</li>
                             <li>I want to encourage you (guys) to go the extra mile, and whenever you build a chart, make it into a component.</li>
                             <li>Use the Reusable API! Test it! And build your very own chart library! This way, I assure you, you will be proud of your code again!</li>
-                            <li>Thanks for listening and thanks for caring.</li>
                         </ul>
                     </aside>
                 </section>
