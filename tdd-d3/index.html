@@ -37,22 +37,8 @@
 	</head>
 
 	<body>
-
         <div class="reveal">
             <div class="slides">
-
-                <section>
-                    <h2>Better D3 Charts with TDD</h2>
-                    <div>
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
-                            <defs>
-                                <path id="deethree" d="M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z"/>
-                            </defs>
-                            <use stroke="black" stroke-width="20" fill="none" xlink:href="#deethree"/>
-                            <use fill="white" xlink:href="#deethree"/>
-                        </svg>
-                    </div>
-                </section>
 
                 <!-- Opening -->
                 <section>
@@ -69,7 +55,8 @@
                     <aside class="notes">
                         <ul>
                             <li>Thank you guys for coming and thanks for caring about improving your D3 skills and code (quality).</li>
-                            <li>I used to start a new D3 chart by taking an example as a jumping-off point. I could modify it, plug in new data and I would have something that worked. However, this (way of coding) comes with a bunch of problems, especially those related to the reusability^, extendability^, simplicity^ and general quality~ of that code.</li>
+                            <li>I used to start a new D3 chart by taking an example as a jumping-off point. I could modify it, plug in new data and I would have something that worked.</li>
+                            <li>However, this (way of coding) comes with a bunch of problems, especially those related to the reusability^, extendability^, simplicity^ and general quality~ of that code.</li>
                             <li>It is a fact that software always changes, so how do we prepare for change?</li>
                             <li>In this talk, I will show you how to make your D3 charts easier to create and easier to maintain. We’ll do this with Test Driven Development and the Reusable Chart API, which is a way of componetize D3 code.</li>
                             <li>At the end of this talk, you should be able to test your D3 code. And for that I will give you some tools and share some ideas about how to get started.</li>
@@ -112,7 +99,7 @@
                             <ul>
                                 <li>That's my handler on twitter where I share articles and resources about dataviz, d3 and front end technologies in general.</li>
                                 <li>Also find me on EB's engineering blog</li>
-                                <li>Let's see what brought you here today</li>
+                                <li>Let's now see what brought you here today</li>
                             </ul>
                         </aside>
                     </section>
@@ -165,7 +152,7 @@
                         <aside class="notes">
                             <ul>
                                 <li>[Poll]</li>
-                                <li>Who does not know what D3 is?</li>
+                                <li>Who has some experience with D3?</li>
                             </ul>
                         </aside>
                     </section>
@@ -277,7 +264,7 @@
                     <!-- Applications -->
                     <section>
                         <h2>Bar charts</h2>
-                        <img data-src="img/chart/barchart_Fotor.jpg" alt="Bar Chart">
+                        <a href="http://eventbrite.github.io/britecharts/tutorial-bar.html" target="_blank"><img data-src="img/chart/britecharts-hoz-bar-chart.gif" alt="Bar Chart"></a>
                         <aside class="notes">
                             <ul>
                                 <li>All kind of business charts</li>
@@ -433,7 +420,7 @@
                         <h1>The standard way</h1>
                         <aside class="notes">
                             <ul>
-                                <li>The SW is just the way we usually find D3 code on the Internet</li>
+                                <li>The Standard Way is just the way we usually find D3 code on the Internet</li>
                                 <li>I will use a different example to show it</li>
                             </ul>
                         </aside>
@@ -896,7 +883,7 @@ container.datum(dataset).call(barChart);
                         <h1>The TDD way</h1>
                         <aside class="notes">
                             <ul>
-                                <li>Interaction</li>
+                                <li>Cool! Are you still with me?</li>
                                 <li>We have seen the problems of example code and a solution, the Reusable Chart API.</li>
                                 <li>Solution allows us to test, opening a new world of possibilities. Among them is to Test Driven our Charts.</li>
                                 <li>Craft the same bar chart test-by-test</li>
@@ -1307,7 +1294,6 @@ return function module(){
                             <li class="fragment">TDD the last chart you built</li>
                             <li class="fragment">Pick a block, refactor it</li>
                             <li class="fragment">TDD your next chart</li>
-                            <li class="fragment">Create a new chart for Britecharts</li>
                         </ul>
                         <aside class="notes">
                             <ul>
@@ -1322,7 +1308,7 @@ return function module(){
                     <!-- Hands On -->
                     <section>
                         <h1>Repository walkthrough</h1>
-                        <small><a target="_blank" href="https://github.com/Golodhros/d3-meetup">https://github.com/Golodhros/tdd-d3-fullstack</a></small>
+                        <small><a target="_blank" href="https://github.com/Golodhros/talk-tdd-d3">https://github.com/Golodhros/talk-tdd-d3</a></small>
                         <aside class="notes">
                             <ul>
                                 <li>Uses: Jasmine, Karma Runner</li>
@@ -1347,6 +1333,7 @@ return function module(){
                                 <li>started two years ago from a refactor of some messy code we had in production</li>
                                 <li>we needed a D3 library that could serve both d3 devs and non d3 savvy developers</li>
                                 <li>opinionated on the ‘looks.'</li>
+                                <li>Another way of getting started: Create a new chart for Britecharts</li>
                             </ul>
                         </aside>
                     </section>
@@ -1356,9 +1343,7 @@ return function module(){
                         <small><a target="_blank" href="https://github.com/eventbrite/britecharts">https://github.com/eventbrite/britecharts</a></small>
                         <aside class="notes">
                             <ul>
-                                <li>Uses: Jasmine, Karma Runner</li>
-                                <li>Structure, configuration files</li>
-                                <li>Run tests and Debugging</li>
+                                <li></li>
                             </ul>
                         </aside>
                     </section>
@@ -1440,10 +1425,10 @@ return function module(){
                             Twitter: <a target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
                         </li>
                         <li>
-                            Check out <a target="_blank" href="http://www.marcosiglesias.com/posts">my Blog</a>
+                            Slides: <a href="http://golodhros.github.io/tdd-d3">http://golodhros.github.io/tdd-d3</a>
                         </li>
                         <li>
-                            Slides: <a href="http://golodhros.github.io/tdd-d3">http://golodhros.github.io/tdd-d3</a>
+                            Code: <a href="http://www.github.com/Golodhros/talk-tdd-d3">http://www.github.com/Golodhros/talk-tdd-d3</a>
                         </li>
                     </ul>
                     <aside class="notes">
