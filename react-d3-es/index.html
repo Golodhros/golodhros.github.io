@@ -272,7 +272,7 @@
                 <section>
                     <!-- D3 Patterns Intro-->
                     <section>
-                        <h1>Patrones D3 y <br/>"Best Practices"</h1>
+                        <h1>Patrones D3 y <br/>Buenas Prácticas</h1>
                         <aside class="notes">
                             <ul>
                                 <li>Ahora que hemos visto cómo funciona, vamos a ver como organizar nuestro código D3</li>
@@ -349,11 +349,11 @@
                         </aside>
                     </section>
 
-                    <!-- C3 -->
+                    <!-- Billboard.js -->
                     <section>
-                        <a target="_blank" href="http://c3js.org/"><img src="img/screenshots/c3-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                        <a target="_blank" href="https://naver.github.io/billboard.js/"><img src="img/screenshots/billboardjs.png" alt="" style="width: 70%; max-height: 600px;"></a>
                         <div>
-                            <small class="close-reference"><a target="_blank" href="http://c3js.org/">http://c3js.org/</a></small>
+                            <small class="close-reference"><a target="_blank" href="https://naver.github.io/billboard.js/">https://naver.github.io/billboard.js/</a></small>
                         </div>
                         <aside class="notes">
                             <ul>
@@ -456,7 +456,7 @@
                     <section>
                         <h2>Dynamic Child Components</h2>
                         <ul>
-                            <li class="fragment">'key' únicas para cada hijo del componente renderizado</li>
+                            <li class="fragment">Claves únicas para cada descendiente del componente renderizado</li>
                             <li class="fragment">Renderizado más eficiente</li>
                             <li class="fragment">Similar a los Data Joins de D3</li>
                         </ul>
@@ -522,12 +522,12 @@
                         <h2>Retos</h2>
                         <ul>
                             <li class="fragment">D3 crea y transforma el DOM</li>
-                            <li class="fragment">React también, y sigue su estado</li>
-                            <li class="fragment">No han sido creadas para trabajar al mismo tiempo</li>
+                            <li class="fragment">React también, y hace un seguimiento de su estado</li>
+                            <li class="fragment">No han sido creadas para trabajar juntas</li>
                         </ul>
                         <aside class="notes" data-markdown>
                             * React sigue el DOM por completo
-                            * Son librerías "opinionated"
+                            * Son librerías muy definidas
                         </aside>
                     </section>
                 </section>
@@ -603,10 +603,10 @@
 
                     <!-- Mapeo de métodos de "Lifecycle" -->
                     <section>
-                        <h2>Mapeo de métodos de "Lifecycle"</h2>
+                        <h2>Mapeo de Métodos <br/>de Ciclo de Vida</h2>
                         <ul>
-                            <li class="fragment">Envoltorio de componentes ligero</li>
-                            <li class="fragment">Fichero con D3 incluyendo métodos para creación, actualización y destrucción</li>
+                            <li class="fragment">Wrapper de componentes liviano</li>
+                            <li class="fragment">Archivo con D3 incluyendo métodos para creación, actualización y destrucción</li>
                         </ul>
                         <small class="reference fragment"><a target="_blank" href="http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/">Integrating D3.js visualizations in a React app</a></small>
                         <aside class="notes" data-markdown>
@@ -616,7 +616,7 @@
 
                     <!-- Mapeo de métodos de "Lifecycle" - Pros/Cons-->
                     <section>
-                        <h2>Mapeo de métodos de "Lifecycle"</h2>
+                        <h2>Mapeo de Métodos <br/>de Ciclo de Vida</h2>
                         <h4>Pros y Contras</h4>
                         <ul>
                             <li class="fragment"><strong class="green">✓</strong> Fácil integración con D3</li>
@@ -630,9 +630,9 @@
 
                     <!-- React for DOM, D3 for Math -->
                     <section>
-                        <h2>D3 para las Matemáticas, <br>React para el DOM</h2>
+                        <h2>D3 para calculo, <br>React para el DOM</h2>
                         <ul>
-                            <li class="fragment">D3 para las matemáticas y los formatos</li>
+                            <li class="fragment">D3 para calculo y los formatos</li>
                             <li class="fragment">React manda en el DOM</li>
                         </ul>
                         <div>
@@ -691,11 +691,11 @@
 
                     <!-- React for DOM, D3 for Math - Pros/Cons-->
                     <section>
-                        <h2>D3 para las Matemáticas, <br>React para el DOM</h2>
+                        <h2>D3 para calculo, <br>React para el DOM</h2>
                         <h4>Pros y Contras</h4>
                         <ul>
                             <li class="fragment"><strong class="green">✓</strong> Consistente con el "camino React"</li>
-                            <li class="fragment"><strong class="red">✗</strong> Un montón de trabajo de primeras</li>
+                            <li class="fragment"><strong class="red">✗</strong> Un montón de trabajo por adelantado</li>
                             <li class="fragment"><strong class="red">✗</strong> Reimplementación de D3 en algunas partes</li>
                             <li class="fragment"><strong class="red">✗</strong> Limitado a renderizado en SVG</li>
                         </ul>
@@ -730,14 +730,14 @@
 
                     <!-- Cómo está el campo -->
                     <section>
-                        <h2>Cómo está el campo</h2>
+                        <h2>Resultados de la Exploración</h2>
                         <ul>
                             <li class="fragment">Librerías no mantenidas</li>
                             <li class="fragment">Es duro mantenerse al día con D3 y React</li>
                             <li class="fragment">D3 v4 creó un antes y un después</li>
                         </ul>
                         <aside class="notes" data-markdown>
-                            * Un buen número de librerías en abandono
+                            * Un buen número de librerías abandonadas
                             * D3 y React van muy deprisa, no es fácil estar actualizados
                             * D3 versión 4 limpió el campo, dejando atrás a un grupo de librerías
                         </aside>
@@ -814,37 +814,36 @@
                         </aside>
                     </section>
 
-                    <!-- react-vis -->
+                    <!-- Nivo -->
                     <section>
-                        <a target="_blank" href="http://uber.github.io/react-vis/#/en-US/">
-                            <img src="img/screenshots/react-vis-ss.png" alt="" style="width: 80%;" />
+                        <a target="_blank" href="http://nivo.rocks/#/">
+                            <img src="img/screenshots/nivo-ss.png" alt="" style="width: 80%;" />
                         </a>
                         <aside class="notes" data-markdown>
-                            * Proyecto de Uber
-                            * El menos extenso de los tres
+                            * Librería de alto nivel
+                            * Muchas opciones de renderizado: SVG, Canvas y HTML con un API para renderizado en el servidor o para emails
                         </aside>
                     </section>
 
                     <!-- Code -->
                     <section>
                         <h2>Código del Linechart</h2>
-                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/react-vis/line.js">
-                            <img src="img/code/react-vis-code.png" alt="" style="width: 80%;">
+                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/nivo/line.js">
+                            <img src="img/code/nivo-code.png" alt="" style="width: 80%;">
                         </a>
                         <aside class="notes" data-markdown>
-                            * parece fácil de usar
+                            * Su API es un poco distinta, ya que da un componente para cada chart
                         </aside>
                     </section>
 
                     <section>
-                        <h2>react-vis</h2>
+                        <h2>Nivo</h2>
                         <ul>
                             <li class="fragment">Animaciones con react-motion</li>
-                            <li class="fragment">Sunburst y Sankey</li>
+                            <li class="fragment">Gran Documentación</li>
                         </ul>
                         <aside class="notes" data-markdown>
                             * si ya usas react-motion igual te decantas por ella
-                            * charts menos comunes
                         </aside>
                     </section>
 
@@ -854,7 +853,7 @@
                         <small class="reference">Demo: <a target="_blank" href="https://golodhros.github.io/talk-react-d3/">https://golodhros.github.io/talk-react-d3/</a></small>
                         <small>Código: <a target="_blank" href="https://github.com/Golodhros/talk-react-d3">https://github.com/Golodhros/talk-react-d3</a></small>
                         <aside class="notes" data-markdown>
-                            * Tengo una app con estas tres librerías instaladas
+                            * Tengo una app con seis librerías instaladas
                             * Podéis hacer un fork y jugar con ellas
                         </aside>
                     </section>
@@ -875,7 +874,7 @@
                 <section>
                     <!-- React D3 Choosing a Project -->
                     <section>
-                        <h1>Eligiendo una estratgia</h1>
+                        <h1>Eligiendo una estrategia</h1>
                         <aside class="notes" data-markdown>
                             * A veces vamos a elegir dependiendo del contexto y la historia de la plataforma en la que estamos trabajando
                         </aside>
@@ -884,7 +883,7 @@
                     <!-- Criteria -->
                     <section>
                         <h2>Criterios de elección</h2>
-                        <img src="img/screenshots/choosing-criteria.png" alt="" style="width: 80%;">
+                        <img src="img/criteria/choosing-criteria.png" alt="" style="width: 80%;">
                         <aside class="notes" data-markdown>
                             * Hay muchas variables
                             * Como buen ingeniero, intentaré reducir alguna complejidad
@@ -894,7 +893,7 @@
                     <!-- Quality -->
                     <section>
                         <div>
-                            <img src="img/screenshots/quality-active-state.png" alt="" style="width: 80%;">
+                            <img src="img/criteria/quality-active-state.png" alt="" style="width: 80%;">
                         </div>
                         <ul>
                             <li>Bien testeadas</li>
@@ -909,7 +908,7 @@
                     <!-- Time -->
                     <section>
                         <div>
-                            <img src="img/screenshots/time-active-state.png" alt="" style="width: 80%;">
+                            <img src="img/criteria/time-active-state.png" alt="" style="width: 80%;">
                         </div>
                         <ul>
                             <li>Inversión a largo plazo?</li>
@@ -924,11 +923,11 @@
                     <!-- Scope -->
                     <section>
                         <div>
-                            <img src="img/screenshots/scope-active-state.png" alt="" style="width: 80%;">
+                            <img src="img/criteria/scope-active-state.png" alt="" style="width: 80%;">
                         </div>
                         <ul>
                             <li>Gráficas básicas?</li>
-                            <li>Un trabajo puntual?</li>
+                            <li>Un trabajo específico?</li>
                             <li>Gran personalización?</li>
                         </ul>
                         <aside class="notes" data-markdown>
@@ -941,7 +940,7 @@
                     <!-- Cost, Resources -->
                     <section>
                         <div>
-                            <img src="img/screenshots/cost-active-state.png" alt="" style="width: 80%;">
+                            <img src="img/criteria/cost-active-state.png" alt="" style="width: 80%;">
                         </div>
                         <ul>
                             <li>Presupuesto</li>
