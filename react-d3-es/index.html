@@ -556,6 +556,33 @@
                         </aside>
                     </section>
 
+                    <!-- D3 within React - Code -->
+                    <section>
+                        <h2>D3 dentro de React</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+class Line extends React.Component {
+
+    static propTypes = {...}
+
+    componentDidMount() {
+        // D3 Code to create the chart
+        // using this._rootNode as container
+    }
+
+    shouldComponentUpdate() {
+        // Prevents component re-rendering
+        return false;
+    }
+
+    render() {
+        return(
+            &lt;div className="line-container" ref={this._setRef.bind(this)} />
+        )
+    }
+}
+                        </code></pre>
+                    </section>
+
                     <!-- D3 within React - P/C -->
                     <section>
                         <h2>D3 dentro de React</h2>
@@ -580,6 +607,37 @@
                             * Tiene un DOM falso para engañar a D3
                             * Mantiene el árbol de React y utiliza D3
                         </aside>
+                    </section>
+
+                    <!-- Faux DOM - Code -->
+                    <section>
+                        <h2>React Faux DOM</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+import {withFauxDOM} from 'react-faux-dom'
+
+class Line extends React.Component {
+
+    static propTypes = {...}
+
+    componentDidMount() {
+        const faux = this.props.connectFauxDOM('div', 'chart');
+
+        // D3 Code to create the chart
+        // using faux as container
+        d3.select(faux)
+            .append('svg')
+        {...}
+    }
+
+    render() {
+        &lt;div className="line-container">
+           {this.props.chart}
+        &lt;/div>
+    }
+}
+
+export default withFauxDOM(Line);
+                        </code></pre>
                     </section>
 
                     <!-- Faux DOM  P/C-->
@@ -612,6 +670,72 @@
                         <aside class="notes" data-markdown>
                             * Si estás acostumbrado a React y quieres tener más estructura dentro de tus gráficas D3, esta solución parece óptima.
                         </aside>
+                    </section>
+
+                    <!-- Mapeo de métodos de ciclo de vida - Code -->
+                    <section>
+                        <h2>Mapeo de Métodos <br/>de Ciclo de Vida</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+import D3Line from './D3Line'
+
+class Line extends React.Component {
+
+    static propTypes = {...}
+
+    componentDidMount() {
+        // D3 Code to create the chart
+        this._chart = D3Line.create(
+            this._rootNode,
+            this.props.data,
+            this.props.config
+        );
+    }
+
+    componentDidUpdate() {
+        // D3 Code to update the chart
+        D3Line.update(
+           this._rootNode,
+           this.props.data,
+           this.props.config,
+           this._chart
+        );
+    }
+
+    componentWillUnmount() {
+        D3Line.destroy(this._rootNode);
+    }
+
+    _setRef(componentNode) {
+        this._rootNode = componentNode;
+    }
+
+    render() {
+        &lt;div className="line-container" ref={this._setRef.bind(this)} />
+    }
+}
+                        </code></pre>
+                    </section>
+
+                    <!-- Mapeo de métodos de ciclo de vida - Code -->
+                    <section>
+                        <h2>Mapeo de Métodos <br/>de Ciclo de Vida - D3Line</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+const D3Line = {};
+
+D3Line.create = (el, data, configuration) => {
+    // D3 Code to create the chart
+};
+
+D3Line.update = (el, data, configuration, chart) => {
+    // D3 Code to update the chart
+};
+
+D3Line.destroy = () => {
+    // Cleaning code here
+};
+
+export default D3Line;
+                        </code></pre>
                     </section>
 
                     <!-- Mapeo de métodos de "Lifecycle" - Pros/Cons-->
@@ -687,6 +811,48 @@
                         * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
                         Note:
                             * Estos son los submódulos D3 que tienen relación con el DOM
+                    </section>
+
+                    <!-- React for DOM, D3 for Math - Code -->
+                    <section>
+                        <h2>D3 para calculo, <br>React para el DOM</h2>
+                        <pre><code data-trim contenteditable class="javascript hljs">
+class Line extends React.Component {
+
+    static propTypes = {...}
+
+    drawLine() {
+        let xScale = d3.scaleTime()
+            .domain(d3.extent(this.props.data, ({date}) => date));
+            .rangeRound([0, this.props.width]);
+
+        let yScale = d3.scaleLinear()
+            .domain(d3.extent(this.props.data, ({value}) => value))
+            .rangeRound([this.props.height, 0]);
+
+        let line = d3.line()
+            .x((d) => xScale(d.date))
+            .y((d) => yScale(d.value));
+
+        return (
+            &lt;path
+                className="line"
+                d={line(this.props.data)}
+            />
+        );
+    }
+
+    render() {
+        &lt;svg
+           className="line-container"
+           width={this.props.width}
+           height={this.props.height}
+        >
+           {this.drawLine()}
+        &lt;/svg>
+    }
+}
+                        </code></pre>
                     </section>
 
                     <!-- React for DOM, D3 for Math - Pros/Cons-->
@@ -844,6 +1010,76 @@
                         </ul>
                         <aside class="notes" data-markdown>
                             * si ya usas react-motion igual te decantas por ella
+                        </aside>
+                    </section>
+
+                    <!-- VX -->
+                    <section>
+                        <a target="_blank" href="https://vx-demo.now.sh/">
+                            <img src="img/screenshots/vx-ss.png" alt="" style="width: 80%;" />
+                        </a>
+                        <aside class="notes" data-markdown>
+                            * Creada en AirBnB
+                            * Colección de componentes de visualización de bajo nivel
+                            * Es flexible y se pueden crear otras librerías de visualización a partir de esta librería
+                        </aside>
+                    </section>
+
+                    <!-- Code -->
+                    <section>
+                        <h2>Código del Linechart</h2>
+                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/vx/line.js">
+                            <img src="img/code/vx-code.png" alt="" style="width: 60%;">
+                        </a>
+                        <aside class="notes" data-markdown>
+                            * Es muy bajo nivel como podéis observar
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>VX</h2>
+                        <ul>
+                            <li class="fragment">Similar a D3.js pero para React</li>
+                            <li class="fragment">Flexible con la librería de animaciones</li>
+                        </ul>
+                        <aside class="notes" data-markdown>
+                            * Dado el bajo nivel de granularidad
+                            * Libertad
+                        </aside>
+                    </section>
+
+                    <!-- Britecharts React -->
+                    <section>
+                        <a target="_blank" href="">
+                            <img src="img/screenshots/britecharts-react-ss.png" alt="" style="width: 80%;" />
+                        </a>
+                        <aside class="notes" data-markdown>
+                            * Creada en Eventbrite y todavía en beta
+                            * La única que utiliza el mapeo de métodos de ciclo de vida
+                            * Permite utilizar Britecharts en aplicaciones React mediante un simple wrapper
+                        </aside>
+                    </section>
+
+                    <!-- Code -->
+                    <section>
+                        <h2>Código del Linechart</h2>
+                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/britecharts-react/line.js">
+                            <img src="img/code/bcr-code.png" alt="" style="width: 75%;">
+                        </a>
+                        <aside class="notes" data-markdown>
+                            * Utilizamos render props para el tooltip
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Britecharts React</h2>
+                        <ul>
+                            <li class="fragment">Ayuda a renderizar D3 en componentes React</li>
+                            <li class="fragment">Estados de carga</li>
+                        </ul>
+                        <aside class="notes" data-markdown>
+                            * No puedo ser objectivo
+                            * No soporta renderizado en el servidor
                         </aside>
                     </section>
 
