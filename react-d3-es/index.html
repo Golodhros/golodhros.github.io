@@ -456,24 +456,40 @@
                     <section>
                         <h2>Dynamic Child Components</h2>
                         <ul>
-                            <li class="fragment">Claves únicas para cada descendiente del componente renderizado</li>
+                            <li class="fragment">Claves únicas para cada elemento</li>
                             <li class="fragment">Renderizado más eficiente</li>
                             <li class="fragment">Similar a los Data Joins de D3</li>
                         </ul>
                         <small class="reference fragment"><a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a></small>
                         <aside class="notes" data-markdown>
-                            * Una característica interesante de React es el uso de...
-                            * Utilizamos keys, mientras en D3 utilizamos los datos añadidos al elemento del DOM
+                            * Una característica interesante de React es el uso de Dynamic Child Components cuando usamos React para renderizar una lista de elementos
+                            * Utilizamos claves únicas para cada descendiente del componente renderizado
+                            * Más eficiente, ya que evitaremos renderizar elementos ya presentes
+                            * Usamos claves, mientras en D3 utilizamos los datos añadidos al elemento del DOM (funcion clave con .data)
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Reconciliación y Renderizado</h2>
+                        <ul>
+                            <li class="fragment">El "Renderer" y el "Reconciler" están separados</li>
+                            <li class="fragment">"react" contiene el "Reconciler"</li>
+                            <li class="fragment">"react-dom" es el "Renderer"</li>
+                        </ul>
+                        <aside class="notes" data-markdown>
+                            * React tiene un reconciliador, y un renderizador
+                            * Desde la versión 0.14 de React, el renderer puede ser distinto (web, native, VR)
+                            * En D3 también podemos seleccionar distintos contextos de renderizado, como SVG o Canvas
                         </aside>
                     </section>
 
                     <!-- React Fiber -->
                     <section>
-                        <h2>React Fiber</h2>
+                        <h2>React 16 (Fiber)</h2>
                         <ul>
-                            <li class="fragment">El "Renderer" y el "Reconciler" están separados</li>
                             <li class="fragment">Introduce un nuevo algoritmo de reconciliación</li>
-                            <li class="fragment">Antes React agrupaba las operaciones, ahora...
+                            <li class="fragment">Antes React agrupaba las operaciones</li>
+                            <li class="fragment">Ahora:
                                 <ul>
                                     <li>Prioritiza operaciones</li>
                                     <li>Divide en trozos y los programa para luego</li>
@@ -483,11 +499,9 @@
                         </ul>
                         <small class="reference fragment"><a target="_blank" href="https://www.youtube.com/watch?v=ZCuYPiUIONs">A Cartoon Intro to Fiber</a> by Lin Clark</small>
                         <aside class="notes" data-markdown>
-                            * React también ha tenido una actualización con Fiber
-                            * El renderer puede ser distinto (native, VR, etc)
-                            * En D3 también podemos seleccionar distintos contextos de renderizado, como SVG o Canvas
+                            * React también ha tenido una actualización en React 16 con la arquitectura Fiber
                             * Fiber es el nuevo algorithmo de reconciliación de React
-                            * React antes estaba agrupando los cambios en el DOM, pero
+                            * React antes agrupaba los cambios en el DOM, pero
                             * este nuevo reconciliador es superior porque tiene en cuenta las prioridades de las operaciones, computaciones en paralelo y las "agendas" para mantener los 60FPS
                         </aside>
                     </section>
@@ -772,7 +786,7 @@ export default D3Line;
 
                     <!-- D3 libraries with no DOM relation -->
                     <section data-markdown class="scrollable-slide" data-speaker-notes="^Note:">
-                        ## D3 sub-modules: Non-DOM Related
+                        ## Submódulos sin DOM
                         * [Arrays (d3-array)](https://github.com/d3/d3-array)
                         * [Chords (d3-chord)](https://github.com/d3/d3-chord)
                         * [Collections (d3-collection)](https://github.com/d3/d3-collection)
@@ -800,7 +814,7 @@ export default D3Line;
 
                     <!-- D3 libraries with DOM relation -->
                     <section data-markdown data-speaker-notes="^Note:">
-                        ## D3 sub-modules: DOM Related
+                        ## Submódulos con DOM
                         * [Selections (d3-selection)](https://github.com/d3/d3-selection)
                         * [Transitions (d3-transition)](https://github.com/d3/d3-transition)
                         * [Axes (d3-axis)](https://github.com/d3/d3-axis)
@@ -810,7 +824,9 @@ export default D3Line;
                         * [Geographies (d3-geo)](https://github.com/d3/d3-geo)
                         * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
                         Note:
-                            * Estos son los submódulos D3 que tienen relación con el DOM
+                            * Selecciones OK
+                            * Animaciones, multiples librerias
+                            * El resto, DIY
                     </section>
 
                     <!-- React for DOM, D3 for Math - Code -->

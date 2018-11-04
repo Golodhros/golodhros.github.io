@@ -11,12 +11,18 @@ based on dark.css by Ivan Sagalaev
   padding: 0.5em;
   background: #3f3f3f;
   color: #dcdcdc;
+
+  /* MONOKAi */
+  color: #F8F8F2;;
+  background: #272822;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-tag {
   color: #e3ceab;
+  /* Monokai */
+  color: #ae8a52;
 }
 
 .hljs-template-tag {
@@ -48,6 +54,8 @@ based on dark.css by Ivan Sagalaev
 .hljs-section,
 .hljs-type {
   color: #efef8f;
+  /* Monokai */
+  color: #E6DB74;
 }
 
 .hljs-symbol,
