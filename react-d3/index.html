@@ -151,7 +151,7 @@
                             * with a huge API
                             * and focused on mathematical transformations of data
                             * Based on web standards as SVG, HTML, CSS and canvas
-                            * One of it’s more celebrated features is it’s seamless integration of animations and the way it allows us to create engaging interactions.
+                            * One of it’s more celebrated features is its seamless integration of animations and the way it allows us to create engaging interactions.
                             * Front End toolbox for creating interactive visualizations, and it is not a charting library.
                             * We will review several projects based on d3.
                         </aside>
@@ -196,7 +196,7 @@
                             <li class="fragment">Highly adopted</li>
                         </ul>
                         <aside class="notes" data-markdown>
-                            * We are in version 5, although the change from v4 to v5 was harsh
+                            * We are in version 5, although the change from v3 to v4 was harsh
                             * Now, all d3 is in sub-modules in different repos
                             * The API got improved in some cases, breaking with previous version
                             * Everybody is on d3 v4 or v5, not like angular 1.x and 2
@@ -266,7 +266,7 @@
                             * Leftover unbound data produce the enter selection (left), which represents missing elements
                             * the remaining unbound elements produce the exit selection (right), which represents elements to be removed
                             * ___
-                            * Now that we saw how it works, let's see how...
+                            * Now that we saw how D3.js works, let's see how...
                         </aside>
                     </section>
                 </section>
@@ -400,7 +400,7 @@
                         </div>
                         <aside class="notes" data-markdown>
                             * D3FC, Functional Components for D3
-                            * Wraps d3 components and allows to modify the main selection
+                            * Wraps d3 components and allows to modify the main selection from outside
                         </aside>
                     </section>
 
@@ -423,7 +423,7 @@
                         <aside class="notes" data-markdown>
                             * Britecharts, a library we created at Eventbrite
                             * We started three years ago from a refactor of some messy code we had in production
-                            * we needed a D3 library that could serve both d3 devs and non-d3-savvy developers
+                            * We wanted a D3 library that could serve both d3 developers and non-d3-savvy people
                         </aside>
                     </section>
 
@@ -468,12 +468,13 @@
                             <li class="fragment">Fast and efficient</li>
                         </ul>
                         <aside class="notes" data-markdown>
-                            * JavaScript lbirary to create User Interfaces
-                            * Based in creating component. IMO, the best that React brought us is a way of creating components that makes sense
+                            * What is ReactJS
+                            * JavaScript library to create User Interfaces
+                            * Based in creating components. IMO, the best that React brought us is a way of creating components that makes sense
                             * and is performant on rendering
-                            * A React component will keep track of the DOM state through his virtual DOM, updated with changes, and if that’s the case, re-render itself
+                            * A React component will keep track of the DOM state through his virtual DOM, updated with changes, and if necessary, re-render itself
                             * __
-                            * Dos essential elements of this library are...
+                            * Two essential elements of this library are...
                         </aside>
                     </section>
 
@@ -486,7 +487,8 @@
                         </ul>
                         <aside class="notes" data-markdown>
                             * the reconciler, and the renderer
-                            * Since version 0.14, they are separated, so we can use different renderers depending in our publishing target: whether native mobile apps or virtual reality
+                            * Since version 0.14, they are separated, so we can
+                            * use different renderers depending in our publishing target: whether native mobile apps or virtual reality
                             * Here we can establish a paralell, as in D3.js we can also choose between different rendering contexts like SVG, HTML or Canvas
                             * __
                             * React had also an update with...
@@ -511,10 +513,10 @@
                             * React 16 and the Fiber architecture
                             * Fiber is the new reconciliation algorithm of React
                             * Before, React was batching DOM changes, but
-                            * This new reconciler is better because it takes into account priorities, parallel computations and schedules to keep the 60FPS
+                            * This new reconciler is better because it takes into account priorities, parallel computations and schedules to keep the 60FPS refresh rate
                             * You can read an explanation on Fiber in this article
                             * ___
-                            * An characteristic of React I want to talk about is the use of...
+                            * A trait of React I want to talk about is the use of...
                         </aside>
                     </section>
 
@@ -537,7 +539,7 @@
                         </ul>
                         <small class="reference fragment"><a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a></small>
                         <aside class="notes" data-markdown>
-                            * We use unike keys to each descendant from the rendered component
+                            * We use unique keys for each descendant of the rendered component
                             * It is more efficient, as we avoid to render elements already present in the DOM
                             * Here we use keys, while on D3, the key is the data attached to the DOM element (we can use a key function with .data too)
                             * You can learn more about React reconciliation in this doc link
@@ -550,7 +552,7 @@
                     <section>
                         <aside class="notes" data-markdown>
                             * Up to now, we have talked a about D3 and React on its own
-                            * We have seen some of their rendering details and the last updates on both libraries
+                            * We have talked about their rendering process and the last updates on both libraries
                             * Now we are going to see...
                         </aside>
                     </section>
@@ -559,7 +561,7 @@
                     <section>
                         <img src="img/logos/reactD3.png" alt="" style="width: 80%;">
                         <aside class="notes" data-markdown>
-                            * what do they have in common and the challenges that working with both trigger
+                            * what do they have in **common** and the challenges we'll face when working with both libraries
                             * __
                             * React, and D3 are two libraries that...
                         </aside>
@@ -590,7 +592,7 @@
                             <li class="fragment">Not meant to work together</li>
                         </ul>
                         <aside class="notes" data-markdown>
-                            * D3 works with the DOM
+                            * **Challenges**, D3 works with the DOM
                             * React keeps track of it entirely
                             * They are opinionated libraries
                             * __
@@ -632,9 +634,6 @@
                         <h2>D3 within React</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 class Line extends React.Component {
-
-    static propTypes = {...}
-
     componentDidMount() {
         // D3 Code to create the chart
         // using this._rootNode as container
@@ -647,7 +646,10 @@ class Line extends React.Component {
 
     render() {
         return(
-            &lt;div className="line-container" ref={this._setRef.bind(this)} />
+            &lt;div
+                className="line-container"
+                ref={this._setRef.bind(this)}
+            />
         )
     }
 }
@@ -687,12 +689,9 @@ class Line extends React.Component {
                     <section>
                         <h2>React Faux DOM</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
-import {withFauxDOM} from 'react-faux-dom'
+import {withFauxDOM} from 'react-faux-dom';
 
 class Line extends React.Component {
-
-    static propTypes = {...}
-
     componentDidMount() {
         const faux = this.props.connectFauxDOM('div', 'chart');
 
@@ -752,14 +751,11 @@ export default withFauxDOM(Line);
                     </section>
 
                     <section>
-                        <h2>Mapeo de Métodos <br/>de Ciclo de Vida</h2>
+                        <h2>Lifecycle Methods Mapping</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 import D3Line from './D3Line'
 
 class Line extends React.Component {
-
-    static propTypes = {...}
-
     componentDidMount() {
         // D3 Code to create the chart
         this._chart = D3Line.create(
@@ -788,14 +784,17 @@ class Line extends React.Component {
     }
 
     render() {
-        &lt;div className="line-container" ref={this._setRef.bind(this)} />
+        &lt;div
+            className="line-container"
+            ref={this._setRef.bind(this)}
+        />
     }
 }
                         </code></pre>
                     </section>
 
                     <section>
-                        <h2>Mapeo de Métodos <br/>de Ciclo de Vida - D3Line</h2>
+                        <h2>Lifecycle Methods Mapping - D3Line</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 const D3Line = {};
 
@@ -813,6 +812,9 @@ D3Line.destroy = () => {
 
 export default D3Line;
                         </code></pre>
+                        <aside class="notes" data-markdown>
+                            * Let's talk about Pros and Cons
+                        </aside>
                     </section>
 
                     <!-- Lifecycle Methods Mapping - Pros/Cons-->
@@ -820,7 +822,7 @@ export default D3Line;
                         <h2>Lifecycle Methods Mapping</h2>
                         <h4>Pros/Cons</h4>
                         <ul>
-                            <li class="fragment"><strong class="green">✓</strong> Easy to integrate D3 on</li>
+                            <li class="fragment"><strong class="green">✓</strong> Easy to integrate D3.js code</li>
                             <li class="fragment"><strong class="green">✓</strong> Flexible, could encapsulate any chart</li>
                             <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Adds another file</li>
                         </ul>
@@ -843,6 +845,7 @@ export default D3Line;
                             <small class="reference fragment"><a target="_blank" href="http://formidable.com/blog/2015/05/21/react-d3-layouts/">React-D3 Layouts</a></small>
                         </div>
                         <aside class="notes" data-markdown>
+                            * D3 for the Math and React for the DOM
                             * More leaning towards React
                             * We'll use d3 for doing the computing
                             * And React does what it does best
@@ -898,19 +901,22 @@ export default D3Line;
 
                     <!-- React for DOM, D3 for Math - Code -->
                     <section>
-                        <h2>D3 para calculo, <br>React para el DOM</h2>
+                        <h2>D3 for the Math, <br>React for the DOM</h2>
                         <pre><code data-trim contenteditable class="javascript hljs">
 class Line extends React.Component {
-
-    static propTypes = {...}
-
     drawLine() {
         let xScale = d3.scaleTime()
-            .domain(d3.extent(this.props.data, ({date}) => date));
+            .domain(d3.extent(
+                this.props.data,
+                ({date}) => date
+            ))
             .rangeRound([0, this.props.width]);
 
         let yScale = d3.scaleLinear()
-            .domain(d3.extent(this.props.data, ({value}) => value))
+            .domain(d3.extent(
+                this.props.data,
+                ({value}) => value
+            ))
             .rangeRound([this.props.height, 0]);
 
         let line = d3.line()
@@ -953,7 +959,7 @@ class Line extends React.Component {
                             * It could get to a well-crafted code, and it will take work
                             * Axis, brushes, zoom...
                             * We cannot move into canvas rendering when going this way
-                            * It’s a long term solution, just if you will use it a lot in the future
+                            * I would create it this way just if I plan to use it a lot in the future
                         </aside>
                     </section>
 
@@ -963,6 +969,8 @@ class Line extends React.Component {
                         <small class="reference"><a target="_blank" href="#/14/3">Reference</a></small>
                         <aside class="notes" data-markdown>
                             * Here we see these approaches according to the level of integration with both React and D3
+                            * ---
+                            * Now that we saw the possible approaches we'll review...
                         </aside>
                     </section>
                 </section>
@@ -973,7 +981,7 @@ class Line extends React.Component {
                     <section>
                         <h1>React + D3 Libraries</h1>
                         <aside class="notes" data-markdown>
-                            * Now that we saw the possible approaches we'll see some libraries that combine both libraries
+                            * some **libraries** that combine React and D3.js
                             * __
                             * Analizing the...
                         </aside>
@@ -988,12 +996,12 @@ class Line extends React.Component {
                             <li class="fragment">D3 v4 cleaned up the field</li>
                         </ul>
                         <aside class="notes" data-markdown>
-                            * Ecosystem, I have observed that
+                            * Ecosystem, I have observed
                             * A good amount of not maintained libraries
                             * D3 and React push hard, so it’s not easy to keep up
                             * D3 v4 brought a ‘clean up’ on the field, leaving behind a large group of libraries
                             * __
-                            * Let's see some like...
+                            * Let's see some of these libraries, like...
                         </aside>
                     </section>
 
@@ -1149,9 +1157,9 @@ class Line extends React.Component {
                         </a>
                         <aside class="notes" data-markdown>
                             * Created at Eventbrite and still in Beta
-                            * Only one useing the lifecycle methods mapping approach
+                            * Only library using the lifecycle methods mapping approach
                             * Allows using Britecharts in React applications through a simple wrapper
-                            * Britecharts as the main library, wrappers for other libraries
+                            * Britecharts as the main library, and we plan wrappers for Vue
                         </aside>
                     </section>
 
@@ -1188,6 +1196,7 @@ class Line extends React.Component {
                         <aside class="notes" data-markdown>
                             * I have prepared a simple react app with six installed libraries
                             * you can fork it and play around with them
+                            * __
                             * I have also created a comparative matrix of...
                         </aside>
                     </section>
@@ -1199,7 +1208,7 @@ class Line extends React.Component {
                         <aside class="notes" data-markdown>
                             * D3 and D3+React Libraries
                             * Take it with a grain of salt, I could be wrong on some subjective measures
-                            * Hope to help you out with the decision
+                            * Hope to help you out when making a decision
                         </aside>
                     </section>
                 </section>
@@ -1208,7 +1217,7 @@ class Line extends React.Component {
                 <section>
                     <section>
                         <aside class="notes" data-markdown>
-                            * We are close to the end of the talk
+                            * We are close to the end of this talk
                             * And I would love to give you a general vision of what to do with all this info
                             * As many times what developers need is..
                         </aside>
@@ -1230,7 +1239,8 @@ class Line extends React.Component {
                         <h2>Choosing criteria</h2>
                         <img src="img/screenshots/choosing-criteria.png" alt="" style="width: 80%;">
                         <aside class="notes" data-markdown>
-                            * Choosing criteria, that might be too many
+                            * Choosing criteria: Cost, Scope, Time and Quality
+                            * They might be too many, so
                             * As a good engineer, I will try to reduce some complexity by fixing...
                         </aside>
                     </section>
@@ -1247,9 +1257,9 @@ class Line extends React.Component {
                         </ul>
                         <aside class="notes" data-markdown>
                             * The quality
-                            * We will start from tested visualizations, with D3 v4 or above and good docs
+                            * We will assume tested visualizations, with D3 v4 or above and good docs
                             * __
-                            * The next steps will be...
+                            * The next criteria will be...
                         </aside>
                     </section>
 
