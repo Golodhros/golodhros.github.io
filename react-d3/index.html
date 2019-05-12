@@ -37,17 +37,18 @@
         <div class="reveal">
             <div class="slides">
 
+                <section>
                 <!-- Opening -->
                 <section>
-                    <h2>React, D3 and<br /> the dataviz ecosystem</h2>
+                    <h2>React, D3 and<br /> the Dataviz Ecosystem</h2>
                     <div>
                         <a target="_blank" href="">
                             <img src="img/logos/reactD3.png" alt="" style="width: 60%;" />
                         </a>
                     </div>
                     <aside class="notes" data-markdown>
-                        * Hi, thanks for coming
-                        * My name is Marcos Iglesias and I am here to talk about React, D3 and the dataviz ecosystem within the context of building React applications
+                        * Hi, thank you for coming!
+                        * My name is Marcos Iglesias and I am here to talk about React, D3 and the dataviz ecosystem within the context of building **React applications**
                         * -
                         * I work as...
                     </aside>
@@ -55,584 +56,567 @@
 
                 <!-- Bio -->
                 <section>
-                    <section>
-                        <div style="padding-bottom: 40px;">
-                            <img data-src="img/logos/eventbrite-logo.png" width="80%" alt="Eventbrite Logo">
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * Sr. Software Engineer at Eventbrite
-                            * Building User Interfaces and Dashboards for our event organizers
-                            * __
-                            * You can find me...
-                        </aside>
-                    </section>
+                    <div style="padding-bottom: 40px;">
+                        <img data-src="img/logos/eventbrite-logo.png" width="80%" alt="Eventbrite Logo">
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * Sr. Software Engineer at Eventbrite
+                        * Building User Interfaces and Dashboards for our event organizers
+                        * __
+                        * You can find me...
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>Online</h2>
-                        <ul>
-                            <li><a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
-                            <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * online on twitter, where I share articles and resources about dataviz, d3, React, web performance and front end technologies in general
-                            * You can also read my posts on EB's engineering blog
-                            * __
-                            * Let's see what brought you here today...
-                        </aside>
-                    </section>
+                <section>
+                    <h2>Online</h2>
+                    <ul>
+                        <li><a target="_blank" href="https://twitter.com/golodhros">@golodhros</a></li>
+                        <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * online on twitter, where I share articles and resources about dataviz, d3, React, web performance and front end technologies in general
+                        * I also manage EB's engineering blog, where you can read my posts and my peers' posts about engineering and engineering culture
+                        * __
+                        * Let's see what brought you to this session today...
+                    </aside>
                 </section>
 
                 <!-- Intro -->
+                <!-- Message -->
                 <section>
-                    <!-- Message -->
-                    <section>
-                        <a target="_blank" href=""><img src="img/logos/reactD3.png" alt="" style="width: 80%;"></a>
-                        <aside class="notes" data-markdown>
-                            * React and D3 are two great UI tools designed for goals that sometimes collide
-                            * The problem is that both take control of the DOM elements, and they do it in different ways
-                            * How can you make them work together optimizing their features depending on your current project?
-                            * In this talk, you will see how you can approach building React apps that need the powerful charting goodness of D3.
-                            * __
-                            * Let's see briefly the...
-                        </aside>
-                    </section>
+                    <a target="_blank" href=""><img src="img/logos/reactD3.png" alt="" style="width: 80%;"></a>
+                    <aside class="notes" data-markdown>
+                        * React and D3 are two great UI tools designed for goals that sometimes **collide**
+                        * The problem is that **both take control of the DOM** elements, and they do it in different ways
+                        * So **how can you make them work together** optimizing their features depending on your current project?
+                        * In this talk, you will see **how** you can approach building React apps that need the powerful charting goodness of D3
+                        * __
+                        * Let's see briefly the...
+                    </aside>
+                </section>
 
-                    <!-- Next Up -->
-                    <section>
-                        <h2>Next up</h2>
-                        <ul>
-                            <li class="fragment">D3</li>
-                            <li class="fragment">React</li>
-                            <li class="fragment">React + D3</li>
-                            <li class="fragment">Choosing an approach</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * agenda for this talk.
-                            * First, we will introduce D3
-                            * Talk a bit about React
-                            * We will review the different strategies to combine both libraries
-                            * Lastly, we will talk about choosing the best option for your requirements at work and on your side projects.
-                            * ___
-                            * We are going to start with...
-                        </aside>
-                    </section>
+                <!-- Next Up -->
+                <section>
+                    <h2>Next up</h2>
+                    <ul>
+                        <li class="fragment">D3</li>
+                        <li class="fragment">React</li>
+                        <li class="fragment">React + D3</li>
+                        <li class="fragment">Choosing an approach</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * agenda for this session
+                        * First, we will introduce D3
+                        * Talk a bit about React
+                        * We will review the different strategies to combine both libraries
+                        * Lastly, we will talk about choosing the best option for your requirements at work and on your side projects.
+                        * ___
+                        * We are going to start with...
+                    </aside>
                 </section>
 
                 <!-- D3 -->
                 <section>
-                    <section>
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
-                            <defs>
-                                <path id="deethree" d="M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z"/>
-                            </defs>
-                            <use stroke="black" stroke-width="20" fill="none" xlink:href="#deethree"/>
-                            <use fill="white" xlink:href="#deethree"/>
-                        </svg>
-                        <aside class="notes" data-markdown>
-                            * D3.js
-                            * POLL: Who has worked with D3 before?
-                            * __
-                            * Let's see...
-                        </aside>
-                    </section>
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="-10 -10 116 111">
+                        <defs>
+                            <path id="deethree" d="M0,0h7.75a45.5,45.5 0 1 1 0,91h-7.75v-20h7.75a25.5,25.5 0 1 0 0,-51h-7.75zm36.2510,0h32a27.75,27.75 0 0 1 21.331,45.5a27.75,27.75 0 0 1 -21.331,45.5h-32a53.6895,53.6895 0 0 0 18.7464,-20h13.2526a7.75,7.75 0 1 0 0,-15.5h-7.75a53.6895,53.6895 0 0 0 0,-20h7.75a7.75,7.75 0 1 0 0,-15.5h-13.2526a53.6895,53.6895 0 0 0 -18.7464,-20z"/>
+                        </defs>
+                        <use stroke="black" stroke-width="20" fill="none" xlink:href="#deethree"/>
+                        <use fill="white" xlink:href="#deethree"/>
+                    </svg>
+                    <aside class="notes" data-markdown>
+                        * D3.js
+                        * POLL: Who has worked with D3 before?
+                        * __
+                        * Let's see...
+                    </aside>
+                </section>
 
-                    <!-- D3 intro -->
-                    <section>
-                        <h2>What is D3.js?</h2>
-                        <ul>
-                            <li class="fragment">Data-Driven Documents</li>
-                            <li class="fragment">Low level, General Purpose Visualization Library</li>
-                            <li class="fragment">Manipulates data based documents</li>
-                            <li class="fragment">Open web standards (SVG, HTML, CSS and now Canvas)</li>
-                            <li class="fragment">Allows interactions with your graphs</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * D3 stands for data-driven documents
-                            * with a huge API
-                            * and focused on mathematical transformations of data
-                            * Based on web standards as SVG, HTML, CSS and canvas
-                            * One of it’s more celebrated features is its seamless integration of animations and the way it allows us to create engaging interactions.
-                            * Front End toolbox for creating interactive visualizations, and it is not a charting library.
-                            * We will review several projects based on d3.
-                        </aside>
-                    </section>
+                <!-- D3 intro -->
+                <section>
+                    <h2>What is D3.js?</h2>
+                    <ul>
+                        <li class="fragment">Data-Driven Documents</li>
+                        <li class="fragment">Low level, General Purpose Visualization Library</li>
+                        <li class="fragment">Manipulates data based documents</li>
+                        <li class="fragment">Open web standards (SVG, HTML, CSS and now Canvas)</li>
+                        <li class="fragment">Allows interactions with your graphs</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * D3 stands for data-driven documents
+                        * with a huge API
+                        * and focused on mathematical transformations of data
+                        * Based on web standards as SVG, HTML, CSS and canvas
+                        * One of it’s more celebrated features is its seamless integration of animations and the way it allows us to create engaging interactions.
+                        * Front End toolbox for creating interactive visualizations, and it is not a charting library.
+                        * We will review several projects based on d3.
+                    </aside>
+                </section>
 
-                    <!-- How does it work? -->
-                    <section>
-                        <h2>How does it work?</h2>
-                        <ul>
-                            <li class="fragment">Loads data</li>
-                            <li class="fragment">Binds data to elements</li>
-                            <li class="fragment">Transforms those elements</li>
-                            <li class="fragment">Transitions between states</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * D3 loads data and attaches it to the DOM
-                            * Binds that data to DOM elements
-                            * and transforms those elements, transitioning among states if necessary
-                            * Let's see my favorite demo
-                            * T: Data stays on the DOM, that's the most stable API for Bostock
-                        </aside>
-                    </section>
+                <!-- How does it work? -->
+                <section>
+                    <h2>How does it work?</h2>
+                    <ul>
+                        <li class="fragment">Loads data</li>
+                        <li class="fragment">Binds data to elements</li>
+                        <li class="fragment">Transforms those elements</li>
+                        <li class="fragment">Transitions between states</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * D3 loads data and attaches it to the DOM
+                        * Binds that data to DOM elements
+                        * and transforms those elements, transitioning among states if necessary
+                        * Let's see my favorite demo
+                        * T: Data stays on the DOM, that's the most stable API for Bostock
+                    </aside>
+                </section>
 
-                    <!-- D3 Demo - Budget -->
-                    <section>
-                        <h2>D3 Demo</h2>
-                        <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/chart/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
-                        <aside class="notes" data-markdown>
-                            * The bubbles represent a data entry.
-                            * The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener it is, the higher the rise against previous year.
-                            * That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!
-                        </aside>
-                    </section>
+                <!-- D3 Demo - Budget -->
+                <section>
+                    <h2>D3 Demo</h2>
+                    <a target="_blank" href="http://www.nytimes.com/interactive/2012/02/13/us/politics/2013-budget-proposal-graphic.html?_r=0"><img src="img/chart/budget.png" alt="Obama Budget Proposal" style="width: 80%;"></a>
+                    <aside class="notes" data-markdown>
+                        * The bubbles represent a data entry.
+                        * The transformation I refer is the size and color of the bubble, so the bigger the bubble, the higher the quantity; the greener it is, the higher the rise against previous year.
+                        * That’s not all, as we can click on one of the buttons and it changes the focus of the visualization, using the same data but showing another point of view. Check out the animations, they are kind of “automatic”. Magic!
+                    </aside>
+                </section>
 
-                    <!-- D3 v4 update -->
-                    <section>
-                        <h2>D3 v4 Update</h2>
-                        <ul>
-                            <li class="fragment">More modular</li>
-                            <li class="fragment">Improved API</li>
-                            <li class="fragment">Breaking changes</li>
-                            <li class="fragment">Highly adopted</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * We are in version 5, although the change from v3 to v4 was harsh
-                            * Now, all d3 is in sub-modules in different repos
-                            * The API got improved in some cases, breaking with previous version
-                            * Everybody is on d3 v4 or v5, not like angular 1.x and 2
-                            * ___
-                            * In the core of D3.js are the...
-                        </aside>
-                    </section>
+                <!-- D3 v4 update -->
+                <section>
+                    <h2>D3 v4 Update</h2>
+                    <ul>
+                        <li class="fragment">More modular</li>
+                        <li class="fragment">Improved API</li>
+                        <li class="fragment">Breaking changes</li>
+                        <li class="fragment">Highly adopted</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * We are in version 5, although the change from v3 to v4 was harsh
+                        * Now, all d3 is in sub-modules in different repos
+                        * The API got improved in some cases, breaking with previous version
+                        * Everybody is on d3 v4 or v5, not like angular 1.x and 2
+                        * ___
+                        * In the core of D3.js are the...
+                    </aside>
                 </section>
 
                 <!-- D3 Data Joins -->
+                <!-- D3 Data Joins Intro-->
                 <section>
-                    <!-- D3 Data Joins Intro-->
-                    <section>
-                        <h1>D3 Data Joins</h1>
-                        <aside class="notes" data-markdown>
-                            * I am going to touch the Data Joins definition a bit
-                            * As we will establish similitudes with the way React works
-                            * -
-                            * A Data Join...
-                        </aside>
-                    </section>
+                    <h1>D3 Data Joins</h1>
+                    <aside class="notes" data-markdown>
+                        * I am going to touch the Data Joins definition a bit
+                        * As we will establish similitudes with the way React works
+                        * -
+                        * A Data Join...
+                    </aside>
+                </section>
 
-                    <!-- Data Join Definition -->
-                    <section>
-                        <h2>Transforms the DOM by selecting elements and joining to data</h2>
-                        <aside class="notes" data-markdown>
-                            * We'll use the d3-selection
-                            * It's another DOM management approach
-                            * With jquery we accessed elments
-                            * with backbone and MV* we rendered views
-                            * with React we are smart about renders, using the virtual DOM
-                            * and with D3, we have data joins
-                            * Let's check a diagram...
-                        </aside>
-                    </section>
+                <!-- Data Join Definition -->
+                <section>
+                    <h2>Transforms the DOM by selecting elements and joining to data</h2>
+                    <aside class="notes" data-markdown>
+                        * We'll use the d3-selection
+                        * It's another DOM management approach
+                        * With jquery we accessed elments
+                        * with backbone and MV* we rendered views
+                        * with React we are smart about renders, using the virtual DOM
+                        * and with D3, we have data joins
+                        * Let's check a diagram...
+                    </aside>
+                </section>
 
-                    <!-- Data Joins -->
-                    <section>
-                        <h2>Data Join</h2>
-                        <a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">
-                            <img src="img/diagram/how-selections-work-overview.png" alt="" style="width: 100%;">
+                <!-- Data Joins -->
+                <section>
+                    <h2>Data Join</h2>
+                    <a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">
+                        <img src="img/diagram/how-selections-work-overview.png" alt="" style="width: 100%;">
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * Imagine we have this 5 letters in the DOM: a, b, c, d and e
+                        * We select them, and add data to create a data join
+                        * Three groups, the ones that stay (update),
+                        * the ones that need to be created (enter)
+                        * and the ones that need to leave (exit)
+                        * this is represented with an object with three arrays
+                        * It's a diff algorithm, but instead of comparing already rendered DOM, we compare data
+                        * The data is in the DOM, we'll compare this with the use of keys in React components
+                    </aside>
+                </section>
+
+                <!-- Update, Enter and Exit Pattern -->
+                <section>
+                    <h2>Update, Enter <br>and Exit Pattern</h2>
+                    <div>
+                        <a target="_blank" href="http://bost.ocks.org/mike/join/">
+                            <img src="img/diagram/thinking-with-joins.png" alt="" style="width: 60%;">
                         </a>
-                        <aside class="notes" data-markdown>
-                            * Imagine we have this 5 letters in the DOM: a, b, c, d and e
-                            * We select them, and add data to create a data join
-                            * Three groups, the ones that stay (update),
-                            * the ones that need to be created (enter)
-                            * and the ones that need to leave (exit)
-                            * this is represented with an object with three arrays
-                            * It's a diff algorithm, but instead of comparing already rendered DOM, we compare data
-                            * The data is in the DOM, we'll compare this with the use of keys in React components
-                        </aside>
-                    </section>
-
-                    <!-- Update, Enter and Exit Pattern -->
-                    <section>
-                        <h2>Update, Enter <br>and Exit Pattern</h2>
-                        <div>
-                            <a target="_blank" href="http://bost.ocks.org/mike/join/">
-                                <img src="img/diagram/thinking-with-joins.png" alt="" style="width: 60%;">
-                            </a>
-                        </div>
-                        <small class="reference"><a target="_blank" href="#/14/2">Resources</a></small>
-                        <aside class="notes" data-markdown>
-                            * we are looking at the relationship between a D3 selection and the data, and then working with them through the three groups: enter, update and exit
-                            * Data points joined to existing elements produce the update (inner) selection
-                            * Leftover unbound data produce the enter selection (left), which represents missing elements
-                            * the remaining unbound elements produce the exit selection (right), which represents elements to be removed
-                            * ___
-                            * Now that we saw how D3.js works, let's see how...
-                        </aside>
-                    </section>
+                    </div>
+                    <small class="reference"><a target="_blank" href="#/14/2">Resources</a></small>
+                    <aside class="notes" data-markdown>
+                        * we are looking at the relationship between a D3 selection and the data, and then working with them through the three groups: enter, update and exit
+                        * Data points joined to existing elements produce the update (inner) selection
+                        * Leftover unbound data produce the enter selection (left), which represents missing elements
+                        * the remaining unbound elements produce the exit selection (right), which represents elements to be removed
+                        * ___
+                        * Now that we saw how D3.js works, let's see how...
+                    </aside>
                 </section>
 
                 <!-- D3 Patterns-->
+                <!-- D3 Patterns Intro-->
                 <section>
-                    <!-- D3 Patterns Intro-->
-                    <section>
-                        <h1>D3 Patterns and <br/>Best Practices</h1>
-                        <aside class="notes" data-markdown>
-                            * to organize your d3 code
-                            * -
-                            * the D3.js community hasn’t found a standard way of...
-                        </aside>
-                    </section>
+                    <h1>D3 Patterns and <br/>Best Practices</h1>
+                    <aside class="notes" data-markdown>
+                        * to organize your d3 code
+                        * -
+                        * the D3.js community hasn’t found a standard way of...
+                    </aside>
+                </section>
 
-                    <!-- D3 Component Patterns -->
-                    <section>
-                        <h2>Component Patterns</h2>
-                        <ul>
-                            <li class="fragment">
-                                <a href="https://www.eventbrite.com/engineering/leveling-up-d3-the-reusable-chart-api/">The Reusable API</a>
-                            </li>
-                            <li class="fragment">
-                                <a href="https://ejb.github.io/2016/05/23/a-better-way-to-structure-d3-code.html">Object Oriented approach</a>
-                            </li>
-                            <li class="fragment">
-                                <a href="https://github.com/curran/d3-component">d3-component</a>
-                            </li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * creating components, although the most common are:
-                            * RAPI: Based on an article by Mike Bostock
-                            * Others took an OOP approach
-                            * There are more, but we won't touch them today
-                            * __
-                            * I have worked with D3 for a while, and I almost always work
-                        </aside>
-                    </section>
+                <!-- D3 Component Patterns -->
+                <section>
+                    <h2>Component Patterns</h2>
+                    <ul>
+                        <li class="fragment">
+                            <a href="https://www.eventbrite.com/engineering/leveling-up-d3-the-reusable-chart-api/">The Reusable API</a>
+                        </li>
+                        <li class="fragment">
+                            <a href="https://ejb.github.io/2016/05/23/a-better-way-to-structure-d3-code.html">Object Oriented approach</a>
+                        </li>
+                        <li class="fragment">
+                            <a href="https://github.com/curran/d3-component">d3-component</a>
+                        </li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * creating components, although the most common are:
+                        * RAPI: Based on an article by Mike Bostock
+                        * Others took an OOP approach
+                        * There are more, but we won't touch them today
+                        * __
+                        * I have worked with D3 for a while, and I almost always work
+                    </aside>
+                </section>
 
-                    <!-- D3 Testing -->
-                    <section>
-                        <h2>D3 Testing</h2>
-                        <blockquote class="fragment">D3 is hard</blockquote>
-                        <aside class="notes" data-markdown>
-                            * with tests
-                            * D3 is hard, and there is a good chance that your first implementation won’t be the best
-                            * Being backed by tests allows you to refactor your code without breaking it
-                            * ___
-                            * For the next section, I've done a small research of some of the best...
-                        </aside>
-                    </section>
+                <!-- D3 Testing -->
+                <section>
+                    <h2>D3 Testing</h2>
+                    <blockquote class="fragment">D3 is hard</blockquote>
+                    <aside class="notes" data-markdown>
+                        * with tests
+                        * D3 is hard, and there is a good chance that your first implementation won’t be the best
+                        * Being backed by tests allows you to refactor your code without breaking it
+                        * ___
+                        * For the next section, I've done a small research of some of the best...
+                    </aside>
                 </section>
 
                 <!-- D3 Libraries -->
+                <!-- D3 Libraries Intro-->
                 <section>
-                    <!-- D3 Libraries Intro-->
-                    <section>
-                        <h1>D3 Libraries</h1>
-                        <aside class="notes" data-markdown>
-                            * D3 libraries out there
-                            * I have selected some that are tested and for the most part in v4 or above
-                            * We are gonna look at them from the API point of view
-                        </aside>
-                    </section>
+                    <h1>D3 Libraries</h1>
+                    <aside class="notes" data-markdown>
+                        * D3 libraries out there
+                        * I have selected some that are tested and for the most part in v4 or above
+                        * We are gonna look at them from the API point of view
+                    </aside>
+                </section>
 
-                    <!-- Plottable -->
-                    <section>
-                        <a target="_blank" href="http://plottablejs.org/"><img src="img/screenshots/plottablejs-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
-                        <div>
-                            <small class="close-reference"><a target="_blank" href="http://plottablejs.org/">http://plottablejs.org/</a></small>
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * Plottable is pretty popular
-                        </aside>
-                    </section>
+                <!-- Plottable -->
+                <section>
+                    <a target="_blank" href="http://plottablejs.org/"><img src="img/screenshots/plottablejs-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                    <div>
+                        <small class="close-reference"><a target="_blank" href="http://plottablejs.org/">http://plottablejs.org/</a></small>
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * Plottable is pretty popular
+                    </aside>
+                </section>
 
-                    <section>
-                        <img src="img/diagram/d3-libraries-step-1.png" alt="" style="width: 120%;"></a>
-                        <aside class="notes" data-markdown>
-                            * It has an API with OOP flavor
-                        </aside>
-                    </section>
+                <section>
+                    <img src="img/diagram/d3-libraries-step-1.png" alt="" style="width: 120%;"></a>
+                    <aside class="notes" data-markdown>
+                        * It has an API with OOP flavor
+                    </aside>
+                </section>
 
-                    <!-- Billboard.js -->
-                    <section>
-                        <a target="_blank" href="https://naver.github.io/billboard.js/"><img src="img/screenshots/billboardjs.png" alt="" style="width: 70%; max-height: 600px;"></a>
-                        <div>
-                            <small class="close-reference"><a target="_blank" href="https://naver.github.io/billboard.js/">https://naver.github.io/billboard.js/</a></small>
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * Billboard is a "fork" of C3.js, a classic library in the D3.js world
-                        </aside>
-                    </section>
+                <!-- Billboard.js -->
+                <section>
+                    <a target="_blank" href="https://naver.github.io/billboard.js/"><img src="img/screenshots/billboardjs.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                    <div>
+                        <small class="close-reference"><a target="_blank" href="https://naver.github.io/billboard.js/">https://naver.github.io/billboard.js/</a></small>
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * Billboard is a "fork" of C3.js, a classic library in the D3.js world
+                    </aside>
+                </section>
 
-                    <section>
-                        <img src="img/diagram/d3-libraries-step-2.png" alt="" style="width: 120%;"></a>
-                        <aside class="notes" data-markdown>
-                            * the interface is really declarative, similar to Highcharts
-                            * __
-                            * Among the academic circles, a popular library is...
-                        </aside>
-                    </section>
+                <section>
+                    <img src="img/diagram/d3-libraries-step-2.png" alt="" style="width: 120%;"></a>
+                    <aside class="notes" data-markdown>
+                        * the interface is really declarative, similar to Highcharts
+                        * __
+                        * Among the academic circles, a popular library is...
+                    </aside>
+                </section>
 
 
-                    <!-- Vega -->
-                    <section>
-                        <a target="_blank" href="https://vega.github.io/vega/"><img src="img/screenshots/vega-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
-                        <div>
-                            <small class="close-reference"><a target="_blank" href="https://vega.github.io/vega/">https://vega.github.io/vega/</a></small>
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * Vega, which takes that declarative flavor a step further
-                        </aside>
-                    </section>
+                <!-- Vega -->
+                <section>
+                    <a target="_blank" href="https://vega.github.io/vega/"><img src="img/screenshots/vega-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                    <div>
+                        <small class="close-reference"><a target="_blank" href="https://vega.github.io/vega/">https://vega.github.io/vega/</a></small>
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * Vega, which takes that declarative flavor a step further
+                    </aside>
+                </section>
 
-                    <section>
-                        <img src="img/diagram/d3-libraries-step-3.png" alt="" style="width: 120%;"></a>
-                        <aside class="notes" data-markdown>
-                            * Basically JSON format
-                            * ___
-                            * Another interesting library is...
-                        </aside>
-                    </section>
+                <section>
+                    <img src="img/diagram/d3-libraries-step-3.png" alt="" style="width: 120%;"></a>
+                    <aside class="notes" data-markdown>
+                        * Basically JSON format
+                        * ___
+                        * Another interesting library is...
+                    </aside>
+                </section>
 
-                    <!-- D3FC -->
-                    <section>
-                        <a target="_blank" href="https://d3fc.io/"><img src="img/screenshots/d3fc-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
-                        <div>
-                            <small class="close-reference"><a target="_blank" href="https://d3fc.io/">https://d3fc.io/</a></small>
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * D3FC, Functional Components for D3
-                            * Wraps d3 components and allows to modify the main selection from outside
-                        </aside>
-                    </section>
+                <!-- D3FC -->
+                <section>
+                    <a target="_blank" href="https://d3fc.io/"><img src="img/screenshots/d3fc-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                    <div>
+                        <small class="close-reference"><a target="_blank" href="https://d3fc.io/">https://d3fc.io/</a></small>
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * D3FC, Functional Components for D3
+                        * Wraps d3 components and allows to modify the main selection from outside
+                    </aside>
+                </section>
 
-                    <section>
-                        <img src="img/diagram/d3-libraries-step-4.png" alt="" style="width: 120%;"></a>
-                        <aside class="notes" data-markdown>
-                            * Powerful, although it seems a bit complex
-                            * __
-                            * Lastly, I want to talk about...
-                        </aside>
-                    </section>
+                <section>
+                    <img src="img/diagram/d3-libraries-step-4.png" alt="" style="width: 120%;"></a>
+                    <aside class="notes" data-markdown>
+                        * Powerful, although it seems a bit complex
+                        * __
+                        * Lastly, I want to talk about...
+                    </aside>
+                </section>
 
+                <!-- Britecharts -->
+                <section>
+                    <a target="_blank" href="http://eventbrite.github.io/britecharts/index.html"><img src="img/screenshots/britecharts-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
+                    <div>
+                        <small class="close-reference"><a target="_blank" href="http://eventbrite.github.io/britecharts">http://eventbrite.github.io/britecharts</a></small>
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * Britecharts, a library we created at Eventbrite
+                        * We started three years ago from a refactor of some messy code we had in production
+                        * We wanted a D3 library that could serve both d3 developers and non-d3-savvy people
+                    </aside>
+                </section>
 
-                    <!-- Britecharts -->
-                    <section>
-                        <a target="_blank" href="http://eventbrite.github.io/britecharts/index.html"><img src="img/screenshots/britecharts-ss.png" alt="" style="width: 70%; max-height: 600px;"></a>
-                        <div>
-                            <small class="close-reference"><a target="_blank" href="http://eventbrite.github.io/britecharts">http://eventbrite.github.io/britecharts</a></small>
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * Britecharts, a library we created at Eventbrite
-                            * We started three years ago from a refactor of some messy code we had in production
-                            * We wanted a D3 library that could serve both d3 developers and non-d3-savvy people
-                        </aside>
-                    </section>
+                <section>
+                    <a target="_blank" href="http://eventbrite.github.io/britecharts/index.html"><img src="img/chart/bar-chart-tooltip.gif" alt="" style="width: 90%;"></a>
+                    <aside class="notes" data-markdown>
+                        * The large difference, more opinionated on the ‘looks.'
+                        * API-wise...
+                    </aside>
+                </section>
 
-                    <section>
-                        <a target="_blank" href="http://eventbrite.github.io/britecharts/index.html"><img src="img/chart/bar-chart-tooltip.gif" alt="" style="width: 90%;"></a>
-                        <aside class="notes" data-markdown>
-                            * The large difference, more opinionated on the ‘looks.'
-                            * API-wise...
-                        </aside>
-                    </section>
-
-                    <!-- APIs -->
-                    <section>
-                        <img src="img/diagram/d3-libraries-step-5.png" alt="" style="width: 120%;"></a>
-                        <aside class="notes" data-markdown>
-                            * is in the line of D3FC, but less granular
-                            * ___
-                            * Now that we talked about D3 and its libraries, it is the turn...
-                        </aside>
-                    </section>
+                <!-- APIs -->
+                <section>
+                    <img src="img/diagram/d3-libraries-step-5.png" alt="" style="width: 120%;"></a>
+                    <aside class="notes" data-markdown>
+                        * is in the line of D3FC, but less granular
+                        * ___
+                        * Now that we talked about D3 and its libraries, it is the turn...
+                    </aside>
                 </section>
 
                 <!-- React -->
+                <!-- React Intro -->
                 <section>
-                    <!-- React Intro -->
-                    <section>
-                        <a target="_blank" href=""><img src="img/logos/react-logo.png" alt="" style="width: 50%;"></a>
-                        <aside class="notes" data-markdown>
-                            * Of React
-                            * POLL: Who has heard of React.js?
-                            * -
-                            * Let's see briefly...
-                        </aside>
-                    </section>
+                    <a target="_blank" href=""><img src="img/logos/react-logo.png" alt="" style="width: 50%;"></a>
+                    <aside class="notes" data-markdown>
+                        * Of React
+                        * [14"]
+                        * POLL: Who has worked with React.js?
+                        * -
+                        * Let's see briefly...
+                    </aside>
+                </section>
 
-                    <!-- React intro -->
-                    <section>
-                        <h2>What is ReactJS?</h2>
-                        <ul>
-                            <li class="fragment">User Interface library</li>
-                            <li class="fragment">Component-based</li>
-                            <li class="fragment">Fast and efficient</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * What is ReactJS
-                            * JavaScript library to create User Interfaces
-                            * Based in creating components. IMO, the best that React brought us is a way of creating components that makes sense
-                            * and is performant on rendering
-                            * A React component will keep track of the DOM state through his virtual DOM, updated with changes, and if necessary, re-render itself
-                            * __
-                            * Two essential elements of this library are...
-                        </aside>
-                    </section>
+                <!-- React intro -->
+                <section>
+                    <h2>What is ReactJS?</h2>
+                    <ul>
+                        <li class="fragment">User Interface library</li>
+                        <li class="fragment">Component-based</li>
+                        <li class="fragment">Fast and efficient</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * What is ReactJS
+                        * JavaScript library to create User Interfaces
+                        * Based in creating components. IMO, the best that React brought us is a way of creating components that makes sense
+                        * and is performant on rendering
+                        * A React component will keep track of the DOM state through his virtual DOM, updated with changes, and if necessary, re-render itself
+                        * __
+                        * Two essential elements of this library are...
+                    </aside>
+                </section>
 
-                    <!-- React Reconciler and Renderer -->
-                    <section>
-                        <h2>Reconciliation and Rendering</h2>
-                        <ul>
-                            <li class="fragment">The "Renderer" and the "Reconciler" are separated</li>
-                            <li class="fragment">Render in Web, Native Apps and Virtual Reality</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * the reconciler, and the renderer
-                            * Since version 0.14, they are separated, so we can
-                            * use different renderers depending in our publishing target: whether native mobile apps or virtual reality
-                            * Here we can establish a paralell, as in D3.js we can also choose between different rendering contexts like SVG, HTML or Canvas
-                            * __
-                            * React had also an update with...
-                        </aside>
-                    </section>
+                <!-- React Reconciler and Renderer -->
+                <section>
+                    <h2>Reconciliation and Rendering</h2>
+                    <ul>
+                        <li class="fragment">The "Renderer" and the "Reconciler" are separated</li>
+                        <li class="fragment">Render in Web, Native Apps and Virtual Reality</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * the reconciler, and the renderer
+                        * Since version 0.14, they are separated, so we can
+                        * use different renderers depending in our publishing target: whether native mobile apps or virtual reality
+                        * Here we can establish a paralell, as in D3.js we can also choose between different rendering contexts like SVG, HTML or Canvas
+                        * __
+                        * React had also an update with...
+                    </aside>
+                </section>
 
-                    <!-- React Fiber -->
-                    <section>
-                        <h2>React 16 (Fiber)</h2>
-                        <ul>
-                            <li class="fragment">New reconciliating algorithm</li>
-                            <li class="fragment">From batching DOM operations, now React can...
-                                <ul>
-                                    <li>Prioritize tasks</li>
-                                    <li>Split into chunks and schedule</li>
-                                    <li>Parallelize operations</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <small class="reference fragment"><a target="_blank" href="https://www.youtube.com/watch?v=ZCuYPiUIONs">A Cartoon Intro to Fiber</a> by Lin Clark</small>
-                        <aside class="notes" data-markdown>
-                            * React 16 and the Fiber architecture
-                            * Fiber is the new reconciliation algorithm of React
-                            * Before, React was batching DOM changes, but
-                            * This new reconciler is better because it takes into account priorities, parallel computations and schedules to keep the 60FPS refresh rate
-                            * You can read an explanation on Fiber in this article
-                            * ___
-                            * A trait of React I want to talk about is the use of...
-                        </aside>
-                    </section>
+                <!-- React Fiber -->
+                <section>
+                    <h2>React 16 (Fiber)</h2>
+                    <ul>
+                        <li class="fragment">New reconciliating algorithm</li>
+                        <li class="fragment">From batching DOM operations, now React can...
+                            <ul>
+                                <li>Prioritize tasks</li>
+                                <li>Split into chunks and schedule</li>
+                                <li>Parallelize operations</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <small class="reference fragment"><a target="_blank" href="https://www.youtube.com/watch?v=ZCuYPiUIONs">A Cartoon Intro to Fiber</a> by Lin Clark</small>
+                    <aside class="notes" data-markdown>
+                        * React 16 and the Fiber architecture
+                        * Fiber is the new reconciliation algorithm of React
+                        * Before, React was batching DOM changes, but
+                        * This new reconciler is better because it takes into account priorities, parallel computations and schedules to keep the 60FPS refresh rate
+                        * You can read an explanation on Fiber in this article
+                        * ___
+                        * A trait of React I want to talk about is the use of...
+                    </aside>
+                </section>
 
-                    <!-- Dynamic Child Components -->
-                    <section>
-                        <h1>React Dynamic Child Components</h1>
-                        <aside class="notes" data-markdown>
-                            * Dynamic Child Components when we use the library to render a list of elements
-                            * -
-                            * In these cases...
-                        </aside>
-                    </section>
+                <!-- Dynamic Child Components -->
+                <section>
+                    <h1>React Dynamic Child Components</h1>
+                    <aside class="notes" data-markdown>
+                        * Dynamic Child Components when we use the library to render a list of elements
+                        * -
+                        * In these cases...
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>React Dynamic Child Components</h2>
-                        <ul>
-                            <li class="fragment">Unique 'key' to each child component rendered</li>
-                            <li class="fragment">More efficient rendering</li>
-                            <li class="fragment">Similar to D3's data joins</li>
-                        </ul>
-                        <small class="reference fragment"><a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a></small>
-                        <aside class="notes" data-markdown>
-                            * We use unique keys for each descendant of the rendered component
-                            * It is more efficient, as we avoid to render elements already present in the DOM
-                            * Here we use keys, while on D3, the key is the data attached to the DOM element (we can use a key function with .data too)
-                            * You can learn more about React reconciliation in this doc link
-                        </aside>
-                    </section>
+                <section>
+                    <h2>React Dynamic Child Components</h2>
+                    <ul>
+                        <li class="fragment">Unique 'key' to each child component rendered</li>
+                        <li class="fragment">More efficient rendering</li>
+                        <li class="fragment">Similar to D3's data joins</li>
+                    </ul>
+                    <small class="reference fragment"><a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a></small>
+                    <aside class="notes" data-markdown>
+                        * We use unique keys for each descendant of the rendered component
+                        * It is more efficient, as we avoid to render elements already present in the DOM
+                        * Here we use keys, while on D3, the key is the data attached to the DOM element (we can use a key function with .data too)
+                        * You can learn more about React reconciliation in this doc link
+                    </aside>
                 </section>
 
                 <!-- React + D3-->
                 <section>
-                    <section>
-                        <aside class="notes" data-markdown>
-                            * Up to now, we have talked a about D3 and React on its own
-                            * We have talked about their rendering process and the last updates on both libraries
-                            * Now we are going to see...
-                        </aside>
-                    </section>
+                    <aside class="notes" data-markdown>
+                        * Up to now, we have talked a about D3 and React on its own
+                        * We have talked about their rendering process and the last updates on both libraries
+                        * Now we are going to see...
+                    </aside>
+                </section>
 
-                    <!-- React D3 Intro -->
-                    <section>
-                        <img src="img/logos/reactD3.png" alt="" style="width: 80%;">
-                        <aside class="notes" data-markdown>
-                            * what do they have in **common** and the challenges we'll face when working with both libraries
-                            * __
-                            * React, and D3 are two libraries that...
-                        </aside>
-                    </section>
+                <!-- React D3 Intro -->
+                <section>
+                    <img src="img/logos/reactD3.png" alt="" style="width: 80%;">
+                    <aside class="notes" data-markdown>
+                        * what do they have in **common** and the challenges we'll face when working with both libraries
+                        * __
+                        * React, and D3 are two libraries that...
+                    </aside>
+                </section>
 
-                    <!-- React D3 Commonalities -->
-                    <section>
-                        <h2>Commonalities</h2>
-                        <ul>
-                            <li class="fragment">Help us with the DOM</li>
-                            <li class="fragment">Love pure functions</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * share a common trait:
-                            * They want to help us deal with DOM changes in an optimized way
-                            * They both work in a “stateless mode,” that is, given an input, the rendered output will always produce the same result
-                            * __
-                            * Regarding the...
-                        </aside>
-                    </section>
+                <!-- React D3 Commonalities -->
+                <section>
+                    <h2>Commonalities</h2>
+                    <ul>
+                        <li class="fragment">Help us with the DOM</li>
+                        <li class="fragment">Love pure functions</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * share a common trait:
+                        * They want to help us deal with DOM changes in an optimized way
+                        * They both work in a “stateless mode,” that is, given an input, the rendered output will always produce the same result
+                        * __
+                        * Regarding the...
+                    </aside>
+                </section>
 
-                    <!-- React D3 Problems -->
-                    <section>
-                        <h2>Challenges</h2>
-                        <ul>
-                            <li class="fragment">D3 creates and transforms the DOM</li>
-                            <li class="fragment">React as well, and keeps track of it</li>
-                            <li class="fragment">Not meant to work together</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * **Challenges**, D3 works with the DOM
-                            * React keeps track of it entirely
-                            * They are opinionated libraries
-                            * __
-                            * Due to this, we have different...
-                        </aside>
-                    </section>
+                <!-- React D3 Problems -->
+                <section>
+                    <h2>Challenges</h2>
+                    <ul>
+                        <li class="fragment">D3 creates and transforms the DOM</li>
+                        <li class="fragment">React as well, and keeps track of it</li>
+                        <li class="fragment">Not meant to work together</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * **Challenges**, D3 works with the DOM
+                        * React keeps track of it entirely
+                        * They are opinionated libraries
+                        * __
+                        * Due to this, we have different...
+                    </aside>
                 </section>
 
                 <!-- React D3 Approaches -->
+                <!-- Approaches Intro -->
                 <section>
-                    <!-- Approaches Intro -->
-                    <section>
-                        <h1>React + D3 Approaches</h1>
-                        <aside class="notes" data-markdown>
-                            * Appoaches to integrate React and D3
-                            * We can do it at different levels, leaning more one side or the other
-                            * __
-                            * Let's start with the side of...
-                        </aside>
-                    </section>
+                    <h1>React + D3 Approaches</h1>
+                    <aside class="notes" data-markdown>
+                        * Appoaches to integrate React and D3
+                        * We can do it at different levels, leaning more one side or the other
+                        * __
+                        * Let's start with the side of...
+                    </aside>
+                </section>
 
-                    <!-- D3 within React -->
-                    <section>
-                        <h2>D3 within React</h2>
-                        <ul>
-                            <li class="fragment">React renders root svg element</li>
-                            <li class="fragment">D3 creates chart in <i>componentDidUpdate</i></li>
-                            <li class="fragment">Block chart updates with <i>shouldComponentUpdate</i></li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * D3, with the "D3 within React" strategy
-                            * with shouldComponentUpdate(){ return false; }
-                            * Gives D3 all the power over the DOM
-                        </aside>
-                    </section>
+                <!-- D3 within React -->
+                <section>
+                    <h2>D3 within React</h2>
+                    <ul>
+                        <li class="fragment">React renders root svg element</li>
+                        <li class="fragment">D3 creates chart in <i>componentDidUpdate</i></li>
+                        <li class="fragment">Block chart updates with <i>shouldComponentUpdate</i></li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * D3, with the "D3 within React" strategy
+                        * with shouldComponentUpdate(){ return false; }
+                        * Gives D3 all the power over the DOM
+                    </aside>
+                </section>
 
-                    <!-- D3 within React - Code -->
-                    <section>
-                        <h2>D3 within React</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
+                <!-- D3 within React - Code -->
+                <section>
+                    <h2>D3 within React</h2>
+                    <pre><code data-trim contenteditable class="javascript hljs">
 class Line extends React.Component {
     componentDidMount() {
         // D3 Code to create the chart
@@ -653,42 +637,42 @@ class Line extends React.Component {
         )
     }
 }
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                </section>
 
-                    <!-- D3 within React - P/C -->
-                    <section>
-                        <h2>D3 within React</h2>
-                        <h4>Pros/Cons</h4>
-                        <ul>
-                            <li class="fragment"><strong class="green">✓</strong> Works fine</li>
-                            <li class="fragment"><strong class="green">✓</strong> Easiest when visualization is already implemented</li>
-                            <li class="fragment"><strong class="red">✗</strong> Not idiomatic on React</li>
-                            <li class="fragment"><strong class="red">✗</strong> A bit nasty</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * It works (for the moment)
-                            * __
-                            * The next strategy is...
-                        </aside>
-                    </section>
+                <!-- D3 within React - P/C -->
+                <section>
+                    <h2>D3 within React</h2>
+                    <h4>Pros/Cons</h4>
+                    <ul>
+                        <li class="fragment"><strong class="green">✓</strong> Works fine</li>
+                        <li class="fragment"><strong class="green">✓</strong> Easiest when visualization is already implemented</li>
+                        <li class="fragment"><strong class="red">✗</strong> Not idiomatic on React</li>
+                        <li class="fragment"><strong class="red">✗</strong> A bit nasty</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * It works (for the moment)
+                        * __
+                        * The next strategy is...
+                    </aside>
+                </section>
 
-                    <!-- Faux DOM -->
-                    <section>
-                        <h2>React Faux DOM</h2>
-                        <blockquote>It's a way to use existing D3 tooling but render it efficiently through React with the React ethos</blockquote>
-                        <small class="reference"><a target="_blank" href="https://oli.me.uk/2015/09/09/d3-within-react-the-right-way/">D3 within React the right way</a></small>
-                        <aside class="notes" data-markdown>
-                            * It places a fake DOM to trick D3
-                            * Keeps the React tree and uses D3
-                            * Uses an HOC, as we see next
-                        </aside>
-                    </section>
+                <!-- Faux DOM -->
+                <section>
+                    <h2>React Faux DOM</h2>
+                    <blockquote>It's a way to use existing D3 tooling but render it efficiently through React with the React ethos</blockquote>
+                    <small class="reference"><a target="_blank" href="https://oli.me.uk/2015/09/09/d3-within-react-the-right-way/">D3 within React the right way</a></small>
+                    <aside class="notes" data-markdown>
+                        * It places a fake DOM to trick D3
+                        * Keeps the React tree and uses D3
+                        * Uses an HOC, as we see next
+                    </aside>
+                </section>
 
-                    <!-- Faux DOM - Code -->
-                    <section>
-                        <h2>React Faux DOM</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
+                <!-- Faux DOM - Code -->
+                <section>
+                    <h2>React Faux DOM</h2>
+                    <pre><code data-trim contenteditable class="javascript hljs">
 import {withFauxDOM} from 'react-faux-dom';
 
 class Line extends React.Component {
@@ -710,49 +694,49 @@ class Line extends React.Component {
 }
 
 export default withFauxDOM(Line);
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                </section>
 
-                    <!-- Faux DOM  P/C-->
-                    <section>
-                        <h2>React Faux DOM</h2>
-                        <h4>Pros/Cons</h4>
-                        <ul>
-                            <li class="fragment"><strong class="green">✓</strong> Use all D3 APIs</li>
-                            <li class="fragment"><strong class="green">✓</strong> Good integration with already built D3</li>
-                            <li class="fragment"><strong class="green">✓</strong> Server Side Rendering</li>
-                            <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Need to use React Animations</li>
-                            <li class="fragment"><strong class="red">✗</strong> Less performant</li>
-                            <li class="fragment"><strong class="red">✗</strong> Limited to small/medium size dataviz</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * We can use almost all D3.js API
-                            * Easy to integrate with dataviz already done
-                            * SSR
-                            * react-transition-group, react-motion motion groups, resonance
-                            * Limited performance-wise
-                            * ___
-                            * My favorite approach is...
-                        </aside>
-                    </section>
+                <!-- Faux DOM  P/C-->
+                <section>
+                    <h2>React Faux DOM</h2>
+                    <h4>Pros/Cons</h4>
+                    <ul>
+                        <li class="fragment"><strong class="green">✓</strong> Use all D3 APIs</li>
+                        <li class="fragment"><strong class="green">✓</strong> Good integration with already built D3</li>
+                        <li class="fragment"><strong class="green">✓</strong> Server Side Rendering</li>
+                        <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Need to use React Animations</li>
+                        <li class="fragment"><strong class="red">✗</strong> Less performant</li>
+                        <li class="fragment"><strong class="red">✗</strong> Limited to small/medium size dataviz</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * We can use almost all D3.js API
+                        * Easy to integrate with dataviz already done
+                        * SSR
+                        * react-transition-group, react-motion motion groups, resonance
+                        * Limited performance-wise
+                        * ___
+                        * My favorite approach is...
+                    </aside>
+                </section>
 
-                    <!-- Lifecycle Methods Mapping -->
-                    <section>
-                        <h2>Lifecycle Methods Mapping</h2>
-                        <ul>
-                            <li class="fragment">Lightweight React Component Wrapper</li>
-                            <li class="fragment">D3-only file with create, update and unmount methods</li>
-                        </ul>
-                        <small class="reference fragment"><a target="_blank" href="http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/">Integrating D3.js visualizations in a React app</a></small>
-                        <aside class="notes" data-markdown>
-                            * If you are used to React, and want to have a more structure on your D3 charts, this is an optimal approach
-                            * Façade Design Pattern
-                        </aside>
-                    </section>
+                <!-- Lifecycle Methods Mapping -->
+                <section>
+                    <h2>Lifecycle Methods Mapping</h2>
+                    <ul>
+                        <li class="fragment">Lightweight React Component Wrapper</li>
+                        <li class="fragment">D3-only file with create, update and unmount methods</li>
+                    </ul>
+                    <small class="reference fragment"><a target="_blank" href="http://nicolashery.com/integrating-d3js-visualizations-in-a-react-app/">Integrating D3.js visualizations in a React app</a></small>
+                    <aside class="notes" data-markdown>
+                        * If you are used to React, and want to have a more structure on your D3 charts, this is an optimal approach
+                        * Façade Design Pattern
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>Lifecycle Methods Mapping</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
+                <section>
+                    <h2>Lifecycle Methods Mapping</h2>
+                    <pre><code data-trim contenteditable class="javascript hljs">
 import D3Line from './D3Line'
 
 class Line extends React.Component {
@@ -790,12 +774,12 @@ class Line extends React.Component {
         />
     }
 }
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                </section>
 
-                    <section>
-                        <h2>Lifecycle Methods Mapping - D3Line</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
+                <section>
+                    <h2>Lifecycle Methods Mapping - D3Line</h2>
+                    <pre><code data-trim contenteditable class="javascript hljs">
 const D3Line = {};
 
 D3Line.create = (el, data, configuration) => {
@@ -811,98 +795,98 @@ D3Line.destroy = () => {
 };
 
 export default D3Line;
-                        </code></pre>
-                        <aside class="notes" data-markdown>
-                            * Let's talk about Pros and Cons
-                        </aside>
-                    </section>
+                    </code></pre>
+                    <aside class="notes" data-markdown>
+                        * Let's talk about Pros and Cons
+                    </aside>
+                </section>
 
-                    <!-- Lifecycle Methods Mapping - Pros/Cons-->
-                    <section>
-                        <h2>Lifecycle Methods Mapping</h2>
-                        <h4>Pros/Cons</h4>
-                        <ul>
-                            <li class="fragment"><strong class="green">✓</strong> Easy to integrate D3.js code</li>
-                            <li class="fragment"><strong class="green">✓</strong> Flexible, could encapsulate any chart</li>
-                            <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Adds another file</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Sharp difference between D3 and React
-                            * Could be a problem to use an extra file
-                            * __
-                            * The last approach is...
-                        </aside>
-                    </section>
+                <!-- Lifecycle Methods Mapping - Pros/Cons-->
+                <section>
+                    <h2>Lifecycle Methods Mapping</h2>
+                    <h4>Pros/Cons</h4>
+                    <ul>
+                        <li class="fragment"><strong class="green">✓</strong> Easy to integrate D3.js code</li>
+                        <li class="fragment"><strong class="green">✓</strong> Flexible, could encapsulate any chart</li>
+                        <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Adds another file</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Sharp difference between D3 and React
+                        * Could be a problem to use an extra file
+                        * __
+                        * The last approach is...
+                    </aside>
+                </section>
 
-                    <!-- React for DOM, D3 for Math -->
-                    <section>
-                        <h2>D3 for the Math, <br>React for the DOM</h2>
-                        <ul>
-                            <li class="fragment">D3 is used for math and formats</li>
-                            <li class="fragment">React rules the DOM</li>
-                        </ul>
-                        <div>
-                            <small class="reference fragment"><a target="_blank" href="http://formidable.com/blog/2015/05/21/react-d3-layouts/">React-D3 Layouts</a></small>
-                        </div>
-                        <aside class="notes" data-markdown>
-                            * D3 for the Math and React for the DOM
-                            * More leaning towards React
-                            * We'll use d3 for doing the computing
-                            * And React does what it does best
-                            * __
-                            * This idea is based on the amount of D3.js modules that don't touch the DOM
-                        </aside>
-                    </section>
+                <!-- React for DOM, D3 for Math -->
+                <section>
+                    <h2>D3 for the Math, <br>React for the DOM</h2>
+                    <ul>
+                        <li class="fragment">D3 is used for math and formats</li>
+                        <li class="fragment">React rules the DOM</li>
+                    </ul>
+                    <div>
+                        <small class="reference fragment"><a target="_blank" href="http://formidable.com/blog/2015/05/21/react-d3-layouts/">React-D3 Layouts</a></small>
+                    </div>
+                    <aside class="notes" data-markdown>
+                        * D3 for the Math and React for the DOM
+                        * More leaning towards React
+                        * We'll use d3 for doing the computing
+                        * And React does what it does best
+                        * __
+                        * This idea is based on the amount of D3.js modules that don't touch the DOM
+                    </aside>
+                </section>
 
-                    <!-- D3 libraries with no DOM relation -->
-                    <section data-markdown class="scrollable-slide" data-speaker-notes="^Note:">
-                        ## D3 sub-modules: Non-DOM Related
-                        * [Arrays (d3-array)](https://github.com/d3/d3-array)
-                        * [Chords (d3-chord)](https://github.com/d3/d3-chord)
-                        * [Collections (d3-collection)](https://github.com/d3/d3-collection)
-                        * [Colors (d3-color)](https://github.com/d3/d3-color)
-                        * [Dispatches (d3-dispatch)](https://github.com/d3/d3-dispatch)
-                        * [Easings (d3-ease)](https://github.com/d3/d3-ease)
-                        * [Forces (d3-force)](https://github.com/d3/d3-force)
-                        * [Number Formats (d3-format)](https://github.com/d3/d3-format)
-                        * [Hierarchies (d3-hierarchy)](https://github.com/d3/d3-hierarchy)
-                        * [Interpolators (d3-interpolate)](https://github.com/d3/d3-interpolate)
-                        * [Paths (d3-path)](https://github.com/d3/d3-path)
-                        * [Polygons (d3-polygon)](https://github.com/d3/d3-polygon)
-                        * [Quadtrees (d3-quadtree)](https://github.com/d3/d3-quadtree)
-                        * [Queues (d3-queue)](https://github.com/d3/d3-queue)
-                        * [Random Numbers (d3-random)](https://github.com/d3/d3-random)
-                        * [Requests (d3-request)](https://github.com/d3/d3-request)
-                        * [Scales (d3-scale)](https://github.com/d3/d3-scale)
-                        * [Time Formats (d3-time-format)](https://github.com/d3/d3-time-format)
-                        * [Time Intervals (d3-time)](https://github.com/d3/d3-time)
-                        * [Timers (d3-timer)](https://github.com/d3/d3-timer)
-                        * [Voronoi Diagrams (d3-voronoi)](https://github.com/d3/d3-voronoi)
-                        Note:
-                            * there is a lot of useful code
-                    </section>
+                <!-- D3 libraries with no DOM relation -->
+                <section data-markdown class="scrollable-slide" data-speaker-notes="^Note:">
+                    ## D3 sub-modules: Non-DOM Related
+                    * [Arrays (d3-array)](https://github.com/d3/d3-array)
+                    * [Chords (d3-chord)](https://github.com/d3/d3-chord)
+                    * [Collections (d3-collection)](https://github.com/d3/d3-collection)
+                    * [Colors (d3-color)](https://github.com/d3/d3-color)
+                    * [Dispatches (d3-dispatch)](https://github.com/d3/d3-dispatch)
+                    * [Easings (d3-ease)](https://github.com/d3/d3-ease)
+                    * [Forces (d3-force)](https://github.com/d3/d3-force)
+                    * [Number Formats (d3-format)](https://github.com/d3/d3-format)
+                    * [Hierarchies (d3-hierarchy)](https://github.com/d3/d3-hierarchy)
+                    * [Interpolators (d3-interpolate)](https://github.com/d3/d3-interpolate)
+                    * [Paths (d3-path)](https://github.com/d3/d3-path)
+                    * [Polygons (d3-polygon)](https://github.com/d3/d3-polygon)
+                    * [Quadtrees (d3-quadtree)](https://github.com/d3/d3-quadtree)
+                    * [Queues (d3-queue)](https://github.com/d3/d3-queue)
+                    * [Random Numbers (d3-random)](https://github.com/d3/d3-random)
+                    * [Requests (d3-request)](https://github.com/d3/d3-request)
+                    * [Scales (d3-scale)](https://github.com/d3/d3-scale)
+                    * [Time Formats (d3-time-format)](https://github.com/d3/d3-time-format)
+                    * [Time Intervals (d3-time)](https://github.com/d3/d3-time)
+                    * [Timers (d3-timer)](https://github.com/d3/d3-timer)
+                    * [Voronoi Diagrams (d3-voronoi)](https://github.com/d3/d3-voronoi)
+                    Note:
+                        * there is a lot of useful code
+                </section>
 
-                    <!-- D3 libraries with DOM relation -->
-                    <section data-markdown data-speaker-notes="^Note:">
-                        ## D3 sub-modules: DOM Related
-                        * [Selections (d3-selection)](https://github.com/d3/d3-selection)
-                        * [Transitions (d3-transition)](https://github.com/d3/d3-transition)
-                        * [Axes (d3-axis)](https://github.com/d3/d3-axis)
-                        * [Zooming (d3-zoom)](https://github.com/d3/d3-zoom)
-                        * [Dragging (d3-drag)](https://github.com/d3/d3-drag)
-                        * [Brushes (d3-brush)](https://github.com/d3/d3-brush)
-                        * [Geographies (d3-geo)](https://github.com/d3/d3-geo)
-                        * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
-                        Note:
-                            * Selections OK
-                            * Animations with multiple libraries
-                            * The rest, DIY
-                    </section>
+                <!-- D3 libraries with DOM relation -->
+                <section data-markdown data-speaker-notes="^Note:">
+                    ## D3 sub-modules: DOM Related
+                    * [Selections (d3-selection)](https://github.com/d3/d3-selection)
+                    * [Transitions (d3-transition)](https://github.com/d3/d3-transition)
+                    * [Axes (d3-axis)](https://github.com/d3/d3-axis)
+                    * [Zooming (d3-zoom)](https://github.com/d3/d3-zoom)
+                    * [Dragging (d3-drag)](https://github.com/d3/d3-drag)
+                    * [Brushes (d3-brush)](https://github.com/d3/d3-brush)
+                    * [Geographies (d3-geo)](https://github.com/d3/d3-geo)
+                    * [Shapes (d3-shape)](https://github.com/d3/d3-shape)
+                    Note:
+                        * Selections OK
+                        * Animations with multiple libraries
+                        * The rest, DIY
+                </section>
 
-                    <!-- React for DOM, D3 for Math - Code -->
-                    <section>
-                        <h2>D3 for the Math, <br>React for the DOM</h2>
-                        <pre><code data-trim contenteditable class="javascript hljs">
+                <!-- React for DOM, D3 for Math - Code -->
+                <section>
+                    <h2>D3 for the Math, <br>React for the DOM</h2>
+                    <pre><code data-trim contenteditable class="javascript hljs">
 class Line extends React.Component {
     drawLine() {
         let xScale = d3.scaleTime()
@@ -941,385 +925,399 @@ class Line extends React.Component {
         &lt;/svg>
     }
 }
-                        </code></pre>
-                    </section>
+                    </code></pre>
+                </section>
 
-                    <!-- React for DOM, D3 for Math - Pros/Cons-->
-                    <section>
-                        <h2>D3 for the Math, <br>React for the DOM</h2>
-                        <h4>Pros/Cons</h4>
-                        <ul>
-                            <li class="fragment"><strong class="green">✓</strong> Consistent with the React way</li>
-                            <li class="fragment"><strong class="red">✗</strong> A lot of work upfront</li>
-                            <li class="fragment"><strong class="red">✗</strong> D3 Reimplementation of certain parts</li>
-                            <li class="fragment"><strong class="red">✗</strong> Limited to SVG rendering</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Feels great to build charts with it
-                            * It could get to a well-crafted code, and it will take work
-                            * Axis, brushes, zoom...
-                            * We cannot move into canvas rendering when going this way
-                            * I would create it this way just if I plan to use it a lot in the future
-                        </aside>
-                    </section>
+                <!-- React for DOM, D3 for Math - Pros/Cons-->
+                <section>
+                    <h2>D3 for the Math, <br>React for the DOM</h2>
+                    <h4>Pros/Cons</h4>
+                    <ul>
+                        <li class="fragment"><strong class="green">✓</strong> Consistent with the React way</li>
+                        <li class="fragment"><strong class="red">✗</strong> A lot of work upfront</li>
+                        <li class="fragment"><strong class="red">✗</strong> D3 Reimplementation of certain parts</li>
+                        <li class="fragment"><strong class="red">✗</strong> Limited to SVG rendering</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Feels great to build charts with it
+                        * It could get to a well-crafted code, and it will take work
+                        * Axis, brushes, zoom...
+                        * We cannot move into canvas rendering when going this way
+                        * I would create it this way just if I plan to use it a lot in the future
+                    </aside>
+                </section>
 
-                    <!-- Approaches Diagram -->
-                    <section>
-                        <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 100%;">
-                        <small class="reference"><a target="_blank" href="#/14/3">Reference</a></small>
-                        <aside class="notes" data-markdown>
-                            * Here we see these approaches according to the level of integration with both React and D3
-                            * ---
-                            * Now that we saw the possible approaches we'll review...
-                        </aside>
-                    </section>
+                <!-- Approaches Diagram -->
+                <section>
+                    <img src="img/diagram/d3-react-approaches.png" alt="" style="width: 100%;">
+                    <small class="reference"><a target="_blank" href="#/14/3">Reference</a></small>
+                    <aside class="notes" data-markdown>
+                        * Here we see these approaches according to the level of integration with both React and D3
+                        * ---
+                        * Now that we saw the **possible approaches** we'll review...
+                    </aside>
                 </section>
 
                 <!-- React D3 Libraries -->
+                <!-- React D3 Libraries -->
                 <section>
-                    <!-- React D3 Libraries -->
-                    <section>
-                        <h1>React + D3 Libraries</h1>
-                        <aside class="notes" data-markdown>
-                            * some **libraries** that combine React and D3.js
-                            * __
-                            * Analizing the...
-                        </aside>
-                    </section>
+                    <h1>React + D3 Libraries</h1>
+                    <aside class="notes" data-markdown>
+                        * some **libraries** that combine React and D3.js
+                        * [32"]
+                        * __
+                        * Analizing the...
+                    </aside>
+                </section>
 
-                    <!-- Research Insights -->
-                    <section>
-                        <h2>Ecosystem</h2>
-                        <ul>
-                            <li class="fragment">Non-maintained libraries</li>
-                            <li class="fragment">Not easy to keep up with D3 and React</li>
-                            <li class="fragment">D3 v4 cleaned up the field</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Ecosystem, I have observed
-                            * A good amount of not maintained libraries
-                            * D3 and React push hard, so it’s not easy to keep up
-                            * D3 v4 brought a ‘clean up’ on the field, leaving behind a large group of libraries
-                            * __
-                            * Let's see some of these libraries, like...
-                        </aside>
-                    </section>
+                <!-- Research Insights -->
+                <section>
+                    <h2>Ecosystem</h2>
+                    <ul>
+                        <li class="fragment">Non-maintained libraries</li>
+                        <li class="fragment">Not easy to keep up with D3 and React</li>
+                        <li class="fragment">D3 v4 cleaned up the field</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Ecosystem, I have observed
+                        * A good amount of not maintained libraries
+                        * D3 and React push hard, so it’s not easy to keep up
+                        * Also, D3 version four brought a ‘clean up’ on the field, leaving behind a large group of libraries
+                        * There is a big difference in abstraction levels
+                        * __
+                        * Let's see some of these libraries, like...
+                    </aside>
+                </section>
 
-                    <!-- VictoryJS -->
-                    <section>
-                        <a target="_blank" href="http://formidable.com/open-source/victory/">
-                            <img src="img/screenshots/victoryjs-ss.png" alt="" style="width: 80%;" />
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * VictoryJS, a library that rewrites a good chunk of D3.js
-                            * Monorepo project
-                            * Low to medium level abstractions
-                        </aside>
-                    </section>
+                <!-- VictoryJS -->
+                <section>
+                    <a target="_blank" href="http://formidable.com/open-source/victory/">
+                        <img src="img/screenshots/victoryjs-ss.png" alt="" style="width: 80%;" />
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * VictoryJS, a library that rewrites a good chunk of D3.js
+                        * Low to medium level abstractions ->
+                    </aside>
+                </section>
 
-                    <!-- Code -->
-                    <section>
-                        <h2>Linechart Code</h2>
-                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/victory/line.js#L14">
-                            <img src="img/code/victoryjs-code.png" alt="" style="width: 80%;">
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * As we can see in this code
-                        </aside>
-                    </section>
+                <!-- Code -->
+                <section>
+                    <h2>Linechart Code</h2>
+                    <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/victory/line.js#L14">
+                        <img src="img/code/victoryjs-code.png" alt="" style="width: 80%;">
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * As we can see in this code
+                        * --
+                        * Victory is ->
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>VictoryJS</h2>
-                        <ul>
-                            <li class="fragment">Easy to get started</li>
-                            <li class="fragment">Zoom and Voronoi</li>
-                            <li class="fragment">React Native option</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Easy to start, with a nice playground
-                            * Includes Zoom and Voronoi
-                            * The only one that can be used in React Native
-                            * __
-                            * One of my favorites is...
-                        </aside>
-                    </section>
+                <section>
+                    <h2>VictoryJS</h2>
+                    <ul>
+                        <li class="fragment">Easy to get started</li>
+                        <li class="fragment">Zoom and Voronoi</li>
+                        <li class="fragment">React Native option</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Easy to get started with, and features a nice playground
+                        * It includes Zoom and Voronoi components
+                        * and it is **the only library** that can be used in **React Native**
+                        * __
+                        * One of my favorites libraries is...
+                    </aside>
+                </section>
 
-                    <!-- Recharts -->
-                    <section>
-                        <a target="_blank" href="http://recharts.org/#/en-US/">
-                            <img src="img/screenshots/recharts-ss.png" alt="" style="width: 80%;" />
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * Recharts
-                            * Stetically polished, with a great tooltip
-                        </aside>
-                    </section>
+                <!-- Recharts -->
+                <section>
+                    <a target="_blank" href="http://recharts.org/#/en-US/">
+                        <img src="img/screenshots/recharts-ss.png" alt="" style="width: 80%;" />
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * Recharts
+                        * It is estetically polished, with a great tooltip
+                        * Its code ->
+                    </aside>
+                </section>
 
-                    <!-- Code -->
-                    <section>
-                        <h2>Linechart Code</h2>
-                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/recharts/line.js#L14">
-                            <img src="img/code/recharts-code.png" alt="" style="width: 80%;" />
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * A bit more abstracted than VictoryJS
-                        </aside>
-                    </section>
+                <!-- Code -->
+                <section>
+                    <h2>Linechart Code</h2>
+                    <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/ec2a0b52d2b1d3eb388a9dda2583ed604669540b/src/recharts/line.js#L14">
+                        <img src="img/code/recharts-code.png" alt="" style="width: 80%;" />
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * Is a bit more abstracted than VictoryJS
+                        * It has ->
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>Recharts</h2>
-                        <ul>
-                            <li class="fragment">Really well tested</li>
-                            <li class="fragment">Charts plus legend, tooltip and brush</li>
-                            <li class="fragment">Great docs</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Good tests
-                            * Graphs, legends, tooltip and brush are polished
-                            * Great docs
-                        </aside>
-                    </section>
+                <section>
+                    <h2>Recharts</h2>
+                    <ul>
+                        <li class="fragment">Really well tested</li>
+                        <li class="fragment">Charts plus legend, tooltip and brush</li>
+                        <li class="fragment">Great docs</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * a **complete** test suite
+                        * Graphs, legends, tooltip and brush are polished
+                        * Great docs
+                        * ___
+                        * One of the newest libraries is ->
+                    </aside>
+                </section>
 
-                    <!-- Nivo -->
-                    <section>
-                        <a target="_blank" href="http://nivo.rocks/#/">
-                            <img src="img/screenshots/nivo-ss.png" alt="" style="width: 80%;" />
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * High level library
-                        </aside>
-                    </section>
+                <!-- Nivo -->
+                <section>
+                    <a target="_blank" href="http://nivo.rocks/#/">
+                        <img src="img/screenshots/nivo-ss.png" alt="" style="width: 80%;" />
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * It is a High level library
+                        * Its API is a bit different, with ->
+                    </aside>
+                </section>
 
-                    <!-- Code -->
-                    <section>
-                        <h2>Linechart Code</h2>
-                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/nivo/line.js">
-                            <img src="img/code/nivo-code.png" alt="" style="width: 80%;">
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * Its API is a bit different, with one component for each chart
-                        </aside>
-                    </section>
+                <!-- Code -->
+                <section>
+                    <h2>Linechart Code</h2>
+                    <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/nivo/line.js">
+                        <img src="img/code/nivo-code.png" alt="" style="width: 80%;">
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * one unique component for each chart type
+                        * --
+                        * It is the only project that offers ->
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>Nivo</h2>
-                        <ul>
-                            <li class="fragment">Different rendering options</li>
-                            <li class="fragment">Animations with react-motion</li>
-                            <li class="fragment">Great Docs</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Many rendering options: SVG, Canvas and HTML with an API for rendering in the server or for emails
-                            * If you already use react-motion maybe this is handy
-                            * Good docs with integrated interactive configurations
-                        </aside>
-                    </section>
+                <section>
+                    <h2>Nivo</h2>
+                    <ul>
+                        <li class="fragment">Different rendering options</li>
+                        <li class="fragment">Animations with react-motion</li>
+                        <li class="fragment">Great Docs</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Many rendering options: SVG, Canvas and an API for rendering HTML in the server or for emails
+                        * It uses react-motion for the animations and
+                        * It has interactive docs with integrated configurations
+                        * ___
+                        * A library that is the opposite of Nivo is ->
+                    </aside>
+                </section>
 
-                    <!-- VX -->
-                    <section>
-                        <a target="_blank" href="https://vx-demo.now.sh/">
-                            <img src="img/screenshots/vx-ss.png" alt="" style="width: 80%;" />
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * Created within AirBnB
-                            * Low-level visualization components collection
-                            * Flexible, we can create other visualization libraries from it
-                        </aside>
-                    </section>
+                <!-- VX -->
+                <section>
+                    <a target="_blank" href="https://vx-demo.now.sh/">
+                        <img src="img/screenshots/vx-ss.png" alt="" style="width: 80%;" />
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * VX, created within AirBnB
+                        * Low-level visualization components collection
+                        * Flexible, we can create other visualization libraries from it
+                        * ___
+                        * Its code is ->
+                    </aside>
+                </section>
 
-                    <!-- Code -->
-                    <section>
-                        <h2>Linechart Code</h2>
-                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/vx/line.js">
-                            <img src="img/code/vx-code.png" alt="" style="width: 60%;">
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * Really low level
-                        </aside>
-                    </section>
+                <!-- Code -->
+                <section>
+                    <h2>Linechart Code</h2>
+                    <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/vx/line.js">
+                        <img src="img/code/vx-code.png" alt="" style="width: 60%;">
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * Really low level
+                        * ___
+                        * We can think of it as a ->
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>VX</h2>
-                        <ul>
-                            <li class="fragment">Similar to a "D3.js for React"</li>
-                            <li class="fragment">Flexible about the animation library</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Given the low granularity level
-                            * Freedom
-                        </aside>
-                    </section>
+                <section>
+                    <h2>VX</h2>
+                    <ul>
+                        <li class="fragment">Similar to a "D3.js for React"</li>
+                        <li class="fragment">Flexible about the animation library</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * D3.js for React, given the low granularity level
+                        * Freedom for animations and powerful for composition
+                        * ___
+                        * Lastly we have ->
+                    </aside>
+                </section>
 
-                    <!-- Britecharts React -->
-                    <section>
-                        <a target="_blank" href="">
-                            <img src="img/screenshots/britecharts-react-ss.png" alt="" style="width: 80%;" />
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * Created at Eventbrite and still in Beta
-                            * Only library using the lifecycle methods mapping approach
-                            * Allows using Britecharts in React applications through a simple wrapper
-                            * Britecharts as the main library, and we plan wrappers for Vue
-                        </aside>
-                    </section>
+                <!-- Britecharts React -->
+                <section>
+                    <a target="_blank" href="">
+                        <img src="img/screenshots/britecharts-react-ss.png" alt="" style="width: 80%;" />
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * BCR, created at Eventbrite and still in Beta
+                        * Only library using the lifecycle methods mapping approach
+                        * Allows using Britecharts in React applications through a simple wrapper
+                        * Britecharts as the main library, having wrappers for Angular and we are planning a wrapper for Vue too
+                        * The code abstraction level ->
+                    </aside>
+                </section>
 
-                    <!-- Code -->
-                    <section>
-                        <h2>Linechart Code</h2>
-                        <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/britecharts-react/line.js">
-                            <img src="img/code/bcr-code.png" alt="" style="width: 75%;">
-                        </a>
-                        <aside class="notes" data-markdown>
-                            * Render props for the tooltip
-                        </aside>
-                    </section>
+                <!-- Code -->
+                <section>
+                    <h2>Linechart Code</h2>
+                    <a target="_blank" href="https://github.com/Golodhros/talk-react-d3/blob/master/src/britecharts-react/line.js">
+                        <img src="img/code/bcr-code.png" alt="" style="width: 75%;">
+                    </a>
+                    <aside class="notes" data-markdown>
+                        * is mid-high
+                        * Render props for the tooltip
+                    </aside>
+                </section>
 
-                    <section>
-                        <h2>Britecharts React</h2>
-                        <ul>
-                            <li class="fragment">Helps to render D3 in React components</li>
-                            <li class="fragment">No Server-side Rendering</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * I can't be objective
-                            * We provide loading states
-                            * ___
-                            * If you want to explore more about this libraries and others...
-                        </aside>
-                    </section>
+                <section>
+                    <h2>Britecharts React</h2>
+                    <ul>
+                        <li class="fragment">Helps to render D3 in React components</li>
+                        <li class="fragment">No Server-side Rendering</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * I can't be objective
+                        * We don't allow SSR, but provide loading states
+                        * ___
+                        * If you want to explore more about this libraries and others...
+                    </aside>
+                </section>
 
-                    <!-- React D3 Library Demo -->
-                    <section>
-                        <a target="_blank" href="https://golodhros.github.io/talk-react-d3/"><img src="img/screenshots/talk-react-d3-demo.png" alt="" style="width: 80%;"></a>
-                        <small class="reference">Demo: <a target="_blank" href="https://golodhros.github.io/talk-react-d3/">https://golodhros.github.io/talk-react-d3/</a></small>
-                        <small>Code: <a target="_blank" href="https://github.com/Golodhros/talk-react-d3">https://github.com/Golodhros/talk-react-d3</a></small>
-                        <aside class="notes" data-markdown>
-                            * I have prepared a simple react app with six installed libraries
-                            * you can fork it and play around with them
-                            * __
-                            * I have also created a comparative matrix of...
-                        </aside>
-                    </section>
+                <!-- React D3 Library Demo -->
+                <section>
+                    <a target="_blank" href="https://golodhros.github.io/talk-react-d3/"><img src="img/screenshots/talk-react-d3-demo.png" alt="" style="width: 80%;"></a>
+                    <small class="reference">Demo: <a target="_blank" href="https://golodhros.github.io/talk-react-d3/">https://golodhros.github.io/talk-react-d3/</a></small>
+                    <small>Code: <a target="_blank" href="https://github.com/Golodhros/talk-react-d3">https://github.com/Golodhros/talk-react-d3</a></small>
+                    <aside class="notes" data-markdown>
+                        * I have prepared a simple react app with six installed libraries
+                        * you can fork it and play around with them
+                        * __
+                        * I have also created a comparative matrix of...
+                    </aside>
+                </section>
 
-                    <!-- Comparative -->
-                    <section>
-                        <a target="_blank" href="https://docs.google.com/spreadsheets/d/1tq2uyeBLJDOCYT3TftOg3LE2N-QspoFbMyBqBGxwnG4/edit#gid=0"><img src="img/screenshots/react-d3-lib-comparative.png" alt="" style="width: 80%;"></a>
-                        <small class="reference"><a target="_blank" href="http://tinyurl.com/d3-react-lib-comparative">http://tinyurl.com/d3-react-lib-comparative</a></small>
-                        <aside class="notes" data-markdown>
-                            * D3 and D3+React Libraries
-                            * Take it with a grain of salt, I could be wrong on some subjective measures
-                            * Hope to help you out when making a decision
-                        </aside>
-                    </section>
+                <!-- Comparative -->
+                <section>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1tq2uyeBLJDOCYT3TftOg3LE2N-QspoFbMyBqBGxwnG4/edit#gid=0"><img src="img/screenshots/react-d3-lib-comparative.png" alt="" style="width: 80%;"></a>
+                    <small class="reference"><a target="_blank" href="http://tinyurl.com/d3-react-lib-comparative">http://tinyurl.com/d3-react-lib-comparative</a></small>
+                    <aside class="notes" data-markdown>
+                        * D3 and D3+React Libraries
+                        * Take it with a grain of salt, I could be wrong on some subjective measures
+                        * Hope to help you out when making a decision
+                    </aside>
                 </section>
 
                 <!-- React D3 Choosing a Project -->
                 <section>
-                    <section>
-                        <aside class="notes" data-markdown>
-                            * We are close to the end of this talk
-                            * And I would love to give you a general vision of what to do with all this info
-                            * As many times what developers need is..
-                        </aside>
-                    </section>
+                    <aside class="notes" data-markdown>
+                        * We are close to the end of this talk
+                        * And I would love to give you a general vision of what to do with all this info
+                        * As many times what developers need is..
+                    </aside>
+                </section>
 
-                    <!-- React D3 Choosing a Project -->
-                    <section>
-                        <h1>Choosing an approach</h1>
-                        <aside class="notes" data-markdown>
-                            * to choose a strategy to get our projects done
-                            * and these selections aren't made in the void, but we will be choosing in base on the context and history of the project
-                            * __
-                            * As there are many variables, we will select some...
-                        </aside>
-                    </section>
+                <!-- React D3 Choosing a Project -->
+                <section>
+                    <h1>Choosing an approach</h1>
+                    <aside class="notes" data-markdown>
+                        * to choose a strategy to get our projects done
+                        * and these selections aren't made in the void, but we will be choosing in base on the context and history of the project
+                        * __
+                        * As there are many variables, we will select some...
+                    </aside>
+                </section>
 
-                    <!-- Criteria -->
-                    <section>
-                        <h2>Choosing criteria</h2>
-                        <img src="img/screenshots/choosing-criteria.png" alt="" style="width: 80%;">
-                        <aside class="notes" data-markdown>
-                            * Choosing criteria: Cost, Scope, Time and Quality
-                            * They might be too many, so
-                            * As a good engineer, I will try to reduce some complexity by fixing...
-                        </aside>
-                    </section>
+                <!-- Criteria -->
+                <section>
+                    <h2>Choosing criteria</h2>
+                    <img src="img/screenshots/choosing-criteria.png" alt="" style="width: 80%;">
+                    <aside class="notes" data-markdown>
+                        * Choosing criteria: Cost, Scope, Time and Quality
+                        * They might be too many, so
+                        * As a good engineer, I will try to reduce some complexity by fixing...
+                    </aside>
+                </section>
 
-                    <!-- Quality -->
-                    <section>
-                        <div>
-                            <img src="img/screenshots/quality-active-state.png" alt="" style="width: 80%;">
-                        </div>
-                        <ul>
-                            <li>Well tested</li>
-                            <li>D3 V4</li>
-                            <li>Great docs</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * The quality
-                            * We will assume tested visualizations, with D3 v4 or above and good docs
-                            * __
-                            * The next criteria will be...
-                        </aside>
-                    </section>
+                <!-- Quality -->
+                <section>
+                    <div>
+                        <img src="img/screenshots/quality-active-state.png" alt="" style="width: 80%;">
+                    </div>
+                    <ul>
+                        <li>Well tested</li>
+                        <li>D3 V4</li>
+                        <li>Great docs</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * The quality
+                        * We will assume tested visualizations, with D3 v4 or above and good docs
+                        * __
+                        * The next criteria will be...
+                    </aside>
+                </section>
 
-                    <!-- Time -->
-                    <section>
-                        <div>
-                            <img src="img/screenshots/time-active-state.png" alt="" style="width: 80%;">
-                        </div>
-                        <ul>
-                            <li>Long term investment?</li>
-                            <li>Needs to be done ASAP?</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Time, ask yourself:
-                            * Roll your own D3, wrap with React. Libraries don't assure you 5 years of life
-                            * Grab the closest library to your specs, fork it and contribute
-                            * __
-                            * Thinking about...
-                        </aside>
-                    </section>
+                <!-- Time -->
+                <section>
+                    <div>
+                        <img src="img/screenshots/time-active-state.png" alt="" style="width: 80%;">
+                    </div>
+                    <ul>
+                        <li>Long term investment?</li>
+                        <li>Needs to be done ASAP?</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Time, ask yourself:
+                        * Roll your own D3, wrap with React. Libraries don't assure you 5 years of life
+                        * Grab the closest library to your specs, fork it and contribute
+                        * __
+                        * Thinking about...
+                    </aside>
+                </section>
 
-                    <!-- Scope -->
-                    <section>
-                        <div>
-                            <img src="img/screenshots/scope-active-state.png" alt="" style="width: 80%;">
-                        </div>
-                        <ul>
-                            <li>Basic charts?</li>
-                            <li>One-off work?</li>
-                            <li>Highly customized?</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * Scope, you can ask yourselves:
-                            * If it is basic, go for the closest library for your specs
-                            * If it is a single complex piece, unless is in a library out of the box, go with regular D3 within React
-                            * If you have a UX, Designer or product manager asking with many changes, Roll your own D3, or fork and customize a Library
-                            * __
-                            * Lastly, thinking on...
-                        </aside>
-                    </section>
+                <!-- Scope -->
+                <section>
+                    <div>
+                        <img src="img/screenshots/scope-active-state.png" alt="" style="width: 80%;">
+                    </div>
+                    <ul>
+                        <li>Basic charts?</li>
+                        <li>One-off work?</li>
+                        <li>Highly customized?</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * Scope, you can ask yourselves:
+                        * If it is basic, go for the closest library for your specs
+                        * If it is a single complex piece, unless is in a library out of the box, go with regular D3 within React
+                        * If you have a UX, Designer or product manager asking with many changes, Roll your own D3, or fork and customize a Library
+                        * __
+                        * Lastly, thinking on...
+                    </aside>
+                </section>
 
-                    <!-- Cost, Resources -->
-                    <section>
-                        <div>
-                            <img src="img/screenshots/cost-active-state.png" alt="" style="width: 80%;">
-                        </div>
-                        <ul>
-                            <li>Limited budget?</li>
-                            <li>Need training?</li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * the money, you can ask yourselves:
-                            * the skills of your team
-                            * D3 devs: Clear separation between D3 and React - Lifecycle methods, faux DOM
-                            * React devs: React-D3 Libraries, Lifecycle methods with examples
-                            * Don't roll your own library with "D3 for Math, React for Dom"
-                            * __
-                            * In...
-                        </aside>
-                    </section>
+                <!-- Cost, Resources -->
+                <section>
+                    <div>
+                        <img src="img/screenshots/cost-active-state.png" alt="" style="width: 80%;">
+                    </div>
+                    <ul>
+                        <li>Limited budget?</li>
+                        <li>Need training?</li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * the money, it is going depend on the skills of your team
+                        * D3 devs: Clear separation between D3 and React - Lifecycle methods, faux DOM
+                        * React devs: React-D3 Libraries, Lifecycle methods with examples
+                        * Don't roll your own library with "D3 for Math, React for DOM"
+                        * __
+                        * In...
+                    </aside>
                 </section>
 
                 <!-- Conclusion -->
@@ -1328,7 +1326,7 @@ class Line extends React.Component {
                     <ul>
                         <li class="fragment">D3 and React can work together</li>
                         <li class="fragment">They both move fast</li>
-                        <li class="fragment">Hard to decide!</li>
+                        <li class="fragment">Hard to decide</li>
                     </ul>
                     <aside class="notes" data-markdown>
                         * Summary,
@@ -1336,6 +1334,7 @@ class Line extends React.Component {
                         * They are in constant evolution, so libraries combining both have a hard time keeping up
                         * Choosing depends on so many variables
                         * I hope I helped you a bit with this talk
+                        * [44"]
                     </aside>
                 </section>
 
@@ -1360,53 +1359,52 @@ class Line extends React.Component {
 
                 <!-- Resources -->
                 <section>
-                    <section>
-                        <h1>Resources</h1>
-                    </section>
+                    <h1>Resources</h1>
+                </section>
 
-                    <!-- D3 Resources -->
-                    <section>
-                        <h2>D3 Resources</h2>
-                        <ul>
-                            <li><a href="https://bost.ocks.org/mike/">Mike Bostock</a></li>
-                            <li><a href="https://github.com/d3/d3/blob/master/API.md">D3 Reference</a></li>
-                            <li><a href="https://d3js.slack.com">d3 slack channel</a></li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                        </aside>
-                    </section>
+                <!-- D3 Resources -->
+                <section>
+                    <h2>D3 Resources</h2>
+                    <ul>
+                        <li><a href="https://bost.ocks.org/mike/">Mike Bostock</a></li>
+                        <li><a href="https://github.com/d3/d3/blob/master/API.md">D3 Reference</a></li>
+                        <li><a href="https://d3js.slack.com">d3 slack channel</a></li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                    </aside>
+                </section>
 
-                    <!-- D3 Data joins Resources -->
-                    <section>
-                        <h2>Data-Joins Resources</h2>
-                        <ul>
-                            <li><a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">How Selections Work</a></li>
-                            <li><a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></li>
-                            <li><a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></li>
-                            <li><a href="https://github.com/d3/d3-selection">Selection API Reference</a></li>
-                        </ul>
-                        <aside class="notes" data-markdown>
-                            * This is by far the trickiest part of D3
-                        </aside>
-                    </section>
+                <!-- D3 Data joins Resources -->
+                <section>
+                    <h2>Data-Joins Resources</h2>
+                    <ul>
+                        <li><a target="_blank" href="https://bost.ocks.org/mike/selection/#enter-update-exit">How Selections Work</a></li>
+                        <li><a target="_blank" href="http://bost.ocks.org/mike/join/">Thinking with joins</a></li>
+                        <li><a target="_blank" href="http://bl.ocks.org/mbostock/3808218">General Update Pattern</a></li>
+                        <li><a href="https://github.com/d3/d3-selection">Selection API Reference</a></li>
+                    </ul>
+                    <aside class="notes" data-markdown>
+                        * This is by far the trickiest part of D3
+                    </aside>
+                </section>
 
-                    <!-- React D3 - Resources -->
-                    <section>
-                        <h2>React-D3 Resources</h2>
-                        <ul>
-                            <li><a href="http://blog.testdouble.com/posts/2017-01-05-react-d3.html">Sam Jones - A Well Factored Pie Graph: React + D3</a></li>
-                            <li><a href="https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf">Adil Baaj - A starting point on using D3 with React</a></li>
-                            <li><a href="https://mikewilliamson.wordpress.com/2016/06/03/d3-and-react-3-ways/">Mike Williamson - D3 and React 3 ways</a></li>
-                            <li><a href="http://www.adeveloperdiary.com/react-js/create-reusable-charts-react-d3-part1/">Abhisek Jana - How to create reusable charts with React</a></li>
-                            <li><a href="https://github.com/chroth7/reactD3resources">Collection of links/tools on how to integrate React &amp; D3</a></li>
-                        </ul>
-                    </section>
+                <!-- React D3 - Resources -->
+                <section>
+                    <h2>React-D3 Resources</h2>
+                    <ul>
+                        <li><a href="http://blog.testdouble.com/posts/2017-01-05-react-d3.html">Sam Jones - A Well Factored Pie Graph: React + D3</a></li>
+                        <li><a href="https://blog.sicara.com/a-starting-point-on-using-d3-with-react-869fdf3dfaf">Adil Baaj - A starting point on using D3 with React</a></li>
+                        <li><a href="https://mikewilliamson.wordpress.com/2016/06/03/d3-and-react-3-ways/">Mike Williamson - D3 and React 3 ways</a></li>
+                        <li><a href="http://www.adeveloperdiary.com/react-js/create-reusable-charts-react-d3-part1/">Abhisek Jana - How to create reusable charts with React</a></li>
+                        <li><a href="https://github.com/chroth7/reactD3resources">Collection of links/tools on how to integrate React &amp; D3</a></li>
+                    </ul>
+                </section>
 
-                    <!-- Comparative -->
-                    <section>
-                        <a target="_blank" href="https://docs.google.com/spreadsheets/d/1tq2uyeBLJDOCYT3TftOg3LE2N-QspoFbMyBqBGxwnG4/edit#gid=0"><img src="img/screenshots/react-d3-lib-comparative.png" alt="" style="width: 80%;"></a>
-                        <small class="reference"><a target="_blank" href="http://tinyurl.com/d3-react-lib-comparative">http://tinyurl.com/d3-react-lib-comparative</a></small>
-                    </section>
+                <!-- Comparative -->
+                <section>
+                    <a target="_blank" href="https://docs.google.com/spreadsheets/d/1tq2uyeBLJDOCYT3TftOg3LE2N-QspoFbMyBqBGxwnG4/edit#gid=0"><img src="img/screenshots/react-d3-lib-comparative.png" alt="" style="width: 80%;"></a>
+                    <small class="reference"><a target="_blank" href="http://tinyurl.com/d3-react-lib-comparative">http://tinyurl.com/d3-react-lib-comparative</a></small>
+                </section>
                 </section>
 			</div>
 		</div>
