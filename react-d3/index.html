@@ -241,12 +241,33 @@
                     <h2>Transforms the DOM by selecting elements and joining to data</h2>
                     <aside class="notes" data-markdown>
                         * Transforms the DOM by selecting elements and joining to data
-                        * We'll use the d3-selection
                         * It's another DOM management approach
                         * With **jquery** we accessed elements
                         * with **backbone and MV*** we rendered views
                         * with **React** we are smart about renders, using the virtual DOM
                         * and with D3, we have data joins
+                        * Let's see an exmaple in code...
+                    </aside>
+                </section>
+
+                <!-- Data Join Code -->
+                <section>
+                    <h2>Data Join Code</h2>
+                    <pre><code data-trim contenteditable class="javascript hljs">
+g.selectAll(".bar")
+    .data(data)
+    .enter()
+      .append("rect")
+        .attr("class", "bar")
+        .attr("x", function(d) { return x(d.letter); })
+        .attr("y", function(d) { return y(d.frequency); })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) { return height - y(d.frequency); });
+                    </code></pre>
+                    <aside class="notes" data-markdown>
+                        * We'll use the d3-selection module.
+                        * We call the 'selectAll' function with a CSS selector and execute the 'data' method of the selection passing our data set.
+                        * __
                         * Let's check a diagram...
                     </aside>
                 </section>
@@ -716,6 +737,8 @@ class Line extends React.Component {
         d3.select(faux)
             .append('svg')
         {...}
+
+        this.props.animateFauxDOM(800);
     }
 
     render() {
@@ -738,14 +761,15 @@ export default withFauxDOM(Line);
                         <li class="fragment"><strong class="green">✓</strong> Good integration with already built D3</li>
                         <li class="fragment"><strong class="green">✓</strong> Server Side Rendering</li>
                         <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Need to use React Animations</li>
-                        <li class="fragment"><strong class="red">✗</strong> Less performant</li>
-                        <li class="fragment"><strong class="red">✗</strong> Limited to small/medium size dataviz</li>
+                        <li class="fragment"><strong class="red">✗</strong> Compatibility with D3.js plugins</li>
+                        <li class="fragment"><strong class="red">✗</strong> Less performant (small/medium size dataviz)</li>
                     </ul>
                     <aside class="notes" data-markdown>
                         * We can use almost ~all D3.js API
                         * Easy to ~integrate with dataviz already done
                         * ~SSR
-                        * We should use ~react-transition-group, react-motion motion groups, resonance
+                        * Although it supports ‘d3-transition’ when using the HOC, at some point, we could be forced to use a React animation library
+                        * We could have issues integrating D3.js plugins
                         * ~Limited performance-wise ~
                         * ___
                         * My favorite approach is...
@@ -840,13 +864,15 @@ export default D3Line;
                     <h2>Lifecycle Methods Mapping</h2>
                     <h4>Pros/Cons</h4>
                     <ul>
+                        <li class="fragment"><strong class="green">✓</strong> Separation of concerns</li>
                         <li class="fragment"><strong class="green">✓</strong> Easy to integrate D3.js code</li>
                         <li class="fragment"><strong class="green">✓</strong> Flexible, could encapsulate any chart</li>
                         <li class="fragment"><strong class="red">✗</strong>/<strong class="green">✓</strong> Adds another file</li>
                     </ul>
                     <aside class="notes" data-markdown>
+                        * Its main benefit is a sharp distinction between the React and the D3.js code
                         * It is super ~easy to add your D3 code into the wrapped chart file
-                        * Sharp difference between D3 and React while ~keeping it flexible
+                        * ~keeping it flexible, so we could use it to integrate our charts with other frameworks
                         * ~Could be a problem to use an extra file
                         * __
                         * The last approach is...
@@ -979,7 +1005,7 @@ class Line extends React.Component {
                         * It could get to a well-crafted code, and ~it will take work
                         * ~Axis, brushes, zoom reimplemented
                         * We cannot move into ~canvas rendering when going this way
-                        * I would create it this way just if I plan to use it a lot in the future
+                        * It is the one that requires more knowledge about the D3.js APIs.
                     </aside>
                 </section>
 
