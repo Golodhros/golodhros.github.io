@@ -96,10 +96,10 @@
                         <li><a target="_blank" href="http://www.eventbrite.com/engineering/">Eventbrite Engineering Blog</a></li>
                     </ul>
                     <aside class="notes" data-markdown>
-                        * online on twitter, where I share resources about dataviz, d3, React, web performance and front end technologies in general
-                        * I also write on EB's engineering blog, where you can read my posts and my peers' posts about software engineering and engineering culture
+                        * online on twitter, where I share resources about d3, React, web performance and front end technologies
+                        * I also write on EB's engineering blog, where we write posts about software engineering and engineering culture
                         * __
-                        * Let's see what brought you to this session today...
+                        * Now let's see what brought you to this session today...
                     </aside>
                 </section>
 
@@ -109,7 +109,7 @@
                     <a target="_blank" href=""><img src="img/logos/reactD3.png" alt="" style="width: 80%;"></a>
                     <aside class="notes" data-markdown>
                         * React and D3 are two great UI tools designed for goals that sometimes **collide**
-                        * The problem is that **both take control of the DOM** elements, and they do it in different ways
+                        * The problem is that **both take control of the DOM elements** , and they do it in different ways
                         * So **how can you make them work together** optimizing their features depending on your current project?
                         * In this talk, you will see **how** you can approach building React apps that need the powerful charting goodness of D3
                         * __
@@ -160,17 +160,17 @@
                     <ul>
                         <li class="fragment">Data-Driven Documents</li>
                         <li class="fragment">Low level, General Purpose Visualization Library</li>
-                        <li class="fragment">Manipulates data based documents</li>
-                        <li class="fragment">Open web standards (SVG, HTML, CSS and Canvas)</li>
-                        <li class="fragment">Allows interactions with your graphs</li>
+                        <li class="fragment">Manipulates data-based documents</li>
+                        <li class="fragment">Open web standards</li>
+                        <li class="fragment">Interactive charts</li>
                     </ul>
                     <aside class="notes" data-markdown>
                         * D3 stands for ~data-driven documents
                         * It is a ~low-level visualization library with a huge API
                         * D3 ~manipulates data based documents and it is focused on mathematical transformations of data
                         * Based on ~web standards as SVG, HTML, CSS and canvas
-                        * One of it’s more celebrated features is its seamless integration of animations and the way it allows us to create ~engaging interactions
-                        * In general, it is a **Front End toolbox for creating interactive visualizations**, and it is **not** a charting library, although we will review several today based on d3.
+                        * One of it’s more celebrated features is its seamless integration of animations and how we can create ~engaging interactions
+                        * In general, it is a **Front End toolbox for creating interactive visualizations**, and it is **not** a charting library, although we will review several based on d3 tonight
                     </aside>
                 </section>
 
@@ -230,7 +230,7 @@
                     <h1>D3 Data Joins</h1>
                     <aside class="notes" data-markdown>
                         * **Data Joins**
-                        * I am going to touch the Data Joins definition a bit, as we will establish **similitudes with the way React works**
+                        * I am going to touch the Data Joins definition a bit, as we will establish **similarities with the way React works**
                         * -
                         * A Data Join ->
                     </aside>
@@ -265,8 +265,8 @@ g.selectAll(".bar")
         .attr("height", function(d) { return height - y(d.frequency); });
                     </code></pre>
                     <aside class="notes" data-markdown>
-                        * We'll use the d3-selection module.
-                        * We call the 'selectAll' function with a CSS selector and execute the 'data' method of the selection passing our data set.
+                        * We use the d3-selection module
+                        * We call the 'selectAll' function with a CSS selector and execute the 'data' method of the selection passing our data set
                         * __
                         * Let's check a diagram...
                     </aside>
@@ -285,9 +285,9 @@ g.selectAll(".bar")
                         * the ones that stay (update),
                         * the ones that need to be created (enter)
                         * and the ones that need to leave (exit)
-                        * It's a diff algorithm, but instead of comparing already rendered DOM, we compare data
-                        * The data is in the DOM, we'll contrast this with the use of keys in React child components
-                        * Another way of seeing this ->
+                        * It's a diff algorithm, but instead of comparing already rendered DOM, we compare data that we get from the DOM
+                        * Later we'll contrast this with the use dynamic child components in React
+                        * Another way of seeing Data Joins ->
                     </aside>
                 </section>
 
@@ -525,6 +525,8 @@ g.selectAll(".bar")
                     </ul>
                     <aside class="notes" data-markdown>
                         * the reconciler, and the renderer
+                        * The 'Reconciler' is the algorithm that compares the copy of the DOM in the memory with the result of applying the new state.
+                        * The 'Renderer' is the logic that draws the user interface into the publishing target
                         * Since version 0.14, they are ~separated, so we can
                         * use **different renderers** depending in our ~publishing target: whether native mobile apps or virtual reality
                         * Here we can establish a paralell, as in D3.js we can also choose between different rendering contexts like SVG, HTML or Canvas
@@ -537,7 +539,7 @@ g.selectAll(".bar")
                 <section>
                     <h2>React 16 (Fiber)</h2>
                     <ul>
-                        <li class="fragment">New reconciliating algorithm</li>
+                        <li class="fragment">New reconciliation algorithm</li>
                         <li class="fragment">From batching DOM operations, now React can...
                             <ul class="fragment">
                                 <li>Prioritize tasks</li>
@@ -546,13 +548,11 @@ g.selectAll(".bar")
                             </ul>
                         </li>
                     </ul>
-                    <small class="reference fragment"><a target="_blank" href="https://www.youtube.com/watch?v=ZCuYPiUIONs">A Cartoon Intro to Fiber</a> by Lin Clark</small>
                     <aside class="notes" data-markdown>
                         * React 16 and the Fiber architecture
                         * Fiber is the ~new reconciliation algorithm of React
                         * Before, React was ~batching DOM changes, but
                         * This new reconciler is **superior**, because it takes into account ~priorities, schedules and parallel computations to keep the 60FPS refresh rate
-                        * You can read an explanation on Fiber in this ~article by Lin Clark
                         * ___
                         * A trait of React I want to talk about is the use of...
                     </aside>
