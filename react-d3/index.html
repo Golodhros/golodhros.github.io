@@ -97,9 +97,9 @@
                     </ul>
                     <aside class="notes" data-markdown>
                         * online on twitter, where I share resources about d3, React, web performance and front end technologies
-                        * I also write on EB's engineering blog, where we write posts about software engineering and engineering culture
+                        * I also write on EB's engineering blog, where we post about software engineering and engineering culture
                         * __
-                        * Now let's see what brought you to this session today...
+                        * Now let's get into the topic...
                     </aside>
                 </section>
 
@@ -108,7 +108,10 @@
                 <section>
                     <a target="_blank" href=""><img src="img/logos/reactD3.png" alt="" style="width: 80%;"></a>
                     <aside class="notes" data-markdown>
-                        * React and D3 are two great UI tools designed for goals that sometimes **collide**
+                        * React is a widespread and popular library for user interface development.
+                        * At the same time, D3.js is the most successful library for creating visualizations for the browser.
+                        * Their prevalence means that in many projects, we need to make them work together.
+                        * But React and D3 are tools designed for goals that sometimes **collide**
                         * The problem is that **both take control of the DOM elements** , and they do it in different ways
                         * So **how can you make them work together** optimizing their features depending on your current project?
                         * In this talk, you will see **how** you can approach building React apps that need the powerful charting goodness of D3
@@ -167,10 +170,10 @@
                     <aside class="notes" data-markdown>
                         * D3 stands for ~data-driven documents
                         * It is a ~low-level visualization library with a huge API
-                        * D3 ~manipulates data based documents and it is focused on mathematical transformations of data
+                        * D3 ~manipulates data-based documents and it is focused on mathematical transformations of data
                         * Based on ~web standards as SVG, HTML, CSS and canvas
-                        * One of it’s more celebrated features is its seamless integration of animations and how we can create ~engaging interactions
-                        * In general, it is a **Front End toolbox for creating interactive visualizations**, and it is **not** a charting library, although we will review several based on d3 tonight
+                        * One of its more celebrated features is its seamless integration of animations and how we can create ~engaging interactions
+                        * D3.js is a **Front End toolbox for creating interactive visualizations**, and it is **not** a charting library, although we will review several based on d3 tonight
                     </aside>
                 </section>
 
@@ -507,10 +510,10 @@ g.selectAll(".bar")
                     </ul>
                     <aside class="notes" data-markdown>
                         * What is ReactJS
-                        * JavaScript library to create User Interfaces
-                        * Based in creating components. IMO, the best that React brought us is a way of creating components that makes sense
-                        * and is performant on rendering
-                        * A React component will keep track of the DOM state through his virtual DOM, updated with changes, and if necessary, re-render itself
+                        * JavaScript library to create ~User Interfaces
+                        * Based in creating ~components. IMO, the best that React brought us is a way of creating components that makes sense
+                        * and is performant on ~rendering
+                        * A React component will keep track of the DOM state through his virtual DOM, update it with changes, and if necessary, re-render itself
                         * __
                         * Two essential elements of this library are...
                     </aside>
@@ -575,12 +578,10 @@ g.selectAll(".bar")
                         <li class="fragment">More efficient rendering</li>
                         <li class="fragment">Similar to D3's data joins</li>
                     </ul>
-                    <small class="reference fragment"><a target="_blank" href="https://facebook.github.io/react/docs/reconciliation.html">Reconciliation - React Docs</a></small>
                     <aside class="notes" data-markdown>
                         * We use ~unique keys for each descendant of the rendered component
                         * It is more ~efficient, as we avoid to render elements already present in the DOM
                         * React uses unique keys, while on D3, the key is the ~data attached to the DOM element (we can use a key function with .data too)
-                        * You can learn more about React reconciliation in this ~documentation page
                     </aside>
                 </section>
 
@@ -1042,9 +1043,9 @@ class Line extends React.Component {
                     </ul>
                     <aside class="notes" data-markdown>
                         * Ecosystem, I have observed
-                        * A good amount of not maintained libraries
-                        * D3 and React push hard, so it’s not easy to keep up
-                        * Also, D3 version four brought a ‘clean up’ on the field, leaving behind a large group of libraries
+                        * A good amount of ~non-maintained libraries
+                        * D3 and React push hard, so it’s not easy to ~keep up
+                        * Also, D3 version four brought a ~‘clean up’ on the field, leaving behind a large group of libraries
                         * There is a big difference in abstraction levels
                         * __
                         * Let's see some of these libraries, like...
@@ -1163,9 +1164,9 @@ class Line extends React.Component {
                         <li class="fragment">Great Docs</li>
                     </ul>
                     <aside class="notes" data-markdown>
-                        * Many rendering options: SVG, Canvas and an API for rendering HTML in the server or for emails
-                        * It uses react-motion for the animations and
-                        * It has interactive docs with integrated configurations
+                        * Many rendering options: ~SVG, Canvas and an API for rendering HTML in the server or for emails
+                        * It uses ~react-motion for the animations and
+                        * It has ~interactive docs with integrated configurations
                         * ___
                         * A library that is the opposite of Nivo is ->
                     </aside>
@@ -1408,7 +1409,7 @@ class Line extends React.Component {
                             Twitter: <a target="_blank" target="_blank" href="https://twitter.com/golodhros">@golodhros</a>
                         </li>
                         <li>
-                            Slides: <a target="_blank" href="http://golodhros.github.io/react-d3">http://bit.ly/ijs-react-d3</a>
+                            Slides: <a target="_blank" href="http://golodhros.github.io/react-d3">http://bit.ly/meetup-react-d3</a>
                         </li>
                         <li>
                             Demo: <a target="_blank" href="https://github.com/Golodhros/talk-react-d3">https://github.com/Golodhros/talk-react-d3</a>
